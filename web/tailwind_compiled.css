@@ -727,6 +727,11 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -734,6 +739,10 @@ video {
 
 .mb-1 {
   margin-bottom: 0.25rem;
+}
+
+.mb-1\.5 {
+  margin-bottom: 0.375rem;
 }
 
 .mb-2 {
@@ -872,8 +881,12 @@ video {
   max-height: 85vh;
 }
 
-.max-h-\[90vh\] {
-  max-height: 90vh;
+.max-h-\[92vh\] {
+  max-height: 92vh;
+}
+
+.min-h-\[150px\] {
+  min-height: 150px;
 }
 
 .min-h-\[180px\] {
@@ -930,6 +943,10 @@ video {
 
 .min-w-0 {
   min-width: 0px;
+}
+
+.min-w-\[150px\] {
+  min-width: 150px;
 }
 
 .min-w-\[180px\] {
@@ -1217,6 +1234,10 @@ video {
   border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
 }
 
+.border-gray-200\/70 {
+  border-color: rgb(229 231 235 / 0.7);
+}
+
 .border-green-200 {
   --tw-border-opacity: 1;
   border-color: rgb(187 247 208 / var(--tw-border-opacity, 1));
@@ -1411,6 +1432,15 @@ video {
   background-color: rgb(255 237 213 / var(--tw-bg-opacity, 1));
 }
 
+.bg-purple-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 232 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-purple-200\/80 {
+  background-color: rgb(233 213 255 / 0.8);
+}
+
 .bg-purple-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(250 245 255 / var(--tw-bg-opacity, 1));
@@ -1473,6 +1503,10 @@ video {
   background-color: rgb(255 255 255 / 0.1);
 }
 
+.bg-white\/20 {
+  background-color: rgb(255 255 255 / 0.2);
+}
+
 .bg-yellow-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 249 195 / var(--tw-bg-opacity, 1));
@@ -1509,6 +1543,12 @@ video {
 .from-purple-50\/80 {
   --tw-gradient-from: rgb(250 245 255 / 0.8) var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(250 245 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-purple-500 {
+  --tw-gradient-from: #a855f7 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(168 85 247 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
@@ -1658,6 +1698,11 @@ video {
   padding-bottom: 0.625rem;
 }
 
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .py-3\.5 {
   padding-top: 0.875rem;
   padding-bottom: 0.875rem;
@@ -1666,6 +1711,10 @@ video {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.pb-1 {
+  padding-bottom: 0.25rem;
 }
 
 .pb-3 {
@@ -1682,10 +1731,6 @@ video {
 
 .pt-0\.5 {
   padding-top: 0.125rem;
-}
-
-.pt-1 {
-  padding-top: 0.25rem;
 }
 
 .pt-16 {
@@ -1965,6 +2010,16 @@ video {
   color: rgb(154 52 18 / var(--tw-text-opacity, 1));
 }
 
+.text-purple-100 {
+  --tw-text-opacity: 1;
+  color: rgb(243 232 255 / var(--tw-text-opacity, 1));
+}
+
+.text-purple-200 {
+  --tw-text-opacity: 1;
+  color: rgb(233 213 255 / var(--tw-text-opacity, 1));
+}
+
 .text-purple-600 {
   --tw-text-opacity: 1;
   color: rgb(147 51 234 / var(--tw-text-opacity, 1));
@@ -1977,6 +2032,11 @@ video {
 
 .text-purple-700\/80 {
   color: rgb(126 34 206 / 0.8);
+}
+
+.text-purple-800 {
+  --tw-text-opacity: 1;
+  color: rgb(107 33 168 / var(--tw-text-opacity, 1));
 }
 
 .text-purple-900 {
@@ -2174,1025 +2234,6 @@ video {
   transition-duration: 75ms;
 }
 
-/* ==========================================================================
-   高级电工刷题助手 · 样式表 (包含高质感微动效、全功能手势缩放、全端响应式)
-   ========================================================================== */
-
-/* --- 细腻微动效与轻量微弹动画 (克制、柔和、不晃眼) --- */
-
-/* 1. 答对选项：轻微微弹确认 */
-
-@keyframes qPopCorrect {
-  0% {
-    transform: scale(0.99);
-  }
-
-  50% {
-    transform: scale(1.012);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* 2. 答错选项：细腻微颤提示 (仅 2~3px) */
-
-@keyframes qWobbleWrong {
-  0% {
-    transform: translateX(0);
-  }
-
-  25% {
-    transform: translateX(-3px);
-  }
-
-  50% {
-    transform: translateX(3px);
-  }
-
-  75% {
-    transform: translateX(-1px);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
-
-/* 3. 选项序号圆圈 A/B/C/D 极轻微弹 */
-
-@keyframes qSpringBadge {
-  0% {
-    transform: scale(0.92);
-  }
-
-  60% {
-    transform: scale(1.06);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* 4. 答案解析横幅：柔和微淡入 (仅 6px 平滑位移) */
-
-@keyframes qBannerSpring {
-  0% {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 5. 收藏星星轻弹 */
-
-@keyframes qStarPop {
-  0% {
-    transform: scale(0.92);
-  }
-
-  50% {
-    transform: scale(1.12);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* 6. 切题卡片快速平滑淡入 */
-
-@keyframes qCardIn {
-  0% {
-    opacity: 0.6;
-    transform: translateY(4px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 7. 题号按钮激活轻触微弹 */
-
-@keyframes qPulse {
-  0% {
-    transform: scale(0.96);
-  }
-
-  50% {
-    transform: scale(1.06);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* 动画工具类 (时间短促轻巧，0.18s~0.24s) */
-
-.animate-q-correct {
-  animation: qPopCorrect 0.22s ease-out both;
-}
-
-.animate-q-wrong {
-  animation: qWobbleWrong 0.22s ease-out both;
-}
-
-.animate-q-badge {
-  animation: qSpringBadge 0.2s ease-out both;
-}
-
-.animate-q-banner {
-  animation: qBannerSpring 0.2s ease-out both;
-}
-
-.animate-q-star {
-  animation: qStarPop 0.22s ease-out both;
-}
-
-.animate-q-card {
-  animation: qCardIn 0.18s ease-out both;
-}
-
-.animate-q-pulse {
-  animation: qPulse 0.2s ease-out both;
-}
-
-/* --- 微触感交互按钮类 --- */
-
-.q-bounce-btn {
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
-  will-change: transform;
-}
-
-.q-bounce-btn:active {
-  transform: scale(0.985) !important;
-}
-
-/* --- 侧边栏尺寸与自适应（加宽至 360px~392px，支持文字优雅折行） --- */
-
-#sidebar {
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  #sidebar {
-    width: 22.5rem;
-    /* 360px */
-    flex-shrink: 0;
-  }
-}
-
-@media (min-width: 1280px) {
-  #sidebar {
-    width: 24.5rem;
-    /* 392px */
-    flex-shrink: 0;
-  }
-}
-
-/* 侧边栏按钮排版与选中态 */
-
-.nav-item-btn {
-  color: #334155;
-  background: transparent;
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-  word-break: break-word;
-  white-space: normal;
-}
-
-.nav-item-btn:hover {
-  background: #f1f5f9;
-  color: #1e293b;
-  transform: translateX(2px);
-}
-
-.nav-item-btn:active {
-  transform: scale(0.98);
-}
-
-.nav-item-btn.active {
-  background: #eff6ff !important;
-  color: #1d4ed8 !important;
-  font-weight: 700 !important;
-  border: 1.5px solid #bfdbfe !important;
-  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
-}
-
-.nav-item-btn.active .nav-icon {
-  color: #2563eb !important;
-}
-
-/* 进度微胶囊与微进度条 */
-
-.mini-progress-track {
-  height: 4px;
-  background: #e2e8f0;
-  border-radius: 9999px;
-  overflow: hidden;
-  position: relative;
-}
-
-.mini-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #3b82f6, #6366f1);
-  border-radius: 9999px;
-  transition: width 0.3s ease;
-}
-
-/* 选项卡片排版与防重叠 */
-
-.option-btn {
-  line-height: 1.6;
-  word-break: break-word;
-  text-align: left;
-  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-  will-change: transform;
-}
-
-.option-btn:hover:not(:disabled) {
-  border-color: #93c5fd;
-  background-color: #f8fafc;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
-}
-
-.option-btn:active:not(:disabled) {
-  transform: scale(0.99);
-}
-
-/* 电路图缩略图美化 */
-
-.circuit-img-container {
-  background: #ffffff;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 1rem;
-  padding: 0.75rem;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: zoom-in;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-
-.circuit-img-container:hover {
-  border-color: #3b82f6;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
-  transform: translateY(-1px);
-}
-
-.circuit-img-container img {
-  max-height: 250px;
-  max-width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-/* 行内电气公式/符号图片 */
-
-img.inline-formula {
-  display: inline-block;
-  vertical-align: middle;
-  max-height: 30px;
-  margin: 0 2px;
-}
-
-/* 自定义纤细滚动条 */
-
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-/* 移动端触控优化 */
-
-@media (max-width: 768px) {
-  .option-btn {
-    padding: 0.875rem 1rem;
-  }
-}
-
-/* ==========================================================================
-   全新高级功能样式扩展：字号切换、主题切换、Lightbox 无级平移视口
-   ========================================================================== */
-
-/* 1. 字号缩放控制系统 */
-
-body.font-size-normal .q-title-text {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-body.font-size-normal .q-option-text {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-body.font-size-large .q-title-text {
-  font-size: 1.25rem !important;
-  line-height: 1.875rem !important;
-}
-
-body.font-size-large .q-option-text {
-  font-size: 1.125rem !important;
-  line-height: 1.75rem !important;
-}
-
-body.font-size-huge .q-title-text {
-  font-size: 1.4rem !important;
-  line-height: 2rem !important;
-}
-
-body.font-size-huge .q-option-text {
-  font-size: 1.25rem !important;
-  line-height: 1.875rem !important;
-}
-
-/* 2. 护眼暖黄纸质主题 (Theme: eye-care) */
-
-body[data-theme="eye-care"] {
-  background-color: #f7f4ea !important;
-  color: #38352f !important;
-}
-
-body[data-theme="eye-care"] #app,
-body[data-theme="eye-care"] main,
-body[data-theme="eye-care"] #question-scroll-area {
-  background-color: #f7f4ea !important;
-}
-
-body[data-theme="eye-care"] aside#sidebar {
-  background-color: #fcfbf7 !important;
-  border-right: 1px solid #e9e4d4;
-}
-
-body[data-theme="eye-care"] .bg-white {
-  background-color: #fffefb !important;
-}
-
-body[data-theme="eye-care"] .bg-gray-50,
-body[data-theme="eye-care"] .bg-slate-50 {
-  background-color: #f3efe3 !important;
-}
-
-body[data-theme="eye-care"] .bg-gray-100 {
-  background-color: #eee9dc !important;
-}
-
-body[data-theme="eye-care"] .text-gray-800 {
-  color: #2e2b25 !important;
-}
-
-body[data-theme="eye-care"] .text-gray-700 {
-  color: #423e35 !important;
-}
-
-body[data-theme="eye-care"] .option-btn {
-  background-color: #fffefb !important;
-  border-color: #e9e4d4 !important;
-  color: #38352f !important;
-}
-
-body[data-theme="eye-care"] .option-btn:hover:not(:disabled) {
-  background-color: #f3efe3 !important;
-  border-color: #c7beab !important;
-  color: #2e2b25 !important;
-}
-
-/* 3. 深色夜间模式全面深度适配体系 (Theme: dark) */
-
-body[data-theme="dark"] {
-  background-color: #0b1120 !important;
-  color: #e2e8f0 !important;
-}
-
-body[data-theme="dark"] #app,
-body[data-theme="dark"] main,
-body[data-theme="dark"] #question-scroll-area {
-  background-color: #0b1120 !important;
-}
-
-/* 侧边栏与卡片容器 */
-
-body[data-theme="dark"] aside#sidebar {
-  background-color: #0b1120 !important;
-  border-right: 1px solid #1e293b !important;
-  color: #e2e8f0;
-}
-
-body[data-theme="dark"] .bg-white {
-  background-color: #0f172a !important;
-  color: #f1f5f9 !important;
-}
-
-body[data-theme="dark"] .border-gray-100,
-body[data-theme="dark"] .border-gray-200,
-body[data-theme="dark"] .border-slate-100,
-body[data-theme="dark"] .border-slate-200 {
-  border-color: #1e293b !important;
-}
-
-body[data-theme="dark"] .bg-gray-50,
-body[data-theme="dark"] .bg-slate-50 {
-  background-color: #0b1120 !important;
-}
-
-body[data-theme="dark"] .bg-gray-100 {
-  background-color: #1e293b !important;
-}
-
-/* 文字层级颜色系统 */
-
-body[data-theme="dark"] .text-gray-900,
-body[data-theme="dark"] .text-gray-800 {
-  color: #f8fafc !important;
-}
-
-body[data-theme="dark"] .text-gray-700 {
-  color: #e2e8f0 !important;
-}
-
-body[data-theme="dark"] .text-gray-600 {
-  color: #94a3b8 !important;
-}
-
-body[data-theme="dark"] .text-gray-500,
-body[data-theme="dark"] .text-gray-400 {
-  color: #64748b !important;
-}
-
-/* 侧边栏控件专项适配 */
-
-body[data-theme="dark"] .nav-item-btn {
-  color: #94a3b8;
-}
-
-body[data-theme="dark"] .nav-item-btn:hover {
-  background-color: #1e293b !important;
-  color: #f8fafc !important;
-}
-
-body[data-theme="dark"] .nav-item-btn.active {
-  background: linear-gradient(135deg, #1e3a8a, #1d4ed8) !important;
-  color: #93c5fd !important;
-  border-color: #3b82f6 !important;
-}
-
-body[data-theme="dark"] #btn-quick-search {
-  background-color: #131f37 !important;
-  color: #93c5fd !important;
-}
-
-body[data-theme="dark"] #btn-quick-search:hover {
-  background-color: #1e293b !important;
-}
-
-body[data-theme="dark"] #btn-export-backup {
-  background-color: #1c1a3b !important;
-  color: #c7d2fe !important;
-}
-
-body[data-theme="dark"] #btn-export-backup:hover {
-  background-color: #1e293b !important;
-}
-
-body[data-theme="dark"] .mini-progress-track {
-  background-color: #1e293b !important;
-}
-
-body[data-theme="dark"] [data-mode="exam-random"] {
-  background: linear-gradient(135deg, #2a1215, #3a151b) !important;
-  border-color: #5c1d24 !important;
-  color: #fca5a5 !important;
-}
-
-body[data-theme="dark"] [data-mode="exam-random"] .text-red-700 {
-  color: #f87171 !important;
-}
-
-body[data-theme="dark"] [data-mode="exam-random"] .text-red-500 {
-  color: #fca5a5 !important;
-}
-
-body[data-theme="dark"] [data-mode="exam-random"] .bg-red-200 {
-  background-color: #7f1d1d !important;
-  color: #fee2e2 !important;
-}
-
-body[data-theme="dark"] [data-mode="quick-quiz"] {
-  background-color: #131c31 !important;
-  color: #fdba74 !important;
-  border: 1px solid #1e293b !important;
-}
-
-body[data-theme="dark"] #btn-nav-wrong {
-  color: #cbd5e1 !important;
-}
-
-body[data-theme="dark"] #btn-nav-wrong:hover {
-  background-color: #271914 !important;
-  color: #fb923c !important;
-}
-
-body[data-theme="dark"] #btn-nav-fav {
-  color: #cbd5e1 !important;
-}
-
-body[data-theme="dark"] #btn-nav-fav:hover {
-  background-color: #262112 !important;
-  color: #facc15 !important;
-}
-
-body[data-theme="dark"] aside#sidebar .bg-gray-50 {
-  background-color: #131d31 !important;
-  border-color: #1e293b !important;
-}
-
-body[data-theme="dark"] .theme-btn,
-body[data-theme="dark"] .fontsize-btn {
-  color: #94a3b8 !important;
-}
-
-body[data-theme="dark"] .theme-btn.bg-white,
-body[data-theme="dark"] .fontsize-btn.bg-white {
-  background-color: #1e293b !important;
-  color: #60a5fa !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
-}
-
-body[data-theme="dark"] aside#sidebar .bg-gray-200,
-body[data-theme="dark"] aside#sidebar .bg-gray-200\/60 {
-  background-color: #0b1120 !important;
-}
-
-/* 顶部状态栏 */
-
-body[data-theme="dark"] main > div:first-child {
-  background-color: #0b1120 !important;
-  border-bottom: 1px solid #1e293b !important;
-}
-
-body[data-theme="dark"] #badge-current-module {
-  background-color: #1e3a8a !important;
-  color: #93c5fd !important;
-}
-
-body[data-theme="dark"] #btn-open-grid-modal {
-  color: #cbd5e1 !important;
-}
-
-body[data-theme="dark"] #btn-open-grid-modal:hover {
-  background-color: #1e293b !important;
-}
-
-body[data-theme="dark"] #text-current-qnum {
-  color: #60a5fa !important;
-}
-
-body[data-theme="dark"] #text-total-qnum {
-  color: #f1f5f9 !important;
-}
-
-body[data-theme="dark"] #badge-recite-status {
-  background-color: #3a2e19 !important;
-  color: #fde047 !important;
-}
-
-body[data-theme="dark"] #exam-timer-box {
-  background-color: #3b1118 !important;
-  border-color: #991b1b !important;
-  color: #fca5a5 !important;
-}
-
-/* ==========================================================================
-   选项卡片状态全套深度适配 (彻底消灭白底白字，高对比度护眼)
-   ========================================================================== */
-
-/* 1. 默认未选状态 */
-
-body[data-theme="dark"] .option-btn {
-  background-color: #0f172a !important;
-  border-color: #1e293b !important;
-  color: #e2e8f0 !important;
-}
-
-body[data-theme="dark"] .option-btn .q-option-text {
-  color: #e2e8f0 !important;
-}
-
-body[data-theme="dark"] .option-btn span.w-8.h-8 {
-  background-color: #1e293b !important;
-  color: #94a3b8 !important;
-}
-
-/* 2. 鼠标悬停 Hover 状态 (重点：暗岩深蓝底 + 高亮白字 + 冰蓝边框) */
-
-body[data-theme="dark"] .option-btn:hover:not(:disabled) {
-  background-color: #1e293b !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
-}
-
-body[data-theme="dark"] .option-btn:hover:not(:disabled) .q-option-text {
-  color: #ffffff !important;
-}
-
-body[data-theme="dark"] .option-btn:hover:not(:disabled) span.w-8.h-8 {
-  background-color: #2563eb !important;
-  color: #ffffff !important;
-}
-
-/* 3. 选中态 (练习或模考选中) */
-
-body[data-theme="dark"] .option-btn.border-blue-600 {
-  background-color: #1e3a8a !important;
-  border-color: #60a5fa !important;
-  color: #bfdbfe !important;
-}
-
-body[data-theme="dark"] .option-btn.border-blue-600 .q-option-text {
-  color: #ffffff !important;
-}
-
-body[data-theme="dark"] .option-btn.border-blue-600 span.w-8.h-8 {
-  background-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-
-/* 4. 正确答案态 */
-
-body[data-theme="dark"] .option-btn.border-green-500 {
-  background-color: rgba(6, 78, 59, 0.45) !important;
-  border-color: #10b981 !important;
-  color: #a7f3d0 !important;
-}
-
-body[data-theme="dark"] .option-btn.border-green-500 .q-option-text {
-  color: #ffffff !important;
-}
-
-body[data-theme="dark"] .option-btn.border-green-500 span.w-8.h-8 {
-  background-color: #059669 !important;
-  color: #ffffff !important;
-}
-
-/* 5. 错误答案态 */
-
-body[data-theme="dark"] .option-btn.border-red-500 {
-  background-color: rgba(127, 29, 29, 0.45) !important;
-  border-color: #ef4444 !important;
-  color: #fecaca !important;
-}
-
-body[data-theme="dark"] .option-btn.border-red-500 .q-option-text {
-  color: #ffffff !important;
-}
-
-body[data-theme="dark"] .option-btn.border-red-500 span.w-8.h-8 {
-  background-color: #dc2626 !important;
-  color: #ffffff !important;
-}
-
-/* 6. 已做题目时的未选置灰态 */
-
-body[data-theme="dark"] .option-btn.opacity-50,
-body[data-theme="dark"] .option-btn.opacity-60 {
-  opacity: 0.35 !important;
-  background-color: #0b1120 !important;
-  border-color: #1e293b !important;
-  color: #475569 !important;
-}
-
-/* ==========================================================================
-   公式符号与电气插图在夜间模式下的渲染反差优化
-   ========================================================================== */
-
-/* 行内公式为透明背景黑色笔画，在暗色背景下反转为纯白高亮笔画 */
-
-body[data-theme="dark"] img.inline-formula {
-  filter: brightness(0) invert(1) !important;
-}
-
-/* 电气大原理图：白底工程图纸，保持白底黑线方便阅读，加强边框深色质感 */
-
-body[data-theme="dark"] .circuit-img-container {
-  background-color: #ffffff !important;
-  border: 1.5px solid #334155 !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
-}
-
-body[data-theme="dark"] .circuit-img-container:hover {
-  border-color: #60a5fa !important;
-  box-shadow: 0 6px 18px rgba(96, 165, 250, 0.25) !important;
-}
-
-/* 反馈横幅深度适配 */
-
-body[data-theme="dark"] .bg-green-50.border-green-200 {
-  background-color: rgba(6, 78, 59, 0.35) !important;
-  border-color: #059669 !important;
-  color: #6ee7b7 !important;
-}
-
-body[data-theme="dark"] .bg-green-50.border-green-200 .text-green-700 {
-  color: #34d399 !important;
-}
-
-body[data-theme="dark"] .bg-red-50.border-red-200 {
-  background-color: rgba(127, 29, 29, 0.35) !important;
-  border-color: #dc2626 !important;
-  color: #fca5a5 !important;
-}
-
-body[data-theme="dark"] .bg-red-50.border-red-200 .text-green-700 {
-  color: #34d399 !important;
-}
-
-body[data-theme="dark"] #btn-remove-from-wrong {
-  background-color: #1e293b !important;
-  border-color: #334155 !important;
-  color: #f87171 !important;
-}
-
-/* 题目卡片底栏与收藏按钮 */
-
-body[data-theme="dark"] #btn-prev-q.bg-white {
-  background-color: #131c31 !important;
-  border-color: #1e293b !important;
-  color: #cbd5e1 !important;
-}
-
-body[data-theme="dark"] #btn-prev-q.bg-white:hover {
-  background-color: #1e293b !important;
-  color: #ffffff !important;
-}
-
-body[data-theme="dark"] #btn-toggle-favorite.bg-gray-50 {
-  background-color: #131c31 !important;
-  color: #94a3b8 !important;
-}
-
-body[data-theme="dark"] #btn-toggle-favorite.bg-gray-50:hover {
-  background-color: #1e293b !important;
-  color: #e2e8f0 !important;
-}
-
-body[data-theme="dark"] #btn-toggle-favorite.bg-amber-50 {
-  background-color: #2e230e !important;
-  border-color: #713f12 !important;
-  color: #fde047 !important;
-}
-
-/* 题号抽屉导航面板 */
-
-body[data-theme="dark"] #grid-modal > div {
-  background-color: #0b1120 !important;
-  color: #f1f5f9 !important;
-}
-
-body[data-theme="dark"] #grid-modal .bg-gray-50 {
-  background-color: #0b1120 !important;
-  border-color: #1e293b !important;
-}
-
-body[data-theme="dark"] #grid-modal .bg-blue-50 {
-  background-color: #131c31 !important;
-  border-color: #1e293b !important;
-}
-
-body[data-theme="dark"] .grid-filter-btn.bg-gray-200 {
-  background-color: #1e293b !important;
-  color: #94a3b8 !important;
-}
-
-body[data-theme="dark"] .grid-filter-btn.bg-gray-200:hover {
-  background-color: #334155 !important;
-  color: #ffffff !important;
-}
-
-body[data-theme="dark"] .grid-num-btn.bg-gray-100 {
-  background-color: #131c31 !important;
-  border-color: #1e293b !important;
-  color: #94a3b8 !important;
-}
-
-body[data-theme="dark"] .grid-num-btn.bg-gray-100:hover {
-  background-color: #1e293b !important;
-  color: #ffffff !important;
-}
-
-body[data-theme="dark"] .grid-num-btn.bg-green-100 {
-  background-color: rgba(6, 78, 59, 0.45) !important;
-  border-color: #059669 !important;
-  color: #6ee7b7 !important;
-}
-
-body[data-theme="dark"] .grid-num-btn.bg-red-100 {
-  background-color: rgba(127, 29, 29, 0.45) !important;
-  border-color: #dc2626 !important;
-  color: #fca5a5 !important;
-}
-
-body[data-theme="dark"] .grid-num-btn.border-blue-600 {
-  border-color: #60a5fa !important;
-  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.4) !important;
-}
-
-/* 成绩单与搜索弹窗 */
-
-body[data-theme="dark"] #result-modal > div {
-  background-color: #0b1120 !important;
-  color: #f1f5f9 !important;
-  border: 1px solid #1e293b !important;
-}
-
-body[data-theme="dark"] #result-modal .bg-blue-50 {
-  background-color: #131c31 !important;
-  border-color: #1e293b !important;
-}
-
-body[data-theme="dark"] #result-modal .bg-gray-50 {
-  background-color: #1e293b !important;
-  color: #cbd5e1 !important;
-}
-
-body[data-theme="dark"] #result-modal .bg-green-50 {
-  background-color: rgba(6, 78, 59, 0.4) !important;
-}
-
-body[data-theme="dark"] #result-modal .bg-red-50 {
-  background-color: rgba(127, 29, 29, 0.4) !important;
-}
-
-body[data-theme="dark"] #search-modal > div {
-  background-color: #0b1120 !important;
-  color: #f1f5f9 !important;
-  border: 1px solid #1e293b !important;
-}
-
-body[data-theme="dark"] #search-modal input {
-  background-color: #1e293b !important;
-  border-color: #334155 !important;
-  color: #f1f5f9 !important;
-}
-
-body[data-theme="dark"] #search-results-list .bg-gray-50 {
-  background-color: #131c31 !important;
-  border-color: #1e293b !important;
-  color: #cbd5e1 !important;
-}
-
-body[data-theme="dark"] #search-results-list .bg-gray-50:hover {
-  background-color: #1e293b !important;
-  border-color: #3b82f6 !important;
-}
-
-/* 4. Lightbox 视口平移缩放专用样式 */
-
-#lightbox-viewport {
-  touch-action: none;
-  /* 禁用系统双击放大，由 JS 接管全功能捏合与平移手势 */
-  -moz-user-select: none;
-       user-select: none;
-  -webkit-user-select: none;
-}
-
-#lightbox-img {
-  transform-origin: center center;
-  will-change: transform;
-  pointer-events: none;
-}
-
-/* 5. 攻克错题微飘浮 Toast 提示 */
-
-@keyframes toastIn {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, 20px) scale(0.9);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate(-50%, 0) scale(1);
-  }
-}
-
-.animate-toast {
-  animation: toastIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* 6. 跨设备双向同步与数据恢复弹窗样式 */
-
-body[data-theme="dark"] #sync-modal > div,
-body[data-theme="dark"] #sync-confirm-modal > div {
-  background-color: #0f172a !important;
-  color: #f1f5f9 !important;
-  border: 1px solid #1e293b !important;
-}
-
-body[data-theme="dark"] #sync-modal h3,
-body[data-theme="dark"] #sync-confirm-modal h3 {
-  color: #f8fafc !important;
-}
-
-body[data-theme="dark"] #sync-qrcode-wrapper {
-  background-color: #ffffff !important;
-  padding: 12px !important;
-  border-radius: 1rem !important;
-}
-
-body[data-theme="dark"] #input-sync-token {
-  background-color: #1e293b !important;
-  border-color: #334155 !important;
-  color: #f1f5f9 !important;
-}
-
-body[data-theme="dark"] #sync-modal .bg-purple-50\/80 {
-  background-color: rgba(88, 28, 135, 0.25) !important;
-  border-color: #581c87 !important;
-}
-
-body[data-theme="dark"] #sync-modal .text-purple-900 {
-  color: #d8b4fe !important;
-}
-
-body[data-theme="dark"] #sync-modal .text-purple-700\/80 {
-  color: #c084fc !important;
-}
-
-body[data-theme="dark"] #sync-modal .bg-blue-50\/80 {
-  background-color: rgba(30, 58, 138, 0.25) !important;
-  border-color: #1e3a8a !important;
-}
-
-body[data-theme="dark"] #sync-modal .text-blue-900 {
-  color: #93c5fd !important;
-}
-
-body[data-theme="dark"] #sync-modal .text-blue-700\/80 {
-  color: #60a5fa !important;
-}
-
-body[data-theme="dark"] #sync-confirm-modal .bg-green-50 {
-  background-color: rgba(20, 83, 45, 0.35) !important;
-  border-color: #22c55e !important;
-}
-
-body[data-theme="dark"] #sync-confirm-modal .bg-green-50 .text-green-900 {
-  color: #86efac !important;
-}
-
-body[data-theme="dark"] #sync-confirm-modal .bg-green-50 .text-green-700 {
-  color: #bbf7d0 !important;
-}
-
-body[data-theme="dark"] #sync-confirm-modal .bg-gray-50 {
-  background-color: #1e293b !important;
-  border-color: #334155 !important;
-}
-
-body[data-theme="dark"] #sync-confirm-modal .bg-gray-50 .text-gray-800 {
-  color: #f1f5f9 !important;
-}
-
-body[data-theme="dark"] aside#sidebar .bg-purple-50 {
-  background-color: #2e1065 !important;
-  color: #c084fc !important;
-}
-
-body[data-theme="dark"] aside#sidebar .bg-indigo-50 {
-  background-color: #1e1b4b !important;
-  color: #818cf8 !important;
-}
-
-body[data-theme="dark"] aside#sidebar .bg-emerald-50 {
-  background-color: #064e3b !important;
-  color: #6ee7b7 !important;
-}
-
 .after\:absolute::after {
   content: var(--tw-content);
   position: absolute;
@@ -3322,6 +2363,11 @@ body[data-theme="dark"] aside#sidebar .bg-emerald-50 {
   background-color: rgb(243 232 255 / var(--tw-bg-opacity, 1));
 }
 
+.hover\:bg-purple-50:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 245 255 / var(--tw-bg-opacity, 1));
+}
+
 .hover\:bg-purple-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(126 34 206 / var(--tw-bg-opacity, 1));
@@ -3422,6 +2468,11 @@ body[data-theme="dark"] aside#sidebar .bg-emerald-50 {
   cursor: grabbing;
 }
 
+.group[open] .group-open\:rotate-180 {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .group:hover .group-hover\:bg-blue-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
@@ -3481,6 +2532,10 @@ body[data-theme="dark"] aside#sidebar .bg-emerald-50 {
 
   .sm\:p-4 {
     padding: 1rem;
+  }
+
+  .sm\:p-6 {
+    padding: 1.5rem;
   }
 }
 
@@ -3558,4 +2613,771 @@ body[data-theme="dark"] aside#sidebar .bg-emerald-50 {
     --tw-text-opacity: 1;
     color: rgb(148 163 184 / var(--tw-text-opacity, 1));
   }
+}
+
+
+/* --- APP CUSTOM CSS --- */
+/* ==========================================================================
+   高级电工刷题助手 · 样式表 (包含高质感微动效、全功能手势缩放、全端响应式)
+   ========================================================================== */
+
+/* --- 细腻微动效与轻量微弹动画 (克制、柔和、不晃眼) --- */
+
+/* 1. 答对选项：轻微微弹确认 */
+@keyframes qPopCorrect {
+    0% { transform: scale(0.99); }
+    50% { transform: scale(1.012); }
+    100% { transform: scale(1); }
+}
+
+/* 2. 答错选项：细腻微颤提示 (仅 2~3px) */
+@keyframes qWobbleWrong {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-1px); }
+    100% { transform: translateX(0); }
+}
+
+/* 3. 选项序号圆圈 A/B/C/D 极轻微弹 */
+@keyframes qSpringBadge {
+    0% { transform: scale(0.92); }
+    60% { transform: scale(1.06); }
+    100% { transform: scale(1); }
+}
+
+/* 4. 答案解析横幅：柔和微淡入 (仅 6px 平滑位移) */
+@keyframes qBannerSpring {
+    0% { opacity: 0; transform: translateY(-6px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 5. 收藏星星轻弹 */
+@keyframes qStarPop {
+    0% { transform: scale(0.92); }
+    50% { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
+
+/* 6. 切题卡片快速平滑淡入 */
+@keyframes qCardIn {
+    0% { opacity: 0.6; transform: translateY(4px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 7. 题号按钮激活轻触微弹 */
+@keyframes qPulse {
+    0% { transform: scale(0.96); }
+    50% { transform: scale(1.06); }
+    100% { transform: scale(1); }
+}
+
+/* 动画工具类 (时间短促轻巧，0.18s~0.24s) */
+.animate-q-correct {
+    animation: qPopCorrect 0.22s ease-out both;
+}
+.animate-q-wrong {
+    animation: qWobbleWrong 0.22s ease-out both;
+}
+.animate-q-badge {
+    animation: qSpringBadge 0.2s ease-out both;
+}
+.animate-q-banner {
+    animation: qBannerSpring 0.2s ease-out both;
+}
+.animate-q-star {
+    animation: qStarPop 0.22s ease-out both;
+}
+.animate-q-card {
+    animation: qCardIn 0.18s ease-out both;
+}
+.animate-q-pulse {
+    animation: qPulse 0.2s ease-out both;
+}
+
+/* --- 微触感交互按钮类 --- */
+.q-bounce-btn {
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+    will-change: transform;
+}
+.q-bounce-btn:active {
+    transform: scale(0.985) !important;
+}
+
+/* --- 侧边栏尺寸与自适应（加宽至 360px~392px，支持文字优雅折行） --- */
+#sidebar {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    #sidebar {
+        width: 22.5rem; /* 360px */
+        flex-shrink: 0;
+    }
+}
+@media (min-width: 1280px) {
+    #sidebar {
+        width: 24.5rem; /* 392px */
+        flex-shrink: 0;
+    }
+}
+
+/* 侧边栏按钮排版与选中态 */
+.nav-item-btn {
+    color: #334155;
+    background: transparent;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    word-break: break-word;
+    white-space: normal;
+}
+.nav-item-btn:hover {
+    background: #f1f5f9;
+    color: #1e293b;
+    transform: translateX(2px);
+}
+.nav-item-btn:active {
+    transform: scale(0.98);
+}
+.nav-item-btn.active {
+    background: #eff6ff !important;
+    color: #1d4ed8 !important;
+    font-weight: 700 !important;
+    border: 1.5px solid #bfdbfe !important;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
+}
+.nav-item-btn.active .nav-icon {
+    color: #2563eb !important;
+}
+
+/* 进度微胶囊与微进度条 */
+.mini-progress-track {
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 9999px;
+    overflow: hidden;
+    position: relative;
+}
+.mini-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #6366f1);
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+}
+
+/* 选项卡片排版与防重叠 */
+.option-btn {
+    line-height: 1.6;
+    word-break: break-word;
+    text-align: left;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    will-change: transform;
+}
+.option-btn:hover:not(:disabled) {
+    border-color: #93c5fd;
+    background-color: #f8fafc;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+}
+.option-btn:active:not(:disabled) {
+    transform: scale(0.99);
+}
+
+/* 电路图缩略图美化 */
+.circuit-img-container {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 1rem;
+    padding: 0.75rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: zoom-in;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.circuit-img-container:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    transform: translateY(-1px);
+}
+.circuit-img-container img {
+    max-height: 250px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* 行内电气公式/符号图片 */
+img.inline-formula {
+    display: inline-block;
+    vertical-align: middle;
+    max-height: 30px;
+    margin: 0 2px;
+}
+
+/* 自定义纤细滚动条 */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* 移动端触控优化 */
+@media (max-width: 768px) {
+    .option-btn {
+        padding: 0.875rem 1rem;
+    }
+}
+
+/* ==========================================================================
+   全新高级功能样式扩展：字号切换、主题切换、Lightbox 无级平移视口
+   ========================================================================== */
+
+/* 1. 字号缩放控制系统 */
+body.font-size-normal .q-title-text { font-size: 1.125rem; line-height: 1.75rem; }
+body.font-size-normal .q-option-text { font-size: 1rem; line-height: 1.5rem; }
+
+body.font-size-large .q-title-text { font-size: 1.25rem !important; line-height: 1.875rem !important; }
+body.font-size-large .q-option-text { font-size: 1.125rem !important; line-height: 1.75rem !important; }
+
+body.font-size-huge .q-title-text { font-size: 1.4rem !important; line-height: 2rem !important; }
+body.font-size-huge .q-option-text { font-size: 1.25rem !important; line-height: 1.875rem !important; }
+
+/* 2. 护眼暖黄纸质主题 (Theme: eye-care) */
+body[data-theme="eye-care"] {
+    background-color: #f7f4ea !important;
+    color: #38352f !important;
+}
+body[data-theme="eye-care"] #app,
+body[data-theme="eye-care"] main,
+body[data-theme="eye-care"] #question-scroll-area {
+    background-color: #f7f4ea !important;
+}
+body[data-theme="eye-care"] aside#sidebar {
+    background-color: #fcfbf7 !important;
+    border-right: 1px solid #e9e4d4;
+}
+body[data-theme="eye-care"] .bg-white {
+    background-color: #fffefb !important;
+}
+body[data-theme="eye-care"] .bg-gray-50,
+body[data-theme="eye-care"] .bg-slate-50 {
+    background-color: #f3efe3 !important;
+}
+body[data-theme="eye-care"] .bg-gray-100 {
+    background-color: #eee9dc !important;
+}
+body[data-theme="eye-care"] .text-gray-800 {
+    color: #2e2b25 !important;
+}
+body[data-theme="eye-care"] .text-gray-700 {
+    color: #423e35 !important;
+}
+body[data-theme="eye-care"] .option-btn {
+    background-color: #fffefb !important;
+    border-color: #e9e4d4 !important;
+    color: #38352f !important;
+}
+body[data-theme="eye-care"] .option-btn:hover:not(:disabled) {
+    background-color: #f3efe3 !important;
+    border-color: #c7beab !important;
+    color: #2e2b25 !important;
+}
+
+/* 3. 深色夜间模式全面深度适配体系 (Theme: dark) */
+body[data-theme="dark"] {
+    background-color: #0b1120 !important;
+    color: #e2e8f0 !important;
+}
+body[data-theme="dark"] #app,
+body[data-theme="dark"] main,
+body[data-theme="dark"] #question-scroll-area {
+    background-color: #0b1120 !important;
+}
+
+/* 侧边栏与卡片容器 */
+body[data-theme="dark"] aside#sidebar {
+    background-color: #0b1120 !important;
+    border-right: 1px solid #1e293b !important;
+    color: #e2e8f0;
+}
+body[data-theme="dark"] .bg-white {
+    background-color: #0f172a !important;
+    color: #f1f5f9 !important;
+}
+body[data-theme="dark"] .border-gray-100,
+body[data-theme="dark"] .border-gray-200,
+body[data-theme="dark"] .border-slate-100,
+body[data-theme="dark"] .border-slate-200 {
+    border-color: #1e293b !important;
+}
+body[data-theme="dark"] .bg-gray-50,
+body[data-theme="dark"] .bg-slate-50 {
+    background-color: #0b1120 !important;
+}
+body[data-theme="dark"] .bg-gray-100 {
+    background-color: #1e293b !important;
+}
+
+/* 文字层级颜色系统 */
+body[data-theme="dark"] .text-gray-900,
+body[data-theme="dark"] .text-gray-800 {
+    color: #f8fafc !important;
+}
+body[data-theme="dark"] .text-gray-700 {
+    color: #e2e8f0 !important;
+}
+body[data-theme="dark"] .text-gray-600 {
+    color: #94a3b8 !important;
+}
+body[data-theme="dark"] .text-gray-500,
+body[data-theme="dark"] .text-gray-400 {
+    color: #64748b !important;
+}
+
+/* 侧边栏控件专项适配 */
+body[data-theme="dark"] .nav-item-btn {
+    color: #94a3b8;
+}
+body[data-theme="dark"] .nav-item-btn:hover {
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+}
+body[data-theme="dark"] .nav-item-btn.active {
+    background: linear-gradient(135deg, #1e3a8a, #1d4ed8) !important;
+    color: #93c5fd !important;
+    border-color: #3b82f6 !important;
+}
+body[data-theme="dark"] #btn-quick-search {
+    background-color: #131f37 !important;
+    color: #93c5fd !important;
+}
+body[data-theme="dark"] #btn-quick-search:hover {
+    background-color: #1e293b !important;
+}
+body[data-theme="dark"] #btn-export-backup {
+    background-color: #1c1a3b !important;
+    color: #c7d2fe !important;
+}
+body[data-theme="dark"] #btn-export-backup:hover {
+    background-color: #1e293b !important;
+}
+body[data-theme="dark"] .mini-progress-track {
+    background-color: #1e293b !important;
+}
+body[data-theme="dark"] [data-mode="exam-random"] {
+    background: linear-gradient(135deg, #2a1215, #3a151b) !important;
+    border-color: #5c1d24 !important;
+    color: #fca5a5 !important;
+}
+body[data-theme="dark"] [data-mode="exam-random"] .text-red-700 {
+    color: #f87171 !important;
+}
+body[data-theme="dark"] [data-mode="exam-random"] .text-red-500 {
+    color: #fca5a5 !important;
+}
+body[data-theme="dark"] [data-mode="exam-random"] .bg-red-200 {
+    background-color: #7f1d1d !important;
+    color: #fee2e2 !important;
+}
+body[data-theme="dark"] [data-mode="quick-quiz"] {
+    background-color: #131c31 !important;
+    color: #fdba74 !important;
+    border: 1px solid #1e293b !important;
+}
+body[data-theme="dark"] #btn-nav-wrong {
+    color: #cbd5e1 !important;
+}
+body[data-theme="dark"] #btn-nav-wrong:hover {
+    background-color: #271914 !important;
+    color: #fb923c !important;
+}
+body[data-theme="dark"] #btn-nav-fav {
+    color: #cbd5e1 !important;
+}
+body[data-theme="dark"] #btn-nav-fav:hover {
+    background-color: #262112 !important;
+    color: #facc15 !important;
+}
+body[data-theme="dark"] aside#sidebar .bg-gray-50 {
+    background-color: #131d31 !important;
+    border-color: #1e293b !important;
+}
+body[data-theme="dark"] .theme-btn,
+body[data-theme="dark"] .fontsize-btn {
+    color: #94a3b8 !important;
+}
+body[data-theme="dark"] .theme-btn.bg-white,
+body[data-theme="dark"] .fontsize-btn.bg-white {
+    background-color: #1e293b !important;
+    color: #60a5fa !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+body[data-theme="dark"] aside#sidebar .bg-gray-200,
+body[data-theme="dark"] aside#sidebar .bg-gray-200\/60 {
+    background-color: #0b1120 !important;
+}
+
+/* 顶部状态栏 */
+body[data-theme="dark"] main > div:first-child {
+    background-color: #0b1120 !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+body[data-theme="dark"] #badge-current-module {
+    background-color: #1e3a8a !important;
+    color: #93c5fd !important;
+}
+body[data-theme="dark"] #btn-open-grid-modal {
+    color: #cbd5e1 !important;
+}
+body[data-theme="dark"] #btn-open-grid-modal:hover {
+    background-color: #1e293b !important;
+}
+body[data-theme="dark"] #text-current-qnum {
+    color: #60a5fa !important;
+}
+body[data-theme="dark"] #text-total-qnum {
+    color: #f1f5f9 !important;
+}
+body[data-theme="dark"] #badge-recite-status {
+    background-color: #3a2e19 !important;
+    color: #fde047 !important;
+}
+body[data-theme="dark"] #exam-timer-box {
+    background-color: #3b1118 !important;
+    border-color: #991b1b !important;
+    color: #fca5a5 !important;
+}
+
+/* ==========================================================================
+   选项卡片状态全套深度适配 (彻底消灭白底白字，高对比度护眼)
+   ========================================================================== */
+/* 1. 默认未选状态 */
+body[data-theme="dark"] .option-btn {
+    background-color: #0f172a !important;
+    border-color: #1e293b !important;
+    color: #e2e8f0 !important;
+}
+body[data-theme="dark"] .option-btn .q-option-text {
+    color: #e2e8f0 !important;
+}
+body[data-theme="dark"] .option-btn span.w-8.h-8 {
+    background-color: #1e293b !important;
+    color: #94a3b8 !important;
+}
+
+/* 2. 鼠标悬停 Hover 状态 (重点：暗岩深蓝底 + 高亮白字 + 冰蓝边框) */
+body[data-theme="dark"] .option-btn:hover:not(:disabled) {
+    background-color: #1e293b !important;
+    border-color: #3b82f6 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+}
+body[data-theme="dark"] .option-btn:hover:not(:disabled) .q-option-text {
+    color: #ffffff !important;
+}
+body[data-theme="dark"] .option-btn:hover:not(:disabled) span.w-8.h-8 {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+}
+
+/* 3. 选中态 (练习或模考选中) */
+body[data-theme="dark"] .option-btn.border-blue-600 {
+    background-color: #1e3a8a !important;
+    border-color: #60a5fa !important;
+    color: #bfdbfe !important;
+}
+body[data-theme="dark"] .option-btn.border-blue-600 .q-option-text {
+    color: #ffffff !important;
+}
+body[data-theme="dark"] .option-btn.border-blue-600 span.w-8.h-8 {
+    background-color: #3b82f6 !important;
+    color: #ffffff !important;
+}
+
+/* 4. 正确答案态 */
+body[data-theme="dark"] .option-btn.border-green-500 {
+    background-color: rgba(6, 78, 59, 0.45) !important;
+    border-color: #10b981 !important;
+    color: #a7f3d0 !important;
+}
+body[data-theme="dark"] .option-btn.border-green-500 .q-option-text {
+    color: #ffffff !important;
+}
+body[data-theme="dark"] .option-btn.border-green-500 span.w-8.h-8 {
+    background-color: #059669 !important;
+    color: #ffffff !important;
+}
+
+/* 5. 错误答案态 */
+body[data-theme="dark"] .option-btn.border-red-500 {
+    background-color: rgba(127, 29, 29, 0.45) !important;
+    border-color: #ef4444 !important;
+    color: #fecaca !important;
+}
+body[data-theme="dark"] .option-btn.border-red-500 .q-option-text {
+    color: #ffffff !important;
+}
+body[data-theme="dark"] .option-btn.border-red-500 span.w-8.h-8 {
+    background-color: #dc2626 !important;
+    color: #ffffff !important;
+}
+
+/* 6. 已做题目时的未选置灰态 */
+body[data-theme="dark"] .option-btn.opacity-50,
+body[data-theme="dark"] .option-btn.opacity-60 {
+    opacity: 0.35 !important;
+    background-color: #0b1120 !important;
+    border-color: #1e293b !important;
+    color: #475569 !important;
+}
+
+/* ==========================================================================
+   公式符号与电气插图在夜间模式下的渲染反差优化
+   ========================================================================== */
+/* 行内公式为透明背景黑色笔画，在暗色背景下反转为纯白高亮笔画 */
+body[data-theme="dark"] img.inline-formula {
+    filter: brightness(0) invert(1) !important;
+}
+
+/* 电气大原理图：白底工程图纸，保持白底黑线方便阅读，加强边框深色质感 */
+body[data-theme="dark"] .circuit-img-container {
+    background-color: #ffffff !important;
+    border: 1.5px solid #334155 !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+}
+body[data-theme="dark"] .circuit-img-container:hover {
+    border-color: #60a5fa !important;
+    box-shadow: 0 6px 18px rgba(96, 165, 250, 0.25) !important;
+}
+
+/* 反馈横幅深度适配 */
+body[data-theme="dark"] .bg-green-50.border-green-200 {
+    background-color: rgba(6, 78, 59, 0.35) !important;
+    border-color: #059669 !important;
+    color: #6ee7b7 !important;
+}
+body[data-theme="dark"] .bg-green-50.border-green-200 .text-green-700 {
+    color: #34d399 !important;
+}
+body[data-theme="dark"] .bg-red-50.border-red-200 {
+    background-color: rgba(127, 29, 29, 0.35) !important;
+    border-color: #dc2626 !important;
+    color: #fca5a5 !important;
+}
+body[data-theme="dark"] .bg-red-50.border-red-200 .text-green-700 {
+    color: #34d399 !important;
+}
+body[data-theme="dark"] #btn-remove-from-wrong {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f87171 !important;
+}
+
+/* 题目卡片底栏与收藏按钮 */
+body[data-theme="dark"] #btn-prev-q.bg-white {
+    background-color: #131c31 !important;
+    border-color: #1e293b !important;
+    color: #cbd5e1 !important;
+}
+body[data-theme="dark"] #btn-prev-q.bg-white:hover {
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+}
+body[data-theme="dark"] #btn-toggle-favorite.bg-gray-50 {
+    background-color: #131c31 !important;
+    color: #94a3b8 !important;
+}
+body[data-theme="dark"] #btn-toggle-favorite.bg-gray-50:hover {
+    background-color: #1e293b !important;
+    color: #e2e8f0 !important;
+}
+body[data-theme="dark"] #btn-toggle-favorite.bg-amber-50 {
+    background-color: #2e230e !important;
+    border-color: #713f12 !important;
+    color: #fde047 !important;
+}
+
+/* 题号抽屉导航面板 */
+body[data-theme="dark"] #grid-modal > div {
+    background-color: #0b1120 !important;
+    color: #f1f5f9 !important;
+}
+body[data-theme="dark"] #grid-modal .bg-gray-50 {
+    background-color: #0b1120 !important;
+    border-color: #1e293b !important;
+}
+body[data-theme="dark"] #grid-modal .bg-blue-50 {
+    background-color: #131c31 !important;
+    border-color: #1e293b !important;
+}
+body[data-theme="dark"] .grid-filter-btn.bg-gray-200 {
+    background-color: #1e293b !important;
+    color: #94a3b8 !important;
+}
+body[data-theme="dark"] .grid-filter-btn.bg-gray-200:hover {
+    background-color: #334155 !important;
+    color: #ffffff !important;
+}
+body[data-theme="dark"] .grid-num-btn.bg-gray-100 {
+    background-color: #131c31 !important;
+    border-color: #1e293b !important;
+    color: #94a3b8 !important;
+}
+body[data-theme="dark"] .grid-num-btn.bg-gray-100:hover {
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+}
+body[data-theme="dark"] .grid-num-btn.bg-green-100 {
+    background-color: rgba(6, 78, 59, 0.45) !important;
+    border-color: #059669 !important;
+    color: #6ee7b7 !important;
+}
+body[data-theme="dark"] .grid-num-btn.bg-red-100 {
+    background-color: rgba(127, 29, 29, 0.45) !important;
+    border-color: #dc2626 !important;
+    color: #fca5a5 !important;
+}
+body[data-theme="dark"] .grid-num-btn.border-blue-600 {
+    border-color: #60a5fa !important;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.4) !important;
+}
+
+/* 成绩单与搜索弹窗 */
+body[data-theme="dark"] #result-modal > div {
+    background-color: #0b1120 !important;
+    color: #f1f5f9 !important;
+    border: 1px solid #1e293b !important;
+}
+body[data-theme="dark"] #result-modal .bg-blue-50 {
+    background-color: #131c31 !important;
+    border-color: #1e293b !important;
+}
+body[data-theme="dark"] #result-modal .bg-gray-50 {
+    background-color: #1e293b !important;
+    color: #cbd5e1 !important;
+}
+body[data-theme="dark"] #result-modal .bg-green-50 {
+    background-color: rgba(6, 78, 59, 0.4) !important;
+}
+body[data-theme="dark"] #result-modal .bg-red-50 {
+    background-color: rgba(127, 29, 29, 0.4) !important;
+}
+body[data-theme="dark"] #search-modal > div {
+    background-color: #0b1120 !important;
+    color: #f1f5f9 !important;
+    border: 1px solid #1e293b !important;
+}
+body[data-theme="dark"] #search-modal input {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f1f5f9 !important;
+}
+body[data-theme="dark"] #search-results-list .bg-gray-50 {
+    background-color: #131c31 !important;
+    border-color: #1e293b !important;
+    color: #cbd5e1 !important;
+}
+body[data-theme="dark"] #search-results-list .bg-gray-50:hover {
+    background-color: #1e293b !important;
+    border-color: #3b82f6 !important;
+}
+
+/* 4. Lightbox 视口平移缩放专用样式 */
+#lightbox-viewport {
+    touch-action: none; /* 禁用系统双击放大，由 JS 接管全功能捏合与平移手势 */
+    user-select: none;
+    -webkit-user-select: none;
+}
+#lightbox-img {
+    transform-origin: center center;
+    will-change: transform;
+    pointer-events: none;
+}
+
+/* 5. 攻克错题微飘浮 Toast 提示 */
+@keyframes toastIn {
+    0% { opacity: 0; transform: translate(-50%, 20px) scale(0.9); }
+    100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+.animate-toast {
+    animation: toastIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* 6. 跨设备双向同步与数据恢复弹窗样式 */
+body[data-theme="dark"] #sync-modal > div,
+body[data-theme="dark"] #sync-confirm-modal > div {
+    background-color: #0f172a !important;
+    color: #f1f5f9 !important;
+    border: 1px solid #1e293b !important;
+}
+body[data-theme="dark"] #sync-modal h3,
+body[data-theme="dark"] #sync-confirm-modal h3 {
+    color: #f8fafc !important;
+}
+body[data-theme="dark"] #sync-qrcode-wrapper {
+    background-color: #ffffff !important;
+    padding: 12px !important;
+    border-radius: 1rem !important;
+}
+body[data-theme="dark"] #input-sync-token {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f1f5f9 !important;
+}
+body[data-theme="dark"] #sync-modal .bg-purple-50\/80 {
+    background-color: rgba(88, 28, 135, 0.25) !important;
+    border-color: #581c87 !important;
+}
+body[data-theme="dark"] #sync-modal .text-purple-900 {
+    color: #d8b4fe !important;
+}
+body[data-theme="dark"] #sync-modal .text-purple-700\/80 {
+    color: #c084fc !important;
+}
+body[data-theme="dark"] #sync-modal .bg-blue-50\/80 {
+    background-color: rgba(30, 58, 138, 0.25) !important;
+    border-color: #1e3a8a !important;
+}
+body[data-theme="dark"] #sync-modal .text-blue-900 {
+    color: #93c5fd !important;
+}
+body[data-theme="dark"] #sync-modal .text-blue-700\/80 {
+    color: #60a5fa !important;
+}
+body[data-theme="dark"] #sync-confirm-modal .bg-green-50 {
+    background-color: rgba(20, 83, 45, 0.35) !important;
+    border-color: #22c55e !important;
+}
+body[data-theme="dark"] #sync-confirm-modal .bg-green-50 .text-green-900 {
+    color: #86efac !important;
+}
+body[data-theme="dark"] #sync-confirm-modal .bg-green-50 .text-green-700 {
+    color: #bbf7d0 !important;
+}
+body[data-theme="dark"] #sync-confirm-modal .bg-gray-50 {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+body[data-theme="dark"] #sync-confirm-modal .bg-gray-50 .text-gray-800 {
+    color: #f1f5f9 !important;
+}
+body[data-theme="dark"] aside#sidebar .bg-purple-50 {
+    background-color: #2e1065 !important;
+    color: #c084fc !important;
+}
+body[data-theme="dark"] aside#sidebar .bg-indigo-50 {
+    background-color: #1e1b4b !important;
+    color: #818cf8 !important;
+}
+body[data-theme="dark"] aside#sidebar .bg-emerald-50 {
+    background-color: #064e3b !important;
+    color: #6ee7b7 !important;
 }

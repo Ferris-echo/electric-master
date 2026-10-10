@@ -1516,22 +1516,66 @@
         }
     }
 
+    function isMobileDevice() {
+        const ua = navigator.userAgent || '';
+        const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
+        const isSmallScreen = window.innerWidth <= 768;
+        const hasTouch = (navigator.maxTouchPoints && navigator.maxTouchPoints > 1);
+        return isMobileUA || (hasTouch && isSmallScreen) || isSmallScreen;
+    }
+
+    function setSyncModalMode(mode) {
+        const isMobileMode = (mode === 'mobile');
+        const tabPc = document.getElementById('tab-sync-pc');
+        const tabMobile = document.getElementById('tab-sync-mobile');
+        const viewPc = document.getElementById('view-sync-pc');
+        const viewMobile = document.getElementById('view-sync-mobile');
+
+        if (tabPc && tabMobile && viewPc && viewMobile) {
+            if (isMobileMode) {
+                tabMobile.className = "flex-1 py-2 px-2.5 rounded-xl transition flex items-center justify-center gap-1 bg-white text-purple-700 shadow-sm font-black";
+                tabPc.className = "flex-1 py-2 px-2.5 rounded-xl transition flex items-center justify-center gap-1 text-gray-500 hover:text-gray-900 font-bold";
+                viewMobile.classList.remove('hidden');
+                viewPc.classList.add('hidden');
+            } else {
+                tabPc.className = "flex-1 py-2 px-2.5 rounded-xl transition flex items-center justify-center gap-1 bg-white text-blue-700 shadow-sm font-black";
+                tabMobile.className = "flex-1 py-2 px-2.5 rounded-xl transition flex items-center justify-center gap-1 text-gray-500 hover:text-gray-900 font-bold";
+                viewPc.classList.remove('hidden');
+                viewMobile.classList.add('hidden');
+            }
+        }
+    }
+
     function renderSyncQrCode(url) {
         const wrapper = document.getElementById('sync-qrcode-wrapper');
-        if (!wrapper) return;
-        wrapper.innerHTML = '';
+        const wrapperMobile = document.getElementById('sync-qrcode-wrapper-mobile');
+        
+        if (wrapper) wrapper.innerHTML = '';
+        if (wrapperMobile) wrapperMobile.innerHTML = '';
 
         if (typeof QRCode !== 'undefined') {
-            qrCodeInstance = new QRCode(wrapper, {
-                text: url,
-                width: 180,
-                height: 180,
-                colorDark: '#1e293b',
-                colorLight: '#ffffff',
-                correctLevel: QRCode.CorrectLevel.L
-            });
+            if (wrapper) {
+                qrCodeInstance = new QRCode(wrapper, {
+                    text: url,
+                    width: 180,
+                    height: 180,
+                    colorDark: '#1e293b',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.L
+                });
+            }
+            if (wrapperMobile) {
+                new QRCode(wrapperMobile, {
+                    text: url,
+                    width: 150,
+                    height: 150,
+                    colorDark: '#1e293b',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.L
+                });
+            }
         } else {
-            wrapper.innerHTML = `<div class="p-4 text-xs text-red-500 text-center font-bold">二维码组件加载中，请稍候...</div>`;
+            if (wrapper) wrapper.innerHTML = `<div class="p-4 text-xs text-red-500 text-center font-bold">二维码组件加载中，请稍候...</div>`;
         }
     }
 
@@ -1543,13 +1587,34 @@
         renderSyncQrCode(syncUrl);
 
         const stats = getProgressStats();
+        const statStr = `已刷 ${stats.answeredCount} 题 · 错题 ${stats.wrongCount} 道 · 收藏 ${stats.favCount} 道`;
         const summaryEl = document.getElementById('sync-stats-summary');
-        if (summaryEl) {
-            summaryEl.textContent = `已刷 ${stats.answeredCount} 题 · 错题 ${stats.wrongCount} 道 · 收藏 ${stats.favCount} 道`;
-        }
+        if (summaryEl) summaryEl.textContent = statStr;
+        const mobileSummaryEl = document.getElementById('sync-mobile-stats-summary');
+        if (mobileSummaryEl) mobileSummaryEl.textContent = `手机当前进度：${statStr}`;
 
         const tokenInput = document.getElementById('input-sync-token');
         if (tokenInput) tokenInput.value = '';
+        const tokenInputMobile = document.getElementById('input-mobile-sync-token');
+        if (tokenInputMobile) tokenInputMobile.value = '';
+
+        // 智能设备判断与模式优先推荐
+        const isMob = isMobileDevice();
+        const indicator = document.getElementById('sync-device-indicator');
+        const badgePc = document.getElementById('badge-rec-pc');
+        const badgeMob = document.getElementById('badge-rec-mobile');
+
+        if (isMob) {
+            if (indicator) indicator.innerHTML = '<span>📱 识别为手机端 · 推荐一键复制发到微信</span>';
+            if (badgeMob) badgeMob.classList.remove('hidden');
+            if (badgePc) badgePc.classList.add('hidden');
+            setSyncModalMode('mobile');
+        } else {
+            if (indicator) indicator.innerHTML = '<span>💻 识别为电脑端 · 推荐手机扫码秒接力</span>';
+            if (badgePc) badgePc.classList.remove('hidden');
+            if (badgeMob) badgeMob.classList.add('hidden');
+            setSyncModalMode('pc');
+        }
 
         modal.classList.remove('hidden');
     }
@@ -1838,25 +1903,43 @@
             };
         }
 
+        const tabSyncPc = document.getElementById('tab-sync-pc');
+        if (tabSyncPc) tabSyncPc.onclick = () => setSyncModalMode('pc');
+
+        const tabSyncMobile = document.getElementById('tab-sync-mobile');
+        if (tabSyncMobile) tabSyncMobile.onclick = () => setSyncModalMode('mobile');
+
         const btnCopySync = document.getElementById('btn-copy-sync-url');
         if (btnCopySync) btnCopySync.onclick = copySyncUrlToClipboard;
+
+        const btnMobileCopySync = document.getElementById('btn-mobile-copy-url');
+        if (btnMobileCopySync) btnMobileCopySync.onclick = copySyncUrlToClipboard;
+
+        function handleTokenApply(inputEl) {
+            if (!inputEl) return;
+            const val = inputEl.value.trim();
+            if (!val) {
+                alert('请先粘贴包含 #sync= 的同步链接或口令码！');
+                return;
+            }
+            const parsed = decodeSyncToken(val);
+            if (!parsed) {
+                alert('无法解析该同步口令，请检查是否完整复制！');
+                return;
+            }
+            promptSyncConfirmation(parsed, '微信口令手动同步');
+        }
 
         const btnApplyToken = document.getElementById('btn-apply-sync-token');
         const inputSyncToken = document.getElementById('input-sync-token');
         if (btnApplyToken && inputSyncToken) {
-            btnApplyToken.onclick = () => {
-                const val = inputSyncToken.value.trim();
-                if (!val) {
-                    alert('请先粘贴包含 #sync= 的同步链接或口令码！');
-                    return;
-                }
-                const parsed = decodeSyncToken(val);
-                if (!parsed) {
-                    alert('无法解析该同步口令，请检查是否完整复制！');
-                    return;
-                }
-                promptSyncConfirmation(parsed, '微信口令手动同步');
-            };
+            btnApplyToken.onclick = () => handleTokenApply(inputSyncToken);
+        }
+
+        const btnMobileApplyToken = document.getElementById('btn-mobile-apply-token');
+        const inputMobileSyncToken = document.getElementById('input-mobile-sync-token');
+        if (btnMobileApplyToken && inputMobileSyncToken) {
+            btnMobileApplyToken.onclick = () => handleTokenApply(inputMobileSyncToken);
         }
 
         // 8.2 同步数据确认框 (智能合并 vs 完全覆盖)

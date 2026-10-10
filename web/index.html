@@ -437,54 +437,126 @@
 
     <!-- 1. 跨设备双向同步弹窗 Modal -->
     <div id="sync-modal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[75] p-4 hidden animate-fade-in">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-6 max-h-[90vh] flex flex-col overflow-hidden animate-fade-in-up">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-5 sm:p-6 max-h-[92vh] flex flex-col overflow-hidden animate-fade-in-up">
             <div class="flex items-center justify-between pb-3 border-b border-gray-100">
                 <div class="flex items-center gap-2">
                     <span class="text-xl">📲</span>
-                    <h3 class="font-black text-lg text-gray-800">跨设备无缝双向同步</h3>
+                    <div>
+                        <h3 class="font-black text-lg text-gray-800 leading-tight">跨设备双向同步</h3>
+                        <div id="sync-device-indicator" class="text-[11px] text-blue-600 font-bold mt-0.5 flex items-center gap-1">
+                            <span>🎯 自动识别中...</span>
+                        </div>
+                    </div>
                 </div>
                 <button id="btn-close-sync-modal" class="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition">✕</button>
             </div>
 
-            <div class="flex-1 overflow-y-auto py-4 space-y-4 custom-scrollbar text-sm">
-                <!-- 模块一：电脑 -> 手机 扫码同步 -->
-                <div class="p-4 rounded-2xl bg-gradient-to-br from-purple-50/80 to-indigo-50/50 border border-purple-100">
-                    <div class="font-bold text-purple-900 mb-1 flex items-center gap-1.5">
-                        <span>📱 方式一：电脑 ➔ 手机（微信扫一扫）</span>
-                    </div>
-                    <p class="text-xs text-purple-700/80 mb-3">手机微信或系统相机直接扫描下方二维码，自动秒同步当前所有已刷进度与错题本：</p>
-                    <div class="flex flex-col items-center justify-center">
-                        <div id="sync-qrcode-wrapper" class="p-3 bg-white rounded-2xl shadow-sm border border-purple-200/60 inline-flex flex-col items-center justify-center min-w-[180px] min-h-[180px]">
-                            <!-- Canvas QR inserted by JS -->
-                        </div>
-                        <div class="mt-2 text-[11px] text-gray-500 font-mono" id="sync-stats-summary">
-                            已刷 0 题 · 错题 0 道 · 收藏 0 道
-                        </div>
-                    </div>
-                </div>
+            <!-- 设备模式智能切换 Tabs -->
+            <div class="flex items-center bg-gray-100 p-1 rounded-2xl my-3 text-xs font-bold gap-1 flex-shrink-0">
+                <button id="tab-sync-pc" class="flex-1 py-2 px-2.5 rounded-xl transition flex items-center justify-center gap-1 text-gray-600 hover:text-gray-900">
+                    <span>💻 电脑端模式</span>
+                    <span id="badge-rec-pc" class="hidden text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full font-black">推荐</span>
+                </button>
+                <button id="tab-sync-mobile" class="flex-1 py-2 px-2.5 rounded-xl transition flex items-center justify-center gap-1 text-gray-600 hover:text-gray-900">
+                    <span>📱 手机端模式</span>
+                    <span id="badge-rec-mobile" class="hidden text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full font-black">推荐</span>
+                </button>
+            </div>
 
-                <!-- 模块二：手机 -> 电脑 微信链接/口令同步 -->
-                <div class="p-4 rounded-2xl bg-blue-50/80 border border-blue-100">
-                    <div class="font-bold text-blue-900 mb-1 flex items-center gap-1.5">
-                        <span>💻 方式二：手机 ➔ 电脑（微信发送链接 / 口令）</span>
+            <div class="flex-1 overflow-y-auto space-y-3 custom-scrollbar text-sm pb-1">
+                
+                <!-- 【电脑端优先视图】 (适合在大屏幕电脑操作：主推手机扫码) -->
+                <div id="view-sync-pc" class="space-y-3">
+                    <!-- 模块 1：电脑大屏动态二维码 -->
+                    <div class="p-4 rounded-2xl bg-gradient-to-br from-purple-50/80 to-indigo-50/50 border border-purple-100">
+                        <div class="font-bold text-purple-900 mb-1 flex items-center justify-between">
+                            <span class="flex items-center gap-1">📱 手机微信扫一扫（秒接力）</span>
+                            <span class="text-[10px] bg-purple-200/80 text-purple-800 px-2 py-0.5 rounded-full font-bold">优先推荐</span>
+                        </div>
+                        <p class="text-xs text-purple-700/80 mb-3">拿出手机打开微信或系统相机，直接扫描屏幕二维码，秒级无缝接着刷：</p>
+                        <div class="flex flex-col items-center justify-center">
+                            <div id="sync-qrcode-wrapper" class="p-3 bg-white rounded-2xl shadow-sm border border-purple-200/60 inline-flex flex-col items-center justify-center min-w-[180px] min-h-[180px]">
+                                <!-- Canvas QR inserted by JS -->
+                            </div>
+                            <div class="mt-2 text-[11px] text-gray-500 font-mono" id="sync-stats-summary">
+                                已刷 0 题 · 错题 0 道 · 收藏 0 道
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-xs text-blue-700/80 mb-3">
-                        在手机端点击“复制同步链接”，微信发给“文件传输助手”，电脑端微信点开即可！若在电脑端手动操作，请粘贴口令：
-                    </p>
-                    <div class="flex gap-2">
-                        <input type="text" id="input-sync-token" class="flex-1 px-3 py-2 text-xs bg-white border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" placeholder="在此粘贴包含 #sync= 的链接或口令码..." />
-                        <button id="btn-apply-sync-token" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-sm whitespace-nowrap">
-                            立即同步
-                        </button>
-                    </div>
-                </div>
 
-                <!-- 底部快捷复制 -->
-                <div class="pt-1">
+                    <!-- 模块 2：电脑接收手机发来的口令 -->
+                    <div class="p-3.5 rounded-2xl bg-blue-50/80 border border-blue-100">
+                        <div class="font-bold text-blue-900 mb-1 flex items-center gap-1.5 text-xs">
+                            <span>💻 接收手机发送过来的进度口令</span>
+                        </div>
+                        <p class="text-[11px] text-blue-700/80 mb-2">
+                            在手机复制同步链接发到微信后，在电脑端微信直接点击即可；或粘贴到此处：
+                        </p>
+                        <div class="flex gap-2">
+                            <input type="text" id="input-sync-token" class="flex-1 px-3 py-2 text-xs bg-white border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" placeholder="粘贴包含 #sync= 的口令或链接..." />
+                            <button id="btn-apply-sync-token" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-sm whitespace-nowrap">
+                                立即同步
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 快捷复制 -->
                     <button id="btn-copy-sync-url" class="q-bounce-btn w-full py-2.5 px-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-xs shadow-md transition flex items-center justify-center gap-1.5">
-                        <span>📋 复制当前设备的专属同步链接 (发到微信)</span>
+                        <span>📋 复制电脑端同步链接 (发到微信)</span>
                     </button>
                 </div>
+
+                <!-- 【手机端优先视图】 (适合在手机/小屏幕操作：无法对着自己扫码，主推一键发微信) -->
+                <div id="view-sync-mobile" class="space-y-3 hidden">
+                    <!-- 模块 1：一键复制发微信（手机首选） -->
+                    <div class="p-4 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 text-white shadow-lg">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <span class="font-black text-sm flex items-center gap-1.5">
+                                <span>📤</span> 手机 ➔ 电脑一键同步
+                            </span>
+                            <span class="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded-full font-bold">手机端首选</span>
+                        </div>
+                        <p class="text-xs text-purple-100 mb-3 leading-relaxed">
+                            手机端无法扫描本机的屏幕。请点击下方按钮复制专属链接，发给微信“文件传输助手”，在电脑微信中<strong>点击链接</strong>即可秒级合并！
+                        </p>
+                        <button id="btn-mobile-copy-url" class="q-bounce-btn w-full py-3 px-4 bg-white hover:bg-purple-50 text-purple-800 font-black rounded-xl text-xs shadow-md transition flex items-center justify-center gap-1.5">
+                            <span>📋 一键复制同步链接 (发到微信文件传输助手)</span>
+                        </button>
+                        <div class="mt-2 text-[11px] text-purple-200 text-center font-mono" id="sync-mobile-stats-summary">
+                            手机当前进度：已刷 0 题 · 错题 0 道 · 收藏 0 道
+                        </div>
+                    </div>
+
+                    <!-- 模块 2：接收电脑传来的口令 -->
+                    <div class="p-3.5 rounded-2xl bg-blue-50/80 border border-blue-100">
+                        <div class="font-bold text-blue-900 mb-1 flex items-center gap-1.5 text-xs">
+                            <span>📥 粘贴电脑端发来的同步口令</span>
+                        </div>
+                        <p class="text-[11px] text-blue-700/80 mb-2">
+                            若在电脑端复制了同步链接，发到手机微信后在此粘贴并点同步：
+                        </p>
+                        <div class="flex gap-2">
+                            <input type="text" id="input-mobile-sync-token" class="flex-1 px-3 py-2 text-xs bg-white border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" placeholder="粘贴包含 #sync= 的口令或链接..." />
+                            <button id="btn-mobile-apply-token" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-sm whitespace-nowrap">
+                                立即同步
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 模块 3：备用展示二维码 (供附近设备扫我) -->
+                    <details class="p-3 bg-gray-50 rounded-2xl border border-gray-200/70 group text-xs">
+                        <summary class="font-bold text-gray-600 cursor-pointer flex items-center justify-between">
+                            <span>📷 需要供旁边的其他手机/平板扫码？点击展开</span>
+                            <span class="text-gray-400 group-open:rotate-180 transition-transform text-[10px]">▼</span>
+                        </summary>
+                        <div class="flex flex-col items-center justify-center pt-3">
+                            <div id="sync-qrcode-wrapper-mobile" class="p-2.5 bg-white rounded-2xl shadow-sm border border-gray-200 inline-flex flex-col items-center justify-center min-w-[150px] min-h-[150px]">
+                            </div>
+                            <p class="text-[11px] text-gray-400 mt-1">供附近备用设备对准屏幕扫描</p>
+                        </div>
+                    </details>
+                </div>
+
             </div>
         </div>
     </div>
