@@ -1,0 +1,6 @@
+_extracted/
+_html_export/
+__pycache__/
+*.pyc
+.superpowers/
+inspect_data.py
