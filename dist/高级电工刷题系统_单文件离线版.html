@@ -4726,12 +4726,18 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             optionsToRender = ['A. 正确', 'B. 错误'];
         }
 
-        const optionsHtml = optionsToRender.map((optText) => {
+        const optionsHtml = optionsToRender.map((optText, optIdx) => {
             let key = '';
+            let displayText = optText;
             if (q.type === 'judge') {
                 key = optText.includes('正确') ? '√' : '×';
+                displayText = optText.includes('正确') ? '正确' : (optText.includes('错误') ? '错误' : optText);
             } else {
-                key = optText.trim().charAt(0).toUpperCase();
+                const match = optText.trim().match(/^([A-Da-d])[、.．:：\s]/);
+                const letters = ['A', 'B', 'C', 'D'];
+                key = match ? match[1].toUpperCase() : (letters[optIdx] || 'A');
+                // 剥离选项文字前缀中重复的 A、 / B、 / C、 / D、，避免与左侧徽章重复
+                displayText = optText.replace(/^[A-Da-d][、.．:：\s]\s*/, '').trim();
             }
 
             const isSelected = (selectedKey === key);
@@ -4779,7 +4785,7 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
                 <button class="option-btn ${btnClass}" data-key="${key}">
                     <span class="flex items-center relative z-10 flex-1">
                         <span class="${badgeClass}">${key}</span>
-                        <span class="q-option-text text-base md:text-lg text-gray-800 leading-relaxed font-normal">${optText}</span>
+                        <span class="q-option-text text-base md:text-lg text-gray-800 leading-relaxed font-normal">${displayText}</span>
                     </span>
                     ${iconHtml}
                 </button>
