@@ -1,9 +1,13 @@
+# 原始试卷与题库原始资料（已提取为结构化题库，无需上传）
+*.doc
+*.docx
+raw_exam_docs/
 _extracted/
 _html_export/
+
+# Python 缓存与临时调试脚本
 __pycache__/
 *.pyc
-.superpowers/
-inspect_data.py
 *.zip
 test_*.js
 test_*.py
@@ -14,5 +18,10 @@ inspect_*.py
 verify_*.py
 image_audit_report.txt
 detailed_image_audit.py
+
+# 冗余或环境临时目录
+.superpowers/
 cloudflare_deploy/
 .temp_browser_profile/
+web/data/
+web/images/

@@ -18,7 +18,7 @@ if %errorlevel% neq 0 (
     exit /b 0
 )
 
-python -u start_server.py
+python -u scripts\start_server.py
 if %errorlevel% neq 0 (
     echo.
     echo 正在为您直接打开免安装单文件离线版...
