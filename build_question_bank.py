@@ -19,6 +19,7 @@ def parse_answer_file(fname):
 
 def clean_txt(t):
     t = t.replace('\xa0', ' ').replace('\u3000', ' ').replace('\t', ' ')
+    t = re.sub(r'[\r\n]+', ' ', t)
     t = re.sub(r' +', ' ', t)
     return t.strip()
 
@@ -51,7 +52,6 @@ def extract_options(text):
     optC = clean_txt(restC[:mD.start()])
     optD = clean_txt(restC[mD.start():])
     
-    # Ensure options have letter prefix
     opts = [optA, optB, optC, optD]
     letters = ['A', 'B', 'C', 'D']
     clean_opts = []
@@ -71,70 +71,93 @@ def parse_html_paper(html_fname, ans_fname, paper_id, paper_name):
         soup = BeautifulSoup(f.read(), 'html.parser')
 
     ps = soup.find_all('p')
-    paragraphs = []
+    processed_paras = []
+    
     for p in ps:
-        raw_text = clean_txt(p.get_text())
-        imgs = []
+        # replace img tags with semantic placeholders
         for img in p.find_all('img'):
             src = img.get('src')
-            if src and 'image001' not in src:
-                base_img = os.path.basename(src)
-                src_path = os.path.join(files_dir, base_img)
-                if os.path.exists(src_path):
-                    dest_name = f"{paper_id}_{base_img}"
-                    dest_path = os.path.join(IMG_DIR, dest_name)
-                    shutil.copy2(src_path, dest_path)
-                    imgs.append(f"data/images/{dest_name}")
-        paragraphs.append({'text': raw_text, 'imgs': imgs})
+            if not src or 'image001' in src:
+                img.decompose()
+                continue
+            base_img = os.path.basename(src)
+            src_path = os.path.join(files_dir, base_img)
+            if os.path.exists(src_path):
+                dest_name = f"{paper_id}_{base_img}"
+                dest_path = os.path.join(IMG_DIR, dest_name)
+                shutil.copy2(src_path, dest_path)
+                
+                w = int(img.get('width', 0) or 0)
+                h = int(img.get('height', 0) or 0)
+                # 电气原理图/梯形图大图：h >= 40 且 (w >= 90 或以 jpg 格式存储)
+                # 公式/符号小图：h < 40（即使 w 较宽也是单行公式）
+                is_circuit = (h >= 40 and (w >= 90 or base_img.endswith('.jpg')))
+                img_rel = f"data/images/{dest_name}"
+                
+                if is_circuit:
+                    img.replace_with(f" __CIRCUIT_IMG:{img_rel}__ ")
+                else:
+                    img.replace_with(f" __INLINE_IMG:{img_rel}__ ")
+                    
+        txt = clean_txt(p.get_text())
+        processed_paras.append(txt)
 
+    # Group by question number
     start_collecting = False
     is_judge = False
     questions_raw = {}
     current_q_num = None
-    current_paras = []
+    current_texts = []
     
-    for p in paragraphs:
-        text = p['text']
-        if '单项选择' in text:
+    for txt in processed_paras:
+        if '单项选择' in txt:
             start_collecting = True
             is_judge = False
             continue
-        if '判断题' in text:
+        if '判断题' in txt:
             is_judge = True
             continue
         if not start_collecting:
             continue
             
-        m = re.match(r'^(\d{1,3})[、\.\s](.*)', text, re.S)
+        m = re.match(r'^(\d{1,3})[、\.\s](.*)', txt, re.S)
         if m:
             num = int(m.group(1))
             if (not is_judge and 1 <= num <= 160) or (is_judge and 161 <= num <= 200):
                 if current_q_num is not None:
-                    questions_raw[current_q_num] = current_paras
+                    questions_raw[current_q_num] = current_texts
                 current_q_num = num
-                rest = m.group(2).strip()
-                current_paras = [{'text': rest, 'imgs': p['imgs']}]
+                current_texts = [m.group(2).strip()]
                 continue
                 
-        if current_q_num is not None:
-            current_paras.append(p)
+        if current_q_num is not None and txt:
+            current_texts.append(txt)
 
     if current_q_num is not None:
-        questions_raw[current_q_num] = current_paras
+        questions_raw[current_q_num] = current_texts
 
     questions = []
     for idx in range(1, 201):
-        paras = questions_raw.get(idx, [])
+        texts = questions_raw.get(idx, [])
         ans = answers.get(idx, '')
         is_j = (idx >= 161)
+        full_text = '\n'.join(texts).strip()
         
-        all_text = '\n'.join([p['text'] for p in paras if p['text']]).strip()
-        all_imgs = []
-        for p in paras:
-            all_imgs.extend(p['imgs'])
+        # 1. 抽取所有电气大原理图 (如果有)
+        circuit_imgs = re.findall(r'__CIRCUIT_IMG:(.*?)__', full_text)
+        # 从文字流中剔除电路大图标记，避免污染选项或题干排版
+        cleaned_text = re.sub(r'__CIRCUIT_IMG:.*?__', '', full_text).strip()
+        
+        # 2. 将行内公式图片标记替换为自适应 HTML 标签
+        def replace_inline(t):
+            return re.sub(
+                r'__INLINE_IMG:(.*?)__',
+                r'<img class="inline-formula" src="\1" alt="电气符号" />',
+                t
+            )
             
         if is_j:
-            content = all_text
+            content = replace_inline(cleaned_text)
             content = re.sub(r'^[（\(]\s*[）\)]\s*', '', content).strip()
             norm_ans = '√' if ans in ['√', '对', 'A'] else '×'
             q_obj = {
@@ -144,20 +167,22 @@ def parse_html_paper(html_fname, ans_fname, paper_id, paper_name):
                 "content": content,
                 "options": ["正确 (√)", "错误 (×)"],
                 "answer": norm_ans,
-                "images": all_imgs
+                "images": circuit_imgs
             }
         else:
-            stem, opts = extract_options(all_text)
-            if not opts:
-                opts = ["A、", "B、", "C、", "D、"]
+            stem, opts = extract_options(cleaned_text)
+            stem = replace_inline(stem)
+            clean_opts = [replace_inline(opt) for opt in opts]
+            if not clean_opts:
+                clean_opts = ["A、", "B、", "C、", "D、"]
             q_obj = {
                 "index": idx,
                 "type": "choice",
                 "score": 0.5,
                 "content": stem,
-                "options": opts,
+                "options": clean_opts,
                 "answer": ans,
-                "images": all_imgs
+                "images": circuit_imgs
             }
         questions.append(q_obj)
 
@@ -237,6 +262,7 @@ def parse_2024_sim_paper():
     }
 
 def build_all():
+    print("Building precise question bank...")
     papers = []
     
     p1 = parse_html_paper('试卷正文.html', '答案.txt', 'paper_1', '维修电工高级理论知识试卷(一)')
@@ -262,9 +288,23 @@ def build_all():
     with open(out_js, 'w', encoding='utf-8') as f:
         f.write('window.EXAM_PAPERS = ' + json.dumps(papers, ensure_ascii=False, indent=2) + ';\n')
         
+    web_dir = os.path.join(os.path.dirname(__file__), 'web')
+    os.makedirs(web_dir, exist_ok=True)
+    web_js = os.path.join(web_dir, 'questions_db.js')
+    with open(web_js, 'w', encoding='utf-8') as f:
+        f.write('window.EXAM_PAPERS = ' + json.dumps(papers, ensure_ascii=False, indent=2) + ';\n')
+        
+    for sub in ['images', os.path.join('data', 'images')]:
+        web_img_dir = os.path.join(web_dir, sub)
+        if os.path.exists(web_img_dir):
+            shutil.rmtree(web_img_dir)
+        shutil.copytree(IMG_DIR, web_img_dir)
+        
     print(f"Build complete! Total papers: {len(papers)}")
     for p in papers:
-        print(f"  {p['id']}: {p['name']} -> {p['total']} questions (images in paper: {sum(len(q['images']) for q in p['questions'])})")
+        circuit_count = sum(len(q['images']) for q in p['questions'])
+        inline_opts = sum(1 for q in p['questions'] if any('inline-formula' in opt for opt in q['options']))
+        print(f"  {p['id']}: {p['name']} -> {p['total']} Qs (Circuit Diagrams: {circuit_count}, Option Formula Qs: {inline_opts})")
 
 if __name__ == '__main__':
     build_all()

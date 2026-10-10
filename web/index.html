@@ -7,9 +7,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="高级电工刷题">
     <title>高级电工理论考试刷题助手 · 智能全真版</title>
-    <!-- Tailwind CSS (国内直连优化) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="app.css">
+    <!-- 本地全内联预编译 Tailwind + 核心样式库 (100% 离线免联网秒开) -->
+    <link rel="stylesheet" href="tailwind_compiled.css">
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans antialiased select-none">
     <div id="app" class="min-h-screen bg-gray-100 flex flex-col md:flex-row font-sans">
@@ -20,6 +19,9 @@
                 <span id="icon-lightning-mobile"></span> 高级电工刷题
             </h1>
             <div class="flex items-center gap-2">
+                <button id="btn-mobile-sync" class="p-2 hover:bg-blue-600 rounded-lg text-white" title="跨端同步">
+                    <span>📲</span>
+                </button>
                 <button id="btn-mobile-search" class="p-2 hover:bg-blue-600 rounded-lg text-white" title="搜题">
                     <span id="icon-search-mobile"></span>
                 </button>
@@ -30,7 +32,7 @@
         </div>
 
         <!-- Sidebar Navigation -->
-        <aside id="sidebar" class="hidden md:flex w-full md:w-72 bg-white md:h-screen shadow-lg flex-shrink-0 flex-col z-20 transition-all duration-300">
+        <aside id="sidebar" class="hidden md:flex w-full md:w-84 lg:w-96 bg-white md:h-screen shadow-lg flex-shrink-0 flex-col z-20 transition-all duration-300">
             <!-- Sidebar Header -->
             <div class="p-5 bg-gradient-to-r from-blue-700 to-indigo-800 text-white shadow-sm flex items-center justify-between">
                 <div>
@@ -47,13 +49,19 @@
             <!-- Sidebar Scrollable Content -->
             <div class="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
                 
-                <!-- Quick Backup / Search Grid -->
+                <!-- Quick Actions Grid -->
                 <div class="grid grid-cols-2 gap-2">
-                    <button id="btn-quick-search" class="flex items-center justify-center p-2.5 bg-blue-50 text-blue-700 rounded-xl hover:bg-blue-100 text-xs font-bold gap-1.5 transition">
+                    <button id="btn-quick-search" class="q-bounce-btn flex items-center justify-center p-2.5 bg-blue-50 text-blue-700 rounded-xl hover:bg-blue-100 text-xs font-bold gap-1.5 transition">
                         <span id="icon-search-btn"></span> 题库搜题
                     </button>
-                    <button id="btn-export-backup" class="flex items-center justify-center p-2.5 bg-indigo-50 text-indigo-700 rounded-xl hover:bg-indigo-100 text-xs font-bold gap-1.5 transition">
-                        <span id="icon-export"></span> 备份进度
+                    <button id="btn-device-sync" class="q-bounce-btn flex items-center justify-center p-2.5 bg-purple-50 text-purple-700 rounded-xl hover:bg-purple-100 text-xs font-bold gap-1.5 transition">
+                        <span>📲 跨端同步</span>
+                    </button>
+                    <button id="btn-export-backup" class="q-bounce-btn flex items-center justify-center p-2.5 bg-indigo-50 text-indigo-700 rounded-xl hover:bg-indigo-100 text-xs font-bold gap-1.5 transition">
+                        <span id="icon-export"></span> 备份导出
+                    </button>
+                    <button id="btn-import-backup" class="q-bounce-btn flex items-center justify-center p-2.5 bg-emerald-50 text-emerald-700 rounded-xl hover:bg-emerald-100 text-xs font-bold gap-1.5 transition">
+                        <span>📥 恢复导入</span>
                     </button>
                     <input type="file" id="file-import-input" accept=".json" class="hidden" />
                 </div>
@@ -62,32 +70,50 @@
                 <div>
                     <div class="text-xs font-black text-gray-400 uppercase tracking-wider mb-2 px-2 flex items-center justify-between">
                         <span>📚 全部题库刷题 (1000题)</span>
-                        <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold">全量直刷</span>
+                        <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold">独立进度</span>
                     </div>
-                    <div class="space-y-1">
+                    <div class="space-y-1.5">
                         <button class="nav-item-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-2.5 text-sm transition-all" data-mode="full" data-filter="all">
                             <span class="nav-icon"><span id="icon-folder-all"></span></span>
-                            <div class="flex-1">
-                                <div class="font-bold">全部题目全刷</div>
-                                <div class="text-[11px] text-gray-400">完整 1000 题连续练习</div>
+                            <div class="flex-1 min-w-0">
+                                <div class="font-bold flex items-center justify-between">
+                                    <span>全部题目全刷</span>
+                                    <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-bold ml-1">1000题</span>
+                                </div>
+                                <div class="flex items-center justify-between text-[11px] text-gray-400 mt-0.5">
+                                    <span id="prog-text-full-all">已刷 0 / 1000 题</span>
+                                    <span id="prog-pct-full-all">0%</span>
+                                </div>
+                                <div class="w-full mini-progress-track mt-1"><div id="prog-bar-full-all" class="mini-progress-fill" style="width: 0%"></div></div>
                             </div>
-                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-bold">1000题</span>
                         </button>
                         <button class="nav-item-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-2.5 text-sm transition-all" data-mode="full" data-filter="choice">
                             <span class="nav-icon"><span id="icon-folder-choice"></span></span>
-                            <div class="flex-1">
-                                <div class="font-bold">单选题专练</div>
-                                <div class="text-[11px] text-gray-400">单选题集中攻坚</div>
+                            <div class="flex-1 min-w-0">
+                                <div class="font-bold flex items-center justify-between">
+                                    <span>单选题专练</span>
+                                    <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-bold ml-1">800题</span>
+                                </div>
+                                <div class="flex items-center justify-between text-[11px] text-gray-400 mt-0.5">
+                                    <span id="prog-text-full-choice">已刷 0 / 800 题</span>
+                                    <span id="prog-pct-full-choice">0%</span>
+                                </div>
+                                <div class="w-full mini-progress-track mt-1"><div id="prog-bar-full-choice" class="mini-progress-fill" style="width: 0%"></div></div>
                             </div>
-                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-bold">800题</span>
                         </button>
                         <button class="nav-item-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-2.5 text-sm transition-all" data-mode="full" data-filter="judge">
                             <span class="nav-icon"><span id="icon-folder-judge"></span></span>
-                            <div class="flex-1">
-                                <div class="font-bold">判断题专练</div>
-                                <div class="text-[11px] text-gray-400">判断题速记练习</div>
+                            <div class="flex-1 min-w-0">
+                                <div class="font-bold flex items-center justify-between">
+                                    <span>判断题专练</span>
+                                    <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-bold ml-1">200题</span>
+                                </div>
+                                <div class="flex items-center justify-between text-[11px] text-gray-400 mt-0.5">
+                                    <span id="prog-text-full-judge">已刷 0 / 200 题</span>
+                                    <span id="prog-pct-full-judge">0%</span>
+                                </div>
+                                <div class="w-full mini-progress-track mt-1"><div id="prog-bar-full-judge" class="mini-progress-fill" style="width: 0%"></div></div>
                             </div>
-                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-bold">200题</span>
                         </button>
                     </div>
                 </div>
@@ -147,9 +173,42 @@
                     </button>
                 </div>
 
-                <!-- Footer Utilities -->
-                <div class="pt-3 border-t border-gray-200 space-y-1.5 text-xs">
-                    <div class="flex items-center justify-between px-3 py-2 rounded-lg bg-gray-50 border border-gray-100">
+                <!-- Footer Settings & Utilities -->
+                <div class="pt-3 border-t border-gray-200 space-y-2 text-xs">
+                    
+                    <!-- 1. 主题切换 (白天 / 护眼 / 夜间) -->
+                    <div class="p-2.5 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-between">
+                        <span class="font-bold text-gray-700">阅读主题</span>
+                        <div class="flex items-center gap-1 bg-gray-200/60 p-0.5 rounded-lg">
+                            <button class="theme-btn px-2 py-1 rounded text-[11px] font-bold transition active:scale-95 bg-white text-blue-700 shadow-sm" data-theme="light">☀️ 经典</button>
+                            <button class="theme-btn px-2 py-1 rounded text-[11px] font-bold transition active:scale-95 text-gray-600 hover:text-gray-900" data-theme="eye-care">🍵 护眼</button>
+                            <button class="theme-btn px-2 py-1 rounded text-[11px] font-bold transition active:scale-95 text-gray-600 hover:text-gray-900" data-theme="dark">🌙 夜间</button>
+                        </div>
+                    </div>
+
+                    <!-- 2. 字号调节 (标准 / 大字 / 特大) -->
+                    <div class="p-2.5 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-between">
+                        <span class="font-bold text-gray-700">题文字号</span>
+                        <div class="flex items-center gap-1 bg-gray-200/60 p-0.5 rounded-lg">
+                            <button class="fontsize-btn px-2.5 py-1 rounded text-[11px] font-bold transition active:scale-95 bg-white text-blue-700 shadow-sm" data-fontsize="normal">标准</button>
+                            <button class="fontsize-btn px-2.5 py-1 rounded text-[11px] font-bold transition active:scale-95 text-gray-600 hover:text-gray-900" data-fontsize="large">大字</button>
+                            <button class="fontsize-btn px-2.5 py-1 rounded text-[11px] font-bold transition active:scale-95 text-gray-600 hover:text-gray-900" data-fontsize="huge">特大</button>
+                        </div>
+                    </div>
+
+                    <!-- 3. 答对自动翻题开关 -->
+                    <div class="flex items-center justify-between px-3 py-2 rounded-xl bg-gray-50 border border-gray-100">
+                        <span class="font-bold text-gray-700 flex items-center gap-1.5">
+                            ⚡ 答对自动翻题
+                        </span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="toggle-autoadvance-mode" class="sr-only peer" checked>
+                            <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
+                        </label>
+                    </div>
+
+                    <!-- 4. 背题模式开关 -->
+                    <div class="flex items-center justify-between px-3 py-2 rounded-xl bg-gray-50 border border-gray-100">
                         <span class="font-bold text-gray-700 flex items-center gap-1.5">
                             <span id="icon-eye"></span> 背题模式 (直显答案)
                         </span>
@@ -160,7 +219,7 @@
                     </div>
 
                     <button id="btn-reset-current" class="w-full text-left p-2.5 rounded-lg flex items-center gap-2 hover:bg-gray-100 text-gray-600 transition">
-                        <span id="icon-refresh"></span> 清除当前版本做题进度
+                        <span id="icon-refresh"></span> 清除当前专练做题进度
                     </button>
                     <button id="btn-clear-all-data" class="w-full text-left p-2.5 rounded-lg flex items-center gap-2 hover:bg-red-50 text-red-500 transition">
                         <span id="icon-trash"></span> 清空所有做题历史与错题
@@ -240,6 +299,13 @@
                 <span class="text-blue-700">总计: <span id="drawer-stat-total">0</span></span>
             </div>
 
+            <!-- 过滤器标签 (全部 / 未答 / 错题) -->
+            <div class="p-2.5 bg-gray-50 border-b border-gray-100 flex items-center justify-center gap-1.5 text-xs font-bold">
+                <button class="grid-filter-btn px-3 py-1 rounded-full transition active:scale-95 bg-blue-600 text-white shadow-sm" data-filter="all">全部题号</button>
+                <button class="grid-filter-btn px-3 py-1 rounded-full transition active:scale-95 bg-gray-200 text-gray-700 hover:bg-gray-300" data-filter="unanswered">仅看未答</button>
+                <button class="grid-filter-btn px-3 py-1 rounded-full transition active:scale-95 bg-gray-200 text-gray-700 hover:bg-gray-300" data-filter="wrong">仅看错题</button>
+            </div>
+
             <div id="grid-buttons-container" class="p-4 flex-1 overflow-y-auto custom-scrollbar">
                 <!-- Grid buttons dynamically inserted here -->
             </div>
@@ -253,13 +319,39 @@
         </div>
     </div>
 
-    <!-- Circuit Image Lightbox Modal -->
-    <div id="lightbox-modal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[80] p-4 hidden animate-fade-in">
-        <button id="btn-close-lightbox" class="absolute top-4 right-4 text-white hover:text-gray-300 p-2 text-2xl font-bold bg-white/10 rounded-full w-12 h-12 flex items-center justify-center">
-            ✕
-        </button>
-        <div class="max-w-4xl max-h-[85vh] p-2 bg-white rounded-xl overflow-hidden shadow-2xl">
-            <img id="lightbox-img" class="w-full h-auto max-h-[80vh] object-contain" src="" alt="电气原理图放大">
+    <!-- Circuit Image Professional Lightbox Modal (全功能双指捏合/触控板/滚轮/拖拽视口) -->
+    <div id="lightbox-modal" class="fixed inset-0 bg-black/95 flex flex-col z-[80] hidden select-none animate-fade-in">
+        <!-- 顶部悬浮控制栏 -->
+        <div class="p-3 sm:p-4 flex items-center justify-between z-10 bg-black/60 backdrop-blur-md text-white border-b border-white/10">
+            <div class="flex items-center gap-2">
+                <span class="text-sm font-bold flex items-center gap-1.5 text-blue-400">
+                    ⚡ 电气原理图高清视口
+                </span>
+                <span class="text-xs text-gray-400 hidden md:inline">
+                    (支持双指捏合、触控板手势、滚轮无级缩放，按住拖动平移)
+                </span>
+            </div>
+            <!-- 缩放控制键组 -->
+            <div class="flex items-center gap-1.5 bg-white/10 rounded-xl p-1 backdrop-blur-md">
+                <button id="btn-zoom-out" class="w-8 h-8 rounded-lg hover:bg-white/20 flex items-center justify-center text-lg font-bold" title="缩小">-</button>
+                <span id="text-zoom-scale" class="text-xs font-mono font-bold px-1.5 text-center min-w-[3.2rem]">100%</span>
+                <button id="btn-zoom-in" class="w-8 h-8 rounded-lg hover:bg-white/20 flex items-center justify-center text-lg font-bold" title="放大">+</button>
+                <button id="btn-zoom-reset" class="px-2.5 h-8 rounded-lg hover:bg-white/20 text-xs font-bold" title="适合屏幕">适应屏幕</button>
+                <button id="btn-zoom-actual" class="px-2.5 h-8 rounded-lg hover:bg-white/20 text-xs font-bold" title="1:1 原图">1:1</button>
+                <button id="btn-close-lightbox" class="w-8 h-8 rounded-lg bg-red-500/80 hover:bg-red-600 flex items-center justify-center font-bold text-sm ml-2">✕</button>
+            </div>
+        </div>
+
+        <!-- 缩放平移画布视口 -->
+        <div id="lightbox-viewport" class="flex-1 w-full h-full relative overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing">
+            <img id="lightbox-img" class="max-w-none transition-transform duration-75 select-none pointer-events-none" src="" alt="电气原理图放大" draggable="false" />
+        </div>
+
+        <!-- 底部手势提示胶囊 -->
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none z-10">
+            <div class="px-3.5 py-1.5 rounded-full bg-black/60 text-white/80 text-xs backdrop-blur-md flex items-center gap-2 shadow-lg border border-white/10">
+                <span>📱 手机双指缩放 | 💻 触控板捏合/滚轮缩放 | 🖱️ 鼠标拖拽平移 | 双击重置</span>
+            </div>
         </div>
     </div>
 
@@ -306,9 +398,9 @@
         </div>
     </div>
 
-    <!-- Search Modal -->
+    <!-- Search Modal (包含高频电气考点热词标签) -->
     <div id="search-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-[60] p-4 pt-16 hidden animate-fade-in">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col overflow-hidden animate-fade-in-up">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden animate-fade-in-up">
             <div class="p-4 border-b flex items-center gap-3 bg-gray-50">
                 <span class="text-gray-400 text-lg">🔍</span>
                 <input type="text" id="search-input" class="flex-1 bg-transparent border-none outline-none text-base text-gray-800 placeholder-gray-400" placeholder="搜索题目关键词（如：PLC、晶闸管、变压器、RAM、二极管）..." />
@@ -316,17 +408,126 @@
                     ✕
                 </button>
             </div>
+
+            <!-- 高频电气考点快捷热词胶囊 -->
+            <div class="px-4 py-2.5 bg-gray-50/70 border-b border-gray-100 flex flex-wrap items-center gap-1.5 text-xs">
+                <span class="text-gray-400 font-bold mr-1">热门考点:</span>
+                <button class="topic-chip px-2.5 py-1 rounded-lg bg-white border border-gray-200 hover:border-blue-400 hover:text-blue-600 text-gray-600 transition" data-kw="PLC">🏷️ PLC与梯形图</button>
+                <button class="topic-chip px-2.5 py-1 rounded-lg bg-white border border-gray-200 hover:border-blue-400 hover:text-blue-600 text-gray-600 transition" data-kw="晶闸管">🏷️ 晶闸管变频</button>
+                <button class="topic-chip px-2.5 py-1 rounded-lg bg-white border border-gray-200 hover:border-blue-400 hover:text-blue-600 text-gray-600 transition" data-kw="电动机">🏷️ 交直流电动机</button>
+                <button class="topic-chip px-2.5 py-1 rounded-lg bg-white border border-gray-200 hover:border-blue-400 hover:text-blue-600 text-gray-600 transition" data-kw="机床">🏷️ 机床排故</button>
+                <button class="topic-chip px-2.5 py-1 rounded-lg bg-white border border-gray-200 hover:border-blue-400 hover:text-blue-600 text-gray-600 transition" data-kw="传感器">🏷️ 传感器测量</button>
+                <button class="topic-chip px-2.5 py-1 rounded-lg bg-white border border-gray-200 hover:border-blue-400 hover:text-blue-600 text-gray-600 transition" data-kw="安全">🏷️ 安全规程</button>
+            </div>
+
             <div id="search-results-list" class="flex-1 overflow-y-auto p-4 space-y-2.5 custom-scrollbar">
                 <div class="text-center text-gray-400 py-10 text-sm">
-                    输入关键词搜索全部 1000 道题库
+                    输入关键词或点击上方热门考点搜索全部 1000 道题库
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Floating Global Toast -->
+    <div id="toast-container" class="fixed top-5 left-1/2 -translate-x-1/2 z-[99] pointer-events-none hidden">
+        <div id="toast-content" class="px-4 py-2 rounded-full bg-gray-900/90 text-white text-xs font-bold shadow-2xl backdrop-blur-md flex items-center gap-2 animate-toast border border-white/20">
+            <span>🎉 提示信息</span>
+        </div>
+    </div>
+
+    <!-- 1. 跨设备双向同步弹窗 Modal -->
+    <div id="sync-modal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[75] p-4 hidden animate-fade-in">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-6 max-h-[90vh] flex flex-col overflow-hidden animate-fade-in-up">
+            <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">📲</span>
+                    <h3 class="font-black text-lg text-gray-800">跨设备无缝双向同步</h3>
+                </div>
+                <button id="btn-close-sync-modal" class="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition">✕</button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto py-4 space-y-4 custom-scrollbar text-sm">
+                <!-- 模块一：电脑 -> 手机 扫码同步 -->
+                <div class="p-4 rounded-2xl bg-gradient-to-br from-purple-50/80 to-indigo-50/50 border border-purple-100">
+                    <div class="font-bold text-purple-900 mb-1 flex items-center gap-1.5">
+                        <span>📱 方式一：电脑 ➔ 手机（微信扫一扫）</span>
+                    </div>
+                    <p class="text-xs text-purple-700/80 mb-3">手机微信或系统相机直接扫描下方二维码，自动秒同步当前所有已刷进度与错题本：</p>
+                    <div class="flex flex-col items-center justify-center">
+                        <div id="sync-qrcode-wrapper" class="p-3 bg-white rounded-2xl shadow-sm border border-purple-200/60 inline-flex flex-col items-center justify-center min-w-[180px] min-h-[180px]">
+                            <!-- Canvas QR inserted by JS -->
+                        </div>
+                        <div class="mt-2 text-[11px] text-gray-500 font-mono" id="sync-stats-summary">
+                            已刷 0 题 · 错题 0 道 · 收藏 0 道
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模块二：手机 -> 电脑 微信链接/口令同步 -->
+                <div class="p-4 rounded-2xl bg-blue-50/80 border border-blue-100">
+                    <div class="font-bold text-blue-900 mb-1 flex items-center gap-1.5">
+                        <span>💻 方式二：手机 ➔ 电脑（微信发送链接 / 口令）</span>
+                    </div>
+                    <p class="text-xs text-blue-700/80 mb-3">
+                        在手机端点击“复制同步链接”，微信发给“文件传输助手”，电脑端微信点开即可！若在电脑端手动操作，请粘贴口令：
+                    </p>
+                    <div class="flex gap-2">
+                        <input type="text" id="input-sync-token" class="flex-1 px-3 py-2 text-xs bg-white border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" placeholder="在此粘贴包含 #sync= 的链接或口令码..." />
+                        <button id="btn-apply-sync-token" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-sm whitespace-nowrap">
+                            立即同步
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 底部快捷复制 -->
+                <div class="pt-1">
+                    <button id="btn-copy-sync-url" class="q-bounce-btn w-full py-2.5 px-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-xs shadow-md transition flex items-center justify-center gap-1.5">
+                        <span>📋 复制当前设备的专属同步链接 (发到微信)</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 同步数据接收确认 Modal (智能合并 vs 完全覆盖) -->
+    <div id="sync-confirm-modal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[85] p-4 hidden animate-fade-in">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-6 text-center animate-fade-in-up">
+            <div class="text-5xl mb-2">🎉</div>
+            <h3 class="text-xl font-black text-gray-800 mb-1">检测到跨设备同步数据！</h3>
+            <p id="sync-confirm-desc" class="text-xs text-gray-500 mb-5 leading-relaxed">
+                包含已做题目：0 道 · 错题本：0 道 · 重点收藏：0 道
+            </p>
+
+            <div class="space-y-2.5 text-left mb-5">
+                <button id="btn-action-smart-merge" class="q-bounce-btn w-full p-3.5 rounded-2xl border-2 border-green-500 bg-green-50 hover:bg-green-100 transition flex items-start gap-3">
+                    <span class="text-xl">🟢</span>
+                    <div class="flex-1 min-w-0">
+                        <div class="font-black text-green-900 text-sm">【推荐】智能合并进度 (Smart Merge)</div>
+                        <div class="text-[11px] text-green-700 mt-0.5">将两台设备的已做题目与错题本合并叠加，绝不丢失任何一条记录！</div>
+                    </div>
+                </button>
+
+                <button id="btn-action-overwrite" class="q-bounce-btn w-full p-3 rounded-2xl border border-gray-200 bg-gray-50 hover:bg-gray-100 transition flex items-start gap-3">
+                    <span class="text-xl">⚪</span>
+                    <div class="flex-1 min-w-0">
+                        <div class="font-bold text-gray-800 text-sm">完全覆盖 (Overwrite)</div>
+                        <div class="text-[11px] text-gray-500 mt-0.5">以本次传入的数据为准，彻底替换当前设备的原有记录。</div>
+                    </div>
+                </button>
+            </div>
+
+            <button id="btn-cancel-sync-confirm" class="w-full py-2 text-xs text-gray-400 hover:text-gray-600 font-bold">
+                取消，暂不同步
+            </button>
         </div>
     </div>
 
     <!-- Mobile Drawer Overlay -->
     <div id="mobile-sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden md:hidden"></div>
 
+    <!-- Libraries -->
+    <script src="libs/lz-string.min.js"></script>
+    <script src="libs/qrcode.min.js"></script>
     <!-- Database Script -->
     <script src="questions_db.js"></script>
     <!-- App Engine Script -->

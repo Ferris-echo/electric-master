@@ -204,21 +204,16 @@
         "index": 15,
         "type": "choice",
         "score": 0.5,
-        "content": "在图中所示放大电路，已知Ucc=6V、Rc=2KΩ、RB=200Kω、=50。放大电路的静态工作点为( )。",
+        "content": "在图中所示放大电路，已知Ucc=6V、Rc=2KΩ、RB=200Kω、 <img class=\"inline-formula\" src=\"data/images/paper_1_image002.png\" alt=\"电气符号\" /> =50。放大电路的静态工作点为( )。",
         "options": [
-          "A、",
-          "B、",
-          "C、",
-          "D、"
+          "A、 <img class=\"inline-formula\" src=\"data/images/paper_1_image003.png\" alt=\"电气符号\" />",
+          "B、 <img class=\"inline-formula\" src=\"data/images/paper_1_image005.png\" alt=\"电气符号\" />",
+          "C、 <img class=\"inline-formula\" src=\"data/images/paper_1_image006.png\" alt=\"电气符号\" />",
+          "D、 <img class=\"inline-formula\" src=\"data/images/paper_1_image007.png\" alt=\"电气符号\" />"
         ],
         "answer": "A",
         "images": [
-          "data/images/paper_1_image002.png",
-          "data/images/paper_1_image003.png",
-          "data/images/paper_1_image004.jpg",
-          "data/images/paper_1_image005.png",
-          "data/images/paper_1_image006.png",
-          "data/images/paper_1_image007.png"
+          "data/images/paper_1_image004.jpg"
         ]
       },
       {
@@ -687,21 +682,15 @@
         "index": 49,
         "type": "choice",
         "score": 0.5,
-        "content": "三相半波有源逆变运行时，为计算方便，引入逆变角=( )。",
+        "content": "三相半波有源逆变运行时，为计算方便，引入逆变角 <img class=\"inline-formula\" src=\"data/images/paper_1_image008.png\" alt=\"电气符号\" /> =( )。",
         "options": [
-          "A、",
-          "B、",
-          "C、",
-          "D、"
+          "A、 <img class=\"inline-formula\" src=\"data/images/paper_1_image009.png\" alt=\"电气符号\" />",
+          "B、 <img class=\"inline-formula\" src=\"data/images/paper_1_image010.png\" alt=\"电气符号\" />",
+          "C、 <img class=\"inline-formula\" src=\"data/images/paper_1_image011.png\" alt=\"电气符号\" />",
+          "D、 <img class=\"inline-formula\" src=\"data/images/paper_1_image012.png\" alt=\"电气符号\" />"
         ],
         "answer": "D",
-        "images": [
-          "data/images/paper_1_image008.png",
-          "data/images/paper_1_image009.png",
-          "data/images/paper_1_image010.png",
-          "data/images/paper_1_image011.png",
-          "data/images/paper_1_image012.png"
-        ]
+        "images": []
       },
       {
         "index": 50,
@@ -735,7 +724,7 @@
         "index": 52,
         "type": "choice",
         "score": 0.5,
-        "content": "在要求零位附近快速频繁改变转动方向，位置控制要求准确的生产机械，往往用可控环流可逆系统，即在负载电流小于额定值( )时，让，人为地制造环流，使变流器电流连续。",
+        "content": "在要求零位附近快速频繁改变转动方向，位置控制要求准确的生产机械，往往用可控环流可逆系统，即在负载电流小于额定值( )时，让 <img class=\"inline-formula\" src=\"data/images/paper_1_image013.png\" alt=\"电气符号\" /> ，人为地制造环流，使变流器电流连续。",
         "options": [
           "A、1％～5％",
           "B、5％～10％",
@@ -743,9 +732,7 @@
           "D、15％～20％"
         ],
         "answer": "C",
-        "images": [
-          "data/images/paper_1_image013.png"
-        ]
+        "images": []
       },
       {
         "index": 53,
@@ -1047,18 +1034,13 @@
         "score": 0.5,
         "content": "异步电动机转速表达式错误为( )。",
         "options": [
-          "A、",
-          "B、",
-          "C、",
-          "D、"
+          "A、 <img class=\"inline-formula\" src=\"data/images/paper_1_image014.png\" alt=\"电气符号\" />",
+          "B、 <img class=\"inline-formula\" src=\"data/images/paper_1_image015.png\" alt=\"电气符号\" />",
+          "C、 <img class=\"inline-formula\" src=\"data/images/paper_1_image016.png\" alt=\"电气符号\" />",
+          "D、 <img class=\"inline-formula\" src=\"data/images/paper_1_image017.png\" alt=\"电气符号\" />"
         ],
         "answer": "A",
-        "images": [
-          "data/images/paper_1_image014.png",
-          "data/images/paper_1_image015.png",
-          "data/images/paper_1_image016.png",
-          "data/images/paper_1_image017.png"
-        ]
+        "images": []
       },
       {
         "index": 75,
@@ -1092,7 +1074,7 @@
         "index": 77,
         "type": "choice",
         "score": 0.5,
-        "content": "调节电动机磁场调速系统的方法就是当( )不变时，用减小磁通使电动机转速升高的方法来进行调速过程。",
+        "content": "调节电动机磁场调速系统的方法就是当( )不变时，用减小磁通 <img class=\"inline-formula\" src=\"data/images/paper_1_image018.png\" alt=\"电气符号\" /> 使电动机转速升高的方法来进行调速过程。",
         "options": [
           "A、电枢电压",
           "B、电枢电流",
@@ -1100,9 +1082,7 @@
           "D、电机转矩"
         ],
         "answer": "A",
-        "images": [
-          "data/images/paper_1_image018.png"
-        ]
+        "images": []
       },
       {
         "index": 78,
@@ -1970,7 +1950,7 @@
         "index": 139,
         "type": "choice",
         "score": 0.5,
-        "content": "绘图时，特征符号表示( )。",
+        "content": "绘图时，特征符号 <img class=\"inline-formula\" src=\"data/images/paper_1_image023.png\" alt=\"电气符号\" /> 表示( )。",
         "options": [
           "A、表面粗糙度",
           "B、直径的尺寸公差等级",
@@ -1978,9 +1958,7 @@
           "D、基准"
         ],
         "answer": "A",
-        "images": [
-          "data/images/paper_1_image023.png"
-        ]
+        "images": []
       },
       {
         "index": 140,
@@ -2002,18 +1980,13 @@
         "score": 0.5,
         "content": "电阻器的阻值及精度等级一般用文字或数字直接印于电阻器上。金色允许偏差为( )。",
         "options": [
-          "A、5%",
-          "B、10%",
-          "C、15%",
-          "D、20%"
+          "A、 <img class=\"inline-formula\" src=\"data/images/paper_1_image024.png\" alt=\"电气符号\" /> 5%",
+          "B、 <img class=\"inline-formula\" src=\"data/images/paper_1_image024.png\" alt=\"电气符号\" /> 10%",
+          "C、 <img class=\"inline-formula\" src=\"data/images/paper_1_image024.png\" alt=\"电气符号\" /> 15%",
+          "D、 <img class=\"inline-formula\" src=\"data/images/paper_1_image024.png\" alt=\"电气符号\" /> 20%"
         ],
         "answer": "A",
-        "images": [
-          "data/images/paper_1_image024.png",
-          "data/images/paper_1_image024.png",
-          "data/images/paper_1_image024.png",
-          "data/images/paper_1_image024.png"
-        ]
+        "images": []
       },
       {
         "index": 142,
@@ -2276,7 +2249,7 @@
           "A、表盘玻璃干净、完整",
           "B、盘面刻度、字码清楚",
           "C、表针动作灵活，计量正确",
-          "D、垂直安装\n得 分\n评分人"
+          "D、垂直安装 得 分 评分人"
         ],
         "answer": "D",
         "images": []
@@ -2954,7 +2927,7 @@
         "index": 14,
         "type": "choice",
         "score": 0.5,
-        "content": "在图中所示放大电路，已知Ucc=6V、Rc=2KΩ、RB=200Kω、=50。若RB断开，三极管工作在( )状态。",
+        "content": "在图中所示放大电路，已知Ucc=6V、Rc=2KΩ、RB=200Kω、 <img class=\"inline-formula\" src=\"data/images/paper_2_image002.png\" alt=\"电气符号\" /> =50。若RB断开，三极管工作在( )状态。",
         "options": [
           "A、放大",
           "B、截止",
@@ -2963,7 +2936,6 @@
         ],
         "answer": "B",
         "images": [
-          "data/images/paper_2_image002.png",
           "data/images/paper_2_image003.jpg"
         ]
       },
@@ -3673,10 +3645,10 @@
         "score": 0.5,
         "content": "中频发电机停车时的操作步骤( )。",
         "options": [
-          "A、a.减小发电机励磁电流，降低发电机电压\nb.切断控制回路\nc.断开中频机组电源",
-          "B、a.切断控制回路\nb.减小发电机励磁电流，降低发电机电压\nc.断开中频机组电源",
-          "C、a.断开中频机组电源\nb.切断控制回路\nc.减小发电机励磁电流，降低发电机电压",
-          "D、a.减小发电机励磁电流，降低发电机电压\nb.断开中频机组电源\nc.切断控制回路"
+          "A、a.减小发电机励磁电流，降低发电机电压 b.切断控制回路 c.断开中频机组电源",
+          "B、a.切断控制回路 b.减小发电机励磁电流，降低发电机电压 c.断开中频机组电源",
+          "C、a.断开中频机组电源 b.切断控制回路 c.减小发电机励磁电流，降低发电机电压",
+          "D、a.减小发电机励磁电流，降低发电机电压 b.断开中频机组电源 c.切断控制回路"
         ],
         "answer": "A",
         "images": []
@@ -3704,7 +3676,7 @@
           "A、引前时间",
           "B、关断时间",
           "C、换流时间",
-          "D、tf-\ntr"
+          "D、tf- tr"
         ],
         "answer": "B",
         "images": []
@@ -3825,7 +3797,7 @@
         "index": 76,
         "type": "choice",
         "score": 0.5,
-        "content": "逻辑保护电路一旦出现( )的情况，与非门立即输出低电平，使和均被箝位于“0”，将两组触发器同时封锁。",
+        "content": "逻辑保护电路一旦出现( )的情况，与非门立即输出低电平，使 <img class=\"inline-formula\" src=\"data/images/paper_2_image004.png\" alt=\"电气符号\" /> 和 <img class=\"inline-formula\" src=\"data/images/paper_2_image005.png\" alt=\"电气符号\" /> 均被箝位于“0”，将两组触发器同时封锁。",
         "options": [
           "A、uR=1、uF＝0",
           "B、uR=0、uF＝0",
@@ -3833,10 +3805,7 @@
           "D、uR=1、uF＝1"
         ],
         "answer": "D",
-        "images": [
-          "data/images/paper_2_image004.png",
-          "data/images/paper_2_image005.png"
-        ]
+        "images": []
       },
       {
         "index": 77,
@@ -3856,7 +3825,7 @@
         "index": 78,
         "type": "choice",
         "score": 0.5,
-        "content": "非编码键盘接口\n一般通过( )或8255、8155等并行I/O接口和MPU相连。",
+        "content": "非编码键盘接口 一般通过( )或8255、8155等并行I/O接口和MPU相连。",
         "options": [
           "A、与门",
           "B、与非门",
@@ -3898,22 +3867,15 @@
         "index": 81,
         "type": "choice",
         "score": 0.5,
-        "content": "是电动机绕组的电阻值，L是电动机绕组电感，R0为限流电阻，当V突然导通时，绕组电流按指数规律上升，时间常数＝( )。",
+        "content": "<img class=\"inline-formula\" src=\"data/images/paper_2_image006.png\" alt=\"电气符号\" /> 是电动机绕组的电阻值，L是电动机绕组电感，R0为限流电阻，当V突然导通时，绕组电流按指数规律上升，时间常数 <img class=\"inline-formula\" src=\"data/images/paper_2_image007.png\" alt=\"电气符号\" /> ＝( )。",
         "options": [
-          "A、",
-          "B、",
-          "C、",
-          "D、"
+          "A、 <img class=\"inline-formula\" src=\"data/images/paper_2_image008.png\" alt=\"电气符号\" />",
+          "B、 <img class=\"inline-formula\" src=\"data/images/paper_2_image009.png\" alt=\"电气符号\" />",
+          "C、 <img class=\"inline-formula\" src=\"data/images/paper_2_image010.png\" alt=\"电气符号\" />",
+          "D、 <img class=\"inline-formula\" src=\"data/images/paper_2_image011.png\" alt=\"电气符号\" />"
         ],
         "answer": "B",
-        "images": [
-          "data/images/paper_2_image006.png",
-          "data/images/paper_2_image007.png",
-          "data/images/paper_2_image008.png",
-          "data/images/paper_2_image009.png",
-          "data/images/paper_2_image010.png",
-          "data/images/paper_2_image011.png"
-        ]
+        "images": []
       },
       {
         "index": 82,
@@ -4729,7 +4691,7 @@
         "index": 139,
         "type": "choice",
         "score": 0.5,
-        "content": "绘图时，特征符号表示( )。",
+        "content": "绘图时，特征符号 <img class=\"inline-formula\" src=\"data/images/paper_2_image018.png\" alt=\"电气符号\" /> 表示( )。",
         "options": [
           "A、表面粗糙度",
           "B、直径的尺寸公差等级",
@@ -4737,9 +4699,7 @@
           "D、基准"
         ],
         "answer": "B",
-        "images": [
-          "data/images/paper_2_image018.png"
-        ]
+        "images": []
       },
       {
         "index": 140,
@@ -4761,18 +4721,13 @@
         "score": 0.5,
         "content": "电阻器的阻值及精度等级一般用文字或数字直接印于电阻器上。银色允许偏差为( )。",
         "options": [
-          "A、5%",
-          "B、10%",
-          "C、15%",
-          "D、20%"
+          "A、 <img class=\"inline-formula\" src=\"data/images/paper_2_image019.png\" alt=\"电气符号\" /> 5%",
+          "B、 <img class=\"inline-formula\" src=\"data/images/paper_2_image019.png\" alt=\"电气符号\" /> 10%",
+          "C、 <img class=\"inline-formula\" src=\"data/images/paper_2_image019.png\" alt=\"电气符号\" /> 15%",
+          "D、 <img class=\"inline-formula\" src=\"data/images/paper_2_image019.png\" alt=\"电气符号\" /> 20%"
         ],
         "answer": "B",
-        "images": [
-          "data/images/paper_2_image019.png",
-          "data/images/paper_2_image019.png",
-          "data/images/paper_2_image019.png",
-          "data/images/paper_2_image019.png"
-        ]
+        "images": []
       },
       {
         "index": 142,
@@ -4904,21 +4859,15 @@
         "index": 151,
         "type": "choice",
         "score": 0.5,
-        "content": "逻辑代数的基本公式和常用公式中反演律（德、摩根定理）( )。",
+        "content": "逻辑代数的基本公式和常用公式中反演律（德、摩根定理） <img class=\"inline-formula\" src=\"data/images/paper_2_image020.png\" alt=\"电气符号\" /> ( )。",
         "options": [
-          "A、",
-          "B、",
-          "C、",
-          "D、"
+          "A、 <img class=\"inline-formula\" src=\"data/images/paper_2_image021.png\" alt=\"电气符号\" />",
+          "B、 <img class=\"inline-formula\" src=\"data/images/paper_2_image022.png\" alt=\"电气符号\" />",
+          "C、 <img class=\"inline-formula\" src=\"data/images/paper_2_image023.png\" alt=\"电气符号\" />",
+          "D、 <img class=\"inline-formula\" src=\"data/images/paper_2_image024.png\" alt=\"电气符号\" />"
         ],
         "answer": "A",
-        "images": [
-          "data/images/paper_2_image020.png",
-          "data/images/paper_2_image021.png",
-          "data/images/paper_2_image022.png",
-          "data/images/paper_2_image023.png",
-          "data/images/paper_2_image024.png"
-        ]
+        "images": []
       },
       {
         "index": 152,
@@ -5041,7 +4990,7 @@
           "A、所有电器设备应外表清洁，安装稳固，易于拆卸、修理和调整",
           "B、所有电气设备、元件应按图纸要求配备齐全",
           "C、机床电气设备应有可靠的接地线，其截面积应与相线截面积相同或不小于4mm2",
-          "D、电线管应整齐\n得 分\n评分人"
+          "D、电线管应整齐 得 分 评分人"
         ],
         "answer": "D",
         "images": []
@@ -5170,31 +5119,25 @@
         "index": 171,
         "type": "judge",
         "score": 0.5,
-        "content": "触发电路中一般设有最小逆变角保护，确保不小于。",
+        "content": "触发电路中一般设有最小逆变角保护，确保 <img class=\"inline-formula\" src=\"data/images/paper_2_image025.png\" alt=\"电气符号\" /> 不小于 <img class=\"inline-formula\" src=\"data/images/paper_2_image026.png\" alt=\"电气符号\" /> 。",
         "options": [
           "正确 (√)",
           "错误 (×)"
         ],
         "answer": "√",
-        "images": [
-          "data/images/paper_2_image025.png",
-          "data/images/paper_2_image026.png"
-        ]
+        "images": []
       },
       {
         "index": 172,
         "type": "judge",
         "score": 0.5,
-        "content": "为防止产生环流，必须满足，即。",
+        "content": "为防止产生环流，必须满足 <img class=\"inline-formula\" src=\"data/images/paper_2_image027.png\" alt=\"电气符号\" /> ，即 <img class=\"inline-formula\" src=\"data/images/paper_2_image028.png\" alt=\"电气符号\" /> 。",
         "options": [
           "正确 (√)",
           "错误 (×)"
         ],
         "answer": "√",
-        "images": [
-          "data/images/paper_2_image027.png",
-          "data/images/paper_2_image028.png"
-        ]
+        "images": []
       },
       {
         "index": 173,
@@ -5260,15 +5203,13 @@
         "index": 178,
         "type": "judge",
         "score": 0.5,
-        "content": "这种调速方法就是当电枢电压不变时，用减小磁通使电动机转速升高的方法来进行调速。",
+        "content": "这种调速方法就是当电枢电压不变时，用减小磁通 <img class=\"inline-formula\" src=\"data/images/paper_2_image029.png\" alt=\"电气符号\" /> 使电动机转速升高的方法来进行调速。",
         "options": [
           "正确 (√)",
           "错误 (×)"
         ],
         "answer": "√",
-        "images": [
-          "data/images/paper_2_image029.png"
-        ]
+        "images": []
       },
       {
         "index": 179,
@@ -6051,7 +5992,7 @@
         "score": 0.5,
         "content": "振荡周期T＝Tl+T2，其中T1＝( )。",
         "options": [
-          "A、0.693 C2RlR2\n/（ Rl+R2）",
+          "A、0.693 C2RlR2 /（ Rl+R2）",
           "B、0.693（ Rl+R2）/C2RlR2",
           "C、0.693R2C2",
           "D、0.693RlC1"
@@ -6233,18 +6174,13 @@
         "score": 0.5,
         "content": "三相桥式电路平均逆变电压Ud＝( )。",
         "options": [
-          "A、",
-          "B、",
-          "C、",
-          "D、"
+          "A、 <img class=\"inline-formula\" src=\"data/images/paper_3_image002.png\" alt=\"电气符号\" />",
+          "B、 <img class=\"inline-formula\" src=\"data/images/paper_3_image003.png\" alt=\"电气符号\" />",
+          "C、 <img class=\"inline-formula\" src=\"data/images/paper_3_image004.png\" alt=\"电气符号\" />",
+          "D、 <img class=\"inline-formula\" src=\"data/images/paper_3_image005.png\" alt=\"电气符号\" />"
         ],
         "answer": "B",
-        "images": [
-          "data/images/paper_3_image002.png",
-          "data/images/paper_3_image003.png",
-          "data/images/paper_3_image004.png",
-          "data/images/paper_3_image005.png"
-        ]
+        "images": []
       },
       {
         "index": 51,
@@ -6446,7 +6382,7 @@
         "index": 65,
         "type": "choice",
         "score": 0.5,
-        "content": "当LC并联电路的固有频率等于电源频率时，并联电路发生并联谐振，此时并联电路具有( )。",
+        "content": "当LC并联电路的固有频率  等于电源频率时，并联电路发生并联谐振，此时并联电路具有( )。",
         "options": [
           "A、阻抗适中",
           "B、阻抗为零",
@@ -6479,14 +6415,12 @@
         "content": "与放大器获得最大效率的条件一样，( )时，负载上可获得最大功率。",
         "options": [
           "A、Rˊ＝Ri",
-          "B、RˊRi",
+          "B、Rˊ <img class=\"inline-formula\" src=\"data/images/paper_3_image007.png\" alt=\"电气符号\" /> Ri",
           "C、Rˊ>Ri",
           "D、Rˊ<Ri"
         ],
         "answer": "A",
-        "images": [
-          "data/images/paper_3_image007.png"
-        ]
+        "images": []
       },
       {
         "index": 68,
@@ -6758,22 +6692,15 @@
         "index": 87,
         "type": "choice",
         "score": 0.5,
-        "content": "电动机绕组电感L，当V突然导通时，绕组电流按指数规律上升，时间常数＝( )，是电动机绕组的电阻值。",
+        "content": "电动机绕组电感L，当V突然导通时，绕组电流按指数规律上升，时间常数 <img class=\"inline-formula\" src=\"data/images/paper_3_image008.png\" alt=\"电气符号\" /> ＝( )， <img class=\"inline-formula\" src=\"data/images/paper_3_image009.png\" alt=\"电气符号\" /> 是电动机绕组的电阻值。",
         "options": [
-          "A、",
-          "B、",
-          "C、",
-          "D、"
+          "A、 <img class=\"inline-formula\" src=\"data/images/paper_3_image010.png\" alt=\"电气符号\" />",
+          "B、 <img class=\"inline-formula\" src=\"data/images/paper_3_image011.png\" alt=\"电气符号\" />",
+          "C、 <img class=\"inline-formula\" src=\"data/images/paper_3_image012.png\" alt=\"电气符号\" />",
+          "D、 <img class=\"inline-formula\" src=\"data/images/paper_3_image013.png\" alt=\"电气符号\" />"
         ],
         "answer": "B",
-        "images": [
-          "data/images/paper_3_image008.png",
-          "data/images/paper_3_image009.png",
-          "data/images/paper_3_image010.png",
-          "data/images/paper_3_image011.png",
-          "data/images/paper_3_image012.png",
-          "data/images/paper_3_image013.png"
-        ]
+        "images": []
       },
       {
         "index": 88,
@@ -7493,7 +7420,7 @@
         "index": 139,
         "type": "choice",
         "score": 0.5,
-        "content": "绘图时，特征符号表示( )。",
+        "content": "绘图时，特征符号 <img class=\"inline-formula\" src=\"data/images/paper_3_image014.png\" alt=\"电气符号\" /> 表示( )。",
         "options": [
           "A、表面粗糙度",
           "B、直径的尺寸公差等级",
@@ -7501,9 +7428,7 @@
           "D、基准"
         ],
         "answer": "C",
-        "images": [
-          "data/images/paper_3_image014.png"
-        ]
+        "images": []
       },
       {
         "index": 140,
@@ -7523,7 +7448,7 @@
         "index": 141,
         "type": "choice",
         "score": 0.5,
-        "content": "电阻器的阻值及精度等级一般用文字或数字直接印于电阻器上。允许偏差为5%用( )表示。",
+        "content": "电阻器的阻值及精度等级一般用文字或数字直接印于电阻器上。允许偏差为 <img class=\"inline-formula\" src=\"data/images/paper_3_image015.png\" alt=\"电气符号\" /> 5%用( )表示。",
         "options": [
           "A、无色",
           "B、银色",
@@ -7531,9 +7456,7 @@
           "D、白色"
         ],
         "answer": "C",
-        "images": [
-          "data/images/paper_3_image015.png"
-        ]
+        "images": []
       },
       {
         "index": 142,
@@ -7665,21 +7588,15 @@
         "index": 151,
         "type": "choice",
         "score": 0.5,
-        "content": "JK触发器的特性方程是( )。",
+        "content": "JK触发器的特性方程 <img class=\"inline-formula\" src=\"data/images/paper_3_image016.png\" alt=\"电气符号\" /> 是( )。",
         "options": [
-          "A、",
-          "B、",
-          "C、",
-          "D、"
+          "A、 <img class=\"inline-formula\" src=\"data/images/paper_3_image017.png\" alt=\"电气符号\" />",
+          "B、 <img class=\"inline-formula\" src=\"data/images/paper_3_image018.png\" alt=\"电气符号\" />",
+          "C、 <img class=\"inline-formula\" src=\"data/images/paper_3_image019.png\" alt=\"电气符号\" />",
+          "D、 <img class=\"inline-formula\" src=\"data/images/paper_3_image020.png\" alt=\"电气符号\" />"
         ],
         "answer": "A",
-        "images": [
-          "data/images/paper_3_image016.png",
-          "data/images/paper_3_image017.png",
-          "data/images/paper_3_image018.png",
-          "data/images/paper_3_image019.png",
-          "data/images/paper_3_image020.png"
-        ]
+        "images": []
       },
       {
         "index": 152,
@@ -7802,7 +7719,7 @@
           "A、0.5",
           "B、1",
           "C、2",
-          "D、4\n得 分\n评分人"
+          "D、4 得 分 评分人"
         ],
         "answer": "B",
         "images": []
@@ -9420,7 +9337,7 @@
         "index": 81,
         "type": "choice",
         "score": 0.5,
-        "content": "逻辑保护电路一旦出现( )的情况，与非门立即输出低电平，使和均被箝位于“0”，将两组触发器同时封锁。",
+        "content": "逻辑保护电路一旦出现( )的情况，与非门立即输出低电平，使 <img class=\"inline-formula\" src=\"data/images/paper_4_image003.png\" alt=\"电气符号\" /> 和 <img class=\"inline-formula\" src=\"data/images/paper_4_image004.png\" alt=\"电气符号\" /> 均被箝位于“0”，将两组触发器同时封锁。",
         "options": [
           "A、uR=1、uF＝0",
           "B、uR=0、uF＝0",
@@ -9428,10 +9345,7 @@
           "D、uR=1、uF＝1"
         ],
         "answer": "D",
-        "images": [
-          "data/images/paper_4_image003.png",
-          "data/images/paper_4_image004.png"
-        ]
+        "images": []
       },
       {
         "index": 82,
@@ -9451,7 +9365,7 @@
         "index": 83,
         "type": "choice",
         "score": 0.5,
-        "content": "非编码键盘接口\n一般通过( )或8255、8155等并行I/O接口和MPU相连。",
+        "content": "非编码键盘接口 一般通过( )或8255、8155等并行I/O接口和MPU相连。",
         "options": [
           "A、与门",
           "B、与非门",
@@ -9479,22 +9393,15 @@
         "index": 85,
         "type": "choice",
         "score": 0.5,
-        "content": "是电动机绕组的电阻值，L是电动机绕组电感，R0为限流电阻，当V突然导通时，绕组电流按指数规律上升，时间常数＝( )。",
+        "content": "<img class=\"inline-formula\" src=\"data/images/paper_4_image005.png\" alt=\"电气符号\" /> 是电动机绕组的电阻值，L是电动机绕组电感，R0为限流电阻，当V突然导通时，绕组电流按指数规律上升，时间常数 <img class=\"inline-formula\" src=\"data/images/paper_4_image006.png\" alt=\"电气符号\" /> ＝( )。",
         "options": [
-          "A、",
-          "B、",
-          "C、",
-          "D、"
+          "A、 <img class=\"inline-formula\" src=\"data/images/paper_4_image007.png\" alt=\"电气符号\" />",
+          "B、 <img class=\"inline-formula\" src=\"data/images/paper_4_image008.png\" alt=\"电气符号\" />",
+          "C、 <img class=\"inline-formula\" src=\"data/images/paper_4_image009.png\" alt=\"电气符号\" />",
+          "D、 <img class=\"inline-formula\" src=\"data/images/paper_4_image010.png\" alt=\"电气符号\" />"
         ],
         "answer": "B",
-        "images": [
-          "data/images/paper_4_image005.png",
-          "data/images/paper_4_image006.png",
-          "data/images/paper_4_image007.png",
-          "data/images/paper_4_image008.png",
-          "data/images/paper_4_image009.png",
-          "data/images/paper_4_image010.png"
-        ]
+        "images": []
       },
       {
         "index": 86,
@@ -10254,7 +10161,7 @@
         "index": 139,
         "type": "choice",
         "score": 0.5,
-        "content": "绘图时，特征符号表示( )。",
+        "content": "绘图时，特征符号 <img class=\"inline-formula\" src=\"data/images/paper_4_image017.png\" alt=\"电气符号\" /> 表示( )。",
         "options": [
           "A、表面粗糙度",
           "B、直径的尺寸公差等级",
@@ -10262,9 +10169,7 @@
           "D、基准"
         ],
         "answer": "A",
-        "images": [
-          "data/images/paper_4_image017.png"
-        ]
+        "images": []
       },
       {
         "index": 140,
@@ -10424,21 +10329,15 @@
         "index": 151,
         "type": "choice",
         "score": 0.5,
-        "content": "逻辑代数的基本公式和常用公式中反演律（德、摩根定理）( )。",
+        "content": "逻辑代数的基本公式和常用公式中反演律（德、摩根定理） <img class=\"inline-formula\" src=\"data/images/paper_4_image018.png\" alt=\"电气符号\" /> ( )。",
         "options": [
-          "A、",
-          "B、",
-          "C、",
-          "D、"
+          "A、 <img class=\"inline-formula\" src=\"data/images/paper_4_image019.png\" alt=\"电气符号\" />",
+          "B、 <img class=\"inline-formula\" src=\"data/images/paper_4_image020.png\" alt=\"电气符号\" />",
+          "C、 <img class=\"inline-formula\" src=\"data/images/paper_4_image021.png\" alt=\"电气符号\" />",
+          "D、 <img class=\"inline-formula\" src=\"data/images/paper_4_image022.png\" alt=\"电气符号\" />"
         ],
         "answer": "A",
-        "images": [
-          "data/images/paper_4_image018.png",
-          "data/images/paper_4_image019.png",
-          "data/images/paper_4_image020.png",
-          "data/images/paper_4_image021.png",
-          "data/images/paper_4_image022.png"
-        ]
+        "images": []
       },
       {
         "index": 152,
@@ -10561,7 +10460,7 @@
           "A、表盘玻璃干净、完整",
           "B、盘面刻度、字码清楚",
           "C、表针动作灵活，计量正确",
-          "D、垂直安装\n得 分\n评分人"
+          "D、垂直安装 得 分 评分人"
         ],
         "answer": "D",
         "images": []
@@ -10654,29 +10553,25 @@
         "index": 168,
         "type": "judge",
         "score": 0.5,
-        "content": "造成逆变失败的原因是逆变角太大。",
+        "content": "造成逆变失败的原因是逆变角 <img class=\"inline-formula\" src=\"data/images/paper_4_image023.png\" alt=\"电气符号\" /> 太大。",
         "options": [
           "正确 (√)",
           "错误 (×)"
         ],
         "answer": "×",
-        "images": [
-          "data/images/paper_4_image023.png"
-        ]
+        "images": []
       },
       {
         "index": 169,
         "type": "judge",
         "score": 0.5,
-        "content": "直流环流采用消除外，交流环流则采用回路中加入均衡电抗器的方法进行限制。",
+        "content": "直流环流采用 <img class=\"inline-formula\" src=\"data/images/paper_4_image024.png\" alt=\"电气符号\" /> 消除外，交流环流则采用回路中加入均衡电抗器的方法进行限制。",
         "options": [
           "正确 (√)",
           "错误 (×)"
         ],
         "answer": "×",
-        "images": [
-          "data/images/paper_4_image024.png"
-        ]
+        "images": []
       },
       {
         "index": 170,

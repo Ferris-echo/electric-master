@@ -4,3 +4,15 @@ __pycache__/
 *.pyc
 .superpowers/
 inspect_data.py
+*.zip
+test_*.js
+test_*.py
+check_*.py
+audit_*.py
+scan_images.py
+inspect_*.py
+verify_*.py
+image_audit_report.txt
+detailed_image_audit.py
+cloudflare_deploy/
+.temp_browser_profile/
