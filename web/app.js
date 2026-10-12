@@ -64,11 +64,21 @@
         }, 2200);
     }
 
-    // --- 题库解析与扁平化 (1000 题完整收录 + 2026 精简卷 210 题) ---
+    // --- 题库解析与扁平化 (1000 题完整收录 + 2026年 10月21/22/23日 三天考前精简特训卷各 210 题，全库总计 1630 题) ---
     const rawPapers = window.EXAM_PAPERS || [];
     const all1000Questions = [];
-    const sim2026Questions = [];
+    const sim2026QuestionsByDate = {
+        '1021': [],
+        '1022': [],
+        '1023': []
+    };
     const allQuestionsPool = [];
+
+    const SIM_DATES = {
+        '1021': { id: 'paper_2026_1021', date: '1021', name: '10月21日', title: '2026年10月21日模拟卷(精简版)', total: 210 },
+        '1022': { id: 'paper_2026_1022', date: '1022', name: '10月22日', title: '2026年10月22日模拟卷(精简版)', total: 210 },
+        '1023': { id: 'paper_2026_1023', date: '1023', name: '10月23日', title: '2026年10月23日模拟卷(精简版)', total: 210 }
+    };
 
     rawPapers.forEach((paper) => {
         paper.questions.forEach((q) => {
@@ -80,17 +90,44 @@
                 globalIndex: allQuestionsPool.length + 1
             };
             allQuestionsPool.push(item);
-            if (paper.id === 'paper_2026') {
-                sim2026Questions.push(item);
+
+            if (paper.id === 'paper_2026_1021' || paper.id === 'paper_2026') {
+                sim2026QuestionsByDate['1021'].push(item);
+            } else if (paper.id === 'paper_2026_1022') {
+                sim2026QuestionsByDate['1022'].push(item);
+            } else if (paper.id === 'paper_2026_1023') {
+                sim2026QuestionsByDate['1023'].push(item);
             } else {
                 all1000Questions.push(item);
             }
         });
     });
 
+    function getSim2026Questions(dateKey = null) {
+        const key = dateKey || state.selectedSimDate || '1021';
+        return sim2026QuestionsByDate[key] || sim2026QuestionsByDate['1021'] || [];
+    }
+
+    // 针对 2026 精简题库按日期隔离的存储 key 辅助方法
+    function getModuleCursorKey(modId) {
+        if (modId && modId.startsWith('paper_2026_')) {
+            return `${modId}_${state.selectedSimDate || '1021'}`;
+        }
+        return modId;
+    }
+
+    function getModuleAnswerKey(modId) {
+        if (modId && modId.startsWith('paper_2026_')) {
+            return `${modId}_${state.selectedSimDate || '1021'}`;
+        }
+        return modId;
+    }
+
     // --- 状态定义 (各模块完全独立进度架构) ---
     const state = {
         activeModuleId: 'full_all',
+        selectedSimDate: '1021', // '1021' | '1022' | '1023'
+        quickPeekMap: {},        // 单题速查答案状态映射 [qId]: boolean
         
         // 独立游标：记录用户在各个模块当前做到第几题
         moduleCursors: {
@@ -102,11 +139,9 @@
             'paper_2': 0,
             'paper_3': 0,
             'paper_4': 0,
-            'paper_2026_all': 0,
-            'paper_2026_choice': 0,
-            'paper_2026_multiple': 0,
-            'paper_2026_judge': 0,
-            'paper_2026_exam': 0,
+            'paper_2026_all_1021': 0, 'paper_2026_choice_1021': 0, 'paper_2026_multiple_1021': 0, 'paper_2026_judge_1021': 0, 'paper_2026_exam_1021': 0,
+            'paper_2026_all_1022': 0, 'paper_2026_choice_1022': 0, 'paper_2026_multiple_1022': 0, 'paper_2026_judge_1022': 0, 'paper_2026_exam_1022': 0,
+            'paper_2026_all_1023': 0, 'paper_2026_choice_1023': 0, 'paper_2026_multiple_1023': 0, 'paper_2026_judge_1023': 0, 'paper_2026_exam_1023': 0,
             'wrong': 0,
             'favorite': 0
         },
@@ -121,10 +156,9 @@
             'paper_2': {},
             'paper_3': {},
             'paper_4': {},
-            'paper_2026_all': {},
-            'paper_2026_choice': {},
-            'paper_2026_multiple': {},
-            'paper_2026_judge': {}
+            'paper_2026_all_1021': {}, 'paper_2026_choice_1021': {}, 'paper_2026_multiple_1021': {}, 'paper_2026_judge_1021': {},
+            'paper_2026_all_1022': {}, 'paper_2026_choice_1022': {}, 'paper_2026_multiple_1022': {}, 'paper_2026_judge_1022': {},
+            'paper_2026_all_1023': {}, 'paper_2026_choice_1023': {}, 'paper_2026_multiple_1023': {}, 'paper_2026_judge_1023': {}
         },
 
         // 全局错题集与收藏集
@@ -175,6 +209,31 @@
                 });
             }
 
+            // 读取已选考期
+            const simDate = localStorage.getItem('electrician_sim_date_v4');
+            if (simDate && ['1021', '1022', '1023'].includes(simDate)) {
+                state.selectedSimDate = simDate;
+            } else {
+                state.selectedSimDate = '1021';
+            }
+
+            // 旧版 2026 单卷数据平滑迁移至 1021 考期
+            if (state.moduleAnswers['paper_2026_all'] && !state.moduleAnswers['paper_2026_all_1021']) {
+                state.moduleAnswers['paper_2026_all_1021'] = state.moduleAnswers['paper_2026_all'];
+                if (state.moduleCursors['paper_2026_all']) {
+                    state.moduleCursors['paper_2026_all_1021'] = state.moduleCursors['paper_2026_all'];
+                }
+            }
+            if (state.moduleAnswers['paper_2026_choice'] && !state.moduleAnswers['paper_2026_choice_1021']) {
+                state.moduleAnswers['paper_2026_choice_1021'] = state.moduleAnswers['paper_2026_choice'];
+            }
+            if (state.moduleAnswers['paper_2026_multiple'] && !state.moduleAnswers['paper_2026_multiple_1021']) {
+                state.moduleAnswers['paper_2026_multiple_1021'] = state.moduleAnswers['paper_2026_multiple'];
+            }
+            if (state.moduleAnswers['paper_2026_judge'] && !state.moduleAnswers['paper_2026_judge_1021']) {
+                state.moduleAnswers['paper_2026_judge_1021'] = state.moduleAnswers['paper_2026_judge'];
+            }
+
             const wr = localStorage.getItem(STORAGE_KEY_WRONGS);
             if (wr) state.wrongQuestions = new Set(JSON.parse(wr));
 
@@ -213,6 +272,7 @@
             localStorage.setItem(STORAGE_KEY_THEME, state.theme);
             localStorage.setItem(STORAGE_KEY_FONTSIZE, state.fontSize);
             localStorage.setItem(STORAGE_KEY_ACTIVE_MODULE, state.activeModuleId);
+            localStorage.setItem('electrician_sim_date_v4', state.selectedSimDate || '1021');
         } catch(e) {
             console.error('Storage save error:', e);
         }
@@ -258,13 +318,16 @@
         } else if (moduleId === 'full_judge') {
             return all1000Questions.filter(q => q.type === 'judge');
         } else if (moduleId === 'paper_2026_all' || moduleId === 'paper_2026') {
-            return sim2026Questions;
+            return getSim2026Questions();
         } else if (moduleId === 'paper_2026_choice') {
-            return sim2026Questions.filter(q => q.type === 'choice');
+            return getSim2026Questions().filter(q => q.type === 'choice');
         } else if (moduleId === 'paper_2026_multiple') {
-            return sim2026Questions.filter(q => q.type === 'multiple');
+            return getSim2026Questions().filter(q => q.type === 'multiple');
         } else if (moduleId === 'paper_2026_judge') {
-            return sim2026Questions.filter(q => q.type === 'judge');
+            return getSim2026Questions().filter(q => q.type === 'judge');
+        } else if (moduleId.startsWith('paper_2026_10')) {
+            const dateKey = moduleId.replace('paper_2026_', '');
+            return getSim2026Questions(dateKey);
         } else if (moduleId.startsWith('paper_')) {
             return all1000Questions.filter(q => q.paperId === moduleId);
         } else if (moduleId === 'wrong') {
@@ -284,20 +347,22 @@
     function getCurrentIndex() {
         const total = getActiveQuestions().length;
         if (total === 0) return 0;
-        let idx = state.moduleCursors[state.activeModuleId];
+        const cKey = getModuleCursorKey(state.activeModuleId);
+        let idx = state.moduleCursors[cKey];
         if (idx === undefined || idx < 0) idx = 0;
         if (idx >= total) idx = total - 1;
-        state.moduleCursors[state.activeModuleId] = idx;
+        state.moduleCursors[cKey] = idx;
         return idx;
     }
 
     function setCurrentIndex(newIdx) {
         const total = getActiveQuestions().length;
+        const cKey = getModuleCursorKey(state.activeModuleId);
         if (total === 0) {
-            state.moduleCursors[state.activeModuleId] = 0;
+            state.moduleCursors[cKey] = 0;
             return;
         }
-        state.moduleCursors[state.activeModuleId] = Math.max(0, Math.min(newIdx, total - 1));
+        state.moduleCursors[cKey] = Math.max(0, Math.min(newIdx, total - 1));
         saveState();
     }
 
@@ -305,19 +370,22 @@
         if (state.activeModuleId === 'exam_random' || state.activeModuleId === 'quick_quiz' || state.activeModuleId === 'paper_2026_exam') {
             return state.examState.answers;
         }
-        if (!state.moduleAnswers[state.activeModuleId]) {
-            state.moduleAnswers[state.activeModuleId] = {};
+        const aKey = getModuleAnswerKey(state.activeModuleId);
+        if (!state.moduleAnswers[aKey]) {
+            state.moduleAnswers[aKey] = {};
         }
-        return state.moduleAnswers[state.activeModuleId];
+        return state.moduleAnswers[aKey];
     }
 
     function getPaperTitleInfo(paperId, rawName) {
-        if (paperId === 'paper_2026' || paperId === 'paper_2026_all') {
+        if (paperId && (paperId.startsWith('paper_2026') || paperId === 'paper_2026_all')) {
+            const datePart = paperId.includes('1022') ? '1022' : (paperId.includes('1023') ? '1023' : (state.selectedSimDate || '1021'));
+            const dateCfg = SIM_DATES[datePart] || SIM_DATES['1021'];
             return {
-                badge: '2026精简卷',
-                title: '2026考前精简模拟卷',
-                sub: '2026年10月21日高级工模拟卷 (精炼210题)',
-                color: 'text-blue-600 bg-blue-50'
+                badge: `${dateCfg.name}精简卷`,
+                title: dateCfg.title,
+                sub: `${dateCfg.title} (精炼210题)`,
+                color: 'text-amber-800 bg-amber-50'
             };
         }
         if (paperId === 'paper_2024') {
@@ -424,7 +492,8 @@
         ];
 
         p2026Modules.forEach(m => {
-            const answers = state.moduleAnswers[m.id] || {};
+            const answerKey = getModuleAnswerKey(m.id);
+            const answers = state.moduleAnswers[answerKey] || {};
             const doneCount = Object.keys(answers).length;
             const pct = Math.round((doneCount / m.total) * 100);
 
@@ -445,6 +514,22 @@
             }
         });
 
+        // 渲染考前冲刺日期药丸高亮
+        const curDate = state.selectedSimDate || '1021';
+        document.querySelectorAll('.sim-date-tab-btn').forEach(btn => {
+            const btnDate = btn.getAttribute('data-sim-date');
+            if (btnDate === curDate) {
+                btn.className = "sim-date-tab-btn sim-date-tab-active py-1 px-1 rounded-lg text-xs font-bold text-center flex flex-col items-center justify-center transition cursor-pointer";
+            } else {
+                btn.className = "sim-date-tab-btn sim-date-tab-inactive py-1 px-1 rounded-lg text-xs font-bold text-center flex flex-col items-center justify-center transition cursor-pointer";
+            }
+        });
+        const dateCfg = SIM_DATES[curDate] || SIM_DATES['1021'];
+        const allText = document.getElementById('title-sim-all-text');
+        if (allText) allText.textContent = `${dateCfg.name}特训全刷`;
+        const examText = document.getElementById('title-sim-exam-text');
+        if (examText) examText.textContent = `${dateCfg.name}精简模考`;
+
         const elWrong = document.getElementById('sidebar-wrong-count');
         if (elWrong) elWrong.textContent = `${state.wrongQuestions.size} 道待复习`;
 
@@ -457,7 +542,7 @@
         if (!container) return;
 
         // 历年分卷只展示属于 1000 题体系的原卷（排除独立精简版 paper_2026）
-        const fivePapers = rawPapers.filter(p => p.id !== 'paper_2026');
+        const fivePapers = rawPapers.filter(p => !p.id.startsWith('paper_2026'));
 
         container.innerHTML = fivePapers.map((p) => {
             const isSelected = (state.activeModuleId === p.id);
@@ -729,20 +814,21 @@
         // 顶部标题胶囊徽章
         const moduleBadge = document.getElementById('badge-current-module');
         if (moduleBadge) {
+            const dateCfg = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
             if (state.activeModuleId === 'paper_2026_all') {
-                moduleBadge.textContent = '2026精简卷全刷 (210题)';
+                moduleBadge.textContent = `${dateCfg.name}特训卷全刷 (210题)`;
                 moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-blue-100 text-blue-700 shadow-sm';
             } else if (state.activeModuleId === 'paper_2026_choice') {
-                moduleBadge.textContent = '2026精简卷 · 单选专项 (150题)';
+                moduleBadge.textContent = `${dateCfg.name} · 单选专项 (150题)`;
                 moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-indigo-100 text-indigo-700 shadow-sm';
             } else if (state.activeModuleId === 'paper_2026_multiple') {
-                moduleBadge.textContent = '2026精简卷 · 多选专项 (20题)';
+                moduleBadge.textContent = `${dateCfg.name} · 多选专项 (20题)`;
                 moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-purple-100 text-purple-700 shadow-sm';
             } else if (state.activeModuleId === 'paper_2026_judge') {
-                moduleBadge.textContent = '2026精简卷 · 判断专项 (40题)';
+                moduleBadge.textContent = `${dateCfg.name} · 判断专项 (40题)`;
                 moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-cyan-100 text-cyan-800 shadow-sm';
             } else if (state.activeModuleId === 'paper_2026_exam') {
-                moduleBadge.textContent = '2026精简全真模考 (210题 · 限时120分)';
+                moduleBadge.textContent = `${dateCfg.name}精简全真模考 (210题 · 限时120分)`;
                 moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-orange-100 text-orange-800 shadow-sm';
             } else if (state.activeModuleId === 'full_all') {
                 moduleBadge.textContent = '全部题库刷题 (1000题)';
@@ -830,6 +916,7 @@
         const isCorrect = (selectedKey === q.answer);
         const isFav = state.favoriteQuestions.has(q.id);
         const isMultiple = (q.type === 'multiple');
+        const isPeeked = !isExamOngoing && !!state.quickPeekMap[q.id];
 
         // 1. 电路图 / 原理图渲染 (统一置于顶栏轻提示，不再在每张图下冗余堆砌文字)
         let circuitImgHtml = '';
@@ -886,7 +973,7 @@
                 const isKeyInUserSelected = selectedKey ? selectedKey.includes(key) : false;
                 const isKeyDrafted = isExamOngoing ? isKeyInUserSelected : state.multiDraft.has(key);
 
-                if (state.reciteMode && !isExamMode) {
+                if ((state.reciteMode || isPeeked) && !isExamMode) {
                     if (isKeyInStandard) {
                         btnClass += "border-purple-500 bg-purple-50 text-purple-900 font-semibold shadow-sm";
                         badgeClass += "bg-purple-600 text-white shadow-sm";
@@ -931,7 +1018,7 @@
                 const isSelected = (selectedKey === key);
                 const isStandardAnswer = (q.answer === key);
 
-                if (state.reciteMode && !isExamMode) {
+                if ((state.reciteMode || isPeeked) && !isExamMode) {
                     if (isStandardAnswer) {
                         btnClass += "border-green-500 bg-green-50 text-green-900 font-semibold shadow-sm";
                         badgeClass += "bg-green-600 text-white shadow-sm";
@@ -1010,14 +1097,14 @@
 
         // 4. 答案解析横幅
         let feedbackBannerHtml = '';
-        if (state.reciteMode || isFeedback) {
-            const isBannerCorrect = isCorrect || state.reciteMode;
-            const bannerBg = isBannerCorrect ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800';
-            let bannerTitle = isBannerCorrect ? (state.reciteMode ? '考点标准答案' : '回答正确！') : '回答错误！';
+        if (state.reciteMode || isFeedback || isPeeked) {
+            const isBannerCorrect = isCorrect || state.reciteMode || isPeeked;
+            const bannerBg = (isPeeked && !hasAnswered) ? 'bg-amber-50 border-amber-200 text-amber-900' : (isBannerCorrect ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800');
+            let bannerTitle = (isPeeked && !hasAnswered) ? '本题标准答案速查' : (isBannerCorrect ? (state.reciteMode ? '考点标准答案' : '回答正确！') : '回答错误！');
             if (isMultiple && isFeedback && !state.reciteMode) {
                 bannerTitle = isCorrect ? '多选题回答完全正确！(+1.0分)' : '多选题回答不完整或错误！(不得分)';
             }
-            const bannerIcon = isBannerCorrect ? getIcon('CheckCircle', 'w-5 h-5 text-green-600') : getIcon('XCircle', 'w-5 h-5 text-red-600');
+            const bannerIcon = (isPeeked && !hasAnswered) ? '<span>💡</span>' : (isBannerCorrect ? getIcon('CheckCircle', 'w-5 h-5 text-green-600') : getIcon('XCircle', 'w-5 h-5 text-red-600'));
 
             let removeWrongBtn = '';
             if (state.wrongQuestions.has(q.id)) {
@@ -1029,7 +1116,7 @@
             }
 
             let yourAnsHtml = '';
-            if (!state.reciteMode) {
+            if (!state.reciteMode && hasAnswered) {
                 yourAnsHtml = `
                     <span class="ml-3 text-sm">您的答案：<span class="font-black ${isCorrect ? 'text-green-700' : 'text-red-600'} text-lg">${selectedKey || '未作答'}</span></span>
                 `;
@@ -1068,11 +1155,21 @@
                             </span>
                         </div>
 
-                        <!-- 收藏本题按钮 (Q 弹星星) -->
-                        <button id="btn-toggle-favorite" class="q-bounce-btn flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full transition ${isFav ? 'bg-amber-50 text-amber-700 border border-amber-200 animate-q-star' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}">
-                            ${isFav ? getIcon('StarFilled', 'w-4 h-4') : getIcon('Star', 'w-4 h-4')}
-                            <span>${isFav ? '已收藏' : '收藏本题'}</span>
-                        </button>
+                        <div class="flex items-center gap-2">
+                            <!-- 💡 看答案速查按钮 -->
+                            ${!isExamOngoing ? `
+                            <button id="btn-quick-peek-answer" class="q-bounce-btn flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full transition border cursor-pointer ${isPeeked ? 'bg-amber-100 text-amber-900 border-amber-300 shadow-sm' : 'bg-gray-50 text-gray-600 hover:bg-amber-50 hover:text-amber-800 border-gray-200'}" title="快速展开/收起本题答案">
+                                <span>💡</span>
+                                <span>${isPeeked ? '收起答案' : '看答案'}</span>
+                            </button>
+                            ` : ''}
+
+                            <!-- 收藏本题按钮 (Q 弹星星) -->
+                            <button id="btn-toggle-favorite" class="q-bounce-btn flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full transition cursor-pointer ${isFav ? 'bg-amber-50 text-amber-700 border border-amber-200 animate-q-star' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}">
+                                ${isFav ? getIcon('StarFilled', 'w-4 h-4') : getIcon('Star', 'w-4 h-4')}
+                                <span>${isFav ? '已收藏' : '收藏本题'}</span>
+                            </button>
+                        </div>
                     </div>
 
                     <!-- 题干正文 -->
@@ -1164,6 +1261,15 @@
         if (btnSubmitCard) {
             btnSubmitCard.onclick = () => {
                 if (confirm('确认交卷并生成成绩单吗？')) submitExam();
+            };
+        }
+
+        // 💡 快速看答案切换
+        const btnQuickPeek = document.getElementById('btn-quick-peek-answer');
+        if (btnQuickPeek) {
+            btnQuickPeek.onclick = () => {
+                state.quickPeekMap[q.id] = !state.quickPeekMap[q.id];
+                renderQuestionCard();
             };
         }
 
@@ -1458,7 +1564,7 @@
 
         const cleanKw = kw.trim();
         if (!cleanKw) {
-            list.innerHTML = `<div class="text-center text-gray-400 py-10 text-sm">输入关键词或点击上方热门考点搜索全量题库 (1210题)</div>`;
+            list.innerHTML = `<div class="text-center text-gray-400 py-10 text-sm">输入关键词或点击上方热门考点搜索全量题库 (1630题)</div>`;
             return;
         }
 
@@ -1474,7 +1580,7 @@
         list.innerHTML = hits.slice(0, 60).map(q => {
             const highlighted = q.content.split(cleanKw).join(`<mark class="bg-amber-200 text-amber-900 px-0.5 rounded font-bold">${cleanKw}</mark>`);
             const typeText = q.type === 'multiple' ? '多选' : (q.type === 'judge' ? '判断' : '单选');
-            const is2026 = (q.paperId === 'paper_2026');
+            const is2026 = (q.paperId && q.paperId.startsWith('paper_2026'));
             const badgeClass = is2026 ? 'bg-amber-100 text-amber-900' : 'bg-blue-50 text-blue-700';
             return `
                 <div class="search-result-item p-3.5 bg-gray-50 rounded-2xl hover:bg-blue-50 cursor-pointer border border-gray-100 transition q-bounce-btn" data-paper-id="${q.paperId}" data-qid="${q.id}">
@@ -1495,9 +1601,12 @@
                 const paperId = item.getAttribute('data-paper-id');
                 const qId = item.getAttribute('data-qid');
                 closeSearchModal();
-                if (paperId === 'paper_2026') {
+                if (paperId && paperId.startsWith('paper_2026')) {
+                    const datePart = paperId.includes('1022') ? '1022' : (paperId.includes('1023') ? '1023' : '1021');
+                    setSimDate(datePart);
                     state.activeModuleId = 'paper_2026_all';
-                    const idx = sim2026Questions.findIndex(q => q.id === qId);
+                    const listForDate = getSim2026Questions(datePart);
+                    const idx = listForDate.findIndex(q => q.id === qId);
                     setCurrentIndex(idx >= 0 ? idx : 0);
                 } else {
                     state.activeModuleId = 'full_all';
@@ -1686,7 +1795,7 @@
         }, { passive: true });
     }
 
-    // --- 移动端侧边栏切换 ---
+    // --- 移动端侧边栏切换 (平滑丝滑高级动效) ---
     function openMobileSidebar() {
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('mobile-sidebar-overlay');
@@ -1694,16 +1803,151 @@
             sidebar.classList.remove('hidden');
             sidebar.classList.add('fixed', 'inset-y-0', 'left-0', 'z-40', 'flex');
             overlay.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                sidebar.classList.add('mobile-open');
+                overlay.classList.add('overlay-open');
+            });
         }
     }
     function closeMobileSidebar() {
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('mobile-sidebar-overlay');
         if (sidebar && overlay) {
-            sidebar.classList.add('hidden');
-            sidebar.classList.remove('fixed', 'inset-y-0', 'left-0', 'z-40');
-            overlay.classList.remove('hidden');
-            overlay.classList.add('hidden');
+            sidebar.classList.remove('mobile-open');
+            overlay.classList.remove('overlay-open');
+            setTimeout(() => {
+                if (!sidebar.classList.contains('mobile-open')) {
+                    sidebar.classList.add('hidden');
+                    sidebar.classList.remove('fixed', 'inset-y-0', 'left-0', 'z-40');
+                    overlay.classList.add('hidden');
+                }
+            }, 280);
+        }
+    }
+
+    // --- 背题模式全局同步 ---
+    function setReciteMode(val = null) {
+        state.reciteMode = (val !== null) ? val : !state.reciteMode;
+        saveState();
+        syncReciteModeUI();
+        renderApp();
+        showToast(state.reciteMode ? '👁️ 已开启背题模式 (直接显现考点答案)' : '📝 已关闭背题模式 (自测刷题状态)');
+    }
+
+    function syncReciteModeUI() {
+        const toggleRecite = document.getElementById('toggle-recite-mode');
+        if (toggleRecite) toggleRecite.checked = state.reciteMode;
+
+        const headerBtn = document.getElementById('btn-header-recite-toggle');
+        if (headerBtn) {
+            if (state.reciteMode) {
+                headerBtn.className = 'q-bounce-btn flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition border border-amber-400 bg-amber-500 text-white shadow-sm shadow-amber-200 cursor-pointer';
+                const textEl = document.getElementById('header-recite-text');
+                if (textEl) textEl.textContent = '背题中';
+            } else {
+                headerBtn.className = 'q-bounce-btn flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition border border-gray-200 bg-gray-50 hover:bg-amber-50 hover:text-amber-900 text-gray-700 shadow-sm cursor-pointer';
+                const textEl = document.getElementById('header-recite-text');
+                if (textEl) textEl.textContent = '背题';
+            }
+        }
+
+        const mobileReciteBtn = document.getElementById('btn-mobile-recite');
+        if (mobileReciteBtn) {
+            if (state.reciteMode) {
+                mobileReciteBtn.className = 'p-2 bg-amber-500 text-white rounded-lg font-bold text-xs flex items-center gap-1 shadow-sm transition';
+            } else {
+                mobileReciteBtn.className = 'p-2 hover:bg-blue-600 rounded-lg text-white font-bold text-xs flex items-center gap-1 transition';
+            }
+        }
+
+        const badgeRecite = document.getElementById('badge-recite-status');
+        if (badgeRecite) {
+            const isExam = (state.activeModuleId === 'exam_random' || state.activeModuleId === 'quick_quiz' || state.activeModuleId === 'paper_2026_exam');
+            if (state.reciteMode && !isExam) {
+                badgeRecite.classList.remove('hidden');
+            } else {
+                badgeRecite.classList.add('hidden');
+            }
+        }
+    }
+
+    // --- 考期切换与首次进入考期自选引导弹窗 ---
+    function setSimDate(dateKey) {
+        if (!SIM_DATES[dateKey]) return;
+        state.selectedSimDate = dateKey;
+        localStorage.setItem('electrician_sim_date_v4', dateKey);
+
+        // 如果当前在 2026 模块，重新渲染题目
+        if (state.activeModuleId && state.activeModuleId.startsWith('paper_2026_')) {
+            renderApp();
+        } else {
+            updateAllModuleProgresses();
+        }
+    }
+
+    const STORAGE_KEY_WELCOME_SEEN = 'electrician_exam_date_prompt_shown_oct2026_v1';
+
+    function initWelcomeDateModal() {
+        const modal = document.getElementById('modal-welcome-date');
+        if (!modal) return;
+
+        // 如果是通过做题记录链接切换设备的（URL 中包含 sync=），则直接跳过，绝不弹出
+        const isFromSyncLink = (window.location.hash && window.location.hash.includes('sync=')) ||
+                               (window.location.search && window.location.search.includes('sync=')) ||
+                               (window.location.href && window.location.href.includes('sync='));
+        if (isFromSyncLink) {
+            localStorage.setItem(STORAGE_KEY_WELCOME_SEEN, 'true');
+            return;
+        }
+
+        // 即便是先前打开过这个网站的老用户，首次打开这个新版，也必须弹出考期提示
+        const hasSeenPrompt = localStorage.getItem(STORAGE_KEY_WELCOME_SEEN);
+        if (!hasSeenPrompt) {
+            setTimeout(() => {
+                // 如果当前已经打开了同步确认弹窗，绝不重叠弹出考期弹窗
+                const syncConfirm = document.getElementById('sync-confirm-modal');
+                if (syncConfirm && !syncConfirm.classList.contains('hidden')) return;
+                modal.classList.remove('hidden');
+            }, 250);
+        }
+
+        const btnClose = document.getElementById('btn-close-welcome-date');
+        if (btnClose) {
+            btnClose.onclick = () => {
+                modal.classList.add('hidden');
+                localStorage.setItem(STORAGE_KEY_WELCOME_SEEN, 'true');
+            };
+        }
+
+        modal.onclick = (e) => {
+            if (e.target.id === 'modal-welcome-date') {
+                modal.classList.add('hidden');
+                localStorage.setItem(STORAGE_KEY_WELCOME_SEEN, 'true');
+            }
+        };
+
+        modal.querySelectorAll('.welcome-date-btn').forEach(btn => {
+            btn.onclick = () => {
+                const targetDate = btn.getAttribute('data-date');
+                localStorage.setItem(STORAGE_KEY_WELCOME_SEEN, 'true');
+                if (targetDate === 'all') {
+                    modal.classList.add('hidden');
+                    switchModule('full_all');
+                    showToast('已进入历年 1000 题全量题库');
+                } else if (SIM_DATES[targetDate]) {
+                    setSimDate(targetDate);
+                    modal.classList.add('hidden');
+                    switchModule('paper_2026_all');
+                    showToast(`已为您自动选中【${SIM_DATES[targetDate].name}考生专属卷】`);
+                }
+            };
+        });
+
+        const btnReselect = document.getElementById('btn-reselect-sim-date');
+        if (btnReselect) {
+            btnReselect.onclick = () => {
+                modal.classList.remove('hidden');
+            };
         }
     }
 
@@ -1763,6 +2007,8 @@
         return {
             v: '4.0',
             ts: Date.now(),
+            activeModuleId: state.activeModuleId,
+            selectedSimDate: state.selectedSimDate || '1021',
             moduleCursors: state.moduleCursors,
             moduleAnswers: state.moduleAnswers,
             wrongQuestions: Array.from(state.wrongQuestions),
@@ -1942,6 +2188,11 @@
         if (!data) return;
         pendingSyncData = data;
 
+        // 若用户在进行跨设备同步，关闭并标记考期迎新弹窗已处理，绝不重叠弹出
+        const welcomeModal = document.getElementById('modal-welcome-date');
+        if (welcomeModal) welcomeModal.classList.add('hidden');
+        localStorage.setItem(STORAGE_KEY_WELCOME_SEEN, 'true');
+
         const modal = document.getElementById('sync-confirm-modal');
         const descEl = document.getElementById('sync-confirm-desc');
         if (!modal) return;
@@ -1978,10 +2229,17 @@
             if (incoming.favoriteQuestions) {
                 state.favoriteQuestions = new Set(incoming.favoriteQuestions);
             }
+            if (incoming.selectedSimDate && SIM_DATES[incoming.selectedSimDate]) {
+                setSimDate(incoming.selectedSimDate);
+            }
+            if (incoming.activeModuleId) {
+                state.activeModuleId = incoming.activeModuleId;
+            }
             if (incoming.theme) applyTheme(incoming.theme);
             if (incoming.fontSize) applyFontSize(incoming.fontSize);
             if (incoming.autoAdvance !== undefined) state.autoAdvance = incoming.autoAdvance;
 
+            localStorage.setItem(STORAGE_KEY_WELCOME_SEEN, 'true');
             saveState();
             renderApp();
             closeSyncConfirmModal();
@@ -2016,6 +2274,14 @@
                 incoming.favoriteQuestions.forEach(id => state.favoriteQuestions.add(id));
             }
 
+            if (incoming.selectedSimDate && SIM_DATES[incoming.selectedSimDate]) {
+                setSimDate(incoming.selectedSimDate);
+            }
+            if (incoming.activeModuleId) {
+                state.activeModuleId = incoming.activeModuleId;
+            }
+
+            localStorage.setItem(STORAGE_KEY_WELCOME_SEEN, 'true');
             saveState();
             renderApp();
             closeSyncConfirmModal();
@@ -2104,12 +2370,29 @@
             };
         });
 
+        // 1.4 考前冲刺日期分段选择器药丸
+        document.querySelectorAll('.sim-date-tab-btn').forEach(btn => {
+            btn.onclick = () => {
+                const dateKey = btn.getAttribute('data-sim-date');
+                if (dateKey) {
+                    setSimDate(dateKey);
+                    if (!state.activeModuleId.startsWith('paper_2026_')) {
+                        switchModule('paper_2026_all');
+                    } else {
+                        renderApp();
+                    }
+                    showToast(`已切换至【${SIM_DATES[dateKey].name}】精简题库`);
+                }
+            };
+        });
+
         // 1.5 2026 精简题库专区按钮绑定
         document.querySelectorAll('[data-module-id]').forEach(btn => {
             btn.onclick = () => {
                 const modId = btn.getAttribute('data-module-id');
                 if (modId === 'paper_2026_exam') {
-                    if (confirm('即将进入 2026 考前精简全真模考：共 210 题（150道单选、20道多选、40道判断），限时 120 分钟，交卷后折算 100 分制，准备好了吗？')) {
+                    const dateCfg = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
+                    if (confirm(`即将进入【${dateCfg.name}精简全真模考】：共 210 题（150道单选、20道多选、40道判断），限时 120 分钟，交卷后折算 100 分制，准备好了吗？`)) {
                         start2026Exam();
                         closeMobileSidebar();
                     }
@@ -2189,15 +2472,19 @@
             };
         }
 
-        // 7. 背题模式开关
+        // 7. 背题模式开关 (侧边栏 + 顶栏 + 移动端顶栏全联动)
         const toggleRecite = document.getElementById('toggle-recite-mode');
         if (toggleRecite) {
             toggleRecite.checked = state.reciteMode;
-            toggleRecite.onchange = (e) => {
-                state.reciteMode = e.target.checked;
-                saveState();
-                renderApp();
-            };
+            toggleRecite.onchange = (e) => setReciteMode(e.target.checked);
+        }
+        const btnHeaderRecite = document.getElementById('btn-header-recite-toggle');
+        if (btnHeaderRecite) {
+            btnHeaderRecite.onclick = () => setReciteMode();
+        }
+        const btnMobileRecite = document.getElementById('btn-mobile-recite');
+        if (btnMobileRecite) {
+            btnMobileRecite.onclick = () => setReciteMode();
         }
 
         // 8. 备份导出与本地恢复导入
@@ -2307,8 +2594,10 @@
                 }
 
                 if (confirm(`确认清空【${moduleName}】的独立做题进度吗？其他专练与错题本不受影响。`)) {
-                    state.moduleAnswers[state.activeModuleId] = {};
-                    state.moduleCursors[state.activeModuleId] = 0;
+                    const curAnswerKey = getModuleAnswerKey(state.activeModuleId);
+                    const curCursorKey = getModuleCursorKey(state.activeModuleId);
+                    state.moduleAnswers[curAnswerKey] = {};
+                    state.moduleCursors[curCursorKey] = 0;
                     state.multiDraft.clear();
                     saveState();
                     renderApp();
@@ -2325,17 +2614,22 @@
                     state.moduleCursors = {
                         'full_all': 0, 'full_choice': 0, 'full_judge': 0,
                         'paper_2024': 0, 'paper_1': 0, 'paper_2': 0, 'paper_3': 0, 'paper_4': 0,
-                        'paper_2026_all': 0, 'paper_2026_choice': 0, 'paper_2026_multiple': 0, 'paper_2026_judge': 0, 'paper_2026_exam': 0,
+                        'paper_2026_all_1021': 0, 'paper_2026_choice_1021': 0, 'paper_2026_multiple_1021': 0, 'paper_2026_judge_1021': 0, 'paper_2026_exam_1021': 0,
+                        'paper_2026_all_1022': 0, 'paper_2026_choice_1022': 0, 'paper_2026_multiple_1022': 0, 'paper_2026_judge_1022': 0, 'paper_2026_exam_1022': 0,
+                        'paper_2026_all_1023': 0, 'paper_2026_choice_1023': 0, 'paper_2026_multiple_1023': 0, 'paper_2026_judge_1023': 0, 'paper_2026_exam_1023': 0,
                         'wrong': 0, 'favorite': 0
                     };
                     state.moduleAnswers = {
                         'full_all': {}, 'full_choice': {}, 'full_judge': {},
                         'paper_2024': {}, 'paper_1': {}, 'paper_2': {}, 'paper_3': {}, 'paper_4': {},
-                        'paper_2026_all': {}, 'paper_2026_choice': {}, 'paper_2026_multiple': {}, 'paper_2026_judge': {}
+                        'paper_2026_all_1021': {}, 'paper_2026_choice_1021': {}, 'paper_2026_multiple_1021': {}, 'paper_2026_judge_1021': {},
+                        'paper_2026_all_1022': {}, 'paper_2026_choice_1022': {}, 'paper_2026_multiple_1022': {}, 'paper_2026_judge_1022': {},
+                        'paper_2026_all_1023': {}, 'paper_2026_choice_1023': {}, 'paper_2026_multiple_1023': {}, 'paper_2026_judge_1023': {}
                     };
                     state.wrongQuestions.clear();
                     state.favoriteQuestions.clear();
                     state.multiDraft.clear();
+                    state.selectedSimDate = '1021';
                     state.activeModuleId = 'full_all';
                     saveState();
                     renderApp();
@@ -2474,9 +2768,11 @@
     loadSavedData();
     initIcons();
     bindEvents();
+    syncReciteModeUI();
     applyTheme(state.theme);
     applyFontSize(state.fontSize);
     renderApp();
+    initWelcomeDateModal();
     checkUrlSyncHash();
     window.addEventListener('hashchange', checkUrlSyncHash);
 

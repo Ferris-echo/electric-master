@@ -13675,7 +13675,7 @@ window.EXAM_PAPERS = [
     ]
   },
   {
-    "id": "paper_2026",
+    "id": "paper_2026_1021",
     "name": "2026年10月21日模拟卷(精简版)",
     "total": 210,
     "questions": [
@@ -15782,7 +15782,7 @@ window.EXAM_PAPERS = [
       {
         "index": 151,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "单相整流稳压电路的组成包含",
         "options": [
           "整流二极管",
@@ -15797,7 +15797,7 @@ window.EXAM_PAPERS = [
       {
         "index": 152,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "常用电工仪表的使用包括",
         "options": [
           "万用表的量程选择",
@@ -15812,7 +15812,7 @@ window.EXAM_PAPERS = [
       {
         "index": 153,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "变频器工作原理包含",
         "options": [
           "整流环节",
@@ -15827,7 +15827,7 @@ window.EXAM_PAPERS = [
       {
         "index": 154,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "X62W铣床电气控制电路的测绘内容包括",
         "options": [
           "主轴控制回路",
@@ -15842,7 +15842,7 @@ window.EXAM_PAPERS = [
       {
         "index": 155,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "劳动者的权利和义务包括",
         "options": [
           "劳动报酬获取权",
@@ -15857,7 +15857,7 @@ window.EXAM_PAPERS = [
       {
         "index": 156,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "晶体二极管的工作原理涉及",
         "options": [
           "正向偏置导通",
@@ -15872,7 +15872,7 @@ window.EXAM_PAPERS = [
       {
         "index": 157,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "变频调速装置常见故障检修包括",
         "options": [
           "过流故障排查",
@@ -15887,7 +15887,7 @@ window.EXAM_PAPERS = [
       {
         "index": 158,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "三极管的工作原理包含",
         "options": [
           "放大区工作特性",
@@ -15902,7 +15902,7 @@ window.EXAM_PAPERS = [
       {
         "index": 159,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "X62W铣床的启动、制动控制方法包括",
         "options": [
           "全压启动",
@@ -15917,7 +15917,7 @@ window.EXAM_PAPERS = [
       {
         "index": 160,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "单相正弦交流电的基本概念包含",
         "options": [
           "最大值",
@@ -15932,7 +15932,7 @@ window.EXAM_PAPERS = [
       {
         "index": 161,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "变压器的基础知识包括",
         "options": [
           "工作原理",
@@ -15947,7 +15947,7 @@ window.EXAM_PAPERS = [
       {
         "index": 162,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "PLC基本指令的应用包括",
         "options": [
           "触点串联",
@@ -15962,7 +15962,7 @@ window.EXAM_PAPERS = [
       {
         "index": 163,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "常用绝缘材料的分类及选用包括",
         "options": [
           "气体绝缘材料",
@@ -15977,7 +15977,7 @@ window.EXAM_PAPERS = [
       {
         "index": 164,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "电动机启停控制线路包含",
         "options": [
           "自锁控制",
@@ -15992,7 +15992,7 @@ window.EXAM_PAPERS = [
       {
         "index": 165,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "直流电路的计算涉及哪些内容？",
         "options": [
           "电阻串联计算",
@@ -16007,7 +16007,7 @@ window.EXAM_PAPERS = [
       {
         "index": 166,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "放大电路中的负反馈概念包括",
         "options": [
           "反馈信号削弱输入信号",
@@ -16022,7 +16022,7 @@ window.EXAM_PAPERS = [
       {
         "index": 167,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "安全用电技术措施包括",
         "options": [
           "绝缘防护",
@@ -16037,7 +16037,7 @@ window.EXAM_PAPERS = [
       {
         "index": 168,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "三极管的结构、符号包括",
         "options": [
           "发射极、基极、集电极",
@@ -16052,7 +16052,7 @@ window.EXAM_PAPERS = [
       {
         "index": 169,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "文明礼貌的具体要求包括",
         "options": [
           "语言文明",
@@ -16067,7 +16067,7 @@ window.EXAM_PAPERS = [
       {
         "index": 170,
         "type": "multiple",
-        "score": 1.0,
+        "score": 1,
         "content": "质量管理知识包含",
         "options": [
           "质量标准制定",
@@ -16557,6 +16557,5780 @@ window.EXAM_PAPERS = [
           "错误"
         ],
         "answer": "×",
+        "images": []
+      }
+    ]
+  },
+  {
+    "id": "paper_2026_1022",
+    "name": "2026年10月22日模拟卷(精简版)",
+    "total": 210,
+    "questions": [
+      {
+        "index": 1,
+        "type": "choice",
+        "score": 0.5,
+        "content": "通电直导体在磁场中所受力方向，可以通过()来判断。",
+        "options": [
+          "右手定则、左手定则",
+          "楞次定律",
+          "右手定则",
+          "左手定则"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 2,
+        "type": "choice",
+        "score": 0.5,
+        "content": "Y-D降压启动的指电动机启动时，把定子绕组联结成Y形，以()启动电压，限制启动电流。",
+        "options": [
+          "提高",
+          "减少",
+          "降低",
+          "增加"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 3,
+        "type": "choice",
+        "score": 0.5,
+        "content": "尽可能使设计基准与()基准相符合。",
+        "options": [
+          "加工",
+          "装配",
+          "工艺",
+          "测量"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 4,
+        "type": "choice",
+        "score": 0.5,
+        "content": "常见的可逆主电路连接方式有()两种。",
+        "options": [
+          "反并联和交叉连接",
+          "并联和交叉连接",
+          "并联和反交叉连接",
+          "并联和反交叉连接"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 5,
+        "type": "choice",
+        "score": 0.5,
+        "content": "逻辑代数和普通代数一样，也是用字母做变量，但逻辑代数的变量取值只有两个，他们用()表示两种不同的逻辑状态。",
+        "options": [
+          "0和1",
+          "0和A",
+          "0和B",
+          "1和A"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 6,
+        "type": "choice",
+        "score": 0.5,
+        "content": "数字式触发电路中如UK＝O时，脉冲频率f＝13kHz，UK＝10V时，f＝()kHz",
+        "options": [
+          "1.3",
+          "13.0",
+          "130.0",
+          "1300.0"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 7,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可编程序控制器编程灵活性。编程语言有梯形图、布尔助记符、()、功能模块图和语句描述。",
+        "options": [
+          "安装图",
+          "原理图",
+          "功能表图",
+          "逻辑图"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 8,
+        "type": "choice",
+        "score": 0.5,
+        "content": "回转运动的定位精度和重复分度精度属于数控机床的()精度检验。",
+        "options": [
+          "切削",
+          "几何",
+          "定位",
+          "联动"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 9,
+        "type": "choice",
+        "score": 0.5,
+        "content": "正弦量的平均值与最大值之间的关系不正确的是()。",
+        "options": [
+          "Eav=2/π*Em",
+          "Uav=2/π*Em",
+          "Iav=2/π*E",
+          "I=Im/1.44"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 10,
+        "type": "choice",
+        "score": 0.5,
+        "content": "辅助继电器、计时器、计数器、输入和输出继电器的触点可使用()次。",
+        "options": [
+          "一",
+          "二",
+          "三",
+          "无限"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 11,
+        "type": "choice",
+        "score": 0.5,
+        "content": "N型硅材料普通二极管用()表示。",
+        "options": [
+          "2CP",
+          "2CW",
+          "2CZ",
+          "2CL"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 12,
+        "type": "choice",
+        "score": 0.5,
+        "content": "跨导S在数值上等于阳极电压Ua为常数的条件下，栅极电压Ug微量变化所引起的阳极电流Ia的相应改变。()对阳极电流的控制能力越强。",
+        "options": [
+          "S越大，说明栅极电压",
+          "S越大，说明栅极电流",
+          "S越小，说明栅极电压",
+          "S越小，说明栅极电流"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 13,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()是企业诚实守信的内在要求。",
+        "options": [
+          "维护企业信誉",
+          "增加职工福利",
+          "注重经济效益",
+          "开展员工培训"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 14,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在日常接待工作中，对待不同服务对象，态度应真诚热情、()。",
+        "options": [
+          "尊卑有别",
+          "女士优先",
+          "一视同仁",
+          "外宾优先"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 15,
+        "type": "choice",
+        "score": 0.5,
+        "content": "通常，()的工频电流通过人体时，就会有不舒服的感觉。",
+        "options": [
+          "0.1mA",
+          "1mA",
+          "2mA",
+          "4mA"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 16,
+        "type": "choice",
+        "score": 0.5,
+        "content": "不属于程序检查的是()。",
+        "options": [
+          "线路检查",
+          "其他检查",
+          "代码检查",
+          "语法检查"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 17,
+        "type": "choice",
+        "score": 0.5,
+        "content": "SP100-C3型高频设备接通电源加热后阳极电流为零，这种情况多半是()的问题。",
+        "options": [
+          "栅极电路",
+          "阳极槽路电容器",
+          "栅极电路上旁路电容器",
+          "栅极回馈线圈到栅极这一段有断路的地方"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 18,
+        "type": "choice",
+        "score": 0.5,
+        "content": "爱岗敬业的具体要求是()。",
+        "options": [
+          "看效益决定是否爱岗",
+          "转变择业观念",
+          "提高职业技能",
+          "增强把握择业的机遇意识"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 19,
+        "type": "choice",
+        "score": 0.5,
+        "content": "JWK型经济型数控机床系统通电后，如长时间不运行，应将功放开关置于()位置。",
+        "options": [
+          "接通",
+          "断开",
+          "手动",
+          "选择"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 20,
+        "type": "choice",
+        "score": 0.5,
+        "content": "通过变流器把直流电能变成某一频率或可调频率的交流电能直接供电给负载的，叫做()。",
+        "options": [
+          "有源逆变",
+          "无源逆变",
+          "整流",
+          "反馈"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 21,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可编程序控制器在硬件设计方面采用了一系列措施，如对干扰的()。",
+        "options": [
+          "屏蔽、隔离和滤波",
+          "屏蔽和滤波",
+          "屏蔽和隔离",
+          "隔离和滤波"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 22,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在市场经济条件下，()是职业道德社会功能的重要表现。",
+        "options": [
+          "克服利益导向",
+          "遏制牟利最大化",
+          "增强决策科学化",
+          "促进员工行为的规范化"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 23,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列电磁污染形式中不属于人为的电磁污染的是()。",
+        "options": [
+          "脉冲放电",
+          "电磁场",
+          "射频电磁污染",
+          "磁暴"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 24,
+        "type": "choice",
+        "score": 0.5,
+        "content": "逆变电路为了保证系统能够可靠换流，安全储备时间tβ必须大于晶闸管的()。",
+        "options": [
+          "引前时间",
+          "关断时间",
+          "换流时间",
+          "tf-tr"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 25,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在M70接通后，第一个执行周期()接通，用于计数器和移位寄存器等的初始化（复位）。",
+        "options": [
+          "M71",
+          "M72",
+          "M76",
+          "M77"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 26,
+        "type": "choice",
+        "score": 0.5,
+        "content": "一般规定()移动的方向为电流的方向。",
+        "options": [
+          "正电荷",
+          "负电荷",
+          "电荷",
+          "正电荷或负电荷"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 27,
+        "type": "choice",
+        "score": 0.5,
+        "content": "当ωt=360°时，ｉ1、ｉ2、ｉ3分别为()。",
+        "options": [
+          "负值、正值、0",
+          "0、正值、负值",
+          "负值、0、正值",
+          "0、负值、正值"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 28,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在商业活动中，不符合待人热情要求的是",
+        "options": [
+          "严肃待客，表情冷漠",
+          "主动服务，细致周到",
+          "微笑大方，不厌其烦",
+          "亲切友好，宾至如归"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 29,
+        "type": "choice",
+        "score": 0.5,
+        "content": "对于每个职工来说，质量管理的主要内容有岗位的质量要求、()、质量保证措施和质量责任等。",
+        "options": [
+          "信息反馈",
+          "质量水平",
+          "、质量记录",
+          "质量目标"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 30,
+        "type": "choice",
+        "score": 0.5,
+        "content": "如果把实际的输出量反馈回来与输入的给定量进行比较，得到它们购差值，控制器根据这个差值随时修改对控制对象的控制，以使输出量紧紧跟随输入的给定量，这种控制方式叫()。",
+        "options": [
+          "闭环控制",
+          "开环控制",
+          "顺序控制",
+          "程序控制"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 31,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列金属及合金的熔点最高的是()。",
+        "options": [
+          "铅",
+          "钨",
+          "铬",
+          "黄铜"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 32,
+        "type": "choice",
+        "score": 0.5,
+        "content": "用直流发电机控制直流电动机电枢电压所构成的直流发电机—直流电动机系统，简称为()。",
+        "options": [
+          "G—M系统",
+          "AG—M系统",
+          "AG—G—M系统",
+          "CNC—M系统"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 33,
+        "type": "choice",
+        "score": 0.5,
+        "content": "定子绕组串电阻的降压启动是指电动机启动时，把电阻串接在电动机定子绕组与电源之间，通过电阻的()作用来降低定子绕组上的启动电压。",
+        "options": [
+          "分流",
+          "压降",
+          "分压",
+          "分压、分流"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 34,
+        "type": "choice",
+        "score": 0.5,
+        "content": "编程器的数字键由0～9共10个键组成，用以设置地址号、()、定时器的设定值等。",
+        "options": [
+          "工作方式",
+          "顺序控制",
+          "计数器",
+          "参数控制"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 35,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()就是能够把二进制代码和运算结果暂时存储起来的部件。",
+        "options": [
+          "寄存器",
+          "触发器",
+          "放大器",
+          "计数器"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 36,
+        "type": "choice",
+        "score": 0.5,
+        "content": "检查供电电源时在电源端子处测量电压是否在标准范围内下限不低于供电电压的()。",
+        "options": [
+          "1.1",
+          "0.85",
+          "0.75",
+          "0.6"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 37,
+        "type": "choice",
+        "score": 0.5,
+        "content": "刀具补偿量的设定是()。",
+        "options": [
+          "刀具功能",
+          "引导程序",
+          "程序延时",
+          "辅助功能"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 38,
+        "type": "choice",
+        "score": 0.5,
+        "content": "要调节异步电动机的转速，可从()入手。",
+        "options": [
+          "变极调速",
+          "变频调速",
+          "转差率调速",
+          "以上都是"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 39,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F系列可编程序控制器常闭触点的并联用()指令。",
+        "options": [
+          "AND",
+          "ANI",
+          "ANB",
+          "ORB"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 40,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以最高进给速度运转时，应在全行程进行，分别往复()。",
+        "options": [
+          "1次和5次",
+          "2次和4次",
+          "3次和2次",
+          "4次和1次"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 41,
+        "type": "choice",
+        "score": 0.5,
+        "content": "KC41C六路双脉冲形成器是()触发电路中必备组件。",
+        "options": [
+          "两相全控桥式",
+          "两相全控桥式",
+          "三相半控桥式",
+          "三相全控桥式"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 42,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()属于有源逆变。",
+        "options": [
+          "中频电源",
+          "交流电动机变速调速",
+          "直流电动机可逆调速",
+          "不停电电源"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 43,
+        "type": "choice",
+        "score": 0.5,
+        "content": "噪声可分为()，机械噪声和电磁噪声。",
+        "options": [
+          "电力噪声",
+          "水噪声",
+          "电气噪声",
+          "气体动力噪声"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 44,
+        "type": "choice",
+        "score": 0.5,
+        "content": "停车爬行是()是产生爬行的根本原因。",
+        "options": [
+          "震荡",
+          "反馈",
+          "剩磁",
+          "惯性"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 45,
+        "type": "choice",
+        "score": 0.5,
+        "content": "与放大器获得最大效率的条件一样，()时，负载上可获得最大功率。",
+        "options": [
+          "Rˊ＝Ri",
+          "Rˊ",
+          "Rˊ大于Ri",
+          "Rˊ小于Ri"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 46,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电阻器的阻值及精度等级一般用文字或数字直接印于电阻器上。银色允许偏差为()。",
+        "options": [
+          "0.05",
+          "0.1",
+          "0.15",
+          "0.2"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 47,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在编程时，也可把所需要并联的回路连贯地写出，而在这些回路的末尾连续使用与支路个数相同的ORB指令，这时指令最多使用()。",
+        "options": [
+          "没有限制",
+          "有限制",
+          "七次",
+          "八次"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 48,
+        "type": "choice",
+        "score": 0.5,
+        "content": "职工对企业诚实守信应该做到的是()。",
+        "options": [
+          "忠诚所属企业，无论何种情况都始终把企业利益放在第一位",
+          "维护企业信誉，树立质量意识和服务意识",
+          "扩大企业影响，多对外谈论企业之事",
+          "完成本职工作即可，谋划企业发展由有见识的人来做"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 49,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F-20MR可编程序控制器具有停电保持功能的辅助继电器的点数是()。",
+        "options": [
+          "5.0",
+          "8.0",
+          "12.0",
+          "16.0"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 50,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F系列可编程序控制器常闭触点的串联用()指令",
+        "options": [
+          "AND",
+          "ANI",
+          "ANB",
+          "ORB"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 51,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()阶段把逻辑解读的结果，通过输出部件输出给现场的受控元件。",
+        "options": [
+          "输出采样",
+          "输入采样",
+          "程序执行",
+          "输出刷新"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 52,
+        "type": "choice",
+        "score": 0.5,
+        "content": "当外加阳极电压一定时，将栅极电压由零逐渐降低，阳极电流也减少，当栅极电压为某一负值时（Ug0），阳极电流降为零，此时对应的负栅偏压叫()栅压。",
+        "options": [
+          "饱和",
+          "截止",
+          "动态",
+          "静态"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 53,
+        "type": "choice",
+        "score": 0.5,
+        "content": "直流快速开关的动作时间仅2ms，全部分断电弧也不超过()ms，适用于中、大容量整流电路的严重过载和直流侧短路保护。",
+        "options": [
+          "15～20",
+          "10～15",
+          "20～25",
+          "25～30"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 54,
+        "type": "choice",
+        "score": 0.5,
+        "content": "规定孔的尺寸减去轴的尺寸的代数差为正是()配合。",
+        "options": [
+          "基准",
+          "间隙",
+          "过渡",
+          "过盈"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 55,
+        "type": "choice",
+        "score": 0.5,
+        "content": "积分电路Cl接在V5的集电极，它是()的锯齿波发生器。",
+        "options": [
+          "电感负反馈",
+          "电感正反馈",
+          "电容负反馈",
+          "电容正反馈"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 56,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电压型逆变器中间环节采用大电容滤波，()。",
+        "options": [
+          "电源阻抗很小，类似电压源",
+          "电源呈高阻，类似于电流源",
+          "电源呈高阻，类似于电压源",
+          "电源呈低阻，类似于电流源"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 57,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()材质制成的螺栓、螺母或垫片，在中频电流通过时，会因涡流效应而发热，甚至局部熔化。",
+        "options": [
+          "黄铜",
+          "不锈钢",
+          "塑料",
+          "普通钢铁"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 58,
+        "type": "choice",
+        "score": 0.5,
+        "content": "励磁发电机空载电压过高。如果电刷在中性线上，一般是调节电阻Rt—L与励磁发电机性能配合不好。可将励磁发电机的电刷()换向距离。",
+        "options": [
+          "整理线路逆旋转方向移动2～4片",
+          "清扫线路逆旋转方向移动1～2片",
+          "局部更新顺旋转方向移动2～4片",
+          "顺旋转方向移动1～2片"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 59,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可用交磁电机扩大机作为G—M系统中直流发电机的励磁，从而构成()。",
+        "options": [
+          "G—M系统",
+          "AG—M系统",
+          "AG—G—M系统",
+          "CNC—M系统"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 60,
+        "type": "choice",
+        "score": 0.5,
+        "content": "交磁电机扩大机是一种旋转式的()放大装置",
+        "options": [
+          "电压",
+          "电流",
+          "磁率",
+          "功率"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 61,
+        "type": "choice",
+        "score": 0.5,
+        "content": "定子绕组串电阻的降压启动是指电动机启动时，把电阻串接在电动机定子绕组与电源之间，通过电阻的分压作用来()定子绕组上的启动电压。",
+        "options": [
+          "提高",
+          "减少",
+          "加强",
+          "降低"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 62,
+        "type": "choice",
+        "score": 0.5,
+        "content": "一般作为空行程运行，使刀具快速移动到所需位置上的是()。",
+        "options": [
+          "返回参考点",
+          "快速点定位",
+          "程序延时",
+          "螺纹插补"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 63,
+        "type": "choice",
+        "score": 0.5,
+        "content": "微处理器一般由中央处理单元（CPU）、()、内部数据存储器、接口和功能单元（如定时器、计数器）以及相应的逻辑电路所组成。",
+        "options": [
+          "EEPROM",
+          "RAM",
+          "ROM",
+          "EPROM"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 64,
+        "type": "choice",
+        "score": 0.5,
+        "content": "企业员工在生产经营活动中，不符合平等尊重要求的是()。",
+        "options": [
+          "真诚相待，一视同仁",
+          "互相借鉴，取长补短",
+          "男女有序，尊卑有别",
+          "男女平等，友爱亲善"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 65,
+        "type": "choice",
+        "score": 0.5,
+        "content": "定子绕组串电阻的降压启动是指电动机启动时，把电阻串接在电动机()，通过电阻的分压作用来降低定子绕组上的启动电压。",
+        "options": [
+          "定子绕组上",
+          "定子绕组与电源之间",
+          "电源上",
+          "转子上"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 66,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电源相序可用相序表或()来测量。",
+        "options": [
+          "示波器",
+          "图形仪",
+          "万用表",
+          "兆欧表"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 67,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()单元是实现各种功能的核心。",
+        "options": [
+          "数控",
+          "步进伺服驱动",
+          "减速步进电动机",
+          "控制"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 68,
+        "type": "choice",
+        "score": 0.5,
+        "content": "规定孔的尺寸减去轴的尺寸的代数差为负是()配合。",
+        "options": [
+          "基准",
+          "间隙",
+          "过渡",
+          "过盈"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 69,
+        "type": "choice",
+        "score": 0.5,
+        "content": "碳膜电阻器用()表示。",
+        "options": [
+          "RT",
+          "RPJ",
+          "RJ",
+          "RX"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 70,
+        "type": "choice",
+        "score": 0.5,
+        "content": "RS触发电路中，当R=S=1时，触发器的状态()。",
+        "options": [
+          "置1",
+          "置0",
+          "不变",
+          "不定"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 71,
+        "type": "choice",
+        "score": 0.5,
+        "content": "步进电动机的驱动电源必须经过()放大器才能得到步进电动机所需的脉冲电流。",
+        "options": [
+          "运算",
+          "功率",
+          "电流",
+          "电压"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 72,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电气设备的巡视一般均由()进行。",
+        "options": [
+          "1人",
+          "2人",
+          "3人",
+          "4人"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 73,
+        "type": "choice",
+        "score": 0.5,
+        "content": "备用的闸流管每月应以额定的灯丝电压加热()h。",
+        "options": [
+          "1.0",
+          "2.0",
+          "2.5",
+          "3.0"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 74,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F系列可编程序控制器中的ORI指令用于()。",
+        "options": [
+          "常闭触点的串联",
+          "常闭触点的并联",
+          "常开触点的串联",
+          "常开触点的并联"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 75,
+        "type": "choice",
+        "score": 0.5,
+        "content": "语法检查键操作中代码()表示设定常数值K不正确。",
+        "options": [
+          "l-l",
+          "1-2",
+          "1-3",
+          "1-4"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 76,
+        "type": "choice",
+        "score": 0.5,
+        "content": "正确使用振荡管，除了确保灯丝的预热步骤正确合理、预热时间足，以及保证灯丝电压稳定和其他各极电压和电流不得超过额定值以外，还要特别注意()的冷却和防止管子出现真空度不足的现象。",
+        "options": [
+          "发射极",
+          "阳极",
+          "功率",
+          "控制极"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 77,
+        "type": "choice",
+        "score": 0.5,
+        "content": "防止电压上升率过大造成误导通的实用办法，是在每个桥臂串一个()ls。",
+        "options": [
+          "空心电抗器",
+          "硒堆保护",
+          "阻容保护",
+          "压敏电阻"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 78,
+        "type": "choice",
+        "score": 0.5,
+        "content": "普通螺纹的牙形角是()度，英制螺纹的牙形角是55度。",
+        "options": [
+          "50.0",
+          "55.0",
+          "60.0",
+          "65.0"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 79,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可编程序控制器的特点是()。",
+        "options": [
+          "不需要大量的活动部件和电子元件，接线大大减少，维修简单，维修时间缩短，性能可靠",
+          "统计运算、计时、计数采用了一系列可靠性设计",
+          "数字运算、计时编程简单，操作方便，维修容易，不易发生操作失误",
+          "以上都是"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 80,
+        "type": "choice",
+        "score": 0.5,
+        "content": "程序检查过程中如发现有错误就要进行修改，其中有()。",
+        "options": [
+          "线路检查",
+          "编程器检查",
+          "控制线路检查",
+          "主回路检查"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 81,
+        "type": "choice",
+        "score": 0.5,
+        "content": "回转运动的反向误差属于数控机床的()精度检验。",
+        "options": [
+          "切削",
+          "定位",
+          "几何",
+          "联动"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 82,
+        "type": "choice",
+        "score": 0.5,
+        "content": "用于零件加工中局部需要反复加工动作的场合的是()。",
+        "options": [
+          "直线插补",
+          "圆弧插补",
+          "程序循环",
+          "螺纹插补"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 83,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可编程序控制器采用了一系列可靠性设计，如()、掉电保护、故障诊断和信息保护及恢复等。",
+        "options": [
+          "简单设计",
+          "简化设计",
+          "冗余设计",
+          "功能设计"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 84,
+        "type": "choice",
+        "score": 0.5,
+        "content": "逆变状态时()。",
+        "options": [
+          "0°＜α＜45°",
+          "0°＜α＜90°",
+          "90°＜α＜180°",
+          "60°＜α＜120°"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 85,
+        "type": "choice",
+        "score": 0.5,
+        "content": "由一组()电路判断控制整流器触发脉冲通道的开放和封锁，这就构成了逻辑无环流可逆调速系统。",
+        "options": [
+          "逻辑",
+          "延时",
+          "保护",
+          "零电流检测器"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 86,
+        "type": "choice",
+        "score": 0.5,
+        "content": "低频大功率三极管（NPN型锗材料）管用()表示。",
+        "options": [
+          "3DD",
+          "3BD",
+          "3AD",
+          "3ED"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 87,
+        "type": "choice",
+        "score": 0.5,
+        "content": "机床电器大修是工作量最大的一种计划修理。大修时，将对电气系统的()元器件进行解体、修理、更换和调整，从而全面消除机床存在的隐患、缺陷，恢复电气系统达到所规定的性能和精度。",
+        "options": [
+          "全部",
+          "小部分",
+          "大部分",
+          "全部或大部分"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 88,
+        "type": "choice",
+        "score": 0.5,
+        "content": "整流状态时()。",
+        "options": [
+          "0°＜α＜45°",
+          "0°＜α＜90°",
+          "90°＜α＜180°",
+          "60°＜α＜120°"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 89,
+        "type": "choice",
+        "score": 0.5,
+        "content": "RST指令用于()和计数器的复位。",
+        "options": [
+          "特殊继电器",
+          "辅助继电器",
+          "移位寄存器",
+          "定时器"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 90,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()适用于单机拖动，频繁加、减速运行，并需经常反向的场合。",
+        "options": [
+          "电容式逆变器",
+          "电感式逆变器",
+          "电流型逆变器",
+          "电压型逆变器"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 91,
+        "type": "choice",
+        "score": 0.5,
+        "content": "用双综示波器依次检查各晶闸管（VT1～VT6）的触发脉冲是否按规定顺序依次相差()。",
+        "options": [
+          "60°",
+          "90°",
+          "120°",
+          "180°"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 92,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可编程序控制器是一种工业控制计算机，有很强的自检功能。可通过其()功能，诊断出许多自身故障或外围设备的故障。",
+        "options": [
+          "自检",
+          "监控",
+          "保护",
+          "调节"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 93,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在编程时，也可把所需要并联的回路连贯地写出，而在这些回路的末尾连续使用与支路个数相同的ANB指令，这时指令最多使用()。",
+        "options": [
+          "没有限制",
+          "有限制",
+          "七次",
+          "八次"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 94,
+        "type": "choice",
+        "score": 0.5,
+        "content": "JWK系列经济型数控机床通电试车已包含()内容。",
+        "options": [
+          "数控系统参数核对",
+          "手动操作",
+          "接通强电柜交流电源",
+          "以上都是"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 95,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在要求零位附近快速频繁改变转动方向，位置控制要求准确的生产机械，往往用可控环流可逆系统，即在负载电流小于额定值()时，让，人为地制造环流，使变流器电流连续。",
+        "options": [
+          "1％～5％",
+          "5％～10％",
+          "10％～15％",
+          "15％～20％"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 96,
+        "type": "choice",
+        "score": 0.5,
+        "content": "数控装置工作基本正常后，可开始对各项()迹行检查、确认和设定。",
+        "options": [
+          "参数",
+          "性能",
+          "程序",
+          "功能"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 97,
+        "type": "choice",
+        "score": 0.5,
+        "content": "JK触发电路中，当J=0、K=1、Qn=1时，触发器的状态()。",
+        "options": [
+          "不变",
+          "置1",
+          "置0",
+          "不定"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 98,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F系列可编程序控制器计数器用()表示。",
+        "options": [
+          "X",
+          "Y",
+          "T",
+          "C"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 99,
+        "type": "choice",
+        "score": 0.5,
+        "content": "车床尾架体孔和顶尖套筒的配合种类为基本偏差()。",
+        "options": [
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 100,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()指令为操作置位。",
+        "options": [
+          "NOP",
+          "END",
+          "S",
+          "R"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 101,
+        "type": "choice",
+        "score": 0.5,
+        "content": "交磁电机扩大机是一种旋转式的()放大装置。",
+        "options": [
+          "电压",
+          "电流",
+          "磁率",
+          "功率"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 102,
+        "type": "choice",
+        "score": 0.5,
+        "content": "KC41的输出端10～15是按后相给前相补脉冲的规律，经V1～V6放大，可输出驱动电流为()的双窄脉冲列",
+        "options": [
+          "100～300μA",
+          "300～800μA",
+          "100～300mA",
+          "300～800mA"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 103,
+        "type": "choice",
+        "score": 0.5,
+        "content": "正确阐述职业道德与人的事业的关系的选项是()。",
+        "options": [
+          "没有职业道德的人不会获得成功",
+          "要取得事业的成功，前提条件是要有职业道德",
+          "事业成功的人往往并不需要较高的职业道德",
+          "职业道德是人获得事业成功的重要条件"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 104,
+        "type": "choice",
+        "score": 0.5,
+        "content": "数控机床的几何精度检验包括()。",
+        "options": [
+          "工作台的平面度",
+          "各坐标方向移动的垂直度",
+          "X,Z坐标方向移动时工作台面的平行度",
+          "以上都是"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 105,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()的形成则主要靠晶体晶体管V12、电容C2、电阻R5、电位器RP组成的积分电路。",
+        "options": [
+          "锯齿波",
+          "矩形波",
+          "正弦波",
+          "方波"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 106,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在()，磁力线由S极指向N极。",
+        "options": [
+          "磁场外部",
+          "磁体内部",
+          "磁场两端",
+          "磁场一端到另一端"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 107,
+        "type": "choice",
+        "score": 0.5,
+        "content": "Y-D降压启动的指电动机启动时，把定子绕组联结成()，以降低启动电压，限制启动电流。",
+        "options": [
+          "D形",
+          "Y形",
+          "DD形",
+          "YY形"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 108,
+        "type": "choice",
+        "score": 0.5,
+        "content": "普通螺纹的牙形角是60度，英制螺纹的牙形角是()度。",
+        "options": [
+          "50.0",
+          "55.0",
+          "60.0",
+          "65.0"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 109,
+        "type": "choice",
+        "score": 0.5,
+        "content": "调整时，工作台上应装有()以上的额定负载进行工作台自动交换运行。",
+        "options": [
+          "0.5",
+          "0.4",
+          "0.2",
+          "0.1"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 110,
+        "type": "choice",
+        "score": 0.5,
+        "content": "关于创新的论述，正确的是()。",
+        "options": [
+          "创新就是出新花样",
+          "创新就是独立自主",
+          "创新是企业进步的灵魂",
+          "创新不需要引进外国的新技术"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 111,
+        "type": "choice",
+        "score": 0.5,
+        "content": "三相电动势到达最大的顺序是不同的，这种达到最大值的先后次序，称三相电源的相序，相序为U-V-W-U，称为()。",
+        "options": [
+          "正序",
+          "负序",
+          "逆序",
+          "相序"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 112,
+        "type": "choice",
+        "score": 0.5,
+        "content": "强供电回路的管线尽量避免与可编程序控制器输出、输入回路()，且线路不在同一根管路内。",
+        "options": [
+          "垂直",
+          "交叉",
+          "远离",
+          "平行"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 113,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F系列可编程序控制器中的ANB指令用于()。",
+        "options": [
+          "串联连接",
+          "并联连接",
+          "回路串联连接",
+          "回路并联连接"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 114,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可编程序控制器不需要大量的()和电子元件，接线大大减少，维修简单，维修时间缩短，性能可靠。",
+        "options": [
+          "活动部件",
+          "固定部件",
+          "电器部件",
+          "部分部件"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 115,
+        "type": "choice",
+        "score": 0.5,
+        "content": "编程器的显示内容包括()、数据、工作方式、指令执行情况和系统工作状态等。",
+        "options": [
+          "地址",
+          "参数",
+          "程序",
+          "位移储存器"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 116,
+        "type": "choice",
+        "score": 0.5,
+        "content": "按钮联锁正反转控制线路的优点是操作方便，缺点是容易产生()短路事故。",
+        "options": [
+          "电源两相",
+          "电源三相",
+          "电源一相",
+          "电源"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 117,
+        "type": "choice",
+        "score": 0.5,
+        "content": "汽轮机、大电机酌轴承配合种类为基本偏差()。",
+        "options": [
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 118,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电子管作为放大器工作，若固定栅偏压高于截止栅压，而且在栅极输入整个变化过程中电子管都处于导电状态，这样的工作状态叫()类工作状态。",
+        "options": [
+          "甲",
+          "乙",
+          "甲乙",
+          "丙"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 119,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F系列可编程序控制器中的ANI指令用于()。",
+        "options": [
+          "常闭触点的串联",
+          "常闭触点的并联",
+          "常开触点的串联",
+          "常开触点的并联"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 120,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在整流变压器空载且电源电压过零时一次侧切断电源时，可在二次侧感应出正常()以上的瞬间过电压。",
+        "options": [
+          "有效电压六倍",
+          "峰值电压六倍",
+          "峰值电压三倍",
+          "有效电压三倍"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 121,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()的工频电流通过人体时，人体尚可摆脱，称为摆脱电流。",
+        "options": [
+          "0.1mA",
+          "1mA",
+          "5mA",
+          "10mA"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 122,
+        "type": "choice",
+        "score": 0.5,
+        "content": "编程器的显示内容包括地址、数据、()、指令执行情况和系统工作状态等。",
+        "options": [
+          "程序",
+          "参数",
+          "工作方式",
+          "位移储存器"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 123,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F系列可编程序控制器中的OR指令用于()。",
+        "options": [
+          "常闭触点的串联",
+          "常闭触点的并联",
+          "常开触点的串联",
+          "常开触点的并联"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 124,
+        "type": "choice",
+        "score": 0.5,
+        "content": "集成化六脉冲触发组件同步电压输入后，在KC04电路端子4形成()Hz的锯齿波。",
+        "options": [
+          "400.0",
+          "200.0",
+          "100.0",
+          "50.0"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 125,
+        "type": "choice",
+        "score": 0.5,
+        "content": "MOSFET适用于()的高频电源。",
+        "options": [
+          "8～50kHz",
+          "50～200kHz",
+          "50～400kHz",
+          "100kW"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 126,
+        "type": "choice",
+        "score": 0.5,
+        "content": "将变压器的一次侧绕组接交流电源，二次侧绕组开路，这种运行方式称为变压器()运行。",
+        "options": [
+          "空载",
+          "过载",
+          "满载",
+          "负载"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 127,
+        "type": "choice",
+        "score": 0.5,
+        "content": "瞬间过电压也是瞬时的尖峰电压，也用()加以保护。",
+        "options": [
+          "阻容吸收电路",
+          "电容接地",
+          "阀式避雷器",
+          "非线性电阻浪涌吸收器"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 128,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列金属及合金的线膨胀系数最底的是()。",
+        "options": [
+          "铝",
+          "铜",
+          "铁",
+          "锡"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 129,
+        "type": "choice",
+        "score": 0.5,
+        "content": "对于每个职工来说，质量管理的主要内容有岗位的()、质量目标、质量保证措施和质量责任等。",
+        "options": [
+          "信息反馈",
+          "质量水平",
+          "质量记录",
+          "质量要求"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 130,
+        "type": "choice",
+        "score": 0.5,
+        "content": "手持电动工具使用时的安全电压为()。",
+        "options": [
+          "9V",
+          "12V",
+          "24V",
+          "36V"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 131,
+        "type": "choice",
+        "score": 0.5,
+        "content": "变压器具有改变()的作用。",
+        "options": [
+          "交变电压",
+          "交变电流",
+          "变换阻抗",
+          "以上都是"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 132,
+        "type": "choice",
+        "score": 0.5,
+        "content": "噪声可分为气体动力噪声，()和电磁噪声。",
+        "options": [
+          "电力噪声",
+          "水噪声",
+          "电气噪声",
+          "机械噪声"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 133,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在一定电源电压Ea作用下，当负载等效电阻Rˊ相对于Ri较小时，振荡电路上交流电压Uˊ就较小，这种状态称为()。",
+        "options": [
+          "过压状态",
+          "欠压状态",
+          "临界状态",
+          "过零状态"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 134,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可编程序控制器采用可以编制程序的存储器，用来在其内部存储执行逻辑运算、()和算术运算等操作指令。",
+        "options": [
+          "控制运算、计数",
+          "统计运算、计时、计数",
+          "数字运算、计时",
+          "顺序控制、计时、计数"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 135,
+        "type": "choice",
+        "score": 0.5,
+        "content": "企业员工违反职业纪律，企业()。",
+        "options": [
+          "不能做罚款处罚",
+          "因员工受劳动合同保护，不能给予处分",
+          "视情节轻重，做出恰当处分",
+          "警告往往效果不大"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 136,
+        "type": "choice",
+        "score": 0.5,
+        "content": "启动电动机组后工作台高速冲出不受控,产生这种故障有以下()原因。",
+        "options": [
+          "发电机励磁回路电压不足",
+          "电压负反馈过强",
+          "电机扩大机剩磁电压过高",
+          "电机扩大机剩磁电压过低"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 137,
+        "type": "choice",
+        "score": 0.5,
+        "content": "从机械设备电器修理质量标准方面判断下列()不属于电器仪表需要标准。",
+        "options": [
+          "表盘玻璃干净、完整",
+          "盘面刻度、字码清楚",
+          "表针动作灵活，计量正确",
+          "垂直安装"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 138,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可编程序控制器的接地线截面一般大于()。",
+        "options": [
+          "1mm2",
+          "1.5mm2",
+          "2mm2",
+          "2.5mm2"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 139,
+        "type": "choice",
+        "score": 0.5,
+        "content": "双线圈检查是当指令线圈()使用时，会发生同一线圈接通和断开的矛盾。",
+        "options": [
+          "两次",
+          "八次",
+          "七次",
+          "两次或两次以上"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 140,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电流型逆变器中间环节采用电抗器滤波，()。",
+        "options": [
+          "电源阻抗很小，类似电压源",
+          "电源呈高阻，类似于电流源",
+          "电源呈高阻，类似于电压源",
+          "电源呈低阻，类似于电流源"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 141,
+        "type": "choice",
+        "score": 0.5,
+        "content": "与环境污染相近的概念是()。",
+        "options": [
+          "生态破坏",
+          "电磁幅射污染",
+          "电磁噪音污染",
+          "公害"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 142,
+        "type": "choice",
+        "score": 0.5,
+        "content": "三相桥式逆变电路电压脉动小，变压器利用率高，晶闸管工作电压低，电抗器比三相半波电路小，在()容量可逆系统中广泛应用。",
+        "options": [
+          "小",
+          "中、小",
+          "大",
+          "大、中"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 143,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F系列可编程序控制器常闭点用()指令。",
+        "options": [
+          "LD",
+          "LDI",
+          "OR",
+          "ORI"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 144,
+        "type": "choice",
+        "score": 0.5,
+        "content": "当程序需要()接通时，全部输出继电器的输出自动断开，而其他继电器仍继续工作。",
+        "options": [
+          "M70",
+          "M71",
+          "M72",
+          "M77"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 145,
+        "type": "choice",
+        "score": 0.5,
+        "content": "端面铣刀铣平面的精度属于数控机床的()精度检验。",
+        "options": [
+          "切削",
+          "定位",
+          "几何",
+          "联动"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 146,
+        "type": "choice",
+        "score": 0.5,
+        "content": "振荡周期T＝Tl+T2，其中T1＝()。",
+        "options": [
+          "0.693C2RlR2/（Rl+R2）",
+          "0.693（Rl+R2）/C2RlR2",
+          "0.693R2C2",
+          "0.693RlC1"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 147,
+        "type": "choice",
+        "score": 0.5,
+        "content": "、机床电器大修是工作量最大的一种计划修理。大修时，将对电气系统的()元器件进行解体、修理、更换和调整，从而全面消除机床存在的隐患、缺陷，恢复电气系统达到所规定的性能和精度。",
+        "options": [
+          "全部",
+          "小部分",
+          "大部分",
+          "全部或大部分"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 148,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在快速开关两端并联低值电阻（一般可在()Ω之间选择），然后通过联锁装置切断线路开关。",
+        "options": [
+          "0.05～0.1",
+          "0.1～1",
+          "1～2",
+          "1～4"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 149,
+        "type": "choice",
+        "score": 0.5,
+        "content": "剩磁消失而不能发电应重新充磁。直流电源电压应低于额定励磁电压（一般取()V左右），充磁时间约为2～3min。",
+        "options": [
+          "60.0",
+          "100.0",
+          "127.0",
+          "220.0"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 150,
+        "type": "choice",
+        "score": 0.5,
+        "content": "串联谐振逆变器电路每个桥臂由()。",
+        "options": [
+          "一只晶闸管",
+          "一只二极管串联",
+          "一只晶闸管和一只二极管并联",
+          "一只晶闸管和一只二极管串联"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 151,
+        "type": "multiple",
+        "score": 1,
+        "content": "变频调速装置常见故障检修包括",
+        "options": [
+          "过流故障排查",
+          "过压故障处理",
+          "过载故障分析",
+          "机械振动排除",
+          "无输出故障诊断"
+        ],
+        "answer": "ABCDE",
+        "images": []
+      },
+      {
+        "index": 152,
+        "type": "multiple",
+        "score": 1,
+        "content": "劳动合同包含的核心内容有",
+        "options": [
+          "工作内容",
+          "劳动报酬",
+          "劳动合同期限",
+          "试用期无限延长",
+          "劳动保护条件"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 153,
+        "type": "multiple",
+        "score": 1,
+        "content": "单管基本放大电路的组成有",
+        "options": [
+          "三极管",
+          "电源",
+          "电阻",
+          "电容",
+          "变压器"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 154,
+        "type": "multiple",
+        "score": 1,
+        "content": "团结合作的基本要求包括",
+        "options": [
+          "尊重他人",
+          "分工协作",
+          "相互支持",
+          "各自为政",
+          "沟通配合"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 155,
+        "type": "multiple",
+        "score": 1,
+        "content": "常用电工仪表的使用包括",
+        "options": [
+          "万用表的量程选择",
+          "电流表的串联接法",
+          "电压表的并联接法",
+          "功率表的接线规则",
+          "示波器的探头校准"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 156,
+        "type": "multiple",
+        "score": 1,
+        "content": "桥式起重机的常见故障包含",
+        "options": [
+          "起升机构失效",
+          "运行机构卡滞",
+          "控制回路短路",
+          "钢丝绳断裂",
+          "润滑系统漏油"
+        ],
+        "answer": "ABCDE",
+        "images": []
+      },
+      {
+        "index": 157,
+        "type": "multiple",
+        "score": 1,
+        "content": "环境保护知识包括",
+        "options": [
+          "电磁污染防治",
+          "废旧电器回收",
+          "噪声控制措施",
+          "能源浪费允许",
+          "污水排放规范"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 158,
+        "type": "multiple",
+        "score": 1,
+        "content": "放大电路中的负反馈概念包括",
+        "options": [
+          "反馈信号削弱输入信号",
+          "提高放大倍数稳定性",
+          "改善波形失真",
+          "增大放大倍数",
+          "拓宽通频带"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 159,
+        "type": "multiple",
+        "score": 1,
+        "content": "职业道德的内涵包括哪些核心要素？",
+        "options": [
+          "职业理想",
+          "职业态度",
+          "职业纪律",
+          "职业技能",
+          "职业作风"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 160,
+        "type": "multiple",
+        "score": 1,
+        "content": "文明礼貌的具体要求包括",
+        "options": [
+          "语言文明",
+          "举止得体",
+          "待人热情",
+          "衣着整洁",
+          "追求时尚"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 161,
+        "type": "multiple",
+        "score": 1,
+        "content": "电工识图基本知识包括",
+        "options": [
+          "电气符号识别",
+          "线路走向分析",
+          "元器件标注解读",
+          "机械图纸识读",
+          "控制逻辑分析"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 162,
+        "type": "multiple",
+        "score": 1,
+        "content": "单相正弦交流电的基本概念包含",
+        "options": [
+          "最大值",
+          "有效值",
+          "频率",
+          "相位差",
+          "磁通量"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 163,
+        "type": "multiple",
+        "score": 1,
+        "content": "常用低压电器的符号、作用包括",
+        "options": [
+          "接触器的符号及控制作用",
+          "继电器的符号及保护作用",
+          "熔断器的符号及短路保护",
+          "变压器的符号及变压作用",
+          "断路器的符号及通断控制"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 164,
+        "type": "multiple",
+        "score": 1,
+        "content": "三相交流电的基本概念有",
+        "options": [
+          "相电压",
+          "线电压",
+          "相序",
+          "功率因数",
+          "电磁转矩"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 165,
+        "type": "multiple",
+        "score": 1,
+        "content": "遵纪守法的规定要求从业人员",
+        "options": [
+          "遵守国家法律",
+          "遵守行业法规",
+          "遵守企业规章制度",
+          "钻法律空子",
+          "维护职业形象"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 166,
+        "type": "multiple",
+        "score": 1,
+        "content": "T68镗床的常见故障有",
+        "options": [
+          "主轴不转",
+          "进给运动异常",
+          "制动失效",
+          "齿轮磨损",
+          "照明不亮"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 167,
+        "type": "multiple",
+        "score": 1,
+        "content": "电路的基本概念包含哪些要素？",
+        "options": [
+          "电源",
+          "负载",
+          "导线",
+          "开关",
+          "仪表"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 168,
+        "type": "multiple",
+        "score": 1,
+        "content": "直流斩波器故障检修包含",
+        "options": [
+          "输出电压异常",
+          "开关管损坏",
+          "滤波电容失效",
+          "机械磨损",
+          "控制信号丢失"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 169,
+        "type": "multiple",
+        "score": 1,
+        "content": "创新的道德要求包括",
+        "options": [
+          "勇于突破常规",
+          "尊重知识产权",
+          "承担创新风险",
+          "忽视现有规则",
+          "造福社会大众"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 170,
+        "type": "multiple",
+        "score": 1,
+        "content": "质量管理知识包含",
+        "options": [
+          "质量标准制定",
+          "质量检验方法",
+          "质量控制措施",
+          "质量改进流程",
+          "成本优先原则"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 171,
+        "type": "judge",
+        "score": 0.5,
+        "content": "续流二极管的极性不能接错，否则会造成短路事故。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 172,
+        "type": "judge",
+        "score": 0.5,
+        "content": "直线运动各轴的正向误差属于数控机床的几何精度检验。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 173,
+        "type": "judge",
+        "score": 0.5,
+        "content": "检查完全部线路后拆除主轴电动机、液压电动机和电磁阀电源线路并包好绝缘。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 174,
+        "type": "judge",
+        "score": 0.5,
+        "content": "检查变压器上有无多个插头，检查电路板上有无50/60Hz频率转换开关供选择。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 175,
+        "type": "judge",
+        "score": 0.5,
+        "content": "大电容可以通过充放电现象，对其电容值做粗略估计。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 176,
+        "type": "judge",
+        "score": 0.5,
+        "content": "三相六拍脉冲分配逻辑电路由FFl、FF2、FF3三位JK触发器组成。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 177,
+        "type": "judge",
+        "score": 0.5,
+        "content": "如有自诊断功能，故障会自动显示报警信息，此时可先按“MON”复位键。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 178,
+        "type": "judge",
+        "score": 0.5,
+        "content": "主轴回转轴心线对工作台面的垂直度属于数控机床的定位精度检验。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 179,
+        "type": "judge",
+        "score": 0.5,
+        "content": "对于加工中心，还必须调整机械手与主轴、刀库的相对位置，以及托板与交换工作台面的相对位置，以保证换刀和交换工作台时的准确、平稳、可靠。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 180,
+        "type": "judge",
+        "score": 0.5,
+        "content": "分立元件组成的触发电路，线路复杂且使用元件多。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 181,
+        "type": "judge",
+        "score": 0.5,
+        "content": "电压负反馈自动调速系统在一定程度上起到了自动稳速作用。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 182,
+        "type": "judge",
+        "score": 0.5,
+        "content": "当电源指示灯亮，而运行指示灯不亮（排除指示灯本身故障原因），说明系统已因某种异常而中止了正常的运行。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 183,
+        "type": "judge",
+        "score": 0.5,
+        "content": "F系列可编程序控制器的定时器输出指令用OUT57表示。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 184,
+        "type": "judge",
+        "score": 0.5,
+        "content": "可编程序控制器的工作过程是周期循环扫描工作过程，其工作过程分为三个阶段。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 185,
+        "type": "judge",
+        "score": 0.5,
+        "content": "F系列可编程序控制器的计数器输出指令用OUT68表示。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 186,
+        "type": "judge",
+        "score": 0.5,
+        "content": "共阳极整流电路的工作原理和分析方法与共阴极电路相同，只是电压方向相同、电流方向相反。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 187,
+        "type": "judge",
+        "score": 0.5,
+        "content": "数控机床的几何精度检验包括回转轴原点的复归精度。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 188,
+        "type": "judge",
+        "score": 0.5,
+        "content": "KCZ6为了使脉冲变压器在脉冲间断时去掉剩磁，稳压管要选合适的击穿电压，使脉冲变压器反电动势建立一定值之后短路，去掉剩磁。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 189,
+        "type": "judge",
+        "score": 0.5,
+        "content": "对于振荡管，在起振时基极对地为正电压，也可用示波器观察其振荡波形。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 190,
+        "type": "judge",
+        "score": 0.5,
+        "content": "三相六拍脉冲分配逻辑电路由FFl、FF2、FF3三位D触发器组成。其脉冲分配顺序是A→AB→B→BC→C→CA→A→……。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 191,
+        "type": "judge",
+        "score": 0.5,
+        "content": "交流电源线上装有两组电流互感器TA1、TA2，用于电路的计量和过电流保护。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 192,
+        "type": "judge",
+        "score": 0.5,
+        "content": "对机床上的各交流电动机如冷却风扇、液压泵电动机、冷却泵电动机等逐一分别接通电源，观察电动机转向是否正确、有无异常声响。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 193,
+        "type": "judge",
+        "score": 0.5,
+        "content": "SP100-C3型高频设备接通电源加热后无栅流不振荡。不振荡的原因很多。如果振荡管的阳极直流电源和灯丝电源都是正常的，则应该在半高压的情况下观察一下阳极电流。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 194,
+        "type": "judge",
+        "score": 0.5,
+        "content": "JWK经济型数控机床通过编程指令可实现的功能有返回参考点。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 195,
+        "type": "judge",
+        "score": 0.5,
+        "content": "检查各外部接线端子的接线是否连接好，螺钉是否松动。保证所有接线接触良好。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 196,
+        "type": "judge",
+        "score": 0.5,
+        "content": "检查变压器上有无多个插头，检查电路板上有无50/60Hz电源转换开关供选择。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 197,
+        "type": "judge",
+        "score": 0.5,
+        "content": "通过两种不同方式的输出指定（可变速电动机并配置相应的强电电路）转速叫主轴变速。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 198,
+        "type": "judge",
+        "score": 0.5,
+        "content": "运行试验用与规定的承载工件最大重量相当的重物置于工作台上，使负载均匀。然后以最低、最高进给速度进行运转。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 199,
+        "type": "judge",
+        "score": 0.5,
+        "content": "在数控机床的伺服驱动机构中，常用的伺服驱动元件有步进电动机、液压马达和大惯量直流电动机、交流伺服电动机等。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 200,
+        "type": "judge",
+        "score": 0.5,
+        "content": "数控机床的几何精度检验包括主轴孔的径向圆跳动。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 201,
+        "type": "judge",
+        "score": 0.5,
+        "content": "电压负反馈断线，造成电压负反馈信号消失，使控制绕组3WC中的电流增大，造成电机扩大机和直流发电机过低电压，于是电动机产生很高的速度。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 202,
+        "type": "judge",
+        "score": 0.5,
+        "content": "反电枢可逆电路由于电枢回路电感大,所以适用于要求频繁启动而过渡过程时间短的生产机械，如可逆轧钢机、龙门刨等。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 203,
+        "type": "judge",
+        "score": 0.5,
+        "content": "键盘是计算机系统最常用的人机对话输入设备，它有两种基本类型：编码键盘和非编码键盘。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 204,
+        "type": "judge",
+        "score": 0.5,
+        "content": "弱磁调速是从n0向下调速，调速特性为恒功率输出。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 205,
+        "type": "judge",
+        "score": 0.5,
+        "content": "通电前的检查，首先确认输入电源电压和相序。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 206,
+        "type": "judge",
+        "score": 0.5,
+        "content": "当逆变器电流上升时造成换流失败，应减小tf。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 207,
+        "type": "judge",
+        "score": 0.5,
+        "content": "刀具功能只能进行刀具的更换。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 208,
+        "type": "judge",
+        "score": 0.5,
+        "content": "为了实现频率的自动跟踪，逆变触发电路采取自激工作方法，自激信号来自负载端。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 209,
+        "type": "judge",
+        "score": 0.5,
+        "content": "往往把调压调速和弱磁调速结合起来使用，即在额定转速以上，以满磁调压调速。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 210,
+        "type": "judge",
+        "score": 0.5,
+        "content": "由于各种原因所引起的故障报警时，报警指示灯亮。可进一步通过编程器查看报警信息。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      }
+    ]
+  },
+  {
+    "id": "paper_2026_1023",
+    "name": "2026年10月23日模拟卷(精简版)",
+    "total": 210,
+    "questions": [
+      {
+        "index": 1,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在编程时，也可把所需要并联的回路连贯地写出，而在这些回路的末尾连续使用与支路个数相同的ORB指令，这时指令最多使用()。",
+        "options": [
+          "没有限制",
+          "有限制",
+          "七次",
+          "八次"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 2,
+        "type": "choice",
+        "score": 0.5,
+        "content": "部分电路欧姆定律反映了在()的一段电路中，电流与这段电路两端的电压及电阻的关系。",
+        "options": [
+          "含电源",
+          "不含电源",
+          "含电源和负载",
+          "不含电源和负载"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 3,
+        "type": "choice",
+        "score": 0.5,
+        "content": "凡工作地点狭窄、工作人员活动困难，周围有大面积接地导体或金属构架，因而存在高度触电危险的环境以及特别的场所，则使用时的安全电压为()。",
+        "options": [
+          "9V",
+          "12V",
+          "24V",
+          "36V"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 4,
+        "type": "choice",
+        "score": 0.5,
+        "content": "调整时，工作台上应装有()以上的额定负载进行工作台自动交换运行。",
+        "options": [
+          "0.5",
+          "0.4",
+          "0.2",
+          "0.1"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 5,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电压表的内阻()被测负载的电阻。",
+        "options": [
+          "远小于",
+          "远大于",
+          "等于",
+          "大于等于"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 6,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电阻器的阻值及精度等级一般用文字或数字直接印于电阻器上。金色允许偏差为()。",
+        "options": [
+          "0.05",
+          "0.1",
+          "0.15",
+          "0.2"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 7,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可编程序控制器采用了一系列可靠性设计，如()、掉电保护、故障诊断和信息保护及恢复等。",
+        "options": [
+          "简单设计",
+          "简化设计",
+          "冗余设计",
+          "功能设计"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 8,
+        "type": "choice",
+        "score": 0.5,
+        "content": "回转运动的定位精度和重复分度精度属于数控机床的()精度检验。",
+        "options": [
+          "切削",
+          "几何",
+          "定位",
+          "联动"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 9,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在F-20系列可编程序控制器辅助继电器中，每8个辅助继电器构成一个()。",
+        "options": [
+          "移位寄存器",
+          "存储器",
+          "控制器",
+          "触发器"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 10,
+        "type": "choice",
+        "score": 0.5,
+        "content": "定子绕组串电阻的降压启动是指电动机启动时，把电阻串接在电动机定子绕组与电源之间，通过电阻的分压作用来()定子绕组上的启动电压。",
+        "options": [
+          "提高",
+          "减少",
+          "加强",
+          "降低"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 11,
+        "type": "choice",
+        "score": 0.5,
+        "content": "常见的可逆主电路连接方式有()两种。",
+        "options": [
+          "反并联和交叉连接",
+          "并联和交叉连接",
+          "并联和反交叉连接",
+          "并联和反交叉连接"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 12,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()适用于单机拖动，频繁加、减速运行，并需经常反向的场合。",
+        "options": [
+          "电容式逆变器",
+          "电感式逆变器",
+          "电流型逆变器",
+          "电压型逆变器"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 13,
+        "type": "choice",
+        "score": 0.5,
+        "content": "磁场强度的方向和所在点的()的方向一致。",
+        "options": [
+          "磁通或磁通量",
+          "磁导率",
+          "磁场强度",
+          "磁感应强度"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 14,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电动机是使用最普遍的电气设备之一，一般在()额定负载下运行时效率最高，功率因数大。",
+        "options": [
+          "70%-95%",
+          "80%-90%",
+          "65%-70%",
+          "75%-95%"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 15,
+        "type": "choice",
+        "score": 0.5,
+        "content": "逆变桥工作调整是将0.8Ω生铁电阻串联在直流电路里。这里串入限流电阻的作用是为了在()保护未调整好的情况下，当逆变失败时将主电路电流限制在一定范围内。",
+        "options": [
+          "过压过流",
+          "过压欠流",
+          "欠压过流",
+          "欠压欠流"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 16,
+        "type": "choice",
+        "score": 0.5,
+        "content": "对待职业和岗位，()并不是爱岗敬业所要求的。",
+        "options": [
+          "树立职业理想",
+          "干一行爱一行专一行",
+          "遵守企业的规章制度",
+          "一职定终身，不改行"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 17,
+        "type": "choice",
+        "score": 0.5,
+        "content": "编程器的数字键由0～9共10个键组成，用以设置()、计数器、定时器的设定值等。",
+        "options": [
+          "顺序控制",
+          "地址号",
+          "工作方式",
+          "参数控制"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 18,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F系列可编程序控制器中的ANI指令用于()。",
+        "options": [
+          "常闭触点的串联",
+          "常闭触点的并联",
+          "常开触点的串联",
+          "常开触点的并联"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 19,
+        "type": "choice",
+        "score": 0.5,
+        "content": "理想的驱动电源应使通过步进电动机很大电感量的绕组电流尽量接近()。",
+        "options": [
+          "矩形波",
+          "三角波",
+          "正弦波",
+          "梯形波"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 20,
+        "type": "choice",
+        "score": 0.5,
+        "content": "剩磁消失而不能发电应重新充磁。直流电源电压应低于额定励磁电压（一般取()V左右），充磁时间约为2～3min。",
+        "options": [
+          "60.0",
+          "100.0",
+          "127.0",
+          "220.0"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 21,
+        "type": "choice",
+        "score": 0.5,
+        "content": "计算机辅助制造()。",
+        "options": [
+          "CAM",
+          "CAD",
+          "CNC",
+          "MDI"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 22,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F系列可编程序控制器常闭触点的并联用()指令。",
+        "options": [
+          "AND",
+          "ANI",
+          "ANB",
+          "ORB"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 23,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可用交磁电机扩大机作为G—M系统中直流发电机的励磁，从而构成()。",
+        "options": [
+          "G—M系统",
+          "AG—M系统",
+          "AG—G—M系统",
+          "CNC—M系统"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 24,
+        "type": "choice",
+        "score": 0.5,
+        "content": "KC42调制脉冲频率为()Hz，调节R1、R2、C1、C2值可改变频率。",
+        "options": [
+          "5～10M",
+          "1～5M",
+          "5～10k",
+          "1～5k"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 25,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在市场经济条件下，职业道德具有()的社会功能。",
+        "options": [
+          "鼓励人们自由选择职业",
+          "遏制牟利最大化",
+          "促进人们的行为规范化",
+          "最大限度地克服人们受利益驱动"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 26,
+        "type": "choice",
+        "score": 0.5,
+        "content": "设计者给定的尺寸中D表示()。",
+        "options": [
+          "孔",
+          "轴",
+          "基孔制",
+          "基轴制"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 27,
+        "type": "choice",
+        "score": 0.5,
+        "content": "钽电解电容器的型号用()表示。",
+        "options": [
+          "CJ",
+          "CD",
+          "CA",
+          "CN"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 28,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F-20MR可编程序控制器表示()类型。",
+        "options": [
+          "继电器输出",
+          "晶闸管输出",
+          "晶体管输出",
+          "单晶体管输出"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 29,
+        "type": "choice",
+        "score": 0.5,
+        "content": "经济型数控机床按驱动和定位方式可划分为()：",
+        "options": [
+          "步进电动机式",
+          "交流点位式",
+          "半闭环连续控制式",
+          "以上都是"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 30,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电路的作用是实现能量的传输和转换、信号的()和处理。",
+        "options": [
+          "连接",
+          "传输",
+          "控制",
+          "传递"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 31,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可编程序控制器通过编程，灵活地改变其控制程序，相当于改变了继电器控制的()线路。",
+        "options": [
+          "主、控制",
+          "控制",
+          "软接线",
+          "硬接线"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 32,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列金属及合金的熔点最高的是()。",
+        "options": [
+          "铅",
+          "钨",
+          "铬",
+          "黄铜"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 33,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电气设备的巡视一般均由()进行。",
+        "options": [
+          "1人",
+          "2人",
+          "3人",
+          "4人"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 34,
+        "type": "choice",
+        "score": 0.5,
+        "content": "换向时冲程过大首先检查减速制动回路工作是否正常；减速开关（F—SQD、R—SQD）和继电器KAD工作是否良好。另外，()能引起越位过大。",
+        "options": [
+          "电压负反馈较弱",
+          "电压负反馈较高",
+          "截止电流低",
+          "截止电流高"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 35,
+        "type": "choice",
+        "score": 0.5,
+        "content": "启动按钮优先选用()色按钮；急停按钮应选用()色按钮，停止按钮优先选用()色按钮。",
+        "options": [
+          "绿、黑、红",
+          "白、红、红",
+          "绿、红、黑",
+          "白、红、黑"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 36,
+        "type": "choice",
+        "score": 0.5,
+        "content": "KC41的输出端10～15是按后相给前相补脉冲的规律，经V1～V6放大，可输出驱动电流为()的双窄脉冲列",
+        "options": [
+          "100～300μA",
+          "300～800μA",
+          "100～300mA",
+          "300～800mA"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 37,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列事项中属于办事公道的是()。",
+        "options": [
+          "顾全大局，一切听从上级",
+          "大公无私，拒绝亲戚求助",
+          "知人善任，努力培养知己",
+          "坚持原则，不计个人得失"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 38,
+        "type": "choice",
+        "score": 0.5,
+        "content": "如果只有CJP而无EJP指令时，程序将执行()指令。",
+        "options": [
+          "NOP",
+          "END",
+          "OUT",
+          "AND"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 39,
+        "type": "choice",
+        "score": 0.5,
+        "content": "晶闸管中频电源能自动实现()调节，在金属加热和熔炼的全过程中，中频频率始终适应负载振荡回路谐振的需要。",
+        "options": [
+          "频率",
+          "功率",
+          "功率",
+          "控制极"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 40,
+        "type": "choice",
+        "score": 0.5,
+        "content": "伺服驱动过载可能是负载过大；或加减速时间设定过小；或()；或编码器故障（编码器反馈脉冲与电动机转角不成比例地变化，有跳跃）。",
+        "options": [
+          "使用环境温度超过了规定值",
+          "伺服电动机过载",
+          "负载有冲击",
+          "编码器故障"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 41,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在市场经济条件下，()是职业道德社会功能的重要表现。",
+        "options": [
+          "克服利益导向",
+          "遏制牟利最大化",
+          "增强决策科学化",
+          "促进员工行为的规范化"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 42,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电阻器的阻值及精度等级一般用文字或数字直接印于电阻器上。银色允许偏差为()。",
+        "options": [
+          "0.05",
+          "0.1",
+          "0.15",
+          "0.2"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 43,
+        "type": "choice",
+        "score": 0.5,
+        "content": "语法检查键操作中代码()表示输出指令OUTT或C后面漏掉设定常数K。",
+        "options": [
+          "l-l",
+          "1-2",
+          "1-3",
+          "1-4"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 44,
+        "type": "choice",
+        "score": 0.5,
+        "content": "MPU与外设之间进行数据传输有()方式。",
+        "options": [
+          "程序控制",
+          "控制中断控制",
+          "选择直接存储器存取（DMA）",
+          "以上都是"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 45,
+        "type": "choice",
+        "score": 0.5,
+        "content": "为避免()和数据丢失，可编程序控制器装有锂电池，当锂电池电压降降至相应的信号灯亮时，要及时更换电池。",
+        "options": [
+          "地址",
+          "指令",
+          "程序",
+          "序号"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 46,
+        "type": "choice",
+        "score": 0.5,
+        "content": "若被测电流不超过测量机构的允许值，可将表头直接与负载()。",
+        "options": [
+          "正接",
+          "反接",
+          "串联",
+          "并联"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 47,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()指令为结束指令。",
+        "options": [
+          "NOP",
+          "END",
+          "S",
+          "R"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 48,
+        "type": "choice",
+        "score": 0.5,
+        "content": "正确阐述职业道德与人的事业的关系的选项是()。",
+        "options": [
+          "没有职业道德的人不会获得成功",
+          "要取得事业的成功，前提条件是要有职业道德",
+          "事业成功的人往往并不需要较高的职业道德",
+          "职业道德是人获得事业成功的重要条件"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 49,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()指令为主控复位指令。",
+        "options": [
+          "MC",
+          "MCR",
+          "CJP",
+          "EJP"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 50,
+        "type": "choice",
+        "score": 0.5,
+        "content": "Y-D降压启动的指电动机启动时，把()联结成Y形，以降低启动电压，限制启动电流。",
+        "options": [
+          "定子绕组",
+          "电源",
+          "转子",
+          "定子和转子"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 51,
+        "type": "choice",
+        "score": 0.5,
+        "content": "高频电源中采用的LC真空三极管正弦波振荡器的基本电路可归纳为()耦合式振荡器。",
+        "options": [
+          "变压器",
+          "阻容",
+          "直接",
+          "晶体"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 52,
+        "type": "choice",
+        "score": 0.5,
+        "content": "KC41C六路双脉冲形成器是()触发电路中必备组件。",
+        "options": [
+          "两相全控桥式",
+          "两相全控桥式",
+          "三相半控桥式",
+          "三相全控桥式"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 53,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电气设备维修值班一般应有()以上。",
+        "options": [
+          "1人",
+          "2人",
+          "3人",
+          "4人"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 54,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()阶段读入输入信号，将按钮、开关触点、传感器等输入信号读入到存储器内，读入的信号一直保持到下一次该信号再次被读入时为止，即经过一个扫描周期。",
+        "options": [
+          "输出采样",
+          "输入采样",
+          "程序执行",
+          "输出刷新"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 55,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F-40MR可编程序控制器，表示F系列()。",
+        "options": [
+          "基本单元",
+          "扩展单元",
+          "单元类型",
+          "输出类型"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 56,
+        "type": "choice",
+        "score": 0.5,
+        "content": "触发脉冲信号应有一定的宽度，脉冲前沿要陡。电感性负载一般是()ms，相当于50Hz正弦波的18°。",
+        "options": [
+          "0.1",
+          "0.5",
+          "1.0",
+          "1.5"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 57,
+        "type": "choice",
+        "score": 0.5,
+        "content": "对交流电动机进行()，更换润滑脂和轴承，并进行绝缘测试。",
+        "options": [
+          "检查",
+          "小修",
+          "中修",
+          "大修"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 58,
+        "type": "choice",
+        "score": 0.5,
+        "content": "职业道德是指从事一定职业劳动的人们，在长期的职业活动中形成的()。",
+        "options": [
+          "行为规范",
+          "操作程序",
+          "劳动技能",
+          "思维习惯"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 59,
+        "type": "choice",
+        "score": 0.5,
+        "content": "对交流电动机进行中修，更换()，并进行绝缘测试。",
+        "options": [
+          "润滑脂",
+          "轴承",
+          "润滑油",
+          "润滑脂和轴承"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 60,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电感两端的电压超前电流()。",
+        "options": [
+          "90°",
+          "180°",
+          "360°",
+          "30°"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 61,
+        "type": "choice",
+        "score": 0.5,
+        "content": "用示波器观察逆变桥各晶闸管V1～V4的触发脉冲，要求其脉冲幅值Ug≥4V，同时脉冲前沿tp＜3μS，脉冲宽度()。",
+        "options": [
+          "1μS＜ta＜10μs",
+          "10μS＜ta＜100μs",
+          "1мS＜ta＜10мs",
+          "10мS＜ta＜100мs"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 62,
+        "type": "choice",
+        "score": 0.5,
+        "content": "先利用程序查找功能确定并读出要删除的某条指令，然后按下DEL键，随删除指令之后步序将自动加()。",
+        "options": [
+          "1.0",
+          "2.0",
+          "5.0",
+          "10.0"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 63,
+        "type": "choice",
+        "score": 0.5,
+        "content": "人体()是最危险的触电形式。",
+        "options": [
+          "单相触电",
+          "两相触电",
+          "接触电压触电",
+          "跨步电压触电"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 64,
+        "type": "choice",
+        "score": 0.5,
+        "content": "用直流发电机控制直流电动机电枢电压所构成的直流发电机—直流电动机系统，简称为()。",
+        "options": [
+          "G—M系统",
+          "AG—M系统",
+          "AG—G—M系统",
+          "CNC—M系统"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 65,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电器框各导电部分对地绝缘阻值不应小于()MΩ。",
+        "options": [
+          "0.5",
+          "1.0",
+          "2.0",
+          "4.0"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 66,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()不是输入全部不接通而且输入指示灯均不亮的原因。",
+        "options": [
+          "公共端子螺钉松动",
+          "单元内部有故障",
+          "远程I/O站的电源未通",
+          "未加外部输入电源"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 67,
+        "type": "choice",
+        "score": 0.5,
+        "content": "开关逻辑和()用于组合机床、自动化生产线。",
+        "options": [
+          "顺序控制",
+          "参数控制",
+          "数值控制",
+          "逻辑控制"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 68,
+        "type": "choice",
+        "score": 0.5,
+        "content": "振荡周期T＝Tl+T2，其中T1＝()。",
+        "options": [
+          "0.693C2RlR2/（Rl+R2）",
+          "0.693（Rl+R2）/C2RlR2",
+          "0.693R2C2",
+          "0.693RlC1"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 69,
+        "type": "choice",
+        "score": 0.5,
+        "content": "伺服驱动过电流可能是驱动装置输出L1、L2、L3之间短路；或()；或功率开关晶体管Vl～V6损坏；或是加速过快。",
+        "options": [
+          "使用环境温度超过了规定值",
+          "伺服电动机过载",
+          "负载有冲击",
+          "编码器故障"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 70,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列关于勤劳节俭的论述中，正确的选项是（）",
+        "options": [
+          "勤劳一定能使人致富",
+          "勤劳节俭有利于企业持续发展",
+          "新时代需要巧干，不需要勤劳",
+          "新时代需要创造，不需要节俭"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 71,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()测量前应清理干净，并将两量爪合并，检查游标卡尺的精度情况。",
+        "options": [
+          "卷尺",
+          "游标卡尺",
+          "钢直尺",
+          "千分尺"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 72,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()阶段根据读入的输入信号状态，解读用户程序逻辑，按用户逻辑得到正确的输出。",
+        "options": [
+          "输出采样",
+          "输入采样",
+          "程序执行",
+          "输出刷新"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 73,
+        "type": "choice",
+        "score": 0.5,
+        "content": "真空三极管具有阳极、阴极和()。",
+        "options": [
+          "发射极",
+          "栅极",
+          "控制极",
+          "基极"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 74,
+        "type": "choice",
+        "score": 0.5,
+        "content": "当LC并联电路的固有频率等于电源频率时，并联电路发生并联谐振，此时并联电路具有()。",
+        "options": [
+          "阻抗适中",
+          "阻抗为零",
+          "最小阻抗",
+          "最大阻抗"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 75,
+        "type": "choice",
+        "score": 0.5,
+        "content": "定时器相当于继电控制系统中的延时继电器。F-40系列可编程序控制器可设定()。",
+        "options": [
+          "0.1～9.9s",
+          "0.1～99s",
+          "0.1～999s",
+          "0.1～9999s"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 76,
+        "type": "choice",
+        "score": 0.5,
+        "content": "实践证明，在高于额定灯丝电压()情况下长期工作，管子寿命几乎减少一半。",
+        "options": [
+          "0.03",
+          "0.05",
+          "0.1",
+          "0.15"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 77,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在商业活动中，不符合待人热情要求的是()。",
+        "options": [
+          "严肃待客，表情冷漠",
+          "主动服务，细致周到",
+          "微笑大方，不厌其烦",
+          "亲切友好，宾至如归"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 78,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F-20MR可编程序控制器计数器的地址是()。",
+        "options": [
+          "00-13",
+          "30-37",
+          "50-57",
+          "60-67"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 79,
+        "type": "choice",
+        "score": 0.5,
+        "content": "JWK系列经济型数控机床通电前检查包括()内容。",
+        "options": [
+          "输入电源电压和频率的确认",
+          "直流电源的检查",
+          "检查各熔断器",
+          "以上都是"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 80,
+        "type": "choice",
+        "score": 0.5,
+        "content": "企业生产经营活动中，要求员工遵纪守法是()。",
+        "options": [
+          "约束人的体现",
+          "保证经济活动正常进行所决定的",
+          "领导者人为的规定",
+          "追求利益的体现"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 81,
+        "type": "choice",
+        "score": 0.5,
+        "content": "为避免程序和()丢失，可编程序控制器装有锂电池，当锂电池电压降降至相应的信号灯亮时，要及时更换电池。",
+        "options": [
+          "地址",
+          "程序",
+          "指令",
+          "数据"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 82,
+        "type": "choice",
+        "score": 0.5,
+        "content": "钻夹头用来装夹直径()以下的钻头。",
+        "options": [
+          "10mm",
+          "11mm",
+          "12mm",
+          "13mm"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 83,
+        "type": "choice",
+        "score": 0.5,
+        "content": "高频电源的核心部件是电子管振荡器，振荡器的核心部件是()。",
+        "options": [
+          "真空三极管",
+          "高频三极管",
+          "晶闸管",
+          "可关断晶闸管"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 84,
+        "type": "choice",
+        "score": 0.5,
+        "content": "对于小容量晶闸管，在其控制极和阴极之间加一并联()，也可对电压上升率过大引起晶闸管误导通起到良好的抑制作用。",
+        "options": [
+          "电阻",
+          "电抗",
+          "电感",
+          "电容"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 85,
+        "type": "choice",
+        "score": 0.5,
+        "content": "潮湿场所的电气设备使用时的安全电压为()。",
+        "options": [
+          "9V",
+          "12V",
+          "24V",
+          "36V"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 86,
+        "type": "choice",
+        "score": 0.5,
+        "content": "对于每个职工来说，质量管理的主要内容有岗位的()、质量目标、质量保证措施和质量责任等。",
+        "options": [
+          "信息反馈",
+          "质量水平",
+          "质量记录",
+          "质量要求"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 87,
+        "type": "choice",
+        "score": 0.5,
+        "content": "若被测电流超过测量机构的允许值，就需要在表头上()一个称为分流器的低值电阻。",
+        "options": [
+          "正接",
+          "反接",
+          "串联",
+          "串联"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 88,
+        "type": "choice",
+        "score": 0.5,
+        "content": "雷击引起的交流侧过电压从交流侧经变压器向整流元件移动时，可分为两部分：一部分是静电过渡，能量较小，可用变压器二次侧经()来吸收。",
+        "options": [
+          "阻容吸收电路",
+          "电容接地",
+          "阀式避雷器",
+          "非线性电阻浪涌吸收器"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 89,
+        "type": "choice",
+        "score": 0.5,
+        "content": "当线圈中的磁通减小时，感应电流产生的磁通与原磁通方向()。",
+        "options": [
+          "正比",
+          "反比",
+          "相反",
+          "相同"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 90,
+        "type": "choice",
+        "score": 0.5,
+        "content": "、机床电器大修是工作量最大的一种计划修理。大修时，将对电气系统的()元器件进行解体、修理、更换和调整，从而全面消除机床存在的隐患、缺陷，恢复电气系统达到所规定的性能和精度。",
+        "options": [
+          "全部",
+          "小部分",
+          "大部分",
+          "全部或大部分"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 91,
+        "type": "choice",
+        "score": 0.5,
+        "content": "拆卸零件采取正确的拆卸方法。应按照()的顺序进行。",
+        "options": [
+          "先拆外部、后拆内部；先拆上部、后拆下部",
+          "先拆外部、后拆内部；先拆下部、后拆上部",
+          "先拆内部、后拆外部；先拆上部、后拆下部",
+          "先拆内部、后拆外部；先拆下部、后拆上部"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 92,
+        "type": "choice",
+        "score": 0.5,
+        "content": "JWK系列经济型数控机床通电前检查不包括()。",
+        "options": [
+          "输入电源电压和频率的确认",
+          "直流电源的检查",
+          "确认电源相序",
+          "检查各熔断器"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 93,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()指令为跳步结束指令。",
+        "options": [
+          "MC",
+          "MCR",
+          "CJP",
+          "EJP"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 94,
+        "type": "choice",
+        "score": 0.5,
+        "content": "通过变流器把直流电能变成某一频率或可调频率的交流电能直接供电给负载的，叫做()。",
+        "options": [
+          "有源逆变",
+          "无源逆变",
+          "整流",
+          "反馈"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 95,
+        "type": "choice",
+        "score": 0.5,
+        "content": "转矩极性鉴别器常常采用运算放大器经正反馈组成的()电路检测速度调节器的输出电压un",
+        "options": [
+          "多沿震荡",
+          "差动放大",
+          "施密特",
+          "双稳态"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 96,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()是经济型数控机床按驱动和定位方式划分。",
+        "options": [
+          "闭环连续控制式",
+          "变极控制式",
+          "步进电动机式",
+          "直流点位式"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 97,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()就是能够把二进制代码和运算结果暂时存储起来的部件。",
+        "options": [
+          "寄存器",
+          "触发器",
+          "放大器",
+          "计数器"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 98,
+        "type": "choice",
+        "score": 0.5,
+        "content": "由一组()电路判断控制整流器触发脉冲通道的开放和封锁，这就构成了逻辑无环流可逆调速系统。",
+        "options": [
+          "逻辑",
+          "延时",
+          "保护",
+          "零电流检测器"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 99,
+        "type": "choice",
+        "score": 0.5,
+        "content": "JWK型经济型数控机床按照程序输入步骤输入零件加工程序，检查()，正常后方可联机调试。",
+        "options": [
+          "各种功能",
+          "程序",
+          "轴流风机",
+          "电机"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 100,
+        "type": "choice",
+        "score": 0.5,
+        "content": "数控机床的切削精度检验包括()。",
+        "options": [
+          "侧面铣刀铣侧面的直线精度",
+          "侧面铣刀铣圆弧的圆度精度",
+          "回转工作台转90o侧面铣刀铣削的直角精度",
+          "以上都是"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 101,
+        "type": "choice",
+        "score": 0.5,
+        "content": "当ωt=360°时，ｉ1、ｉ2、ｉ3分别为()。",
+        "options": [
+          "负值、正值、0",
+          "0、正值、负值",
+          "负值、0、正值",
+          "0、负值、正值"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 102,
+        "type": "choice",
+        "score": 0.5,
+        "content": "经济型数控系统中的()显示器功耗小、亮度高、控制简单可靠、价格低，广泛应用于经济型数控中。",
+        "options": [
+          "LED",
+          "CRT",
+          "CTR",
+          "ELD"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 103,
+        "type": "choice",
+        "score": 0.5,
+        "content": "Y-D降压启动的指电动机启动时，把定子绕组联结成()，以降低启动电压，限制启动电流。",
+        "options": [
+          "D形",
+          "Y形",
+          "DD形",
+          "YY形"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 104,
+        "type": "choice",
+        "score": 0.5,
+        "content": "铁磁饱和式稳压器的基本结构与变压器相似，由硅钢片叠成二心柱式铁心，心柱l工作在磁化曲线的()段。",
+        "options": [
+          "饱和",
+          "未饱和",
+          "过饱和",
+          "起始"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 105,
+        "type": "choice",
+        "score": 0.5,
+        "content": "工作台运行速度过低不足的原因是()。",
+        "options": [
+          "发电机励磁回路电压不足",
+          "控制绕组2WC中有接触不良",
+          "电压负反馈过强等",
+          "以上都是"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 106,
+        "type": "choice",
+        "score": 0.5,
+        "content": "外部环境检查时，当湿度过大时应考虑装()。",
+        "options": [
+          "风扇",
+          "加热器",
+          "空调",
+          "除尘器"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 107,
+        "type": "choice",
+        "score": 0.5,
+        "content": "通过变流器把直流电能逆变成交流电能送到交流电网的叫()。",
+        "options": [
+          "有源逆变",
+          "无源逆变",
+          "整流",
+          "反馈"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 108,
+        "type": "choice",
+        "score": 0.5,
+        "content": "伺服驱动过载可能是负载过大；或加减速时间设定过小；或()；或编码器故障（编码器反馈脉冲与电动机转角不成比例地变化，有跳跃）",
+        "options": [
+          "使用环境温度超过了规定值",
+          "伺服电动机过载",
+          "负载有冲击",
+          "编码器故障"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 109,
+        "type": "choice",
+        "score": 0.5,
+        "content": "强供电回路的管线尽量避免与可编程序控制器输出、输入回路()，且线路不在同一根管路内。",
+        "options": [
+          "垂直",
+          "交叉",
+          "远离",
+          "平行"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 110,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列关于勤劳节俭的论述中，不正确的选项是()。",
+        "options": [
+          "企业可提倡勤劳，但不宜提倡节俭",
+          "“一分钟应看成是八分钟”",
+          "勤劳节俭符合可持续发展的要求",
+          "“节省一块钱，就等于净赚一块钱”"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 111,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可编程序控制器编程灵活性。编程语言有梯形图、布尔助记符、()、功能模块图和语句描述。",
+        "options": [
+          "安装图",
+          "原理图",
+          "功能表图",
+          "逻辑图"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 112,
+        "type": "choice",
+        "score": 0.5,
+        "content": "车床尾架体孔和顶尖套筒的配合种类为基本偏差()。",
+        "options": [
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 113,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在一个程序中，同一地址号的线圈()次输出，且继电器线圈不能串联只能并联。",
+        "options": [
+          "只能有一",
+          "只能有二",
+          "只能有三",
+          "无限"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 114,
+        "type": "choice",
+        "score": 0.5,
+        "content": "当锉刀拉回时，应()，以免磨钝锉齿或划伤工件表面。",
+        "options": [
+          "轻轻划过",
+          "稍微抬起",
+          "抬起",
+          "拖回"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 115,
+        "type": "choice",
+        "score": 0.5,
+        "content": "常用的拆卸工具是()常用工具，如拔销器，各种扳手、旋具等。",
+        "options": [
+          "电工",
+          "钳工",
+          "车工",
+          "维修电工"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 116,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电功率的常用的单位有()。",
+        "options": [
+          "瓦",
+          "千瓦",
+          "毫瓦",
+          "瓦、千瓦、毫瓦"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 117,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电动机是使用最普遍的电气设备之一，一般在70%-95%()下运行时效率最高，功率因数大。",
+        "options": [
+          "额定电压",
+          "额定负载",
+          "电压",
+          "电流"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 118,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在主轴()调速范围内选一适当转速，调整切削量使之达到最大功率，机床工作正常，无颤振现象。",
+        "options": [
+          "恒转矩",
+          "恒功率",
+          "恒电流",
+          "恒电流"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 119,
+        "type": "choice",
+        "score": 0.5,
+        "content": "为了减少触发功率与控制极损耗，通常用()信号触发晶闸管。",
+        "options": [
+          "交流或直流",
+          "脉冲",
+          "交流",
+          "直流"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 120,
+        "type": "choice",
+        "score": 0.5,
+        "content": "回转运动的反向误差属于数控机床的()精度检验。",
+        "options": [
+          "切削",
+          "定位",
+          "几何",
+          "联动"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 121,
+        "type": "choice",
+        "score": 0.5,
+        "content": "一般规定()移动的方向为电流的方向。",
+        "options": [
+          "正电荷",
+          "负电荷",
+          "电荷",
+          "正电荷或负电荷"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 122,
+        "type": "choice",
+        "score": 0.5,
+        "content": "三相电动势到达最大的顺序是不同的，这种达到最大值的先后次序，称三相电源的相序，相序为U-V-W-U，称为()。",
+        "options": [
+          "正序",
+          "负序",
+          "逆序",
+          "相序"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 123,
+        "type": "choice",
+        "score": 0.5,
+        "content": "从一般机械设备电器修理质量标准方面判断，()不属于外观质量。",
+        "options": [
+          "所有电器设备应外表清洁，安装稳固，易于拆卸、修理和调整",
+          "所有电气设备、元件应按图纸要求配备齐全",
+          "机床电气设备应有可靠的接地线，其截面积应与相线截面积相同或不小于4mm2",
+          "电线管应整齐"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 124,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列污染形式中不属于公害的是()。",
+        "options": [
+          "地面沉降",
+          "恶臭",
+          "水土流失",
+          "振动"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 125,
+        "type": "choice",
+        "score": 0.5,
+        "content": "三相桥式逆变电路电压脉动小，变压器利用率高，晶闸管工作电压低，电抗器比三相半波电路小，在()容量可逆系统中广泛应用。",
+        "options": [
+          "小",
+          "中、小",
+          "大",
+          "大、中"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 126,
+        "type": "choice",
+        "score": 0.5,
+        "content": "企业文化的功能不包括()。",
+        "options": [
+          "激励功能",
+          "导向功能",
+          "整合功能",
+          "娱乐功能"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 127,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F系列可编程序控制器中回路并联连接用()指令。",
+        "options": [
+          "AND",
+          "ANI",
+          "ANB",
+          "ORB"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 128,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()的形成则主要靠晶体晶体管V12、电容C2、电阻R5、电位器RP组成的积分电路。",
+        "options": [
+          "锯齿波",
+          "矩形波",
+          "正弦波",
+          "方波"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 129,
+        "type": "choice",
+        "score": 0.5,
+        "content": "对于每个职工来说，质量管理的主要内容有岗位的质量要求、质量目标、()和质量责任等。",
+        "options": [
+          "信息反馈",
+          "质量水平",
+          "质量记录",
+          "质量保证措施"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 130,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F系列可编程序控制器中的ORI指令用于()。",
+        "options": [
+          "常闭触点的串联",
+          "常闭触点的并联",
+          "常开触点的串联",
+          "常开触点的并联"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 131,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在一定电源电压Ea作用下，当负载等效电阻Rˊ相对于Ri较小时，振荡电路上交流电压Uˊ就较小，这种状态称为()。",
+        "options": [
+          "过压状态",
+          "欠压状态",
+          "临界状态",
+          "过零状态"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 132,
+        "type": "choice",
+        "score": 0.5,
+        "content": "各直线运动坐标轴机械原点的复归精度属于数控机床的()精度检验。",
+        "options": [
+          "定位",
+          "几何",
+          "切削",
+          "联动"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 133,
+        "type": "choice",
+        "score": 0.5,
+        "content": "用双综示波器观察逆变桥相邻二组晶闸管（V1、V2或、V3、V4）的触发脉冲相位差是否为()。",
+        "options": [
+          "60°",
+          "90°",
+          "120°",
+          "180°"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 134,
+        "type": "choice",
+        "score": 0.5,
+        "content": "当电源电压波动时，心柱2中的()变化幅度很小，故二次线圈W2的端电压u2变化很小，起到稳定作用。",
+        "options": [
+          "磁动势",
+          "磁阻",
+          "磁通",
+          "磁场"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 135,
+        "type": "choice",
+        "score": 0.5,
+        "content": "铝电解电容器的型号用()表示。",
+        "options": [
+          "CJ",
+          "CD",
+          "CA",
+          "CN"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 136,
+        "type": "choice",
+        "score": 0.5,
+        "content": "回转工作台转90o侧面铣刀铣削的直角精度属于数控机床的()精度检验。",
+        "options": [
+          "切削",
+          "定位",
+          "几何",
+          "联动"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 137,
+        "type": "choice",
+        "score": 0.5,
+        "content": "逆变桥由晶闸管VT7～VT10组成。每个晶闸管均串有空心电感以限制晶闸管导通时的()。",
+        "options": [
+          "电流变化",
+          "电流上升率",
+          "电流上升",
+          "电流"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 138,
+        "type": "choice",
+        "score": 0.5,
+        "content": "OUT指令为逻辑行设定一线圈，不能用于()。",
+        "options": [
+          "位移寄存器",
+          "特殊继电器",
+          "定时器及计数器",
+          "输入继电器"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 139,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()指令为条件跳步指令。",
+        "options": [
+          "MC",
+          "MCR",
+          "CJP",
+          "EJP"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 140,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列关于诚实守信的认识和判断中，正确的选项是()。",
+        "options": [
+          "一贯地诚实守信是不明智的行为",
+          "诚实守信是维持市场经济秩序的基本法则",
+          "是否诚实守信要视具体对象而定",
+          "追求利益最大化原则高于诚实守信"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 141,
+        "type": "choice",
+        "score": 0.5,
+        "content": "铁磁饱和式稳压器的基本结构与变压器相似，由硅钢片叠成二心柱式铁心，而心柱2工作在磁化曲线的()段。",
+        "options": [
+          "饱和",
+          "未饱和",
+          "过饱和",
+          "起始"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 142,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在要求零位附近快速频繁改变转动方向，位置控制要求准确的生产机械，往往用可控环流可逆系统，即在负载电流小于额定值()时，让，人为地制造环流，使变流器电流连续。",
+        "options": [
+          "1％～5％",
+          "5％～10％",
+          "10％～15％",
+          "15％～20％"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 143,
+        "type": "choice",
+        "score": 0.5,
+        "content": "端面铣刀铣平面的精度属于数控机床的()精度检验。",
+        "options": [
+          "切削",
+          "定位",
+          "几何",
+          "联动"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 144,
+        "type": "choice",
+        "score": 0.5,
+        "content": "停车爬行是()是产生爬行的根本原因。",
+        "options": [
+          "震荡",
+          "反馈",
+          "剩磁",
+          "惯性"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 145,
+        "type": "choice",
+        "score": 0.5,
+        "content": "一般作为空行程运行，使刀具快速移动到所需位置上的是()。",
+        "options": [
+          "返回参考点",
+          "快速点定位",
+          "程序延时",
+          "螺纹插补"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 146,
+        "type": "choice",
+        "score": 0.5,
+        "content": "启动电容器CS上所充的电加到由炉子L和补偿电容C组成的并联谐振电路两端，产生()电压和电流。",
+        "options": [
+          "正弦振荡",
+          "中频振荡",
+          "衰减振荡",
+          "振荡"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 147,
+        "type": "choice",
+        "score": 0.5,
+        "content": "导线的绝缘强度必须符合国家、部、局规定的耐压试验标准。绝缘电阻应不低于()MΩ。",
+        "options": [
+          "0.25",
+          "0.5",
+          "1.0",
+          "4.0"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 148,
+        "type": "choice",
+        "score": 0.5,
+        "content": "F系列可编程序控制器系统是由基本单元、扩展单元、编程器、用户程序、()和程序存入器等组成。",
+        "options": [
+          "鼠标",
+          "键盘",
+          "显示器",
+          "写入器"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 149,
+        "type": "choice",
+        "score": 0.5,
+        "content": "数控系统的辅助功能又叫()功能。",
+        "options": [
+          "T",
+          "M",
+          "S",
+          "G"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 150,
+        "type": "choice",
+        "score": 0.5,
+        "content": "()不是运行指示灯不亮的原因",
+        "options": [
+          "输入回路有故障",
+          "单元内部有故障",
+          "远程I/O站的电源未通",
+          "程序错误"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 151,
+        "type": "multiple",
+        "score": 1,
+        "content": "电动机启停控制线路包含",
+        "options": [
+          "自锁控制",
+          "互锁控制",
+          "降压启动控制",
+          "变频调速控制",
+          "正反转控制"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 152,
+        "type": "multiple",
+        "score": 1,
+        "content": "办事公道的具体要求有",
+        "options": [
+          "坚持原则",
+          "公私分明",
+          "公平公正",
+          "灵活变通",
+          "不计得失"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 153,
+        "type": "multiple",
+        "score": 1,
+        "content": "常用绝缘材料的分类及选用包括",
+        "options": [
+          "气体绝缘材料",
+          "液体绝缘材料",
+          "固体绝缘材料",
+          "导体绝缘材料",
+          "半导体绝缘材料"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 154,
+        "type": "multiple",
+        "score": 1,
+        "content": "施工现场临时用电安全技术规范包括",
+        "options": [
+          "三级配电设置",
+          "两级保护要求",
+          "TN-S接零保护系统",
+          "随意接线允许",
+          "漏电保护器安装"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 155,
+        "type": "multiple",
+        "score": 1,
+        "content": "晶体二极管的工作原理涉及",
+        "options": [
+          "正向偏置导通",
+          "反向偏置截止",
+          "单向导电性",
+          "电流放大作用",
+          "稳压特性"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 156,
+        "type": "multiple",
+        "score": 1,
+        "content": "常用电工仪表的使用包括",
+        "options": [
+          "万用表的量程选择",
+          "电流表的串联接法",
+          "电压表的并联接法",
+          "功率表的接线规则",
+          "示波器的探头校准"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 157,
+        "type": "multiple",
+        "score": 1,
+        "content": "电工识图基本知识包括",
+        "options": [
+          "电气符号识别",
+          "线路走向分析",
+          "元器件标注解读",
+          "机械图纸识读",
+          "控制逻辑分析"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 158,
+        "type": "multiple",
+        "score": 1,
+        "content": "三相交流电的基本概念有",
+        "options": [
+          "相电压",
+          "线电压",
+          "相序",
+          "功率因数",
+          "电磁转矩"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 159,
+        "type": "multiple",
+        "score": 1,
+        "content": "供电和用电基本知识包括",
+        "options": [
+          "电力系统组成",
+          "供电质量指标",
+          "用电负荷分类",
+          "电磁感应原理",
+          "电费计算方法"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 160,
+        "type": "multiple",
+        "score": 1,
+        "content": "三极管的工作原理包含",
+        "options": [
+          "放大区工作特性",
+          "截止区工作特性",
+          "饱和区工作特性",
+          "单向导电特性",
+          "电流控制作用"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 161,
+        "type": "multiple",
+        "score": 1,
+        "content": "环境保护知识包括",
+        "options": [
+          "电磁污染防治",
+          "废旧电器回收",
+          "噪声控制措施",
+          "能源浪费允许",
+          "污水排放规范"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 162,
+        "type": "multiple",
+        "score": 1,
+        "content": "单相正弦交流电的基本概念包含",
+        "options": [
+          "最大值",
+          "有效值",
+          "频率",
+          "相位差",
+          "磁通量"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 163,
+        "type": "multiple",
+        "score": 1,
+        "content": "单管基本放大电路的组成有",
+        "options": [
+          "三极管",
+          "电源",
+          "电阻",
+          "电容",
+          "变压器"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 164,
+        "type": "multiple",
+        "score": 1,
+        "content": "常见的触电形式及急救知识包括",
+        "options": [
+          "单相触电",
+          "两相触电",
+          "跨步电压触电",
+          "雷击触电",
+          "电磁辐射伤害"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 165,
+        "type": "multiple",
+        "score": 1,
+        "content": "电气控制图测绘的方法、步骤包括",
+        "options": [
+          "熟悉设备结构",
+          "确定测绘范围",
+          "绘制草图",
+          "省略标注元器件",
+          "核对修正图纸"
+        ],
+        "answer": "ABCE",
+        "images": []
+      },
+      {
+        "index": 166,
+        "type": "multiple",
+        "score": 1,
+        "content": "常用电工仪器的使用包含",
+        "options": [
+          "兆欧表的绝缘测试",
+          "钳形表的电流测量",
+          "示波器的信号观测",
+          "函数信号发生器的输出调节",
+          "接地电阻测试仪的使用方法"
+        ],
+        "answer": "ABCDE",
+        "images": []
+      },
+      {
+        "index": 167,
+        "type": "multiple",
+        "score": 1,
+        "content": "X62W铣床的启动、制动控制方法包括",
+        "options": [
+          "全压启动",
+          "反接制动",
+          "电磁制动",
+          "机械制动",
+          "变频启动"
+        ],
+        "answer": "ABD",
+        "images": []
+      },
+      {
+        "index": 168,
+        "type": "multiple",
+        "score": 1,
+        "content": "晶体二极管的结构、符号包含",
+        "options": [
+          "PN结结构",
+          "阳极和阴极标识",
+          "正向导通特性",
+          "符号中箭头方向",
+          "放大功能标注"
+        ],
+        "answer": "ABD",
+        "images": []
+      },
+      {
+        "index": 169,
+        "type": "multiple",
+        "score": 1,
+        "content": "电路的基本概念包含哪些要素？",
+        "options": [
+          "电源",
+          "负载",
+          "导线",
+          "开关",
+          "仪表"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 170,
+        "type": "multiple",
+        "score": 1,
+        "content": "企业文化的功能主要体现在哪些方面？",
+        "options": [
+          "导向功能",
+          "约束功能",
+          "凝聚功能",
+          "辐射功能",
+          "娱乐功能"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 171,
+        "type": "judge",
+        "score": 0.5,
+        "content": "主轴回转轴心线对工作台面的垂直度属于数控机床的定位精度检验。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 172,
+        "type": "judge",
+        "score": 0.5,
+        "content": "延时电路可分别在HTL或非门的输入端加接二极管和不同容量的电容器。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 173,
+        "type": "judge",
+        "score": 0.5,
+        "content": "影响人类生活环境的电磁污染源，可分为自然的和人为的两大类。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 174,
+        "type": "judge",
+        "score": 0.5,
+        "content": "调压调速的方向是从n0向下调速。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 175,
+        "type": "judge",
+        "score": 0.5,
+        "content": "当逆变器电流上升时造成换流失败，应减小tf。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 176,
+        "type": "judge",
+        "score": 0.5,
+        "content": "电压负反馈断线，造成电压负反馈信号消失，使控制绕组3WC中的电流增大，造成电机扩大机和直流发电机过低电压，于是电动机产生很高的速度。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 177,
+        "type": "judge",
+        "score": 0.5,
+        "content": "机床的切削精度是一项综合精度。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 178,
+        "type": "judge",
+        "score": 0.5,
+        "content": "检查各外部接线端子的接线是否连接好，螺钉是否松动。保证所有接线接触良好。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 179,
+        "type": "judge",
+        "score": 0.5,
+        "content": "步进电动机式是经济型数控机床按驱动和定位方式划分。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 180,
+        "type": "judge",
+        "score": 0.5,
+        "content": "当电网电压过低或瞬间断电时，掉电保护是避免CPU失控，RAM数据混乱丢失的重要措施。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 181,
+        "type": "judge",
+        "score": 0.5,
+        "content": "检查完全部线路后拆除主轴电动机、液压电动机和电磁阀电源线路并包好绝缘。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 182,
+        "type": "judge",
+        "score": 0.5,
+        "content": "数控机床的几何精度包括检验各坐标方向移动的垂直度。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 183,
+        "type": "judge",
+        "score": 0.5,
+        "content": "质量管理是企业经营管理的一个重要内容，是关系到企业生存和发展的重要问题。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 184,
+        "type": "judge",
+        "score": 0.5,
+        "content": "整流状态时整流器将交流电能变成直流电能供给电动机。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 185,
+        "type": "judge",
+        "score": 0.5,
+        "content": "检查变压器上有无多个插头，检查电路板上有无50/60Hz频率转换开关供选择。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 186,
+        "type": "judge",
+        "score": 0.5,
+        "content": "刀具功能可控制换刀和刀具补偿和换刀偏置。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 187,
+        "type": "judge",
+        "score": 0.5,
+        "content": "键盘是计算机系统最常用的人机对话输入设备，它有两种基本类型：编码键盘和非编码键盘。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 188,
+        "type": "judge",
+        "score": 0.5,
+        "content": "高压整流电路供给震荡管的电压。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 189,
+        "type": "judge",
+        "score": 0.5,
+        "content": "GP－100C3高频振荡电路中采用阳极控制的方法来实现振荡器的起振和停振。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 190,
+        "type": "judge",
+        "score": 0.5,
+        "content": "数控系统的辅助功能就是M功能。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 191,
+        "type": "judge",
+        "score": 0.5,
+        "content": "三相六拍脉冲分配逻辑电路由FFl、FF2、FF3三位JK触发器组成。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 192,
+        "type": "judge",
+        "score": 0.5,
+        "content": "零电流检测器采用双稳态电路。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 193,
+        "type": "judge",
+        "score": 0.5,
+        "content": "高、低压双电源驱动电路适用于电流较小的伺服式步进电动机。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 194,
+        "type": "judge",
+        "score": 0.5,
+        "content": "JWK经济型数控机床通过编程指令可实现的功能有返回参考点。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 195,
+        "type": "judge",
+        "score": 0.5,
+        "content": "驱动电路装置的步进电动机驱动器采用单电源步进电机驱动电路。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 196,
+        "type": "judge",
+        "score": 0.5,
+        "content": "由于各种原因所引起的故障报警时，报警指示灯亮。可进一步通过编程器查看报警信息。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 197,
+        "type": "judge",
+        "score": 0.5,
+        "content": "将I/O接口地址与存储器空间分开设置，互不影响，由于地址总线是存储器和I/O设备共享的，需用控制信号线区别。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 198,
+        "type": "judge",
+        "score": 0.5,
+        "content": "通电前的检查，首先确认输入电源电压和相序。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 199,
+        "type": "judge",
+        "score": 0.5,
+        "content": "反电枢可逆电路由于电枢回路电感大,所以适用于要求频繁启动而过渡过程时间短的生产机械，如可逆轧钢机、龙门刨等。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 200,
+        "type": "judge",
+        "score": 0.5,
+        "content": "来自三块KC04触发器13号端子的触发脉冲信号，分别送入KC42的2、4、12端。V1、V2、V3构成与非门电路。只要任何一个触发器有输出，S点就是低电平，V4截止，使V5、V6、V8组成的环形振荡器停振。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 201,
+        "type": "judge",
+        "score": 0.5,
+        "content": "对机床上的各交流电动机如冷却风扇、液压泵电动机、冷却泵电动机等逐一分别接通电源，观察电动机转向是否正确、有无异常声响。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 202,
+        "type": "judge",
+        "score": 0.5,
+        "content": "JWK型经济型数控机床系统电源切断后，必须等待30s以上方可再次接通电源。允许连续开、关电源。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 203,
+        "type": "judge",
+        "score": 0.5,
+        "content": "在控制过程中，系统的输出量对其输入控制没有影响，称为开环控制。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 204,
+        "type": "judge",
+        "score": 0.5,
+        "content": "传统的驱动电源有单电源驱动电路和双电源驱动电路，新型电源有高压电压斩波电源。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 205,
+        "type": "judge",
+        "score": 0.5,
+        "content": "强供电回路的管线尽量避免与可编程序控制器输出、输入回路平行，且线路不在同一根管路内。所有金属外壳（不应带电部分）均应良好接地。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 206,
+        "type": "judge",
+        "score": 0.5,
+        "content": "检查直流电源输出端为系统提供的+5V、+6V、+40V、+120V等电源电压有无通地和短路现象。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 207,
+        "type": "judge",
+        "score": 0.5,
+        "content": "在中等容量整流装置或不可逆的电力拖动系统中，由于桥式半控整流电路更简单和经济，故在实际中广泛采用。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 208,
+        "type": "judge",
+        "score": 0.5,
+        "content": "在数控机床的伺服驱动机构中，常用的伺服驱动元件有步进电动机、液压马达和大惯量直流电动机、交流伺服电动机等。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 209,
+        "type": "judge",
+        "score": 0.5,
+        "content": "程序跳转能自动转到指定的顺序段顺序执行下去。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 210,
+        "type": "judge",
+        "score": 0.5,
+        "content": "对于加工中心，还必须调整机械手与主轴、刀库的相对位置，以及托板与交换工作台面的相对位置，以保证换刀和交换工作台时的准确、平稳、可靠。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
         "images": []
       }
     ]

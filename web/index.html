@@ -19,6 +19,9 @@
                 <span id="icon-lightning-mobile"></span> 高级电工刷题
             </h1>
             <div class="flex items-center gap-2">
+                <button id="btn-mobile-recite" class="p-2 hover:bg-blue-600 rounded-lg text-white font-bold text-xs flex items-center gap-1 transition" title="背题模式 (直显答案)">
+                    <span>👁️</span>
+                </button>
                 <button id="btn-mobile-sync" class="p-2 hover:bg-blue-600 rounded-lg text-white" title="跨端同步">
                     <span>📲</span>
                 </button>
@@ -66,21 +69,40 @@
                     <input type="file" id="file-import-input" accept=".json" class="hidden" />
                 </div>
 
-                <!-- SECTION 0: 2026年最新精简版模拟卷 (210题专区) -->
+                <!-- SECTION 0: 2026年最新精简版模拟卷 (21/22/23日三天专区) -->
                 <div>
                     <div class="text-xs font-black text-gray-400 uppercase tracking-wider mb-2 px-2 flex items-center justify-between">
-                        <span class="flex items-center gap-1.5 font-bold text-gray-700">
+                        <span class="flex items-center gap-1.5 font-bold text-gray-800">
                             <span>🔥 2026考前精简卷</span>
                             <span class="text-[10px] text-gray-400 font-normal">(210题)</span>
                         </span>
-                        <span class="text-[10px] bg-amber-50 text-amber-800 border border-amber-200/80 px-1.5 py-0.5 rounded font-bold">精简考前特训</span>
+                        <button id="btn-reselect-sim-date" class="text-[10px] bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded-full font-bold transition flex items-center gap-1 cursor-pointer" title="切换您的考期">
+                            <span>📅 更改考期</span>
+                        </button>
                     </div>
+
+                    <!-- 考前冲刺日期分段选择器 (Segmented Date Tabs) -->
+                    <div class="grid grid-cols-3 gap-1 bg-gray-100 p-1 rounded-xl mb-2">
+                        <button class="sim-date-tab-btn py-1 px-1 rounded-lg text-xs font-bold text-center flex flex-col items-center justify-center transition" data-sim-date="1021">
+                            <span>10月21日</span>
+                            <span class="text-[9px] font-normal opacity-80" id="tab-sub-1021">210题</span>
+                        </button>
+                        <button class="sim-date-tab-btn py-1 px-1 rounded-lg text-xs font-bold text-center flex flex-col items-center justify-center transition" data-sim-date="1022">
+                            <span>10月22日</span>
+                            <span class="text-[9px] font-normal opacity-80" id="tab-sub-1022">210题</span>
+                        </button>
+                        <button class="sim-date-tab-btn py-1 px-1 rounded-lg text-xs font-bold text-center flex flex-col items-center justify-center transition" data-sim-date="1023">
+                            <span>10月23日</span>
+                            <span class="text-[9px] font-normal opacity-80" id="tab-sub-1023">210题</span>
+                        </button>
+                    </div>
+
                     <div class="space-y-1.5">
                         <button class="nav-item-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-2.5 text-sm transition-all" data-module-id="paper_2026_all">
                             <span class="nav-icon"><span id="icon-folder-2026-all"></span></span>
                             <div class="flex-1 min-w-0">
                                 <div class="font-bold flex items-center justify-between">
-                                    <span>精炼全卷全刷</span>
+                                    <span id="title-sim-all-text">精炼全卷全刷</span>
                                     <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-bold ml-1">210题</span>
                                 </div>
                                 <div class="flex items-center justify-between text-[11px] text-gray-400 mt-0.5">
@@ -112,7 +134,7 @@
                             </span>
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center justify-between">
-                                    <span class="text-orange-950 font-bold">2026精简全真模考</span>
+                                    <span id="title-sim-exam-text" class="text-orange-950 font-bold">2026精简全真模考</span>
                                     <span class="text-[10px] bg-orange-100 text-orange-800 px-2 py-0.5 rounded-full font-bold">限时120分</span>
                                 </div>
                                 <div class="text-[10px] text-orange-600/80 font-normal mt-0.5 truncate">
@@ -302,9 +324,15 @@
                         <span id="icon-grid-btn"></span>
                     </button>
 
+                    <!-- 背题模式快捷按键 (置顶显眼胶囊) -->
+                    <button id="btn-header-recite-toggle" class="q-bounce-btn flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition border border-gray-200 bg-gray-50 hover:bg-amber-50 hover:text-amber-900 text-gray-700 shadow-sm" title="一键开启/关闭背题直显答案模式">
+                        <span id="header-recite-icon">👁️</span>
+                        <span id="header-recite-text">背题</span>
+                    </button>
+
                     <!-- Auto-advance indicator -->
                     <span id="badge-recite-status" class="hidden sm:inline-block text-[11px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">
-                        背题模式
+                        背题中
                     </span>
                 </div>
 
@@ -650,7 +678,85 @@
             </button>
         </div>
     </div>
+ 
+    <!-- 考生考期定向迎新引导 Modal (首次进入自动弹出，也可随时重新选择) -->
+    <div id="modal-welcome-date" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[88] p-4 hidden animate-fade-in backdrop-blur-sm">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-6 sm:p-7 text-center animate-modal-pop relative border border-gray-100">
+            <!-- 关闭按键 -->
+            <button id="btn-close-welcome-date" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center transition cursor-pointer" title="暂不选择">
+                ✕
+            </button>
+            <div class="text-4xl mb-2">⚡</div>
+            <div class="mb-1.5"><span class="text-xs font-black text-amber-800 bg-amber-100 border border-amber-300 px-2.5 py-0.5 rounded-full inline-flex items-center gap-1"><span>⚡</span> 考前专项精简特训卷全新上线</span></div>
+            <h3 class="text-xl sm:text-2xl font-black text-gray-900 mb-1.5">请选择您的考试日期</h3>
+            <p class="text-xs sm:text-sm text-gray-500 mb-5 leading-relaxed">
+                系统现已收录 10月21日、22日、23日 三天考期的精简特训卷（各 210 题），选择后将自动为您定位到专属考卷：
+            </p>
 
+            <div class="space-y-2.5 text-left mb-5">
+                <!-- 10月21日 -->
+                <button class="welcome-date-btn w-full p-4 rounded-2xl border-2 border-amber-200 bg-amber-50/70 hover:bg-amber-100/80 hover:border-amber-400 transition flex items-center justify-between group q-bounce-btn cursor-pointer" data-date="1021">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg font-black shadow-sm">21</span>
+                        <div>
+                            <div class="font-black text-gray-900 text-sm group-hover:text-amber-900 flex items-center gap-1.5">
+                                <span>10月21日考生专属卷</span>
+                                <span class="text-[10px] bg-amber-200 text-amber-900 px-1.5 py-0.2 rounded font-bold">精简特训</span>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-0.5">单选150 + 多选20 + 判断40 · 共210题</div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-amber-700 bg-white px-2.5 py-1 rounded-lg border border-amber-200 group-hover:bg-amber-500 group-hover:text-white transition">立即进入 ➔</span>
+                </button>
+
+                <!-- 10月22日 -->
+                <button class="welcome-date-btn w-full p-4 rounded-2xl border-2 border-blue-200 bg-blue-50/70 hover:bg-blue-100/80 hover:border-blue-400 transition flex items-center justify-between group q-bounce-btn cursor-pointer" data-date="1022">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg font-black shadow-sm">22</span>
+                        <div>
+                            <div class="font-black text-gray-900 text-sm group-hover:text-blue-900 flex items-center gap-1.5">
+                                <span>10月22日考生专属卷</span>
+                                <span class="text-[10px] bg-blue-200 text-blue-900 px-1.5 py-0.2 rounded font-bold">精简特训</span>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-0.5">单选150 + 多选20 + 判断40 · 共210题</div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-blue-700 bg-white px-2.5 py-1 rounded-lg border border-blue-200 group-hover:bg-blue-600 group-hover:text-white transition">立即进入 ➔</span>
+                </button>
+
+                <!-- 10月23日 -->
+                <button class="welcome-date-btn w-full p-4 rounded-2xl border-2 border-emerald-200 bg-emerald-50/70 hover:bg-emerald-100/80 hover:border-emerald-400 transition flex items-center justify-between group q-bounce-btn cursor-pointer" data-date="1023">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg font-black shadow-sm">23</span>
+                        <div>
+                            <div class="font-black text-gray-900 text-sm group-hover:text-emerald-900 flex items-center gap-1.5">
+                                <span>10月23日考生专属卷</span>
+                                <span class="text-[10px] bg-emerald-200 text-emerald-900 px-1.5 py-0.2 rounded font-bold">精简特训</span>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-0.5">单选150 + 多选20 + 判断40 · 共210题</div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-emerald-700 bg-white px-2.5 py-1 rounded-lg border border-emerald-200 group-hover:bg-emerald-600 group-hover:text-white transition">立即进入 ➔</span>
+                </button>
+
+                <!-- 历年全题库 -->
+                <button class="welcome-date-btn w-full p-3.5 rounded-2xl border border-gray-200 bg-gray-50 hover:bg-gray-100 transition flex items-center justify-between group q-bounce-btn cursor-pointer" data-date="all">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-gray-600 text-white flex items-center justify-center text-sm font-black shadow-sm">1000</span>
+                        <div>
+                            <div class="font-bold text-gray-800 text-sm">历年经典题库全量总复习</div>
+                            <div class="text-xs text-gray-500 mt-0.5">收录历年 5 套原题 · 共 1000 题地毯式通刷</div>
+                        </div>
+                    </div>
+                    <span class="text-xs text-gray-500 group-hover:text-gray-900 transition">进入 ➔</span>
+                </button>
+            </div>
+
+            <div class="text-[11px] text-gray-400">
+                提示：进入系统后，您也可在左侧侧边栏随时一键切换考期或复习模块。
+            </div>
+        </div>
+    </div>
     <!-- Mobile Drawer Overlay -->
     <div id="mobile-sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden md:hidden"></div>
 
