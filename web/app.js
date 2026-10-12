@@ -317,7 +317,7 @@
                 badge: '2026精简卷',
                 title: '2026考前精简模拟卷',
                 sub: '2026年10月21日高级工模拟卷 (精炼210题)',
-                color: 'text-amber-600 bg-amber-50'
+                color: 'text-blue-600 bg-blue-50'
             };
         }
         if (paperId === 'paper_2024') {
@@ -376,7 +376,8 @@
         safeSetHtml('icon-close-sidebar', getIcon('X', 'w-5 h-5'));
         safeSetHtml('icon-search-btn', getIcon('Search', 'w-3.5 h-3.5'));
         safeSetHtml('icon-export', getIcon('Download', 'w-3.5 h-3.5'));
-        safeSetHtml('icon-folder-2026-all', getIcon('FileText', 'w-4 h-4 text-amber-500'));
+        safeSetHtml('icon-folder-2026-all', getIcon('BookOpen', 'w-4 h-4 text-blue-600'));
+        safeSetHtml('icon-timer-2026', getIcon('Timer', 'w-3.5 h-3.5 text-orange-600'));
         safeSetHtml('icon-folder-all', getIcon('BookOpen', 'w-4 h-4 text-blue-600'));
         safeSetHtml('icon-folder-choice', getIcon('Folder', 'w-4 h-4 text-indigo-600'));
         safeSetHtml('icon-folder-judge', getIcon('Folder', 'w-4 h-4 text-cyan-600'));
@@ -729,19 +730,19 @@
         const moduleBadge = document.getElementById('badge-current-module');
         if (moduleBadge) {
             if (state.activeModuleId === 'paper_2026_all') {
-                moduleBadge.textContent = '2026考前精简卷全刷 (210题)';
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-900 border border-amber-300 shadow-sm';
+                moduleBadge.textContent = '2026精简卷全刷 (210题)';
+                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-blue-100 text-blue-700 shadow-sm';
             } else if (state.activeModuleId === 'paper_2026_choice') {
                 moduleBadge.textContent = '2026精简卷 · 单选专项 (150题)';
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-800 shadow-sm';
+                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-indigo-100 text-indigo-700 shadow-sm';
             } else if (state.activeModuleId === 'paper_2026_multiple') {
                 moduleBadge.textContent = '2026精简卷 · 多选专项 (20题)';
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-purple-100 text-purple-900 shadow-sm';
+                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-purple-100 text-purple-700 shadow-sm';
             } else if (state.activeModuleId === 'paper_2026_judge') {
                 moduleBadge.textContent = '2026精简卷 · 判断专项 (40题)';
                 moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-cyan-100 text-cyan-800 shadow-sm';
             } else if (state.activeModuleId === 'paper_2026_exam') {
-                moduleBadge.textContent = '2026考前精简全真模考 (210题 · 限时60分)';
+                moduleBadge.textContent = '2026精简全真模考 (210题 · 限时60分)';
                 moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-orange-100 text-orange-800 shadow-sm';
             } else if (state.activeModuleId === 'full_all') {
                 moduleBadge.textContent = '全部题库刷题 (1000题)';
@@ -982,8 +983,8 @@
             if (isExamOngoing) {
                 const currentExamAns = selectedKey || '';
                 multiActionHtml = `
-                    <div class="mt-3 p-3 rounded-xl bg-purple-50 text-purple-900 text-xs flex items-center justify-between border border-purple-200">
-                        <span class="font-medium">💡 多选题（点击选项直接切换勾选/取消）</span>
+                    <div class="mt-3 p-3 rounded-xl bg-slate-50 text-slate-800 text-xs flex items-center justify-between border border-slate-200">
+                        <span class="font-medium text-slate-600">💡 多选题（点击选项直接切换勾选/取消）</span>
                         <span class="font-bold">当前已选：<span class="text-purple-700 bg-white px-2 py-0.5 rounded border border-purple-300 font-black">${currentExamAns || '未选择'}</span></span>
                     </div>
                 `;
@@ -991,13 +992,13 @@
                 const draftArr = Array.from(state.multiDraft).sort();
                 const draftText = draftArr.length > 0 ? draftArr.join('') : '';
                 multiActionHtml = `
-                    <div class="mt-4 p-4 rounded-2xl bg-purple-50/70 border border-purple-200 flex flex-col sm:flex-row items-center justify-between gap-3 animate-q-card">
-                        <div class="flex items-center gap-2 text-sm text-purple-950">
+                    <div class="mt-4 p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 animate-q-card">
+                        <div class="flex items-center gap-2 text-sm text-slate-800">
                             <span class="font-bold">当前已勾选：</span>
-                            <span class="px-3 py-1 rounded-full font-black text-xs bg-purple-200 text-purple-900 tracking-wider">
+                            <span class="px-3 py-1 rounded-full font-black text-xs bg-purple-100 text-purple-800 tracking-wider">
                                 ${draftText || '尚未选择'}
                             </span>
-                            <span class="text-xs text-purple-600 hidden sm:inline">（可多选 A~E，勾选完毕后点击确认提交）</span>
+                            <span class="text-xs text-slate-500 hidden sm:inline">（可多选 A~E，勾选完毕后点击确认提交）</span>
                         </div>
                         <button id="btn-submit-multiple" class="q-bounce-btn w-full sm:w-auto px-6 py-2.5 rounded-xl font-black text-sm shadow-md transition ${draftArr.length > 0 ? 'bg-purple-600 hover:bg-purple-700 text-white cursor-pointer' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}" ${draftArr.length > 0 ? '' : 'disabled'}>
                             确认提交本题答案

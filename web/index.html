@@ -66,48 +66,59 @@
                     <input type="file" id="file-import-input" accept=".json" class="hidden" />
                 </div>
 
-                <!-- SECTION 0: 2026年10月21日最新精简版模拟卷 (210题专区) -->
-                <div class="p-3 bg-gradient-to-br from-amber-500/10 via-orange-500/10 to-red-500/10 rounded-2xl border-2 border-amber-300 dark:border-amber-700/60 shadow-sm">
-                    <div class="text-xs font-black text-amber-900 dark:text-amber-300 mb-2 px-1 flex items-center justify-between">
-                        <span class="flex items-center gap-1.5 font-black text-xs">
-                            <span class="text-base">🔥</span> 2026考前精简卷 (210题)
+                <!-- SECTION 0: 2026年最新精简版模拟卷 (210题专区) -->
+                <div>
+                    <div class="text-xs font-black text-gray-400 uppercase tracking-wider mb-2 px-2 flex items-center justify-between">
+                        <span class="flex items-center gap-1.5 font-bold text-gray-700">
+                            <span>🔥 2026考前精简卷</span>
+                            <span class="text-[10px] text-gray-400 font-normal">(210题)</span>
                         </span>
-                        <span class="text-[10px] bg-red-500 text-white px-2 py-0.5 rounded-full font-black animate-pulse shadow-sm">最新押题</span>
+                        <span class="text-[10px] bg-amber-50 text-amber-800 border border-amber-200/80 px-1.5 py-0.5 rounded font-bold">精简考前特训</span>
                     </div>
                     <div class="space-y-1.5">
                         <button class="nav-item-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-2.5 text-sm transition-all" data-module-id="paper_2026_all">
-                            <span class="nav-icon text-amber-600"><span id="icon-folder-2026-all"></span></span>
+                            <span class="nav-icon"><span id="icon-folder-2026-all"></span></span>
                             <div class="flex-1 min-w-0">
                                 <div class="font-bold flex items-center justify-between">
-                                    <span class="text-amber-950 dark:text-amber-100">精炼全卷全刷</span>
-                                    <span class="text-xs bg-amber-200/80 text-amber-900 px-2 py-0.5 rounded-full font-black ml-1">210题</span>
+                                    <span>精炼全卷全刷</span>
+                                    <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-bold ml-1">210题</span>
                                 </div>
-                                <div class="flex items-center justify-between text-[11px] text-gray-500 mt-0.5">
+                                <div class="flex items-center justify-between text-[11px] text-gray-400 mt-0.5">
                                     <span id="prog-text-paper-2026-all">已刷 0 / 210 题</span>
                                     <span id="prog-pct-paper-2026-all">0%</span>
                                 </div>
-                                <div class="w-full mini-progress-track mt-1"><div id="prog-bar-paper-2026-all" class="mini-progress-fill bg-amber-500" style="width: 0%"></div></div>
+                                <div class="w-full mini-progress-track mt-1"><div id="prog-bar-paper-2026-all" class="mini-progress-fill" style="width: 0%"></div></div>
                             </div>
                         </button>
                         
-                        <div class="grid grid-cols-3 gap-1 pt-0.5">
-                            <button class="nav-item-btn py-1.5 px-1.5 rounded-lg text-center text-xs transition-all border border-amber-200/80 hover:bg-amber-100 bg-white/80" data-module-id="paper_2026_choice" title="150道单选题">
+                        <div class="grid grid-cols-3 gap-1.5">
+                            <button class="nav-item-btn py-2 px-1 rounded-xl text-center text-xs transition-all border border-gray-100 hover:bg-slate-50 bg-white" data-module-id="paper_2026_choice" title="150道单选题">
                                 <div class="font-bold text-gray-800 text-[11px]">单选专项</div>
-                                <div class="text-[10px] text-gray-400" id="prog-pct-paper-2026-choice">150题</div>
+                                <div class="text-[10px] text-gray-400 mt-0.5" id="prog-pct-paper-2026-choice">0/150</div>
                             </button>
-                            <button class="nav-item-btn py-1.5 px-1.5 rounded-lg text-center text-xs transition-all border border-purple-200/80 hover:bg-purple-100 bg-purple-50/70" data-module-id="paper_2026_multiple" title="20道多选题">
-                                <div class="font-bold text-purple-900 text-[11px]">多选专项</div>
-                                <div class="text-[10px] text-purple-600 font-bold" id="prog-pct-paper-2026-multiple">20题</div>
+                            <button class="nav-item-btn py-2 px-1 rounded-xl text-center text-xs transition-all border border-gray-100 hover:bg-slate-50 bg-white" data-module-id="paper_2026_multiple" title="20道多选题">
+                                <div class="font-bold text-purple-700 text-[11px]">多选专项</div>
+                                <div class="text-[10px] text-purple-500 font-bold mt-0.5" id="prog-pct-paper-2026-multiple">0/20</div>
                             </button>
-                            <button class="nav-item-btn py-1.5 px-1.5 rounded-lg text-center text-xs transition-all border border-cyan-200/80 hover:bg-cyan-100 bg-white/80" data-module-id="paper_2026_judge" title="40道判断题">
+                            <button class="nav-item-btn py-2 px-1 rounded-xl text-center text-xs transition-all border border-gray-100 hover:bg-slate-50 bg-white" data-module-id="paper_2026_judge" title="40道判断题">
                                 <div class="font-bold text-gray-800 text-[11px]">判断专项</div>
-                                <div class="text-[10px] text-gray-400" id="prog-pct-paper-2026-judge">40题</div>
+                                <div class="text-[10px] text-gray-400 mt-0.5" id="prog-pct-paper-2026-judge">0/40</div>
                             </button>
                         </div>
 
-                        <button class="nav-item-btn w-full text-left px-3 py-2 rounded-xl flex items-center gap-2 text-xs transition-all bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold shadow-sm" data-module-id="paper_2026_exam">
-                            <span>⏱️ 2026精简全真模考</span>
-                            <span class="ml-auto text-[10px] bg-white/25 text-white px-2 py-0.5 rounded-full font-bold">限时60分 · 100分制</span>
+                        <button class="nav-item-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-2.5 text-xs transition-all border border-orange-100/80 bg-orange-50/50 hover:bg-orange-100/60 font-bold" data-module-id="paper_2026_exam">
+                            <span class="p-1 rounded-lg bg-orange-100 text-orange-600 flex-shrink-0">
+                                <span id="icon-timer-2026"></span>
+                            </span>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-orange-950 font-bold">2026精简全真模考</span>
+                                    <span class="text-[10px] bg-orange-100 text-orange-800 px-2 py-0.5 rounded-full font-bold">限时60分</span>
+                                </div>
+                                <div class="text-[10px] text-orange-600/80 font-normal mt-0.5 truncate">
+                                    全卷 210 题 · 自动折算 100 分制
+                                </div>
+                            </div>
                         </button>
                     </div>
                 </div>
