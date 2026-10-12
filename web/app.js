@@ -519,8 +519,8 @@
 
     function start2026Exam() {
         state.examState.activeQuestions = [...sim2026Questions];
-        state.examState.totalSeconds = 3600; // 60分钟
-        state.examState.secondsLeft = 3600;
+        state.examState.totalSeconds = 7200; // 120分钟 (2小时)
+        state.examState.secondsLeft = 7200;
         state.examState.answers = {};
         state.examState.isSubmitted = false;
         state.activeModuleId = 'paper_2026_exam';
@@ -742,7 +742,7 @@
                 moduleBadge.textContent = '2026精简卷 · 判断专项 (40题)';
                 moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-cyan-100 text-cyan-800 shadow-sm';
             } else if (state.activeModuleId === 'paper_2026_exam') {
-                moduleBadge.textContent = '2026精简全真模考 (210题 · 限时60分)';
+                moduleBadge.textContent = '2026精简全真模考 (210题 · 限时120分)';
                 moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-orange-100 text-orange-800 shadow-sm';
             } else if (state.activeModuleId === 'full_all') {
                 moduleBadge.textContent = '全部题库刷题 (1000题)';
@@ -2109,7 +2109,7 @@
             btn.onclick = () => {
                 const modId = btn.getAttribute('data-module-id');
                 if (modId === 'paper_2026_exam') {
-                    if (confirm('即将进入 2026 考前精简全真模考：共 210 题（150道单选、20道多选、40道判断），限时 60 分钟，交卷后折算 100 分制，准备好了吗？')) {
+                    if (confirm('即将进入 2026 考前精简全真模考：共 210 题（150道单选、20道多选、40道判断），限时 120 分钟，交卷后折算 100 分制，准备好了吗？')) {
                         start2026Exam();
                         closeMobileSidebar();
                     }
