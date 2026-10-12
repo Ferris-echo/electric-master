@@ -598,6 +598,13 @@
 
         state.activeModuleId = newModuleId;
         state.multiDraft.clear();
+
+        // 若用户切换到了历年分卷，自动展开手风琴
+        if (newModuleId && newModuleId.startsWith('paper_') && !newModuleId.startsWith('paper_2026_')) {
+            const details = document.getElementById('details-papers-list');
+            if (details) details.open = true;
+        }
+
         saveState();
         renderApp();
     }

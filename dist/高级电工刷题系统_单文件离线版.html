@@ -3812,6 +3812,14 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all
     border-color: #dfd8c7 !important;
 }
 
+/* 历年真题分卷折叠组件微样式 */
+#details-papers-list summary::-webkit-details-marker {
+    display: none;
+}
+#details-papers-list summary {
+    list-style: none;
+}
+
 </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans antialiased select-none">
@@ -4001,15 +4009,20 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all
                     </div>
                 </div>
 
-                <!-- SECTION 2: 历年分卷版本 -->
+                <!-- SECTION 2: 历年真题分卷 (默认折叠) -->
                 <div>
-                    <div class="text-xs font-black text-gray-400 uppercase tracking-wider mb-2 px-2 flex items-center justify-between">
-                        <span>📑 历年真题分卷 (5套卷)</span>
-                        <span class="text-[10px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded font-bold">原卷专区</span>
-                    </div>
-                    <div id="paper-list-container" class="space-y-1">
-                        <!-- Populated dynamically: 2024模拟卷, 卷一, 卷二, 卷三, 卷四 -->
-                    </div>
+                    <details id="details-papers-list" class="group">
+                        <summary class="text-xs font-black text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 uppercase tracking-wider mb-2 px-2 flex items-center justify-between cursor-pointer list-none select-none">
+                            <div class="flex items-center gap-1.5">
+                                <span>📑 历年真题分卷 (5套卷)</span>
+                                <span class="text-[10px] bg-green-100 dark:bg-green-950/60 text-green-700 dark:text-green-300 px-1.5 py-0.5 rounded font-bold">原卷专区</span>
+                            </div>
+                            <span class="text-xs text-gray-400 transition-transform duration-200 group-open:rotate-180 inline-block font-sans">▼</span>
+                        </summary>
+                        <div id="paper-list-container" class="space-y-1 pt-0.5">
+                            <!-- Populated dynamically: 2024模拟卷, 卷一, 卷二, 卷三, 卷四 -->
+                        </div>
+                    </details>
                 </div>
 
                 <!-- SECTION 3: 随机模考版本 -->
@@ -5185,6 +5198,13 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
 
         state.activeModuleId = newModuleId;
         state.multiDraft.clear();
+
+        // 若用户切换到了历年分卷，自动展开手风琴
+        if (newModuleId && newModuleId.startsWith('paper_') && !newModuleId.startsWith('paper_2026_')) {
+            const details = document.getElementById('details-papers-list');
+            if (details) details.open = true;
+        }
+
         saveState();
         renderApp();
     }

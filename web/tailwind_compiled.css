@@ -3800,3 +3800,11 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all
     background-color: #f5efe1 !important;
     border-color: #dfd8c7 !important;
 }
+
+/* 历年真题分卷折叠组件微样式 */
+#details-papers-list summary::-webkit-details-marker {
+    display: none;
+}
+#details-papers-list summary {
+    list-style: none;
+}
