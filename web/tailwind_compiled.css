@@ -3762,7 +3762,41 @@ body[data-theme="dark"] #modal-welcome-date .text-gray-900 {
 body[data-theme="dark"] #modal-welcome-date .text-gray-500 {
     color: #94a3b8 !important;
 }
-body[data-theme="dark"] #modal-welcome-date .bg-gray-50 {
-    background-color: #1e293b !important;
+body[data-theme="dark"] #modal-welcome-date .welcome-date-btn[data-date="1021"] {
+    background-color: rgba(245, 158, 11, 0.08) !important;
+    border-color: rgba(245, 158, 11, 0.35) !important;
+}
+body[data-theme="dark"] #modal-welcome-date .welcome-date-btn[data-date="1022"] {
+    background-color: rgba(59, 130, 246, 0.08) !important;
+    border-color: rgba(59, 130, 246, 0.35) !important;
+}
+body[data-theme="dark"] #modal-welcome-date .welcome-date-btn[data-date="1023"] {
+    background-color: rgba(16, 185, 129, 0.08) !important;
+    border-color: rgba(16, 185, 129, 0.35) !important;
+}
+body[data-theme="dark"] #modal-welcome-date .welcome-date-btn[data-date="all"] {
+    background-color: rgba(30, 41, 59, 0.6) !important;
     border-color: #334155 !important;
+}
+
+/* 护眼模式暖黄纸质 */
+body[data-theme="eye-care"] #modal-welcome-date .bg-white {
+    background-color: #fffefb !important;
+    border-color: #e5ded0 !important;
+}
+body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="1021"] {
+    background-color: #fdf6e6 !important;
+    border-color: #f5dfac !important;
+}
+body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="1022"] {
+    background-color: #edf5ff !important;
+    border-color: #c9e0ff !important;
+}
+body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="1023"] {
+    background-color: #edfcf4 !important;
+    border-color: #c5f1db !important;
+}
+body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all"] {
+    background-color: #f5efe1 !important;
+    border-color: #dfd8c7 !important;
 }
