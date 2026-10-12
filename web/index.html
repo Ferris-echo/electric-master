@@ -66,11 +66,57 @@
                     <input type="file" id="file-import-input" accept=".json" class="hidden" />
                 </div>
 
+                <!-- SECTION 0: 2026年10月21日最新精简版模拟卷 (210题专区) -->
+                <div class="p-3 bg-gradient-to-br from-amber-500/10 via-orange-500/10 to-red-500/10 rounded-2xl border-2 border-amber-300 dark:border-amber-700/60 shadow-sm">
+                    <div class="text-xs font-black text-amber-900 dark:text-amber-300 mb-2 px-1 flex items-center justify-between">
+                        <span class="flex items-center gap-1.5 font-black text-xs">
+                            <span class="text-base">🔥</span> 2026考前精简卷 (210题)
+                        </span>
+                        <span class="text-[10px] bg-red-500 text-white px-2 py-0.5 rounded-full font-black animate-pulse shadow-sm">最新押题</span>
+                    </div>
+                    <div class="space-y-1.5">
+                        <button class="nav-item-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-2.5 text-sm transition-all" data-module-id="paper_2026_all">
+                            <span class="nav-icon text-amber-600"><span id="icon-folder-2026-all"></span></span>
+                            <div class="flex-1 min-w-0">
+                                <div class="font-bold flex items-center justify-between">
+                                    <span class="text-amber-950 dark:text-amber-100">精炼全卷全刷</span>
+                                    <span class="text-xs bg-amber-200/80 text-amber-900 px-2 py-0.5 rounded-full font-black ml-1">210题</span>
+                                </div>
+                                <div class="flex items-center justify-between text-[11px] text-gray-500 mt-0.5">
+                                    <span id="prog-text-paper-2026-all">已刷 0 / 210 题</span>
+                                    <span id="prog-pct-paper-2026-all">0%</span>
+                                </div>
+                                <div class="w-full mini-progress-track mt-1"><div id="prog-bar-paper-2026-all" class="mini-progress-fill bg-amber-500" style="width: 0%"></div></div>
+                            </div>
+                        </button>
+                        
+                        <div class="grid grid-cols-3 gap-1 pt-0.5">
+                            <button class="nav-item-btn py-1.5 px-1.5 rounded-lg text-center text-xs transition-all border border-amber-200/80 hover:bg-amber-100 bg-white/80" data-module-id="paper_2026_choice" title="150道单选题">
+                                <div class="font-bold text-gray-800 text-[11px]">单选专项</div>
+                                <div class="text-[10px] text-gray-400" id="prog-pct-paper-2026-choice">150题</div>
+                            </button>
+                            <button class="nav-item-btn py-1.5 px-1.5 rounded-lg text-center text-xs transition-all border border-purple-200/80 hover:bg-purple-100 bg-purple-50/70" data-module-id="paper_2026_multiple" title="20道多选题">
+                                <div class="font-bold text-purple-900 text-[11px]">多选专项</div>
+                                <div class="text-[10px] text-purple-600 font-bold" id="prog-pct-paper-2026-multiple">20题</div>
+                            </button>
+                            <button class="nav-item-btn py-1.5 px-1.5 rounded-lg text-center text-xs transition-all border border-cyan-200/80 hover:bg-cyan-100 bg-white/80" data-module-id="paper_2026_judge" title="40道判断题">
+                                <div class="font-bold text-gray-800 text-[11px]">判断专项</div>
+                                <div class="text-[10px] text-gray-400" id="prog-pct-paper-2026-judge">40题</div>
+                            </button>
+                        </div>
+
+                        <button class="nav-item-btn w-full text-left px-3 py-2 rounded-xl flex items-center gap-2 text-xs transition-all bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold shadow-sm" data-module-id="paper_2026_exam">
+                            <span>⏱️ 2026精简全真模考</span>
+                            <span class="ml-auto text-[10px] bg-white/25 text-white px-2 py-0.5 rounded-full font-bold">限时60分 · 100分制</span>
+                        </button>
+                    </div>
+                </div>
+
                 <!-- SECTION 1: 1000题全量刷题版本 -->
                 <div>
                     <div class="text-xs font-black text-gray-400 uppercase tracking-wider mb-2 px-2 flex items-center justify-between">
-                        <span>📚 全部题库刷题 (1000题)</span>
-                        <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold">独立进度</span>
+                        <span>📚 历年题库全刷 (1000题)</span>
+                        <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold">5套大题库</span>
                     </div>
                     <div class="space-y-1.5">
                         <button class="nav-item-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-2.5 text-sm transition-all" data-mode="full" data-filter="all">
