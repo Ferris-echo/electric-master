@@ -1192,50 +1192,64 @@
         renderPapersList();
         updateAllModuleProgresses();
 
-        // 顶部标题胶囊徽章
+        // 顶部标题胶囊徽章 (精简考卷名称，严格保全外框胶囊完整形状与圆角)
         const moduleBadge = document.getElementById('badge-current-module');
+        const paperBtn = document.getElementById('btn-mobile-paper-selector');
         if (moduleBadge) {
             const dateCfg = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
+            let titleText = '电工刷题';
+            let btnClass = 'flex-shrink-0 inline-flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-full text-xs font-black transition cursor-pointer shadow-xs whitespace-nowrap ';
+
             if (state.activeModuleId === 'paper_2026_all') {
-                moduleBadge.textContent = `${dateCfg.name}特训卷全刷 (210题)`;
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-blue-100 text-blue-700 shadow-sm';
+                titleText = `${dateCfg.name}特训卷`;
+                btnClass += 'bg-blue-50 text-blue-800 hover:bg-blue-100 border border-blue-200/80';
             } else if (state.activeModuleId === 'paper_2026_choice') {
-                moduleBadge.textContent = `${dateCfg.name} · 单选专项 (150题)`;
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-indigo-100 text-indigo-700 shadow-sm';
+                titleText = `${dateCfg.name}·单选`;
+                btnClass += 'bg-indigo-50 text-indigo-800 hover:bg-indigo-100 border border-indigo-200/80';
             } else if (state.activeModuleId === 'paper_2026_multiple') {
-                moduleBadge.textContent = `${dateCfg.name} · 多选专项 (20题)`;
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-purple-100 text-purple-700 shadow-sm';
+                titleText = `${dateCfg.name}·多选`;
+                btnClass += 'bg-purple-50 text-purple-800 hover:bg-purple-100 border border-purple-200/80';
             } else if (state.activeModuleId === 'paper_2026_judge') {
-                moduleBadge.textContent = `${dateCfg.name} · 判断专项 (40题)`;
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-cyan-100 text-cyan-800 shadow-sm';
+                titleText = `${dateCfg.name}·判断`;
+                btnClass += 'bg-cyan-50 text-cyan-800 hover:bg-cyan-100 border border-cyan-200/80';
             } else if (state.activeModuleId === 'paper_2026_exam') {
-                moduleBadge.textContent = `${dateCfg.name}精简全真模考 (210题 · 限时120分)`;
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-orange-100 text-orange-800 shadow-sm';
+                titleText = `${dateCfg.name}模考`;
+                btnClass += 'bg-red-50 text-red-700 hover:bg-red-100 border border-red-200/80';
             } else if (state.activeModuleId === 'full_all') {
-                moduleBadge.textContent = '全部题库刷题 (1000题)';
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-blue-100 text-blue-700 shadow-sm';
+                titleText = '历年1000题';
+                btnClass += 'bg-blue-50 text-blue-800 hover:bg-blue-100 border border-blue-200/80';
             } else if (state.activeModuleId === 'full_choice') {
-                moduleBadge.textContent = '单选题专练 (800题)';
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-indigo-100 text-indigo-700 shadow-sm';
+                titleText = '单选题专练';
+                btnClass += 'bg-indigo-50 text-indigo-800 hover:bg-indigo-100 border border-indigo-200/80';
             } else if (state.activeModuleId === 'full_judge') {
-                moduleBadge.textContent = '判断题专练 (200题)';
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-cyan-100 text-cyan-800 shadow-sm';
+                titleText = '判断题专练';
+                btnClass += 'bg-cyan-50 text-cyan-800 hover:bg-cyan-100 border border-cyan-200/80';
+            } else if (state.activeModuleId === 'paper_2024') {
+                titleText = '2024真题卷';
+                btnClass += 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-200/80';
             } else if (state.activeModuleId.startsWith('paper_')) {
-                const info = getPaperTitleInfo(state.activeModuleId, '');
-                moduleBadge.textContent = `${info.title} (200题)`;
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-green-100 text-green-700 shadow-sm';
+                const pNum = state.activeModuleId.replace('paper_', '');
+                const numMap = { '1': '一', '2': '二', '3': '三', '4': '四' };
+                titleText = `真题卷(${numMap[pNum] || pNum})`;
+                btnClass += 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-200/80';
             } else if (state.activeModuleId === 'exam_random') {
-                moduleBadge.textContent = '全真模拟考场 (200题 · 限时120分)';
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-red-100 text-red-700 shadow-sm';
+                titleText = '全真模拟考';
+                btnClass += 'bg-red-50 text-red-700 hover:bg-red-100 border border-red-200/80';
             } else if (state.activeModuleId === 'quick_quiz') {
-                moduleBadge.textContent = '碎片快速自测 (50题 · 限时30分)';
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-orange-100 text-orange-700 shadow-sm';
+                titleText = '快速自测';
+                btnClass += 'bg-orange-50 text-orange-800 hover:bg-orange-100 border border-orange-200/80';
             } else if (state.activeModuleId === 'wrong') {
-                moduleBadge.textContent = '错题回顾本';
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-800 shadow-sm';
+                titleText = '错题回顾本';
+                btnClass += 'bg-amber-50 text-amber-800 hover:bg-amber-100 border border-amber-200/80';
             } else if (state.activeModuleId === 'favorite') {
-                moduleBadge.textContent = '重点收藏夹';
-                moduleBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-yellow-100 text-yellow-800 shadow-sm';
+                titleText = '重点收藏夹';
+                btnClass += 'bg-yellow-50 text-yellow-800 hover:bg-yellow-100 border border-yellow-200/80';
+            }
+
+            moduleBadge.textContent = titleText;
+            moduleBadge.className = 'truncate inline-block align-middle';
+            if (paperBtn) {
+                paperBtn.className = btnClass;
             }
         }
 

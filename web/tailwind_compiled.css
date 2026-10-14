@@ -3332,6 +3332,17 @@ body[data-theme="dark"] #badge-current-module {
     background-color: #1e3a8a !important;
     color: #93c5fd !important;
 }
+body[data-theme="dark"] #btn-mobile-paper-selector {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #93c5fd !important;
+}
+body[data-theme="dark"] #btn-mobile-paper-selector:hover {
+    background-color: #334155 !important;
+}
+body[data-theme="dark"] #btn-mobile-paper-selector span {
+    color: #93c5fd !important;
+}
 body[data-theme="dark"] #btn-open-grid-modal {
     color: #cbd5e1 !important;
 }
@@ -4002,7 +4013,30 @@ body[data-theme="eye-care"] #modal-manage-resets > div {
 }
 #btn-mobile-paper-selector {
     white-space: nowrap !important;
-    min-width: 0 !important;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+    border-radius: 9999px !important;
+    box-sizing: border-box !important;
+}
+#badge-current-module {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 105px !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
+@media (min-width: 480px) {
+    #badge-current-module {
+        max-width: 140px !important;
+    }
+}
+@media (min-width: 640px) {
+    #badge-current-module {
+        max-width: none !important;
+    }
 }
 #btn-open-grid-modal {
     white-space: nowrap !important;
