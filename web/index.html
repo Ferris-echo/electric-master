@@ -9,27 +9,24 @@
     <title>高级电工理论考试刷题助手 · 智能全真版</title>
     <!-- 本地全内联预编译 Tailwind + 核心样式库 (100% 离线免联网秒开) -->
     <link rel="stylesheet" href="tailwind_compiled.css">
+    <link rel="stylesheet" href="app.css">
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans antialiased select-none">
     <div id="app" class="min-h-screen bg-gray-100 flex flex-col md:flex-row font-sans">
         
-        <!-- Mobile Header -->
-        <div class="md:hidden bg-blue-700 text-white p-4 flex justify-between items-center shadow-md z-30 sticky top-0">
-            <h1 class="font-bold text-lg flex items-center gap-2">
+        <!-- Mobile Header (简洁清爽，无无意义裸图标，按钮带清晰中文) -->
+        <div class="md:hidden bg-blue-700 text-white px-4 py-2.5 flex justify-between items-center shadow-md z-30 sticky top-0">
+            <h1 class="font-black text-base flex items-center gap-1.5">
                 <span id="icon-lightning-mobile"></span> 高级电工刷题
             </h1>
             <div class="flex items-center gap-2">
-                <button id="btn-mobile-recite" class="p-2 hover:bg-blue-600 rounded-lg text-white font-bold text-xs flex items-center gap-1 transition" title="背题模式 (直显答案)">
-                    <span>👁️</span>
-                </button>
-                <button id="btn-mobile-sync" class="p-2 hover:bg-blue-600 rounded-lg text-white" title="跨端同步">
-                    <span>📲</span>
-                </button>
-                <button id="btn-mobile-search" class="p-2 hover:bg-blue-600 rounded-lg text-white" title="搜题">
+                <button id="btn-mobile-search" class="px-2.5 py-1.5 bg-blue-800/70 hover:bg-blue-800 rounded-xl text-white font-bold text-xs flex items-center gap-1 transition shadow-xs cursor-pointer" title="全库搜题">
                     <span id="icon-search-mobile"></span>
+                    <span>搜题</span>
                 </button>
-                <button id="btn-mobile-menu" class="p-2 hover:bg-blue-600 rounded-lg text-white" title="菜单">
+                <button id="btn-mobile-menu" class="px-2.5 py-1.5 bg-blue-800/70 hover:bg-blue-800 rounded-xl text-white font-bold text-xs flex items-center gap-1 transition shadow-xs cursor-pointer" title="展开菜单">
                     <span id="icon-menu-mobile"></span>
+                    <span>菜单</span>
                 </button>
             </div>
         </div>
@@ -302,11 +299,14 @@
                         </label>
                     </div>
 
-                    <button id="btn-reset-current" class="w-full text-left p-2.5 rounded-lg flex items-center gap-2 hover:bg-gray-100 text-gray-600 transition">
-                        <span id="icon-refresh"></span> 清除当前专练做题进度
+                    <button id="btn-reset-current" class="w-full text-left p-2.5 rounded-xl flex items-center gap-2 hover:bg-gray-100 text-gray-700 font-bold transition text-xs">
+                        <span id="icon-refresh"></span> 清除当前试卷进度 (重新刷题)
                     </button>
-                    <button id="btn-clear-all-data" class="w-full text-left p-2.5 rounded-lg flex items-center gap-2 hover:bg-red-50 text-red-500 transition">
-                        <span id="icon-trash"></span> 清空所有做题历史与错题
+                    <button id="btn-open-manage-resets" class="w-full text-left p-2.5 rounded-xl flex items-center gap-2 hover:bg-blue-50 text-blue-700 font-bold transition text-xs">
+                        <span>🧹</span> 单独清理各卷进度 / 分卷管理...
+                    </button>
+                    <button id="btn-clear-all-data" class="w-full text-left p-2.5 rounded-xl flex items-center gap-2 hover:bg-red-50 text-red-500 font-bold transition text-xs">
+                        <span id="icon-trash"></span> 清空所有记录 (保留在当前试卷)
                     </button>
                 </div>
             </div>
@@ -315,46 +315,56 @@
         <!-- Main Content Area -->
         <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
             
-            <!-- Top Status Bar -->
-            <div class="bg-white shadow-sm px-4 md:px-8 py-3.5 flex justify-between items-center z-10 border-b border-gray-100 flex-shrink-0">
-                <div class="flex items-center gap-3">
-                    <span id="badge-current-module" class="inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-blue-100 text-blue-700 shadow-sm">
-                        全部题库 (1000题)
-                    </span>
-                    <span class="text-gray-300 text-xs hidden sm:inline">|</span>
+            <!-- Top Status Bar (自适应排版，移动端紧凑优雅不挤占，桌面端舒展完整) -->
+            <div class="bg-white shadow-xs px-2.5 sm:px-4 md:px-8 py-2 md:py-3.5 flex justify-between items-center z-10 border-b border-gray-100 flex-shrink-0">
+                <div class="flex items-center gap-1.5 sm:gap-2.5 min-w-0 flex-1 overflow-hidden">
+                    <!-- 试卷名称标签 (点击弹出换卷选卷弹窗) -->
+                    <button id="btn-mobile-paper-selector" class="flex-shrink min-w-0 max-w-[125px] sm:max-w-none truncate px-2 sm:px-3 py-1 rounded-full text-xs font-black bg-blue-50 text-blue-800 hover:bg-blue-100 transition border border-blue-200/60 cursor-pointer flex items-center gap-1 shadow-sm whitespace-nowrap" title="点击切换做题试卷与考期">
+                        <span id="badge-current-module" class="truncate">全部题库 (1000题)</span>
+                        <span class="text-[10px] text-blue-500 font-bold flex-shrink-0">▾</span>
+                    </button>
                     
-                    <!-- Question navigation button -->
-                    <button id="btn-open-grid-modal" class="flex items-center gap-1.5 hover:bg-gray-100 px-3 py-1 rounded-lg transition-colors text-gray-600 text-sm font-semibold">
-                        第 <span id="text-current-qnum" class="text-blue-700 text-base font-black">1</span> / <span id="text-total-qnum" class="text-gray-900 font-bold">1000</span> 题
-                        <span id="icon-grid-btn"></span>
+                    <span class="text-gray-300 text-xs hidden sm:inline flex-shrink-0">|</span>
+                    
+                    <!-- 题号导航抽屉按钮 -->
+                    <button id="btn-open-grid-modal" class="flex-shrink-0 flex items-center gap-1 hover:bg-gray-100 px-2 sm:px-2.5 py-1 rounded-xl transition-colors text-gray-700 text-xs sm:text-sm font-bold bg-gray-50 border border-gray-200/60 cursor-pointer whitespace-nowrap">
+                        第 <span id="text-current-qnum" class="text-blue-700 font-black">1</span>/<span id="text-total-qnum" class="text-gray-900 font-bold">1000</span> 题
+                        <span id="icon-grid-btn" class="hidden sm:inline"></span>
                     </button>
 
-                    <!-- 背题模式快捷按键 (置顶显眼胶囊) -->
-                    <button id="btn-header-recite-toggle" class="q-bounce-btn flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition border border-gray-200 bg-gray-50 hover:bg-amber-50 hover:text-amber-900 text-gray-700 shadow-sm" title="一键开启/关闭背题直显答案模式">
+                    <!-- 背题模式快捷按键 (强制单行横排，绝不拆成两行竖排) -->
+                    <button id="btn-header-recite-toggle" class="q-bounce-btn flex-shrink-0 inline-flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-xl text-xs font-bold transition border border-gray-200 bg-gray-50 hover:bg-amber-50 hover:text-amber-900 text-gray-700 shadow-sm cursor-pointer whitespace-nowrap" title="一键开启/关闭背题直显答案模式">
                         <span id="header-recite-icon">👁️</span>
-                        <span id="header-recite-text">背题</span>
+                        <span id="header-recite-text" class="whitespace-nowrap">背题</span>
                     </button>
 
-                    <!-- Auto-advance indicator -->
-                    <span id="badge-recite-status" class="hidden sm:inline-block text-[11px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">
-                        背题中
-                    </span>
+                    <!-- 刷题顺序切换开关 (强制单行横排，绝不折行) -->
+                    <button id="btn-header-order-toggle" class="q-bounce-btn flex-shrink-0 inline-flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-xl text-xs font-bold transition border border-gray-200 bg-gray-50 hover:bg-purple-50 hover:text-purple-900 text-gray-700 shadow-sm cursor-pointer whitespace-nowrap" title="点击切换：原卷顺序 ⇄ 题型内乱序刷题">
+                        <span id="header-order-icon">📋</span>
+                        <span id="header-order-text" class="whitespace-nowrap">顺序</span>
+                    </button>
+
+                    <!-- 重置/重做本套试卷快捷键 (桌面大屏专享) -->
+                    <button id="btn-header-reset-current" class="q-bounce-btn hidden lg:inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition border border-gray-200 bg-gray-50 hover:bg-red-50 hover:text-red-700 text-gray-600 shadow-sm cursor-pointer whitespace-nowrap" title="清空本套试卷记录，重新开始刷题">
+                        <span>🔄</span>
+                        <span class="whitespace-nowrap">重做本卷</span>
+                    </button>
                 </div>
 
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
                     <!-- Exam Timer Badge -->
-                    <div id="exam-timer-box" class="hidden items-center gap-1.5 bg-red-50 border border-red-200 text-red-600 font-mono font-bold text-sm px-3 py-1 rounded-full animate-pulse shadow-sm">
+                    <div id="exam-timer-box" class="hidden items-center gap-1.5 bg-red-50 border border-red-200 text-red-600 font-mono font-bold text-xs sm:text-sm px-2.5 py-1 rounded-full animate-pulse shadow-sm">
                         <span id="icon-timer"></span>
                         <span id="exam-timer-clock">120:00</span>
                     </div>
 
                     <!-- Submit Exam Button -->
-                    <button id="btn-header-submit-exam" class="hidden px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold text-xs shadow-md transition transform active:scale-95">
+                    <button id="btn-header-submit-exam" class="hidden px-3 sm:px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold text-xs shadow-md transition transform active:scale-95 cursor-pointer">
                         交卷评分
                     </button>
 
                     <!-- Top progress bar -->
-                    <div class="w-24 sm:w-36 md:w-48 bg-gray-200 rounded-full h-2 overflow-hidden shadow-inner hidden sm:block">
+                    <div class="w-16 sm:w-28 md:w-44 bg-gray-200 rounded-full h-1.5 sm:h-2 overflow-hidden shadow-inner hidden md:block">
                         <div id="progress-bar" class="bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
                     </div>
                 </div>
@@ -446,8 +456,8 @@
     </div>
 
     <!-- Exam Result Modal -->
-    <div id="result-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[70] p-4 hidden animate-fade-in">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 text-center transform transition-all animate-fade-in-up">
+    <div id="result-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer">
+        <div class="app-modal-dialog max-w-md bg-white p-6 text-center animate-fade-in-up border border-gray-100 dark:border-slate-700">
             <div id="result-badge-icon" class="text-5xl mb-2">🎉</div>
             <h2 class="text-2xl font-black text-gray-800 mb-1">考试成绩单</h2>
             <p id="result-exam-title" class="text-xs text-gray-500 mb-4">全真模拟考试 (120分钟)</p>
@@ -489,8 +499,8 @@
     </div>
 
     <!-- Search Modal (包含高频电气考点热词标签) -->
-    <div id="search-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-[60] p-4 pt-16 hidden animate-fade-in">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden animate-fade-in-up">
+    <div id="search-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer">
+        <div class="app-modal-dialog max-w-2xl bg-white animate-fade-in-up border border-gray-100 dark:border-slate-700">
             <div class="p-4 border-b flex items-center gap-3 bg-gray-50">
                 <span class="text-gray-400 text-lg">🔍</span>
                 <input type="text" id="search-input" class="flex-1 bg-transparent border-none outline-none text-base text-gray-800 placeholder-gray-400" placeholder="搜索题目关键词（如：PLC、晶闸管、变压器、RAM、二极管）..." />
@@ -519,15 +529,15 @@
     </div>
 
     <!-- Floating Global Toast -->
-    <div id="toast-container" class="fixed top-5 left-1/2 -translate-x-1/2 z-[99] pointer-events-none hidden">
+    <div id="toast-container" class="fixed top-14 sm:top-6 left-1/2 -translate-x-1/2 z-[99] pointer-events-none hidden">
         <div id="toast-content" class="px-4 py-2 rounded-full bg-gray-900/90 text-white text-xs font-bold shadow-2xl backdrop-blur-md flex items-center gap-2 animate-toast border border-white/20">
             <span>🎉 提示信息</span>
         </div>
     </div>
 
     <!-- 1. 跨设备双向同步弹窗 Modal -->
-    <div id="sync-modal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[75] p-4 hidden animate-fade-in">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-5 sm:p-6 max-h-[92vh] flex flex-col overflow-hidden animate-fade-in-up">
+    <div id="sync-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer">
+        <div class="app-modal-dialog bg-white p-5 sm:p-6 animate-fade-in-up border border-gray-100 dark:border-slate-700">
             <div class="flex items-center justify-between pb-3 border-b border-gray-100">
                 <div class="flex items-center gap-2">
                     <span class="text-xl">📲</span>
@@ -652,8 +662,8 @@
     </div>
 
     <!-- 2. 同步数据接收确认 Modal (智能合并 vs 完全覆盖) -->
-    <div id="sync-confirm-modal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[85] p-4 hidden animate-fade-in">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-6 text-center animate-fade-in-up">
+    <div id="sync-confirm-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer">
+        <div class="app-modal-dialog max-w-md bg-white p-6 text-center animate-fade-in-up border border-gray-100 dark:border-slate-700">
             <div class="text-5xl mb-2">🎉</div>
             <h3 class="text-xl font-black text-gray-800 mb-1">检测到跨设备同步数据！</h3>
             <p id="sync-confirm-desc" class="text-xs text-gray-500 mb-5 leading-relaxed">
@@ -685,8 +695,8 @@
     </div>
  
     <!-- 考生考期定向迎新引导 Modal (首次进入自动弹出，也可随时重新选择) -->
-    <div id="modal-welcome-date" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[88] p-3 sm:p-4 hidden animate-fade-in backdrop-blur-sm">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-4 sm:p-6 text-center animate-modal-pop relative border border-gray-100">
+    <div id="modal-welcome-date" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer">
+        <div class="app-modal-dialog max-w-md bg-white p-4 sm:p-6 text-center animate-modal-pop relative border border-gray-100 dark:border-slate-700">
             <!-- 关闭按键 -->
             <button id="btn-close-welcome-date" class="absolute top-3.5 right-3.5 text-gray-400 hover:text-gray-700 w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center transition cursor-pointer" title="暂不选择">
                 ✕
@@ -770,6 +780,342 @@
 
             <div class="text-[11px] text-gray-400">
                 提示：进入系统后，您也可在左侧侧边栏随时一键切换考期或复习模块。
+            </div>
+        </div>
+    </div>
+
+    <!-- 2026 新版本重磅特性首次使用引导弹窗 (乱序刷题 + 分卷清理，仅弹出一次) -->
+    <div id="modal-feature-announcement" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[75] p-4 hidden animate-fade-in app-modal-layer modal-center-main">
+        <div class="app-modal-dialog max-w-md bg-white p-5 sm:p-6 text-center animate-modal-pop relative border border-gray-100 dark:border-slate-700">
+            <!-- 关闭按键 -->
+            <button id="btn-close-feature-announcement" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 dark:hover:text-white w-8 h-8 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center transition cursor-pointer" title="关闭">
+                ✕
+            </button>
+            
+            <div class="text-4xl mb-2 animate-bounce">🔀</div>
+            <div class="mb-1.5">
+                <span class="text-xs font-black text-purple-800 bg-purple-100 dark:bg-purple-900/50 dark:text-purple-300 border border-purple-200 dark:border-purple-700 px-2.5 py-0.5 rounded-full inline-flex items-center gap-1">
+                    <span>✨</span> 2026 智能新版功能升级
+                </span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black text-gray-900 dark:text-white mb-1">
+                全新上线：「真随机乱序刷题」模式
+            </h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">
+                彻底告别机械位置记忆与死记硬背，全真高效巩固考点！
+            </p>
+
+            <!-- 核心特性卡片列表 -->
+            <div class="space-y-2.5 text-left mb-4 app-modal-body custom-scrollbar">
+                <div class="p-3 rounded-2xl bg-purple-50/80 dark:bg-purple-950/30 border border-purple-200/70 dark:border-purple-800/50 flex items-start gap-2.5">
+                    <span class="text-lg flex-shrink-0 mt-0.5">🎲</span>
+                    <div class="text-xs">
+                        <div class="font-black text-purple-950 dark:text-purple-200">真随机全局打乱，打破题号顺序记忆</div>
+                        <div class="text-purple-800/80 dark:text-purple-300/80 mt-0.5 leading-relaxed">题库内部全面真随机排列，避免同一道题固定出现在熟悉位置。</div>
+                    </div>
+                </div>
+
+                <div class="p-3 rounded-2xl bg-blue-50/80 dark:bg-blue-950/30 border border-blue-200/70 dark:border-blue-800/50 flex items-start gap-2.5">
+                    <span class="text-lg flex-shrink-0 mt-0.5">🛡️</span>
+                    <div class="text-xs">
+                        <div class="font-black text-blue-950 dark:text-blue-200">严格保留「单选 ➔ 多选 ➔ 判断」大题顺序</div>
+                        <div class="text-blue-800/80 dark:text-blue-300/80 mt-0.5 leading-relaxed">各题型内部随机，题型之间遵循真实考场规程，循序渐进不杂乱。</div>
+                    </div>
+                </div>
+
+                <div class="p-3 rounded-2xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200/70 dark:border-amber-800/50 flex items-start gap-2.5">
+                    <span class="text-lg flex-shrink-0 mt-0.5">⚡</span>
+                    <div class="text-xs">
+                        <div class="font-black text-amber-950 dark:text-amber-200">顶栏一键切换，支持无缝衔接与从头清空</div>
+                        <div class="text-amber-800/80 dark:text-amber-300/80 mt-0.5 leading-relaxed">点击顶栏「顺序 / 乱序」键，可保留已做题仅打乱后续，也可一键清空重新刷题！</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 操作按钮组 -->
+            <div class="space-y-2">
+                <button id="btn-feature-try-shuffle" class="q-bounce-btn w-full py-2.5 px-4 bg-purple-600 hover:bg-purple-700 text-white font-black rounded-xl text-sm transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer">
+                    <span>🔀</span>
+                    <span>立即开启乱序刷题模式</span>
+                </button>
+                <button id="btn-feature-keep-seq" class="w-full py-2 text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white font-bold cursor-pointer">
+                    我知道了，继续按原卷顺序刷题
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 通关祝贺与重新刷题 Modal -->
+    <div id="modal-module-complete" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer modal-center-main">
+        <div class="app-modal-dialog max-w-md bg-white p-5 sm:p-6 text-center animate-modal-pop relative border border-gray-100 dark:border-slate-700">
+            <button id="btn-close-complete-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center transition cursor-pointer" title="关闭">
+                ✕
+            </button>
+            <div class="text-5xl mb-2 animate-bounce">🏆</div>
+            <div class="mb-1.5"><span class="text-xs font-black text-amber-800 bg-amber-100 border border-amber-300 px-2.5 py-0.5 rounded-full inline-flex items-center gap-1"><span>🎉</span> 恭喜通关！全卷作答完毕</span></div>
+            <h3 id="complete-modal-title" class="text-xl font-black text-gray-900 mb-1">太棒了！您已刷完本卷</h3>
+            <p id="complete-modal-sub" class="text-xs text-gray-500 mb-4 leading-relaxed">
+                所有题目均已完成作答，以下是您的本次战绩：
+            </p>
+
+            <!-- 战绩统计卡片 -->
+            <div class="grid grid-cols-3 gap-2 mb-4 text-xs">
+                <div class="p-3 bg-blue-50 rounded-2xl border border-blue-100 text-center">
+                    <div class="text-blue-600 font-bold mb-0.5">总刷题数</div>
+                    <div id="complete-stat-total" class="text-xl font-black text-blue-800">210 题</div>
+                </div>
+                <div class="p-3 bg-green-50 rounded-2xl border border-green-100 text-center">
+                    <div class="text-green-600 font-bold mb-0.5">答对题数</div>
+                    <div id="complete-stat-correct" class="text-xl font-black text-green-700">195 题</div>
+                </div>
+                <div class="p-3 bg-amber-50 rounded-2xl border border-amber-100 text-center">
+                    <div class="text-amber-600 font-bold mb-0.5">正确率</div>
+                    <div id="complete-stat-accuracy" class="text-xl font-black text-amber-700">92.8%</div>
+                </div>
+            </div>
+
+            <!-- 重新刷题选择选项 -->
+            <div class="space-y-2.5 text-left mb-4">
+                <button id="btn-complete-restart-shuffle" class="q-bounce-btn w-full p-3.5 rounded-2xl border-2 border-purple-500 bg-purple-50 hover:bg-purple-100 transition flex items-center justify-between group cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center text-lg font-black shadow-sm">🔀</span>
+                        <div>
+                            <div class="font-black text-gray-900 text-sm group-hover:text-purple-900 flex items-center gap-1.5">
+                                <span>乱序重新刷题</span>
+                                <span class="text-[10px] bg-purple-200 text-purple-900 px-1.5 py-0.2 rounded font-bold">推荐·破除死记</span>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-0.5">保留单选→多选→判断题型顺序，打乱题序强效巩固</div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-purple-700 bg-white px-2.5 py-1 rounded-lg border border-purple-200 group-hover:bg-purple-600 group-hover:text-white transition whitespace-nowrap">开始 ➔</span>
+                </button>
+
+                <button id="btn-complete-restart-seq" class="q-bounce-btn w-full p-3.5 rounded-2xl border border-blue-200 bg-blue-50/70 hover:bg-blue-100 transition flex items-center justify-between group cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg font-black shadow-sm">📋</span>
+                        <div>
+                            <div class="font-black text-gray-900 text-sm group-hover:text-blue-900">顺序重新刷题</div>
+                            <div class="text-xs text-gray-500 mt-0.5">按官方原卷 1~210 序号顺序清空从头再刷</div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-blue-700 bg-white px-2.5 py-1 rounded-lg border border-blue-200 group-hover:bg-blue-600 group-hover:text-white transition whitespace-nowrap">开始 ➔</span>
+                </button>
+
+                <button id="btn-complete-review-wrong" class="q-bounce-btn w-full p-3 rounded-2xl border border-orange-200 bg-orange-50 hover:bg-orange-100 transition flex items-center justify-between group cursor-pointer hidden">
+                    <div class="flex items-center gap-3">
+                        <span class="w-9 h-9 rounded-xl bg-orange-500 text-white flex items-center justify-center text-base font-bold shadow-sm">📖</span>
+                        <div>
+                            <div class="font-bold text-gray-900 text-xs">回顾本卷错题</div>
+                            <div class="text-[11px] text-gray-500 mt-0.5" id="complete-wrong-hint">共有 0 道错题待强化复习</div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-orange-700">去复习 ➔</span>
+                </button>
+            </div>
+
+            <button id="btn-complete-stay" class="w-full py-2 text-xs text-gray-400 hover:text-gray-600 font-bold cursor-pointer">
+                留在当前卷翻看题目与解析 ➔
+            </button>
+        </div>
+    </div>
+
+    <!-- 试卷快速切换与选择 Modal (点击顶栏试卷名称即弹出，支持即刻切换试卷) -->
+    <div id="modal-paper-selector" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer modal-center-main">
+        <div class="app-modal-dialog bg-white p-4 sm:p-6 animate-modal-pop relative border border-gray-100 dark:border-slate-700">
+            <!-- 弹窗顶栏 -->
+            <div class="app-modal-header flex items-center justify-between pb-3 border-b border-gray-100 dark:border-slate-800 flex-shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📚</span>
+                    <div>
+                        <h3 class="font-black text-base sm:text-lg text-gray-900 dark:text-white leading-tight">切换做题试卷 / 考期</h3>
+                        <p class="text-xs text-gray-500 mt-0.5">点击即刻切换，各卷进度与错题记录完全独立保存</p>
+                    </div>
+                </div>
+                <button id="btn-close-paper-selector" class="p-1.5 rounded-lg text-gray-400 hover:text-gray-700 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-slate-800 transition cursor-pointer" title="关闭">✕</button>
+            </div>
+
+            <!-- 分类选择列表 (带独立滚动区，彻底防溢出) -->
+            <div class="app-modal-body custom-scrollbar py-2.5 space-y-3.5 pr-0.5 text-xs">
+                <!-- 模块一：🔥 2026 考前精简特训卷 (各210题) -->
+                <div>
+                    <div class="flex items-center justify-between font-black text-gray-800 dark:text-gray-200 mb-2 px-1">
+                        <span class="flex items-center gap-1.5">
+                            <span class="text-amber-500">🔥</span> 2026 考前精简特训卷
+                        </span>
+                        <span class="text-[10px] text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded-full font-bold">考前必做·各210题</span>
+                    </div>
+                    <div class="space-y-1.5" id="paper-selector-list-2026">
+                        <!-- 动态渲染：1021, 1022, 1023 -->
+                    </div>
+                </div>
+
+                <!-- 模块二：📑 历年真题分卷 (各200题) -->
+                <div>
+                    <div class="flex items-center justify-between font-black text-gray-800 dark:text-gray-200 mb-2 px-1">
+                        <span class="flex items-center gap-1.5">
+                            <span class="text-blue-500">📑</span> 历年真题分卷
+                        </span>
+                        <span class="text-[10px] text-blue-700 bg-blue-100/80 px-2 py-0.5 rounded-full font-bold">原卷专区·共5套</span>
+                    </div>
+                    <div class="space-y-1.5" id="paper-selector-list-papers">
+                        <!-- 动态渲染：2024, 卷一, 卷二, 卷三, 卷四 -->
+                    </div>
+                </div>
+
+                <!-- 模块三：📚 1000 题全量题库 -->
+                <div>
+                    <div class="flex items-center justify-between font-black text-gray-800 dark:text-gray-200 mb-2 px-1">
+                        <span class="flex items-center gap-1.5">
+                            <span class="text-indigo-500">📚</span> 1000 题全量题库
+                        </span>
+                        <span class="text-[10px] text-indigo-700 bg-indigo-100/80 px-2 py-0.5 rounded-full font-bold">地毯式通刷</span>
+                    </div>
+                    <div class="space-y-1.5" id="paper-selector-list-full">
+                        <!-- 动态渲染：全部题目(1000题), 单选题(800题), 判断题(200题) -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 弹窗底栏 -->
+            <div class="app-modal-footer pt-3 mt-1 border-t border-gray-100 dark:border-slate-800 flex items-center justify-between flex-shrink-0">
+                <span class="text-[11px] text-gray-400">
+                    提示：切换后自动定位至该卷最近一次练习题号
+                </span>
+                <button id="btn-close-paper-selector-footer" class="py-1.5 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:bg-slate-800 dark:text-gray-300 font-bold rounded-xl text-xs transition cursor-pointer">
+                    关闭
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 切换刷题顺序选择 Modal (智能无缝切换 vs 清空从头开始) -->
+    <div id="modal-switch-order" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer modal-center-main">
+        <div class="app-modal-dialog max-w-md bg-white p-5 sm:p-6 text-center animate-modal-pop relative border border-gray-100 dark:border-slate-700">
+            <button id="btn-close-switch-order" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 dark:hover:text-white w-8 h-8 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center transition cursor-pointer" title="取消">
+                ✕
+            </button>
+            <div id="switch-order-icon" class="text-4xl mb-2">🔀</div>
+            <h3 id="switch-order-title" class="text-lg sm:text-xl font-black text-gray-900 dark:text-white mb-1">切换为乱序刷题</h3>
+            <p id="switch-order-desc" class="text-xs text-gray-500 mb-4 leading-relaxed">
+                检测到您在当前试卷已完成 <span id="switch-order-done-count" class="font-bold text-blue-600">0</span> 道题。请选择切换方式：
+            </p>
+
+            <div class="space-y-3 text-left mb-4 app-modal-body custom-scrollbar">
+                <!-- 选项一：清空重来（推荐） -->
+                <button id="btn-switch-order-restart" class="switch-order-btn q-bounce-btn w-full rounded-2xl border-2 border-purple-500 bg-purple-50/90 hover:bg-purple-100 transition flex items-start text-left cursor-pointer group">
+                    <span id="switch-order-opt1-icon" class="switch-order-icon bg-purple-600 text-white shadow-sm">🔄</span>
+                    <div class="flex-1 min-w-0 text-left">
+                        <div class="font-black text-purple-950 text-sm flex items-center gap-2 flex-wrap text-left">
+                            <span id="switch-order-opt1-title">清空记录，从头乱序 (推荐)</span>
+                            <span id="switch-order-opt1-badge" class="text-[10px] bg-purple-200 text-purple-900 px-1.5 py-0.2 rounded font-bold">全新真随机</span>
+                        </div>
+                        <div id="switch-order-opt1-desc" class="text-xs text-purple-800/80 mt-1 leading-relaxed text-left">
+                            清空当前卷答题历史，全卷各题型内部真随机打乱，从第 1 题开始全新刷题。
+                        </div>
+                    </div>
+                </button>
+
+                <!-- 选项二：保留已做，打乱后续 -->
+                <button id="btn-switch-order-keep" class="switch-order-btn q-bounce-btn w-full rounded-2xl border border-blue-200 bg-blue-50/70 hover:bg-blue-100 transition flex items-start text-left cursor-pointer group">
+                    <span class="switch-order-icon bg-blue-600 text-white shadow-sm">⚡</span>
+                    <div class="flex-1 min-w-0 text-left">
+                        <div class="font-black text-gray-900 dark:text-white text-sm group-hover:text-blue-900 flex items-center gap-2 flex-wrap text-left">
+                            <span id="switch-order-opt2-title">保留已做记录，仅打乱后续未做题目</span>
+                            <span id="switch-order-opt2-badge" class="text-[10px] bg-blue-200/80 text-blue-900 px-1.5 py-0.2 rounded font-bold">无缝衔接</span>
+                        </div>
+                        <div id="switch-order-opt2-desc" class="text-xs text-gray-500 mt-1 leading-relaxed text-left">
+                            保留已做题目与答题对错，后续未做的题目在各题型内真随机打乱，直接无缝继续刷题！
+                        </div>
+                    </div>
+                </button>
+            </div>
+
+            <button id="btn-switch-order-cancel" class="w-full py-2 text-xs text-gray-400 hover:text-gray-600 font-bold cursor-pointer">
+                取消，保持当前刷题模式
+            </button>
+        </div>
+    </div>
+
+    <!-- 分卷进度清理与独立重置 Modal (选项卡紧凑布局 + 彻底防溢出滚动) -->
+    <div id="modal-manage-resets" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer modal-center-main">
+        <div class="app-modal-dialog bg-white p-4 sm:p-6 animate-modal-pop relative border border-gray-100 dark:border-slate-700">
+            <!-- 弹窗顶栏 -->
+            <div class="app-modal-header flex items-center justify-between pb-3 border-b border-gray-100 dark:border-slate-800 flex-shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🧹</span>
+                    <div>
+                        <h3 class="font-black text-base sm:text-lg text-gray-900 dark:text-white leading-tight">刷题记录分卷管理</h3>
+                        <p class="text-xs text-gray-500 mt-0.5">可单独清空某套试卷的进度，互不影响</p>
+                    </div>
+                </div>
+                <button id="btn-close-manage-resets" class="p-1.5 rounded-lg text-gray-400 hover:text-gray-700 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-slate-800 transition cursor-pointer">✕</button>
+            </div>
+
+            <!-- 当前练习试卷置顶高亮卡片 (紧凑版) -->
+            <div class="my-2.5 p-3 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/80 flex-shrink-0">
+                <div class="flex items-center justify-between mb-1">
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-xs">🎯</span>
+                        <span class="font-black text-xs text-blue-950">当前练习试卷</span>
+                        <span id="manage-cur-paper-badge" class="text-[9px] bg-blue-600 text-white px-1.5 py-0.2 rounded-full font-bold">进行中</span>
+                    </div>
+                    <span id="manage-cur-paper-pct" class="font-black text-xs text-blue-700">0%</span>
+                </div>
+                <div class="flex items-center justify-between text-xs text-gray-700 mb-2">
+                    <span id="manage-cur-paper-title" class="font-bold truncate max-w-[180px] sm:max-w-xs">10月21日模拟卷</span>
+                    <span id="manage-cur-paper-stat" class="text-[11px] text-gray-500 font-mono">已刷 0 / 210 题</span>
+                </div>
+                <div class="flex gap-2">
+                    <button id="btn-action-reset-current-seq" class="flex-1 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs transition shadow-sm text-center cursor-pointer flex items-center justify-center gap-1">
+                        <span>📋</span>
+                        <span>顺序清空重刷</span>
+                    </button>
+                    <button id="btn-action-reset-current-shuffle" class="flex-1 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-xs transition shadow-sm text-center cursor-pointer flex items-center justify-center gap-1">
+                        <span>🔀</span>
+                        <span>真随机乱序重刷</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 选项卡 Tabs (3大模块分类，减少垂直长屏堆叠) -->
+            <div class="flex items-center bg-gray-100 p-1 rounded-xl gap-1 text-xs font-bold mb-2 flex-shrink-0">
+                <button id="tab-manage-2026" class="tab-manage-btn flex-1 py-1.5 rounded-lg text-center transition cursor-pointer bg-white text-blue-700 shadow-sm" data-target="manage-panel-2026">
+                    🔥 2026特训 (3套)
+                </button>
+                <button id="tab-manage-papers" class="tab-manage-btn flex-1 py-1.5 rounded-lg text-center transition cursor-pointer text-gray-600 hover:text-gray-900" data-target="manage-panel-papers">
+                    📑 历年真题 (5套)
+                </button>
+                <button id="tab-manage-full" class="tab-manage-btn flex-1 py-1.5 rounded-lg text-center transition cursor-pointer text-gray-600 hover:text-gray-900" data-target="manage-panel-full">
+                    📚 1000题专练
+                </button>
+            </div>
+
+            <!-- 试卷进度列表 (滚动区域，min-h-0 + flex-1 保证顺畅滚动且永不长出屏幕) -->
+            <div class="app-modal-body custom-scrollbar pr-0.5">
+                <!-- Panel 1: 2026考前特训卷 (1021, 1022, 1023) -->
+                <div id="manage-panel-2026" class="manage-tab-panel space-y-1.5">
+                    <div id="manage-list-2026" class="space-y-1.5"></div>
+                </div>
+
+                <!-- Panel 2: 历年真题分卷 (2024, 卷一~卷四) -->
+                <div id="manage-panel-papers" class="manage-tab-panel space-y-1.5 hidden">
+                    <div id="manage-list-papers" class="space-y-1.5"></div>
+                </div>
+
+                <!-- Panel 3: 1000题全量复习模块 -->
+                <div id="manage-panel-full" class="manage-tab-panel space-y-1.5 hidden">
+                    <div id="manage-list-full" class="space-y-1.5"></div>
+                </div>
+            </div>
+
+            <!-- 弹窗底栏 (全部清空，自动停留在最近试卷) -->
+            <div class="app-modal-footer pt-3 mt-2 border-t border-gray-100 dark:border-slate-800 flex items-center justify-between flex-shrink-0">
+                <button id="btn-action-clear-all-keep-recent" class="py-2 px-3 text-xs font-bold text-red-600 hover:bg-red-50 rounded-xl transition flex items-center gap-1 cursor-pointer">
+                    <span>⚠️ 清空所有卷记录 (保留在当前试卷)</span>
+                </button>
+                <button id="btn-close-manage-resets-footer" class="py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:bg-slate-800 dark:text-gray-300 font-bold rounded-xl text-xs transition cursor-pointer">
+                    完成
+                </button>
             </div>
         </div>
     </div>

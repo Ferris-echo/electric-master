@@ -2926,7 +2926,6 @@ video {
   }
 }
 
-
 /* ==========================================================================
    高级电工刷题助手 · 样式表 (包含高质感微动效、全功能手势缩放、全端响应式)
    ========================================================================== */
@@ -3355,10 +3354,6 @@ body[data-theme="dark"] #text-current-qnum {
 }
 body[data-theme="dark"] #text-total-qnum {
     color: #f1f5f9 !important;
-}
-body[data-theme="dark"] #badge-recite-status {
-    background-color: #3a2e19 !important;
-    color: #fde047 !important;
 }
 body[data-theme="dark"] #exam-timer-box {
     background-color: #3b1118 !important;
@@ -3820,28 +3815,254 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all
     list-style: none;
 }
 
-</style>
+/* 顺序 / 乱序 切换按钮样式 */
+.order-btn-seq {
+    background-color: #f8fafc;
+    color: #334155;
+    border-color: #e2e8f0;
+}
+.order-btn-shuffle {
+    background-color: #7c3aed !important;
+    color: #ffffff !important;
+    border-color: #6d28d9 !important;
+    box-shadow: 0 1px 3px 0 rgba(124, 58, 237, 0.3) !important;
+}
+
+/* 通关庆祝、模式切换与分卷管理弹窗 主题适配 */
+body[data-theme="dark"] #modal-module-complete > div,
+body[data-theme="dark"] #modal-switch-order > div,
+body[data-theme="dark"] #modal-manage-resets > div {
+    background-color: #0f172a !important;
+    border-color: #334155 !important;
+    color: #f1f5f9 !important;
+}
+body[data-theme="dark"] #modal-module-complete .text-gray-900,
+body[data-theme="dark"] #modal-switch-order .text-gray-900,
+body[data-theme="dark"] #modal-manage-resets .text-gray-900,
+body[data-theme="dark"] #modal-manage-resets .text-gray-800,
+body[data-theme="dark"] #modal-manage-resets .text-gray-700 {
+    color: #f8fafc !important;
+}
+body[data-theme="dark"] #modal-module-complete .text-gray-500,
+body[data-theme="dark"] #modal-switch-order .text-gray-500,
+body[data-theme="dark"] #modal-manage-resets .text-gray-500 {
+    color: #94a3b8 !important;
+}
+body[data-theme="dark"] #modal-manage-resets .bg-gradient-to-r {
+    background: linear-gradient(to right, rgba(30, 58, 138, 0.25), rgba(49, 46, 129, 0.25)) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+body[data-theme="dark"] #modal-manage-resets .bg-white,
+body[data-theme="dark"] #modal-switch-order .bg-white,
+body[data-theme="dark"] #modal-module-complete .bg-white {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+body[data-theme="dark"] #modal-manage-resets .bg-gray-100 {
+    background-color: #1e293b !important;
+}
+body[data-theme="dark"] #modal-module-complete .bg-blue-50 {
+    background-color: rgba(30, 58, 138, 0.25) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+body[data-theme="dark"] #modal-module-complete .bg-green-50 {
+    background-color: rgba(6, 78, 59, 0.25) !important;
+    border-color: rgba(16, 185, 129, 0.3) !important;
+}
+body[data-theme="dark"] #modal-module-complete .bg-amber-50 {
+    background-color: rgba(120, 53, 15, 0.25) !important;
+    border-color: rgba(245, 158, 11, 0.3) !important;
+}
+body[data-theme="dark"] #modal-module-complete .bg-purple-50,
+body[data-theme="dark"] #modal-switch-order .bg-purple-50,
+body[data-theme="dark"] #modal-feature-announcement .bg-purple-50 {
+    background-color: rgba(88, 28, 135, 0.25) !important;
+    border-color: rgba(147, 51, 234, 0.3) !important;
+}
+
+/* 护眼模式暖黄纸质 */
+body[data-theme="eye-care"] #modal-module-complete > div,
+body[data-theme="eye-care"] #modal-switch-order > div,
+body[data-theme="eye-care"] #modal-paper-selector > div,
+body[data-theme="eye-care"] #modal-feature-announcement > div,
+body[data-theme="eye-care"] #modal-manage-resets > div {
+    background-color: #fffefb !important;
+    border-color: #e5ded0 !important;
+}
+
+/* =========================================================================
+   全局顶级弹窗图层与防穿透、防截断自适应引擎 (Zero Penetration, Safe Scroll)
+   ========================================================================= */
+
+.app-modal-layer {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    z-index: 9999 !important; /* 强制最高层级，绝对置顶于移动端顶栏(z-30)与侧边栏(z-20)之上 */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1rem !important;
+    background-color: rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    box-sizing: border-box !important;
+}
+
+/* 核心防线：hidden 状态下必须彻底隐藏，避免 display: flex !important 覆盖 hidden */
+.app-modal-layer.hidden {
+    display: none !important;
+}
+
+/* 核心弹窗容器：margin: auto 彻底防御 Flex 居中顶部内容滚不上去的致命截断 Bug */
+.app-modal-dialog {
+    margin: auto !important;
+    width: 100% !important;
+    max-width: min(520px, calc(100vw - 2rem)) !important;
+    max-height: min(88vh, 88dvh) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    border-radius: 1.5rem !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35) !important;
+    box-sizing: border-box !important;
+}
+
+/* 弹窗头部与底部固定，列表主体独立优雅滚动 */
+.app-modal-header,
+.app-modal-footer {
+    flex-shrink: 0 !important;
+}
+.app-modal-body {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+}
+
+/* 桌面宽屏做题区视口精准居中 (在 ≥ 1024px 且侧边栏展开时对齐右侧主区域，超载时平滑受控) */
+@media (min-width: 1024px) {
+    .modal-center-main {
+        padding-left: clamp(21rem, 24vw, 24.5rem) !important; /* 动态自适应侧边栏宽度 */
+    }
+    .modal-center-main .app-modal-dialog {
+        max-width: min(520px, calc(100vw - clamp(21rem, 24vw, 24.5rem) - 3rem)) !important;
+    }
+}
+
+/* 移动端与平板 (< 1024px)：完全全屏物理居中，左右 1rem 安全间距 */
+@media (max-width: 1023px) {
+    .modal-center-main {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+/* 极矮屏幕/横屏手机适配 (高度 <= 640px) */
+@media (max-height: 640px) {
+    .app-modal-layer {
+        padding: 0.5rem !important;
+    }
+    .app-modal-dialog {
+        max-height: 94dvh !important;
+        border-radius: 1rem !important;
+    }
+}
+
+/* 刷题模式选择弹窗内选项卡片与图标间距美化 (彻底解决 gap-3.5 缺失导致贴脸问题) */
+#modal-switch-order .switch-order-btn {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 1rem !important; /* 强制 16px 留白 */
+    text-align: left !important;
+    padding: 1rem !important;
+}
+#modal-switch-order .switch-order-btn * {
+    text-align: left !important;
+}
+#modal-switch-order .switch-order-icon {
+    flex-shrink: 0 !important;
+    width: 2.75rem !important;
+    height: 2.75rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 0.875rem !important;
+    font-size: 1.25rem !important;
+    margin-right: 0.25rem !important;
+}
+
+/* 顶栏背题与顺序按键横向单行防折行强制加固 */
+#btn-header-recite-toggle,
+#btn-header-order-toggle {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+}
+#btn-header-recite-toggle span,
+#btn-header-order-toggle span {
+    white-space: nowrap !important;
+    display: inline-block !important;
+}
+#btn-mobile-paper-selector {
+    white-space: nowrap !important;
+    min-width: 0 !important;
+}
+#btn-open-grid-modal {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+}
+
+/* 试卷切换弹窗暗色与护眼主题适配 */
+body[data-theme="dark"] #modal-paper-selector > div,
+body[data-theme="dark"] .app-modal-dialog {
+    background-color: #0f172a !important;
+    border-color: #334155 !important;
+    color: #f1f5f9 !important;
+}
+body[data-theme="dark"] #modal-paper-selector .text-gray-900,
+body[data-theme="dark"] #modal-paper-selector .text-gray-800 {
+    color: #f8fafc !important;
+}
+body[data-theme="dark"] #modal-paper-selector .text-gray-500 {
+    color: #94a3b8 !important;
+}
+body[data-theme="dark"] #modal-paper-selector .bg-white {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+body[data-theme="dark"] #modal-paper-selector .bg-gray-50 {
+    background-color: #334155 !important;
+    color: #cbd5e1 !important;
+}
+
+
+
+    </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans antialiased select-none">
     <div id="app" class="min-h-screen bg-gray-100 flex flex-col md:flex-row font-sans">
         
-        <!-- Mobile Header -->
-        <div class="md:hidden bg-blue-700 text-white p-4 flex justify-between items-center shadow-md z-30 sticky top-0">
-            <h1 class="font-bold text-lg flex items-center gap-2">
+        <!-- Mobile Header (简洁清爽，无无意义裸图标，按钮带清晰中文) -->
+        <div class="md:hidden bg-blue-700 text-white px-4 py-2.5 flex justify-between items-center shadow-md z-30 sticky top-0">
+            <h1 class="font-black text-base flex items-center gap-1.5">
                 <span id="icon-lightning-mobile"></span> 高级电工刷题
             </h1>
             <div class="flex items-center gap-2">
-                <button id="btn-mobile-recite" class="p-2 hover:bg-blue-600 rounded-lg text-white font-bold text-xs flex items-center gap-1 transition" title="背题模式 (直显答案)">
-                    <span>👁️</span>
-                </button>
-                <button id="btn-mobile-sync" class="p-2 hover:bg-blue-600 rounded-lg text-white" title="跨端同步">
-                    <span>📲</span>
-                </button>
-                <button id="btn-mobile-search" class="p-2 hover:bg-blue-600 rounded-lg text-white" title="搜题">
+                <button id="btn-mobile-search" class="px-2.5 py-1.5 bg-blue-800/70 hover:bg-blue-800 rounded-xl text-white font-bold text-xs flex items-center gap-1 transition shadow-xs cursor-pointer" title="全库搜题">
                     <span id="icon-search-mobile"></span>
+                    <span>搜题</span>
                 </button>
-                <button id="btn-mobile-menu" class="p-2 hover:bg-blue-600 rounded-lg text-white" title="菜单">
+                <button id="btn-mobile-menu" class="px-2.5 py-1.5 bg-blue-800/70 hover:bg-blue-800 rounded-xl text-white font-bold text-xs flex items-center gap-1 transition shadow-xs cursor-pointer" title="展开菜单">
                     <span id="icon-menu-mobile"></span>
+                    <span>菜单</span>
                 </button>
             </div>
         </div>
@@ -4114,11 +4335,14 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all
                         </label>
                     </div>
 
-                    <button id="btn-reset-current" class="w-full text-left p-2.5 rounded-lg flex items-center gap-2 hover:bg-gray-100 text-gray-600 transition">
-                        <span id="icon-refresh"></span> 清除当前专练做题进度
+                    <button id="btn-reset-current" class="w-full text-left p-2.5 rounded-xl flex items-center gap-2 hover:bg-gray-100 text-gray-700 font-bold transition text-xs">
+                        <span id="icon-refresh"></span> 清除当前试卷进度 (重新刷题)
                     </button>
-                    <button id="btn-clear-all-data" class="w-full text-left p-2.5 rounded-lg flex items-center gap-2 hover:bg-red-50 text-red-500 transition">
-                        <span id="icon-trash"></span> 清空所有做题历史与错题
+                    <button id="btn-open-manage-resets" class="w-full text-left p-2.5 rounded-xl flex items-center gap-2 hover:bg-blue-50 text-blue-700 font-bold transition text-xs">
+                        <span>🧹</span> 单独清理各卷进度 / 分卷管理...
+                    </button>
+                    <button id="btn-clear-all-data" class="w-full text-left p-2.5 rounded-xl flex items-center gap-2 hover:bg-red-50 text-red-500 font-bold transition text-xs">
+                        <span id="icon-trash"></span> 清空所有记录 (保留在当前试卷)
                     </button>
                 </div>
             </div>
@@ -4127,46 +4351,56 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all
         <!-- Main Content Area -->
         <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
             
-            <!-- Top Status Bar -->
-            <div class="bg-white shadow-sm px-4 md:px-8 py-3.5 flex justify-between items-center z-10 border-b border-gray-100 flex-shrink-0">
-                <div class="flex items-center gap-3">
-                    <span id="badge-current-module" class="inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-blue-100 text-blue-700 shadow-sm">
-                        全部题库 (1000题)
-                    </span>
-                    <span class="text-gray-300 text-xs hidden sm:inline">|</span>
+            <!-- Top Status Bar (自适应排版，移动端紧凑优雅不挤占，桌面端舒展完整) -->
+            <div class="bg-white shadow-xs px-2.5 sm:px-4 md:px-8 py-2 md:py-3.5 flex justify-between items-center z-10 border-b border-gray-100 flex-shrink-0">
+                <div class="flex items-center gap-1.5 sm:gap-2.5 min-w-0 flex-1 overflow-hidden">
+                    <!-- 试卷名称标签 (点击弹出换卷选卷弹窗) -->
+                    <button id="btn-mobile-paper-selector" class="flex-shrink min-w-0 max-w-[125px] sm:max-w-none truncate px-2 sm:px-3 py-1 rounded-full text-xs font-black bg-blue-50 text-blue-800 hover:bg-blue-100 transition border border-blue-200/60 cursor-pointer flex items-center gap-1 shadow-sm whitespace-nowrap" title="点击切换做题试卷与考期">
+                        <span id="badge-current-module" class="truncate">全部题库 (1000题)</span>
+                        <span class="text-[10px] text-blue-500 font-bold flex-shrink-0">▾</span>
+                    </button>
                     
-                    <!-- Question navigation button -->
-                    <button id="btn-open-grid-modal" class="flex items-center gap-1.5 hover:bg-gray-100 px-3 py-1 rounded-lg transition-colors text-gray-600 text-sm font-semibold">
-                        第 <span id="text-current-qnum" class="text-blue-700 text-base font-black">1</span> / <span id="text-total-qnum" class="text-gray-900 font-bold">1000</span> 题
-                        <span id="icon-grid-btn"></span>
+                    <span class="text-gray-300 text-xs hidden sm:inline flex-shrink-0">|</span>
+                    
+                    <!-- 题号导航抽屉按钮 -->
+                    <button id="btn-open-grid-modal" class="flex-shrink-0 flex items-center gap-1 hover:bg-gray-100 px-2 sm:px-2.5 py-1 rounded-xl transition-colors text-gray-700 text-xs sm:text-sm font-bold bg-gray-50 border border-gray-200/60 cursor-pointer whitespace-nowrap">
+                        第 <span id="text-current-qnum" class="text-blue-700 font-black">1</span>/<span id="text-total-qnum" class="text-gray-900 font-bold">1000</span> 题
+                        <span id="icon-grid-btn" class="hidden sm:inline"></span>
                     </button>
 
-                    <!-- 背题模式快捷按键 (置顶显眼胶囊) -->
-                    <button id="btn-header-recite-toggle" class="q-bounce-btn flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition border border-gray-200 bg-gray-50 hover:bg-amber-50 hover:text-amber-900 text-gray-700 shadow-sm" title="一键开启/关闭背题直显答案模式">
+                    <!-- 背题模式快捷按键 (强制单行横排，绝不拆成两行竖排) -->
+                    <button id="btn-header-recite-toggle" class="q-bounce-btn flex-shrink-0 inline-flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-xl text-xs font-bold transition border border-gray-200 bg-gray-50 hover:bg-amber-50 hover:text-amber-900 text-gray-700 shadow-sm cursor-pointer whitespace-nowrap" title="一键开启/关闭背题直显答案模式">
                         <span id="header-recite-icon">👁️</span>
-                        <span id="header-recite-text">背题</span>
+                        <span id="header-recite-text" class="whitespace-nowrap">背题</span>
                     </button>
 
-                    <!-- Auto-advance indicator -->
-                    <span id="badge-recite-status" class="hidden sm:inline-block text-[11px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">
-                        背题中
-                    </span>
+                    <!-- 刷题顺序切换开关 (强制单行横排，绝不折行) -->
+                    <button id="btn-header-order-toggle" class="q-bounce-btn flex-shrink-0 inline-flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-xl text-xs font-bold transition border border-gray-200 bg-gray-50 hover:bg-purple-50 hover:text-purple-900 text-gray-700 shadow-sm cursor-pointer whitespace-nowrap" title="点击切换：原卷顺序 ⇄ 题型内乱序刷题">
+                        <span id="header-order-icon">📋</span>
+                        <span id="header-order-text" class="whitespace-nowrap">顺序</span>
+                    </button>
+
+                    <!-- 重置/重做本套试卷快捷键 (桌面大屏专享) -->
+                    <button id="btn-header-reset-current" class="q-bounce-btn hidden lg:inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition border border-gray-200 bg-gray-50 hover:bg-red-50 hover:text-red-700 text-gray-600 shadow-sm cursor-pointer whitespace-nowrap" title="清空本套试卷记录，重新开始刷题">
+                        <span>🔄</span>
+                        <span class="whitespace-nowrap">重做本卷</span>
+                    </button>
                 </div>
 
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
                     <!-- Exam Timer Badge -->
-                    <div id="exam-timer-box" class="hidden items-center gap-1.5 bg-red-50 border border-red-200 text-red-600 font-mono font-bold text-sm px-3 py-1 rounded-full animate-pulse shadow-sm">
+                    <div id="exam-timer-box" class="hidden items-center gap-1.5 bg-red-50 border border-red-200 text-red-600 font-mono font-bold text-xs sm:text-sm px-2.5 py-1 rounded-full animate-pulse shadow-sm">
                         <span id="icon-timer"></span>
                         <span id="exam-timer-clock">120:00</span>
                     </div>
 
                     <!-- Submit Exam Button -->
-                    <button id="btn-header-submit-exam" class="hidden px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold text-xs shadow-md transition transform active:scale-95">
+                    <button id="btn-header-submit-exam" class="hidden px-3 sm:px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold text-xs shadow-md transition transform active:scale-95 cursor-pointer">
                         交卷评分
                     </button>
 
                     <!-- Top progress bar -->
-                    <div class="w-24 sm:w-36 md:w-48 bg-gray-200 rounded-full h-2 overflow-hidden shadow-inner hidden sm:block">
+                    <div class="w-16 sm:w-28 md:w-44 bg-gray-200 rounded-full h-1.5 sm:h-2 overflow-hidden shadow-inner hidden md:block">
                         <div id="progress-bar" class="bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
                     </div>
                 </div>
@@ -4258,8 +4492,8 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all
     </div>
 
     <!-- Exam Result Modal -->
-    <div id="result-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[70] p-4 hidden animate-fade-in">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 text-center transform transition-all animate-fade-in-up">
+    <div id="result-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer">
+        <div class="app-modal-dialog max-w-md bg-white p-6 text-center animate-fade-in-up border border-gray-100 dark:border-slate-700">
             <div id="result-badge-icon" class="text-5xl mb-2">🎉</div>
             <h2 class="text-2xl font-black text-gray-800 mb-1">考试成绩单</h2>
             <p id="result-exam-title" class="text-xs text-gray-500 mb-4">全真模拟考试 (120分钟)</p>
@@ -4301,8 +4535,8 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all
     </div>
 
     <!-- Search Modal (包含高频电气考点热词标签) -->
-    <div id="search-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-[60] p-4 pt-16 hidden animate-fade-in">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden animate-fade-in-up">
+    <div id="search-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer">
+        <div class="app-modal-dialog max-w-2xl bg-white animate-fade-in-up border border-gray-100 dark:border-slate-700">
             <div class="p-4 border-b flex items-center gap-3 bg-gray-50">
                 <span class="text-gray-400 text-lg">🔍</span>
                 <input type="text" id="search-input" class="flex-1 bg-transparent border-none outline-none text-base text-gray-800 placeholder-gray-400" placeholder="搜索题目关键词（如：PLC、晶闸管、变压器、RAM、二极管）..." />
@@ -4331,15 +4565,15 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all
     </div>
 
     <!-- Floating Global Toast -->
-    <div id="toast-container" class="fixed top-5 left-1/2 -translate-x-1/2 z-[99] pointer-events-none hidden">
+    <div id="toast-container" class="fixed top-14 sm:top-6 left-1/2 -translate-x-1/2 z-[99] pointer-events-none hidden">
         <div id="toast-content" class="px-4 py-2 rounded-full bg-gray-900/90 text-white text-xs font-bold shadow-2xl backdrop-blur-md flex items-center gap-2 animate-toast border border-white/20">
             <span>🎉 提示信息</span>
         </div>
     </div>
 
     <!-- 1. 跨设备双向同步弹窗 Modal -->
-    <div id="sync-modal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[75] p-4 hidden animate-fade-in">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-5 sm:p-6 max-h-[92vh] flex flex-col overflow-hidden animate-fade-in-up">
+    <div id="sync-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer">
+        <div class="app-modal-dialog bg-white p-5 sm:p-6 animate-fade-in-up border border-gray-100 dark:border-slate-700">
             <div class="flex items-center justify-between pb-3 border-b border-gray-100">
                 <div class="flex items-center gap-2">
                     <span class="text-xl">📲</span>
@@ -4464,8 +4698,8 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all
     </div>
 
     <!-- 2. 同步数据接收确认 Modal (智能合并 vs 完全覆盖) -->
-    <div id="sync-confirm-modal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[85] p-4 hidden animate-fade-in">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-6 text-center animate-fade-in-up">
+    <div id="sync-confirm-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer">
+        <div class="app-modal-dialog max-w-md bg-white p-6 text-center animate-fade-in-up border border-gray-100 dark:border-slate-700">
             <div class="text-5xl mb-2">🎉</div>
             <h3 class="text-xl font-black text-gray-800 mb-1">检测到跨设备同步数据！</h3>
             <p id="sync-confirm-desc" class="text-xs text-gray-500 mb-5 leading-relaxed">
@@ -4497,8 +4731,8 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all
     </div>
  
     <!-- 考生考期定向迎新引导 Modal (首次进入自动弹出，也可随时重新选择) -->
-    <div id="modal-welcome-date" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[88] p-3 sm:p-4 hidden animate-fade-in backdrop-blur-sm">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-4 sm:p-6 text-center animate-modal-pop relative border border-gray-100">
+    <div id="modal-welcome-date" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer">
+        <div class="app-modal-dialog max-w-md bg-white p-4 sm:p-6 text-center animate-modal-pop relative border border-gray-100 dark:border-slate-700">
             <!-- 关闭按键 -->
             <button id="btn-close-welcome-date" class="absolute top-3.5 right-3.5 text-gray-400 hover:text-gray-700 w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center transition cursor-pointer" title="暂不选择">
                 ✕
@@ -4582,6 +4816,342 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all
 
             <div class="text-[11px] text-gray-400">
                 提示：进入系统后，您也可在左侧侧边栏随时一键切换考期或复习模块。
+            </div>
+        </div>
+    </div>
+
+    <!-- 2026 新版本重磅特性首次使用引导弹窗 (乱序刷题 + 分卷清理，仅弹出一次) -->
+    <div id="modal-feature-announcement" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[75] p-4 hidden animate-fade-in app-modal-layer modal-center-main">
+        <div class="app-modal-dialog max-w-md bg-white p-5 sm:p-6 text-center animate-modal-pop relative border border-gray-100 dark:border-slate-700">
+            <!-- 关闭按键 -->
+            <button id="btn-close-feature-announcement" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 dark:hover:text-white w-8 h-8 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center transition cursor-pointer" title="关闭">
+                ✕
+            </button>
+            
+            <div class="text-4xl mb-2 animate-bounce">🔀</div>
+            <div class="mb-1.5">
+                <span class="text-xs font-black text-purple-800 bg-purple-100 dark:bg-purple-900/50 dark:text-purple-300 border border-purple-200 dark:border-purple-700 px-2.5 py-0.5 rounded-full inline-flex items-center gap-1">
+                    <span>✨</span> 2026 智能新版功能升级
+                </span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black text-gray-900 dark:text-white mb-1">
+                全新上线：「真随机乱序刷题」模式
+            </h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">
+                彻底告别机械位置记忆与死记硬背，全真高效巩固考点！
+            </p>
+
+            <!-- 核心特性卡片列表 -->
+            <div class="space-y-2.5 text-left mb-4 app-modal-body custom-scrollbar">
+                <div class="p-3 rounded-2xl bg-purple-50/80 dark:bg-purple-950/30 border border-purple-200/70 dark:border-purple-800/50 flex items-start gap-2.5">
+                    <span class="text-lg flex-shrink-0 mt-0.5">🎲</span>
+                    <div class="text-xs">
+                        <div class="font-black text-purple-950 dark:text-purple-200">真随机全局打乱，打破题号顺序记忆</div>
+                        <div class="text-purple-800/80 dark:text-purple-300/80 mt-0.5 leading-relaxed">题库内部全面真随机排列，避免同一道题固定出现在熟悉位置。</div>
+                    </div>
+                </div>
+
+                <div class="p-3 rounded-2xl bg-blue-50/80 dark:bg-blue-950/30 border border-blue-200/70 dark:border-blue-800/50 flex items-start gap-2.5">
+                    <span class="text-lg flex-shrink-0 mt-0.5">🛡️</span>
+                    <div class="text-xs">
+                        <div class="font-black text-blue-950 dark:text-blue-200">严格保留「单选 ➔ 多选 ➔ 判断」大题顺序</div>
+                        <div class="text-blue-800/80 dark:text-blue-300/80 mt-0.5 leading-relaxed">各题型内部随机，题型之间遵循真实考场规程，循序渐进不杂乱。</div>
+                    </div>
+                </div>
+
+                <div class="p-3 rounded-2xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200/70 dark:border-amber-800/50 flex items-start gap-2.5">
+                    <span class="text-lg flex-shrink-0 mt-0.5">⚡</span>
+                    <div class="text-xs">
+                        <div class="font-black text-amber-950 dark:text-amber-200">顶栏一键切换，支持无缝衔接与从头清空</div>
+                        <div class="text-amber-800/80 dark:text-amber-300/80 mt-0.5 leading-relaxed">点击顶栏「顺序 / 乱序」键，可保留已做题仅打乱后续，也可一键清空重新刷题！</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 操作按钮组 -->
+            <div class="space-y-2">
+                <button id="btn-feature-try-shuffle" class="q-bounce-btn w-full py-2.5 px-4 bg-purple-600 hover:bg-purple-700 text-white font-black rounded-xl text-sm transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer">
+                    <span>🔀</span>
+                    <span>立即开启乱序刷题模式</span>
+                </button>
+                <button id="btn-feature-keep-seq" class="w-full py-2 text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white font-bold cursor-pointer">
+                    我知道了，继续按原卷顺序刷题
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 通关祝贺与重新刷题 Modal -->
+    <div id="modal-module-complete" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer modal-center-main">
+        <div class="app-modal-dialog max-w-md bg-white p-5 sm:p-6 text-center animate-modal-pop relative border border-gray-100 dark:border-slate-700">
+            <button id="btn-close-complete-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center transition cursor-pointer" title="关闭">
+                ✕
+            </button>
+            <div class="text-5xl mb-2 animate-bounce">🏆</div>
+            <div class="mb-1.5"><span class="text-xs font-black text-amber-800 bg-amber-100 border border-amber-300 px-2.5 py-0.5 rounded-full inline-flex items-center gap-1"><span>🎉</span> 恭喜通关！全卷作答完毕</span></div>
+            <h3 id="complete-modal-title" class="text-xl font-black text-gray-900 mb-1">太棒了！您已刷完本卷</h3>
+            <p id="complete-modal-sub" class="text-xs text-gray-500 mb-4 leading-relaxed">
+                所有题目均已完成作答，以下是您的本次战绩：
+            </p>
+
+            <!-- 战绩统计卡片 -->
+            <div class="grid grid-cols-3 gap-2 mb-4 text-xs">
+                <div class="p-3 bg-blue-50 rounded-2xl border border-blue-100 text-center">
+                    <div class="text-blue-600 font-bold mb-0.5">总刷题数</div>
+                    <div id="complete-stat-total" class="text-xl font-black text-blue-800">210 题</div>
+                </div>
+                <div class="p-3 bg-green-50 rounded-2xl border border-green-100 text-center">
+                    <div class="text-green-600 font-bold mb-0.5">答对题数</div>
+                    <div id="complete-stat-correct" class="text-xl font-black text-green-700">195 题</div>
+                </div>
+                <div class="p-3 bg-amber-50 rounded-2xl border border-amber-100 text-center">
+                    <div class="text-amber-600 font-bold mb-0.5">正确率</div>
+                    <div id="complete-stat-accuracy" class="text-xl font-black text-amber-700">92.8%</div>
+                </div>
+            </div>
+
+            <!-- 重新刷题选择选项 -->
+            <div class="space-y-2.5 text-left mb-4">
+                <button id="btn-complete-restart-shuffle" class="q-bounce-btn w-full p-3.5 rounded-2xl border-2 border-purple-500 bg-purple-50 hover:bg-purple-100 transition flex items-center justify-between group cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center text-lg font-black shadow-sm">🔀</span>
+                        <div>
+                            <div class="font-black text-gray-900 text-sm group-hover:text-purple-900 flex items-center gap-1.5">
+                                <span>乱序重新刷题</span>
+                                <span class="text-[10px] bg-purple-200 text-purple-900 px-1.5 py-0.2 rounded font-bold">推荐·破除死记</span>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-0.5">保留单选→多选→判断题型顺序，打乱题序强效巩固</div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-purple-700 bg-white px-2.5 py-1 rounded-lg border border-purple-200 group-hover:bg-purple-600 group-hover:text-white transition whitespace-nowrap">开始 ➔</span>
+                </button>
+
+                <button id="btn-complete-restart-seq" class="q-bounce-btn w-full p-3.5 rounded-2xl border border-blue-200 bg-blue-50/70 hover:bg-blue-100 transition flex items-center justify-between group cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg font-black shadow-sm">📋</span>
+                        <div>
+                            <div class="font-black text-gray-900 text-sm group-hover:text-blue-900">顺序重新刷题</div>
+                            <div class="text-xs text-gray-500 mt-0.5">按官方原卷 1~210 序号顺序清空从头再刷</div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-blue-700 bg-white px-2.5 py-1 rounded-lg border border-blue-200 group-hover:bg-blue-600 group-hover:text-white transition whitespace-nowrap">开始 ➔</span>
+                </button>
+
+                <button id="btn-complete-review-wrong" class="q-bounce-btn w-full p-3 rounded-2xl border border-orange-200 bg-orange-50 hover:bg-orange-100 transition flex items-center justify-between group cursor-pointer hidden">
+                    <div class="flex items-center gap-3">
+                        <span class="w-9 h-9 rounded-xl bg-orange-500 text-white flex items-center justify-center text-base font-bold shadow-sm">📖</span>
+                        <div>
+                            <div class="font-bold text-gray-900 text-xs">回顾本卷错题</div>
+                            <div class="text-[11px] text-gray-500 mt-0.5" id="complete-wrong-hint">共有 0 道错题待强化复习</div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-orange-700">去复习 ➔</span>
+                </button>
+            </div>
+
+            <button id="btn-complete-stay" class="w-full py-2 text-xs text-gray-400 hover:text-gray-600 font-bold cursor-pointer">
+                留在当前卷翻看题目与解析 ➔
+            </button>
+        </div>
+    </div>
+
+    <!-- 试卷快速切换与选择 Modal (点击顶栏试卷名称即弹出，支持即刻切换试卷) -->
+    <div id="modal-paper-selector" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer modal-center-main">
+        <div class="app-modal-dialog bg-white p-4 sm:p-6 animate-modal-pop relative border border-gray-100 dark:border-slate-700">
+            <!-- 弹窗顶栏 -->
+            <div class="app-modal-header flex items-center justify-between pb-3 border-b border-gray-100 dark:border-slate-800 flex-shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📚</span>
+                    <div>
+                        <h3 class="font-black text-base sm:text-lg text-gray-900 dark:text-white leading-tight">切换做题试卷 / 考期</h3>
+                        <p class="text-xs text-gray-500 mt-0.5">点击即刻切换，各卷进度与错题记录完全独立保存</p>
+                    </div>
+                </div>
+                <button id="btn-close-paper-selector" class="p-1.5 rounded-lg text-gray-400 hover:text-gray-700 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-slate-800 transition cursor-pointer" title="关闭">✕</button>
+            </div>
+
+            <!-- 分类选择列表 (带独立滚动区，彻底防溢出) -->
+            <div class="app-modal-body custom-scrollbar py-2.5 space-y-3.5 pr-0.5 text-xs">
+                <!-- 模块一：🔥 2026 考前精简特训卷 (各210题) -->
+                <div>
+                    <div class="flex items-center justify-between font-black text-gray-800 dark:text-gray-200 mb-2 px-1">
+                        <span class="flex items-center gap-1.5">
+                            <span class="text-amber-500">🔥</span> 2026 考前精简特训卷
+                        </span>
+                        <span class="text-[10px] text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded-full font-bold">考前必做·各210题</span>
+                    </div>
+                    <div class="space-y-1.5" id="paper-selector-list-2026">
+                        <!-- 动态渲染：1021, 1022, 1023 -->
+                    </div>
+                </div>
+
+                <!-- 模块二：📑 历年真题分卷 (各200题) -->
+                <div>
+                    <div class="flex items-center justify-between font-black text-gray-800 dark:text-gray-200 mb-2 px-1">
+                        <span class="flex items-center gap-1.5">
+                            <span class="text-blue-500">📑</span> 历年真题分卷
+                        </span>
+                        <span class="text-[10px] text-blue-700 bg-blue-100/80 px-2 py-0.5 rounded-full font-bold">原卷专区·共5套</span>
+                    </div>
+                    <div class="space-y-1.5" id="paper-selector-list-papers">
+                        <!-- 动态渲染：2024, 卷一, 卷二, 卷三, 卷四 -->
+                    </div>
+                </div>
+
+                <!-- 模块三：📚 1000 题全量题库 -->
+                <div>
+                    <div class="flex items-center justify-between font-black text-gray-800 dark:text-gray-200 mb-2 px-1">
+                        <span class="flex items-center gap-1.5">
+                            <span class="text-indigo-500">📚</span> 1000 题全量题库
+                        </span>
+                        <span class="text-[10px] text-indigo-700 bg-indigo-100/80 px-2 py-0.5 rounded-full font-bold">地毯式通刷</span>
+                    </div>
+                    <div class="space-y-1.5" id="paper-selector-list-full">
+                        <!-- 动态渲染：全部题目(1000题), 单选题(800题), 判断题(200题) -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 弹窗底栏 -->
+            <div class="app-modal-footer pt-3 mt-1 border-t border-gray-100 dark:border-slate-800 flex items-center justify-between flex-shrink-0">
+                <span class="text-[11px] text-gray-400">
+                    提示：切换后自动定位至该卷最近一次练习题号
+                </span>
+                <button id="btn-close-paper-selector-footer" class="py-1.5 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:bg-slate-800 dark:text-gray-300 font-bold rounded-xl text-xs transition cursor-pointer">
+                    关闭
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 切换刷题顺序选择 Modal (智能无缝切换 vs 清空从头开始) -->
+    <div id="modal-switch-order" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer modal-center-main">
+        <div class="app-modal-dialog max-w-md bg-white p-5 sm:p-6 text-center animate-modal-pop relative border border-gray-100 dark:border-slate-700">
+            <button id="btn-close-switch-order" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 dark:hover:text-white w-8 h-8 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-center transition cursor-pointer" title="取消">
+                ✕
+            </button>
+            <div id="switch-order-icon" class="text-4xl mb-2">🔀</div>
+            <h3 id="switch-order-title" class="text-lg sm:text-xl font-black text-gray-900 dark:text-white mb-1">切换为乱序刷题</h3>
+            <p id="switch-order-desc" class="text-xs text-gray-500 mb-4 leading-relaxed">
+                检测到您在当前试卷已完成 <span id="switch-order-done-count" class="font-bold text-blue-600">0</span> 道题。请选择切换方式：
+            </p>
+
+            <div class="space-y-3 text-left mb-4 app-modal-body custom-scrollbar">
+                <!-- 选项一：清空重来（推荐） -->
+                <button id="btn-switch-order-restart" class="switch-order-btn q-bounce-btn w-full rounded-2xl border-2 border-purple-500 bg-purple-50/90 hover:bg-purple-100 transition flex items-start text-left cursor-pointer group">
+                    <span id="switch-order-opt1-icon" class="switch-order-icon bg-purple-600 text-white shadow-sm">🔄</span>
+                    <div class="flex-1 min-w-0 text-left">
+                        <div class="font-black text-purple-950 text-sm flex items-center gap-2 flex-wrap text-left">
+                            <span id="switch-order-opt1-title">清空记录，从头乱序 (推荐)</span>
+                            <span id="switch-order-opt1-badge" class="text-[10px] bg-purple-200 text-purple-900 px-1.5 py-0.2 rounded font-bold">全新真随机</span>
+                        </div>
+                        <div id="switch-order-opt1-desc" class="text-xs text-purple-800/80 mt-1 leading-relaxed text-left">
+                            清空当前卷答题历史，全卷各题型内部真随机打乱，从第 1 题开始全新刷题。
+                        </div>
+                    </div>
+                </button>
+
+                <!-- 选项二：保留已做，打乱后续 -->
+                <button id="btn-switch-order-keep" class="switch-order-btn q-bounce-btn w-full rounded-2xl border border-blue-200 bg-blue-50/70 hover:bg-blue-100 transition flex items-start text-left cursor-pointer group">
+                    <span class="switch-order-icon bg-blue-600 text-white shadow-sm">⚡</span>
+                    <div class="flex-1 min-w-0 text-left">
+                        <div class="font-black text-gray-900 dark:text-white text-sm group-hover:text-blue-900 flex items-center gap-2 flex-wrap text-left">
+                            <span id="switch-order-opt2-title">保留已做记录，仅打乱后续未做题目</span>
+                            <span id="switch-order-opt2-badge" class="text-[10px] bg-blue-200/80 text-blue-900 px-1.5 py-0.2 rounded font-bold">无缝衔接</span>
+                        </div>
+                        <div id="switch-order-opt2-desc" class="text-xs text-gray-500 mt-1 leading-relaxed text-left">
+                            保留已做题目与答题对错，后续未做的题目在各题型内真随机打乱，直接无缝继续刷题！
+                        </div>
+                    </div>
+                </button>
+            </div>
+
+            <button id="btn-switch-order-cancel" class="w-full py-2 text-xs text-gray-400 hover:text-gray-600 font-bold cursor-pointer">
+                取消，保持当前刷题模式
+            </button>
+        </div>
+    </div>
+
+    <!-- 分卷进度清理与独立重置 Modal (选项卡紧凑布局 + 彻底防溢出滚动) -->
+    <div id="modal-manage-resets" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 hidden animate-fade-in app-modal-layer modal-center-main">
+        <div class="app-modal-dialog bg-white p-4 sm:p-6 animate-modal-pop relative border border-gray-100 dark:border-slate-700">
+            <!-- 弹窗顶栏 -->
+            <div class="app-modal-header flex items-center justify-between pb-3 border-b border-gray-100 dark:border-slate-800 flex-shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🧹</span>
+                    <div>
+                        <h3 class="font-black text-base sm:text-lg text-gray-900 dark:text-white leading-tight">刷题记录分卷管理</h3>
+                        <p class="text-xs text-gray-500 mt-0.5">可单独清空某套试卷的进度，互不影响</p>
+                    </div>
+                </div>
+                <button id="btn-close-manage-resets" class="p-1.5 rounded-lg text-gray-400 hover:text-gray-700 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-slate-800 transition cursor-pointer">✕</button>
+            </div>
+
+            <!-- 当前练习试卷置顶高亮卡片 (紧凑版) -->
+            <div class="my-2.5 p-3 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/80 flex-shrink-0">
+                <div class="flex items-center justify-between mb-1">
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-xs">🎯</span>
+                        <span class="font-black text-xs text-blue-950">当前练习试卷</span>
+                        <span id="manage-cur-paper-badge" class="text-[9px] bg-blue-600 text-white px-1.5 py-0.2 rounded-full font-bold">进行中</span>
+                    </div>
+                    <span id="manage-cur-paper-pct" class="font-black text-xs text-blue-700">0%</span>
+                </div>
+                <div class="flex items-center justify-between text-xs text-gray-700 mb-2">
+                    <span id="manage-cur-paper-title" class="font-bold truncate max-w-[180px] sm:max-w-xs">10月21日模拟卷</span>
+                    <span id="manage-cur-paper-stat" class="text-[11px] text-gray-500 font-mono">已刷 0 / 210 题</span>
+                </div>
+                <div class="flex gap-2">
+                    <button id="btn-action-reset-current-seq" class="flex-1 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs transition shadow-sm text-center cursor-pointer flex items-center justify-center gap-1">
+                        <span>📋</span>
+                        <span>顺序清空重刷</span>
+                    </button>
+                    <button id="btn-action-reset-current-shuffle" class="flex-1 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-xs transition shadow-sm text-center cursor-pointer flex items-center justify-center gap-1">
+                        <span>🔀</span>
+                        <span>真随机乱序重刷</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 选项卡 Tabs (3大模块分类，减少垂直长屏堆叠) -->
+            <div class="flex items-center bg-gray-100 p-1 rounded-xl gap-1 text-xs font-bold mb-2 flex-shrink-0">
+                <button id="tab-manage-2026" class="tab-manage-btn flex-1 py-1.5 rounded-lg text-center transition cursor-pointer bg-white text-blue-700 shadow-sm" data-target="manage-panel-2026">
+                    🔥 2026特训 (3套)
+                </button>
+                <button id="tab-manage-papers" class="tab-manage-btn flex-1 py-1.5 rounded-lg text-center transition cursor-pointer text-gray-600 hover:text-gray-900" data-target="manage-panel-papers">
+                    📑 历年真题 (5套)
+                </button>
+                <button id="tab-manage-full" class="tab-manage-btn flex-1 py-1.5 rounded-lg text-center transition cursor-pointer text-gray-600 hover:text-gray-900" data-target="manage-panel-full">
+                    📚 1000题专练
+                </button>
+            </div>
+
+            <!-- 试卷进度列表 (滚动区域，min-h-0 + flex-1 保证顺畅滚动且永不长出屏幕) -->
+            <div class="app-modal-body custom-scrollbar pr-0.5">
+                <!-- Panel 1: 2026考前特训卷 (1021, 1022, 1023) -->
+                <div id="manage-panel-2026" class="manage-tab-panel space-y-1.5">
+                    <div id="manage-list-2026" class="space-y-1.5"></div>
+                </div>
+
+                <!-- Panel 2: 历年真题分卷 (2024, 卷一~卷四) -->
+                <div id="manage-panel-papers" class="manage-tab-panel space-y-1.5 hidden">
+                    <div id="manage-list-papers" class="space-y-1.5"></div>
+                </div>
+
+                <!-- Panel 3: 1000题全量复习模块 -->
+                <div id="manage-panel-full" class="manage-tab-panel space-y-1.5 hidden">
+                    <div id="manage-list-full" class="space-y-1.5"></div>
+                </div>
+            </div>
+
+            <!-- 弹窗底栏 (全部清空，自动停留在最近试卷) -->
+            <div class="app-modal-footer pt-3 mt-2 border-t border-gray-100 dark:border-slate-800 flex items-center justify-between flex-shrink-0">
+                <button id="btn-action-clear-all-keep-recent" class="py-2 px-3 text-xs font-bold text-red-600 hover:bg-red-50 rounded-xl transition flex items-center gap-1 cursor-pointer">
+                    <span>⚠️ 清空所有卷记录 (保留在当前试卷)</span>
+                </button>
+                <button id="btn-close-manage-resets-footer" class="py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:bg-slate-800 dark:text-gray-300 font-bold rounded-xl text-xs transition cursor-pointer">
+                    完成
+                </button>
             </div>
         </div>
     </div>
@@ -4727,7 +5297,11 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
     const state = {
         activeModuleId: 'full_all',
         selectedSimDate: '1021', // '1021' | '1022' | '1023'
-        quickPeekMap: {},        // 单题速查答案状态映射 [qId]: boolean
+        recentModuleId: 'paper_2026_all', // 记录最近练习过的试卷模块
+        recentSimDate: '1021',           // 记录最近练习的考期
+        orderMode: 'seq',                // 'seq' (正常顺序) | 'shuffle' (题型内乱序)
+        moduleShuffleMaps: {},           // 各模块乱序映射缓存 [modKey]: [qId1, qId2, ...] (持久化防止刷题中途跳动)
+        quickPeekMap: {},                // 单题速查答案状态映射 [qId]: boolean
         
         // 独立游标：记录用户在各个模块当前做到第几题
         moduleCursors: {
@@ -4795,6 +5369,10 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
     const STORAGE_KEY_THEME   = 'electrician_theme_v4';
     const STORAGE_KEY_FONTSIZE= 'electrician_fontsize_v4';
     const STORAGE_KEY_ACTIVE_MODULE = 'electrician_active_module_v4';
+    const STORAGE_KEY_ORDER_MODE = 'electrician_order_mode_v4';
+    const STORAGE_KEY_SHUFFLE_MAPS = 'electrician_module_shuffle_maps_v4';
+    const STORAGE_KEY_RECENT_MODULE = 'electrician_recent_module_v4';
+    const STORAGE_KEY_RECENT_SIM_DATE = 'electrician_recent_sim_date_v4';
 
     function loadSavedData() {
         try {
@@ -4813,8 +5391,32 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             const simDate = localStorage.getItem('electrician_sim_date_v4');
             if (simDate && ['1021', '1022', '1023'].includes(simDate)) {
                 state.selectedSimDate = simDate;
+                state.recentSimDate = simDate;
             } else {
                 state.selectedSimDate = '1021';
+                state.recentSimDate = '1021';
+            }
+
+            const recDate = localStorage.getItem(STORAGE_KEY_RECENT_SIM_DATE);
+            if (recDate && ['1021', '1022', '1023'].includes(recDate)) {
+                state.recentSimDate = recDate;
+            }
+
+            const recMod = localStorage.getItem(STORAGE_KEY_RECENT_MODULE);
+            if (recMod) {
+                state.recentModuleId = recMod;
+            }
+
+            const order = localStorage.getItem(STORAGE_KEY_ORDER_MODE);
+            if (order === 'shuffle' || order === 'seq') {
+                state.orderMode = order;
+            }
+
+            const maps = localStorage.getItem(STORAGE_KEY_SHUFFLE_MAPS);
+            if (maps) {
+                try {
+                    state.moduleShuffleMaps = JSON.parse(maps) || {};
+                } catch(e) {}
             }
 
             // 旧版 2026 单卷数据平滑迁移至 1021 考期
@@ -4855,6 +5457,7 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             const activeMod = localStorage.getItem(STORAGE_KEY_ACTIVE_MODULE);
             if (activeMod && (state.moduleCursors[activeMod] !== undefined || activeMod.startsWith('paper_'))) {
                 state.activeModuleId = activeMod;
+                state.recentModuleId = activeMod;
             }
         } catch(e) {
             console.error('Storage load error:', e);
@@ -4872,6 +5475,10 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             localStorage.setItem(STORAGE_KEY_THEME, state.theme);
             localStorage.setItem(STORAGE_KEY_FONTSIZE, state.fontSize);
             localStorage.setItem(STORAGE_KEY_ACTIVE_MODULE, state.activeModuleId);
+            localStorage.setItem(STORAGE_KEY_ORDER_MODE, state.orderMode || 'seq');
+            localStorage.setItem(STORAGE_KEY_SHUFFLE_MAPS, JSON.stringify(state.moduleShuffleMaps || {}));
+            localStorage.setItem(STORAGE_KEY_RECENT_MODULE, state.recentModuleId || 'paper_2026_all');
+            localStorage.setItem(STORAGE_KEY_RECENT_SIM_DATE, state.recentSimDate || '1021');
             localStorage.setItem('electrician_sim_date_v4', state.selectedSimDate || '1021');
         } catch(e) {
             console.error('Storage save error:', e);
@@ -4909,8 +5516,51 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         saveState();
     }
 
-    // --- 获取当前模块的题目列表 ---
-    function getModuleQuestions(moduleId) {
+    // --- 加密级真随机数生成器 (杜绝伪随机数确定性与重复分布) ---
+    function getSecureRandomInt(max) {
+        if (max <= 1) return 0;
+        if (window.crypto && window.crypto.getRandomValues) {
+            const buf = new Uint32Array(1);
+            window.crypto.getRandomValues(buf);
+            return buf[0] % max;
+        }
+        return Math.floor(Math.random() * max);
+    }
+
+    // --- Fisher-Yates 现代真随机打乱算法 ---
+    function shuffleArray(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = getSecureRandomInt(i + 1);
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+
+    // --- 题型内分组乱序核心算法 (铁律约束：严格保持 单选 ➔ 多选 ➔ 判断 的题型先后大类顺序) ---
+    function shuffleQuestionsGrouped(questions) {
+        const choices = [];
+        const multiples = [];
+        const judges = [];
+        const others = [];
+
+        questions.forEach(q => {
+            if (q.type === 'choice') choices.push(q);
+            else if (q.type === 'multiple') multiples.push(q);
+            else if (q.type === 'judge') judges.push(q);
+            else others.push(q);
+        });
+
+        return [
+            ...shuffleArray(choices),
+            ...shuffleArray(multiples),
+            ...shuffleArray(judges),
+            ...shuffleArray(others)
+        ];
+    }
+
+    // --- 获取指定模块原始顺序题目列表 ---
+    function getRawModuleQuestions(moduleId) {
         if (moduleId === 'full_all') {
             return all1000Questions;
         } else if (moduleId === 'full_choice') {
@@ -4938,6 +5588,293 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             return state.examState.activeQuestions;
         }
         return all1000Questions;
+    }
+
+    // 为某模块重新生成真随机分组乱序映射并持久化 (每次均强制重新真随机打乱)
+    function regenerateModuleShuffle(moduleId) {
+        const raw = getRawModuleQuestions(moduleId);
+        if (raw.length <= 1) return raw;
+        const shuffled = shuffleQuestionsGrouped(raw);
+        const mapKey = getModuleCursorKey(moduleId);
+        state.moduleShuffleMaps[mapKey] = shuffled.map(q => q.id);
+        saveState();
+        return shuffled;
+    }
+
+    // --- 获取当前模块的题目列表 (支持顺序/乱序无缝切换与持久缓存) ---
+    function getModuleQuestions(moduleId) {
+        const raw = getRawModuleQuestions(moduleId);
+        const isExam = (moduleId === 'exam_random' || moduleId === 'quick_quiz' || moduleId === 'paper_2026_exam');
+        if (isExam || moduleId === 'wrong' || moduleId === 'favorite' || raw.length <= 1) {
+            return raw;
+        }
+
+        // 顺序模式：直接返回原卷序号
+        if (state.orderMode !== 'shuffle') {
+            return raw;
+        }
+
+        // 乱序模式：优先从持久化缓存读取映射，保证做题刷新绝不乱跳
+        const mapKey = getModuleCursorKey(moduleId);
+        let ids = state.moduleShuffleMaps[mapKey];
+        if (!ids || ids.length !== raw.length) {
+            const shuffled = shuffleQuestionsGrouped(raw);
+            ids = shuffled.map(q => q.id);
+            state.moduleShuffleMaps[mapKey] = ids;
+            saveState();
+        }
+
+        const qMap = new Map();
+        raw.forEach(q => qMap.set(q.id, q));
+        const list = ids.map(id => qMap.get(id)).filter(Boolean);
+        return list.length === raw.length ? list : raw;
+    }
+
+    // --- 顺序 / 乱序 状态同步与交互 ---
+    function syncOrderModeUI() {
+        const isShuffle = (state.orderMode === 'shuffle');
+        
+        // 桌面/移动端顶栏状态按钮
+        const headerBtn = document.getElementById('btn-header-order-toggle');
+        const headerIcon = document.getElementById('header-order-icon');
+        const headerText = document.getElementById('header-order-text');
+        if (headerBtn) {
+            if (isShuffle) {
+                headerBtn.className = 'q-bounce-btn flex-shrink-0 inline-flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-xl text-xs font-bold transition border border-purple-400 bg-purple-600 text-white shadow-sm shadow-purple-200 cursor-pointer whitespace-nowrap';
+                if (headerIcon) headerIcon.textContent = '🔀';
+                if (headerText) headerText.textContent = '乱序';
+                headerBtn.title = '当前为题型内真随机乱序刷题，点击切换为原卷顺序';
+            } else {
+                headerBtn.className = 'q-bounce-btn flex-shrink-0 inline-flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-xl text-xs font-bold transition border border-gray-200 bg-gray-50 hover:bg-purple-50 hover:text-purple-900 text-gray-700 shadow-sm cursor-pointer whitespace-nowrap';
+                if (headerIcon) headerIcon.textContent = '📋';
+                if (headerText) headerText.textContent = '顺序';
+                headerBtn.title = '当前为原卷顺序刷题，点击切换为题型内乱序';
+            }
+        }
+
+        // 兼容旧移动端按钮标识 (若存在)
+        const mobileBtn = document.getElementById('btn-mobile-order');
+        const mobileIcon = document.getElementById('mobile-order-icon');
+        const mobileText = document.getElementById('mobile-order-text');
+        if (mobileBtn) {
+            if (isShuffle) {
+                mobileBtn.className = 'p-2 bg-purple-600 text-white rounded-lg font-bold text-xs flex items-center gap-1 shadow-sm transition';
+                if (mobileIcon) mobileIcon.textContent = '🔀';
+                if (mobileText) mobileText.textContent = '乱序';
+            } else {
+                mobileBtn.className = 'p-2 hover:bg-blue-600 rounded-lg text-white font-bold text-xs flex items-center gap-1 transition';
+                if (mobileIcon) mobileIcon.textContent = '📋';
+                if (mobileText) mobileText.textContent = '顺序';
+            }
+        }
+    }
+
+    // --- 顺序切换智能处理 (未做题直接切换归零，已做题弹窗询问是否保留做题记录) ---
+    let pendingTargetOrderMode = null;
+
+    function handleOrderToggleClick(forcedMode = null) {
+        const isExam = (state.activeModuleId === 'exam_random' || state.activeModuleId === 'quick_quiz' || state.activeModuleId === 'paper_2026_exam');
+        if (isExam || state.activeModuleId === 'wrong' || state.activeModuleId === 'favorite') {
+            showToast('ℹ️ 当前特殊模式不支持切换刷题顺序');
+            return;
+        }
+
+        const currentMode = state.orderMode || 'seq';
+        const targetMode = forcedMode || (currentMode === 'shuffle' ? 'seq' : 'shuffle');
+        if (targetMode === currentMode) return;
+
+        const ansMap = getCurrentAnswersMap();
+        const answeredCount = Object.keys(ansMap).length;
+
+        // 如果用户在当前卷完全没有做过任何题 (0题)，无需弹窗，直接丝滑切换到第 1 题
+        if (answeredCount === 0) {
+            executeDirectOrderSwitch(targetMode);
+            return;
+        }
+
+        // 如果已有作答记录，弹出智能选择对话框询问用户意图
+        pendingTargetOrderMode = targetMode;
+        openSwitchOrderModal(targetMode, answeredCount);
+    }
+
+    function executeDirectOrderSwitch(targetMode) {
+        state.orderMode = targetMode;
+        const mapKey = getModuleCursorKey(state.activeModuleId);
+
+        if (targetMode === 'shuffle') {
+            // 真随机：清除旧映射并重新生成全新乱序
+            delete state.moduleShuffleMaps[mapKey];
+            regenerateModuleShuffle(state.activeModuleId);
+        }
+
+        // 游标稳稳归零从第 1 题开始
+        setCurrentIndex(0);
+        saveState();
+        syncOrderModeUI();
+        renderApp();
+
+        if (targetMode === 'shuffle') {
+            showToast('🔀 已开启真随机乱序刷题 (保留单选→多选→判断题型顺序)');
+        } else {
+            showToast('📋 已切换为顺序刷题 (按官方原卷 1~210 序号排列)');
+        }
+    }
+
+    function openSwitchOrderModal(targetMode, doneCount) {
+        const modal = document.getElementById('modal-switch-order');
+        if (!modal) return;
+
+        const iconEl = document.getElementById('switch-order-icon');
+        const titleEl = document.getElementById('switch-order-title');
+        const countEl = document.getElementById('switch-order-done-count');
+        const opt1Title = document.getElementById('switch-order-opt1-title');
+        const opt1Badge = document.getElementById('switch-order-opt1-badge');
+        const opt1Desc = document.getElementById('switch-order-opt1-desc');
+        const opt2Title = document.getElementById('switch-order-opt2-title');
+        const opt2Badge = document.getElementById('switch-order-opt2-badge');
+        const opt2Desc = document.getElementById('switch-order-opt2-desc');
+
+        if (countEl) countEl.textContent = doneCount;
+
+        if (targetMode === 'shuffle') {
+            if (iconEl) iconEl.textContent = '🔀';
+            if (titleEl) titleEl.textContent = '切换为乱序刷题';
+            if (opt1Title) opt1Title.textContent = '清空记录，从头乱序 (推荐)';
+            if (opt1Badge) opt1Badge.textContent = '全新真随机';
+            if (opt1Desc) opt1Desc.textContent = '清空当前卷答题历史，全卷各题型内部真随机打乱，从第 1 题全新开始。';
+            if (opt2Title) opt2Title.textContent = '保留已做记录，仅打乱后续未做题目';
+            if (opt2Badge) opt2Badge.textContent = '无缝衔接';
+            if (opt2Desc) opt2Desc.textContent = `保留已做的 ${doneCount} 道题及答题对错，仅将后续未做的题目真随机打乱，直接无缝继续刷题！`;
+        } else {
+            if (iconEl) iconEl.textContent = '📋';
+            if (titleEl) titleEl.textContent = '切换为顺序刷题';
+            if (opt1Title) opt1Title.textContent = '清空记录，从头顺序 (推荐)';
+            if (opt1Badge) opt1Badge.textContent = '原卷 1~210 序号';
+            if (opt1Desc) opt1Desc.textContent = '清空当前卷答题历史，恢复官方原卷 1~210 序号排列，从第 1 题全新开始。';
+            if (opt2Title) opt2Title.textContent = '保留已做记录，后续未做题恢复原卷顺序';
+            if (opt2Badge) opt2Badge.textContent = '顺次排列';
+            if (opt2Desc) opt2Desc.textContent = `保留已做的 ${doneCount} 道题及答题对错，后续未做的题目按官方原题序号排列，直接无缝继续刷题！`;
+        }
+
+        modal.classList.remove('hidden');
+    }
+
+    function closeSwitchOrderModal() {
+        const modal = document.getElementById('modal-switch-order');
+        if (modal) modal.classList.add('hidden');
+        pendingTargetOrderMode = null;
+    }
+
+    // 弹窗选项一：清空本卷，从第 1 题开始全新模式
+    function executeSwitchOrderRestart() {
+        if (!pendingTargetOrderMode) return;
+        const targetMode = pendingTargetOrderMode;
+        closeSwitchOrderModal();
+
+        const ansKey = getModuleAnswerKey(state.activeModuleId);
+        state.moduleAnswers[ansKey] = {};
+        state.multiDraft.clear();
+
+        state.orderMode = targetMode;
+        const mapKey = getModuleCursorKey(state.activeModuleId);
+
+        if (targetMode === 'shuffle') {
+            delete state.moduleShuffleMaps[mapKey];
+            regenerateModuleShuffle(state.activeModuleId);
+        }
+
+        setCurrentIndex(0);
+        saveState();
+        syncOrderModeUI();
+        updateAllModuleProgresses();
+        renderApp();
+
+        const modeName = (targetMode === 'shuffle' ? '真随机乱序' : '原卷顺序');
+        showToast(`🔄 已清空本卷答题历史，切换为【${modeName}】，从第 1 题全新开始！`);
+    }
+
+    // 弹窗选项二：保留已做记录，仅对后续未做题目真随机打乱/恢复原序
+    function executeSwitchOrderKeep() {
+        if (!pendingTargetOrderMode) return;
+        const targetMode = pendingTargetOrderMode;
+        closeSwitchOrderModal();
+
+        const modId = state.activeModuleId;
+        const rawQuestions = getRawModuleQuestions(modId);
+        const ansKey = getModuleAnswerKey(modId);
+        const ansMap = state.moduleAnswers[ansKey] || {};
+        const doneCount = Object.keys(ansMap).length;
+
+        if (targetMode === 'shuffle') {
+            // 铁律：各大题型大类顺序（单选 ➔ 多选 ➔ 判断 ➔ 其他）严格保序！
+            // 在各大题型内部：已做题目保存在前，未做题目真随机打乱在后！
+            const choicesDone = [];
+            const choicesUndone = [];
+            const multiplesDone = [];
+            const multiplesUndone = [];
+            const judgesDone = [];
+            const judgesUndone = [];
+            const othersDone = [];
+            const othersUndone = [];
+
+            rawQuestions.forEach(q => {
+                const isDone = Boolean(ansMap[q.id]);
+                if (q.type === 'choice') {
+                    if (isDone) choicesDone.push(q);
+                    else choicesUndone.push(q);
+                } else if (q.type === 'multiple') {
+                    if (isDone) multiplesDone.push(q);
+                    else multiplesUndone.push(q);
+                } else if (q.type === 'judge') {
+                    if (isDone) judgesDone.push(q);
+                    else judgesUndone.push(q);
+                } else {
+                    if (isDone) othersDone.push(q);
+                    else othersUndone.push(q);
+                }
+            });
+
+            const newOrder = [
+                ...choicesDone,
+                ...shuffleArray(choicesUndone),
+                ...multiplesDone,
+                ...shuffleArray(multiplesUndone),
+                ...judgesDone,
+                ...shuffleArray(judgesUndone),
+                ...othersDone,
+                ...shuffleArray(othersUndone)
+            ];
+
+            const mapKey = getModuleCursorKey(modId);
+            state.moduleShuffleMaps[mapKey] = newOrder.map(q => q.id);
+            state.orderMode = 'shuffle';
+
+            // 游标精准定位到整个序列中第一道未作答的题目，丝滑继续
+            const firstUndoneIdx = newOrder.findIndex(q => !ansMap[q.id]);
+            const targetCursor = firstUndoneIdx >= 0 ? firstUndoneIdx : 0;
+            setCurrentIndex(targetCursor);
+
+            saveState();
+            syncOrderModeUI();
+            renderApp();
+            showToast(`⚡ 已保留 ${doneCount} 道已做题，后续未做题已真随机打乱！第 ${targetCursor + 1} 题继续作答`);
+        } else {
+            // 切换为顺序模式，但保留已做答题记录
+            state.orderMode = 'seq';
+            const firstUndoneIdx = rawQuestions.findIndex(q => !ansMap[q.id]);
+            const targetCursor = firstUndoneIdx >= 0 ? firstUndoneIdx : 0;
+            setCurrentIndex(targetCursor);
+
+            saveState();
+            syncOrderModeUI();
+            renderApp();
+            showToast(`📋 已保留 ${doneCount} 道已做题，后续未做题恢复原卷顺序！第 ${targetCursor + 1} 题继续作答`);
+        }
+    }
+
+    // 兼容旧接口别名
+    function toggleOrderMode(forcedMode = null) {
+        handleOrderToggleClick(forcedMode);
     }
 
     function getActiveQuestions() {
@@ -5199,6 +6136,12 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         state.activeModuleId = newModuleId;
         state.multiDraft.clear();
 
+        // 记忆最近刷过的常规练习试卷
+        if (newModuleId !== 'exam_random' && newModuleId !== 'quick_quiz' && newModuleId !== 'paper_2026_exam' && newModuleId !== 'wrong' && newModuleId !== 'favorite') {
+            state.recentModuleId = newModuleId;
+            state.recentSimDate = state.selectedSimDate || '1021';
+        }
+
         // 若用户切换到了历年分卷，自动展开手风琴
         if (newModuleId && newModuleId.startsWith('paper_') && !newModuleId.startsWith('paper_2026_')) {
             const details = document.getElementById('details-papers-list');
@@ -5206,6 +6149,7 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         }
 
         saveState();
+        syncOrderModeUI();
         renderApp();
     }
 
@@ -5473,16 +6417,6 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         if (pBar) {
             const pPct = total > 0 ? Math.round(((curIdx + 1) / total) * 100) : 0;
             pBar.style.width = `${pPct}%`;
-        }
-
-        const reciteBadge = document.getElementById('badge-recite-status');
-        if (reciteBadge) {
-            const isExam = (state.activeModuleId === 'exam_random' || state.activeModuleId === 'quick_quiz' || state.activeModuleId === 'paper_2026_exam');
-            if (state.reciteMode && !isExam) {
-                reciteBadge.classList.remove('hidden');
-            } else {
-                reciteBadge.classList.add('hidden');
-            }
         }
 
         renderQuestionCard();
@@ -5816,9 +6750,25 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
                             </button>
                         ` : ''}
 
-                        <button id="btn-next-q" class="q-bounce-btn px-5 py-2 rounded-xl text-sm font-bold flex items-center gap-1 transition ${curIdx < total - 1 ? 'bg-blue-600 text-white shadow-md hover:bg-blue-700' : 'text-gray-300 bg-gray-200 cursor-not-allowed'}" ${curIdx >= total - 1 ? 'disabled' : ''}>
-                            下一题 ›
-                        </button>
+                        ${curIdx < total - 1 ? `
+                            <button id="btn-next-q" class="q-bounce-btn px-5 py-2 rounded-xl text-sm font-bold flex items-center gap-1 transition bg-blue-600 text-white shadow-md hover:bg-blue-700 cursor-pointer">
+                                下一题 ›
+                            </button>
+                        ` : (
+                            !isExamMode ? (
+                                (total > 0 && Object.keys(answersMap).length >= total) ? `
+                                    <button id="btn-show-celebration" class="q-bounce-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white shadow-md shadow-amber-200 animate-q-pulse cursor-pointer">
+                                        <span>🎉</span>
+                                        <span>查看通关成绩</span>
+                                    </button>
+                                ` : `
+                                    <button id="btn-open-grid-from-end" class="q-bounce-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1 transition bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 cursor-pointer" title="点击打开题号面板检查未答题目">
+                                        <span>🏁</span>
+                                        <span>已到末题 (查漏补缺)</span>
+                                    </button>
+                                `
+                            ) : ''
+                        )}
                     </div>
                 </div>
 
@@ -5861,6 +6811,16 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
                 setCurrentIndex(curIdx + 1);
                 renderApp();
             };
+        }
+
+        // 通关成绩与查漏补缺
+        const btnCelebration = document.getElementById('btn-show-celebration');
+        if (btnCelebration) {
+            btnCelebration.onclick = () => showModuleCompleteCelebration();
+        }
+        const btnGridEnd = document.getElementById('btn-open-grid-from-end');
+        if (btnGridEnd) {
+            btnGridEnd.onclick = () => openGridModal();
         }
 
         // 模考交卷
@@ -5944,6 +6904,7 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         saveState();
         renderQuestionCard();
         updateAllModuleProgresses();
+        checkModuleCompletion();
 
         if (finalAns === q.answer && state.autoAdvance) {
             const total = getActiveQuestions().length;
@@ -6015,6 +6976,7 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         saveState();
         renderQuestionCard();
         updateAllModuleProgresses();
+        checkModuleCompletion();
 
         // 答对后翻页逻辑 (如果开启了自动翻题开关，则在 800ms 后翻题；关闭则绝不翻题)
         if (key === q.answer && state.autoAdvance) {
@@ -6448,11 +7410,11 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         const headerBtn = document.getElementById('btn-header-recite-toggle');
         if (headerBtn) {
             if (state.reciteMode) {
-                headerBtn.className = 'q-bounce-btn flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition border border-amber-400 bg-amber-500 text-white shadow-sm shadow-amber-200 cursor-pointer';
+                headerBtn.className = 'q-bounce-btn flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition border border-amber-400 bg-amber-500 text-white shadow-sm shadow-amber-200 cursor-pointer whitespace-nowrap';
                 const textEl = document.getElementById('header-recite-text');
                 if (textEl) textEl.textContent = '背题中';
             } else {
-                headerBtn.className = 'q-bounce-btn flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition border border-gray-200 bg-gray-50 hover:bg-amber-50 hover:text-amber-900 text-gray-700 shadow-sm cursor-pointer';
+                headerBtn.className = 'q-bounce-btn flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition border border-gray-200 bg-gray-50 hover:bg-amber-50 hover:text-amber-900 text-gray-700 shadow-sm cursor-pointer whitespace-nowrap';
                 const textEl = document.getElementById('header-recite-text');
                 if (textEl) textEl.textContent = '背题';
             }
@@ -6466,23 +7428,15 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
                 mobileReciteBtn.className = 'p-2 hover:bg-blue-600 rounded-lg text-white font-bold text-xs flex items-center gap-1 transition';
             }
         }
-
-        const badgeRecite = document.getElementById('badge-recite-status');
-        if (badgeRecite) {
-            const isExam = (state.activeModuleId === 'exam_random' || state.activeModuleId === 'quick_quiz' || state.activeModuleId === 'paper_2026_exam');
-            if (state.reciteMode && !isExam) {
-                badgeRecite.classList.remove('hidden');
-            } else {
-                badgeRecite.classList.add('hidden');
-            }
-        }
     }
 
     // --- 考期切换与首次进入考期自选引导弹窗 ---
     function setSimDate(dateKey) {
         if (!SIM_DATES[dateKey]) return;
         state.selectedSimDate = dateKey;
+        state.recentSimDate = dateKey;
         localStorage.setItem('electrician_sim_date_v4', dateKey);
+        localStorage.setItem(STORAGE_KEY_RECENT_SIM_DATE, dateKey);
 
         // 如果当前在 2026 模块，重新渲染题目
         if (state.activeModuleId && state.activeModuleId.startsWith('paper_2026_')) {
@@ -6523,6 +7477,7 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             btnClose.onclick = () => {
                 modal.classList.add('hidden');
                 localStorage.setItem(STORAGE_KEY_WELCOME_SEEN, 'true');
+                checkFeatureAnnouncementModal(250);
             };
         }
 
@@ -6530,6 +7485,7 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             if (e.target.id === 'modal-welcome-date') {
                 modal.classList.add('hidden');
                 localStorage.setItem(STORAGE_KEY_WELCOME_SEEN, 'true');
+                checkFeatureAnnouncementModal(250);
             }
         };
 
@@ -6547,6 +7503,7 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
                     switchModule('paper_2026_all');
                     showToast(`已为您自动选中【${SIM_DATES[targetDate].name}考生专属卷】`);
                 }
+                checkFeatureAnnouncementModal(350);
             };
         });
 
@@ -6556,6 +7513,91 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
                 modal.classList.remove('hidden');
             };
         }
+    }
+
+    // --- 2026 乱序刷题重磅新特性首次引导弹窗 ---
+    const STORAGE_KEY_SHUFFLE_ANNOUNCED = 'electrician_feature_shuffle_announced_v1';
+
+    function openFeatureAnnouncementModal() {
+        const modal = document.getElementById('modal-feature-announcement');
+        if (!modal) return;
+        modal.classList.remove('hidden');
+    }
+
+    function closeFeatureAnnouncementModal() {
+        const modal = document.getElementById('modal-feature-announcement');
+        if (modal) modal.classList.add('hidden');
+        localStorage.setItem(STORAGE_KEY_SHUFFLE_ANNOUNCED, 'true');
+    }
+
+    function checkFeatureAnnouncementModal(delay = 350) {
+        // 如果是通过做题记录链接切换设备的（URL 中包含 sync=），跳过
+        const isFromSyncLink = (window.location.hash && window.location.hash.includes('sync=')) ||
+                               (window.location.search && window.location.search.includes('sync=')) ||
+                               (window.location.href && window.location.href.includes('sync='));
+        if (isFromSyncLink) {
+            localStorage.setItem(STORAGE_KEY_SHUFFLE_ANNOUNCED, 'true');
+            return;
+        }
+
+        const hasAnnounced = localStorage.getItem(STORAGE_KEY_SHUFFLE_ANNOUNCED);
+        if (hasAnnounced) return;
+
+        const welcomeModal = document.getElementById('modal-welcome-date');
+        const syncConfirm = document.getElementById('sync-confirm-modal');
+        const isWelcomeShowing = (welcomeModal && !welcomeModal.classList.contains('hidden'));
+        const isSyncShowing = (syncConfirm && !syncConfirm.classList.contains('hidden'));
+
+        if (isWelcomeShowing || isSyncShowing) {
+            return;
+        }
+
+        setTimeout(() => {
+            const hasSeen = localStorage.getItem(STORAGE_KEY_SHUFFLE_ANNOUNCED);
+            const wm = document.getElementById('modal-welcome-date');
+            if (!hasSeen && (!wm || wm.classList.contains('hidden'))) {
+                openFeatureAnnouncementModal();
+            }
+        }, delay);
+    }
+
+    function initFeatureAnnouncementModal() {
+        const modal = document.getElementById('modal-feature-announcement');
+        if (!modal) return;
+
+        const btnClose = document.getElementById('btn-close-feature-announcement');
+        if (btnClose) {
+            btnClose.onclick = closeFeatureAnnouncementModal;
+        }
+
+        const btnKeep = document.getElementById('btn-feature-keep-seq');
+        if (btnKeep) {
+            btnKeep.onclick = () => {
+                closeFeatureAnnouncementModal();
+                showToast('已保持原卷顺序刷题');
+            };
+        }
+
+        const btnTryShuffle = document.getElementById('btn-feature-try-shuffle');
+        if (btnTryShuffle) {
+            btnTryShuffle.onclick = () => {
+                closeFeatureAnnouncementModal();
+                const ansMap = getCurrentAnswersMap();
+                const answeredCount = Object.keys(ansMap).length;
+                if (answeredCount === 0) {
+                    executeDirectOrderSwitch('shuffle');
+                } else {
+                    pendingTargetOrderMode = 'shuffle';
+                    openSwitchOrderModal('shuffle', answeredCount);
+                }
+            };
+        }
+
+        modal.onclick = (e) => {
+            if (e.target.id === 'modal-feature-announcement') {
+                closeFeatureAnnouncementModal();
+            }
+        };
     }
 
     // --- 备份导出 ---
@@ -6966,6 +8008,506 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         document.body.removeChild(ta);
     }
 
+    // =========================================================================
+    // 刷题完成自动侦测、通关祝贺、分卷独立清理与总清理记忆留存引擎
+    // =========================================================================
+
+    // --- 刷题完成自动侦测 ---
+    function checkModuleCompletion() {
+        const isExam = (state.activeModuleId === 'exam_random' || state.activeModuleId === 'quick_quiz' || state.activeModuleId === 'paper_2026_exam');
+        if (isExam || state.activeModuleId === 'wrong' || state.activeModuleId === 'favorite') return;
+
+        const qs = getActiveQuestions();
+        const total = qs.length;
+        if (total === 0) return;
+
+        const answers = getCurrentAnswersMap();
+        const doneCount = Object.keys(answers).length;
+        if (doneCount >= total) {
+            setTimeout(() => {
+                showModuleCompleteCelebration();
+            }, 600);
+        }
+    }
+
+    // --- 弹出通关祝贺弹窗 ---
+    function showModuleCompleteCelebration() {
+        const modal = document.getElementById('modal-module-complete');
+        if (!modal) return;
+
+        const questions = getActiveQuestions();
+        const total = questions.length;
+        if (total === 0) return;
+
+        const answers = getCurrentAnswersMap();
+        let correctCount = 0;
+        let wrongCount = 0;
+
+        questions.forEach(q => {
+            const a = answers[q.id];
+            if (a) {
+                if (a === q.answer) correctCount++;
+                else wrongCount++;
+            }
+        });
+
+        const accuracy = total > 0 ? ((correctCount / total) * 100).toFixed(1) + '%' : '0%';
+
+        let modTitle = '当前试卷';
+        if (state.activeModuleId === 'paper_2026_all') {
+            const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
+            modTitle = `${d.name}考生专属卷 (精炼210题)`;
+        } else if (state.activeModuleId.startsWith('paper_2026_')) {
+            const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
+            modTitle = `${d.name}专项卷`;
+        } else if (state.activeModuleId === 'full_all') {
+            modTitle = '历年 1000 题全量题库';
+        } else if (state.activeModuleId.startsWith('paper_')) {
+            const info = getPaperTitleInfo(state.activeModuleId, '');
+            modTitle = info.title;
+        }
+
+        const elTitle = document.getElementById('complete-modal-title');
+        if (elTitle) elTitle.textContent = `太棒了！您已刷完【${modTitle}】`;
+
+        safeSetHtml('complete-stat-total', `${total} 题`);
+        safeSetHtml('complete-stat-correct', `${correctCount} 题`);
+        safeSetHtml('complete-stat-accuracy', `${accuracy}`);
+
+        const btnReviewWrong = document.getElementById('btn-complete-review-wrong');
+        const textWrongHint = document.getElementById('complete-wrong-hint');
+        if (btnReviewWrong && textWrongHint) {
+            if (wrongCount > 0) {
+                textWrongHint.textContent = `共有 ${wrongCount} 道错题待强化攻克`;
+                btnReviewWrong.classList.remove('hidden');
+                btnReviewWrong.onclick = () => {
+                    modal.classList.add('hidden');
+                    switchModule('wrong');
+                };
+            } else {
+                btnReviewWrong.classList.add('hidden');
+            }
+        }
+
+        modal.classList.remove('hidden');
+    }
+
+    function closeModuleCompleteModal() {
+        const modal = document.getElementById('modal-module-complete');
+        if (modal) modal.classList.add('hidden');
+    }
+
+    // --- 单独清空某一试卷的做题进度 (支持指定顺序/乱序，严格执行真随机) ---
+    function resetSingleModule(modId, simDateKey = null, orderMode = null) {
+        const effectiveDate = simDateKey || state.selectedSimDate || '1021';
+        let ansKey = modId;
+        let curKey = modId;
+        let mapKey = modId;
+        if (modId && modId.startsWith('paper_2026_')) {
+            ansKey = `${modId}_${effectiveDate}`;
+            curKey = `${modId}_${effectiveDate}`;
+            mapKey = `${modId}_${effectiveDate}`;
+        }
+        
+        state.moduleAnswers[ansKey] = {};
+        state.moduleCursors[curKey] = 0;
+
+        if (modId.startsWith('paper_2026_')) {
+            state.selectedSimDate = effectiveDate;
+            state.recentSimDate = effectiveDate;
+        }
+
+        if (orderMode === 'shuffle') {
+            state.orderMode = 'shuffle';
+            // 关键：强制删除旧的乱序映射缓存，生成全新的真随机序列！
+            delete state.moduleShuffleMaps[mapKey];
+            regenerateModuleShuffle(modId);
+        } else if (orderMode === 'seq') {
+            state.orderMode = 'seq';
+        }
+
+        state.activeModuleId = modId;
+        state.recentModuleId = modId;
+        state.multiDraft.clear();
+
+        saveState();
+        syncOrderModeUI();
+        updateAllModuleProgresses();
+        renderApp();
+
+        let paperName = '本套试卷';
+        if (modId.startsWith('paper_2026_')) {
+            const d = SIM_DATES[effectiveDate] || SIM_DATES['1021'];
+            paperName = `${d.name}考前特训卷`;
+        } else if (modId.startsWith('paper_')) {
+            const info = getPaperTitleInfo(modId, '');
+            paperName = info.title;
+        } else if (modId === 'full_all') {
+            paperName = '历年 1000 题全量题库';
+        }
+        const orderText = state.orderMode === 'shuffle' ? '真随机乱序' : '顺序';
+        showToast(`🔄 已清空【${paperName}】，已切换为【${orderText}模式】从第 1 题开始！`);
+    }
+
+    // --- 清空所有做题记录 (核心：保留并停留在最近刷过的试卷，光标归零，绝不强制跳回1000题) ---
+    function clearAllProgressKeepRecent() {
+        Object.keys(state.moduleAnswers).forEach(k => {
+            state.moduleAnswers[k] = {};
+        });
+        Object.keys(state.moduleCursors).forEach(k => {
+            state.moduleCursors[k] = 0;
+        });
+        state.wrongQuestions.clear();
+        state.favoriteQuestions.clear();
+        state.multiDraft.clear();
+        state.quickPeekMap = {};
+        state.moduleShuffleMaps = {};
+
+        // 记忆留存：停留在用户最近刷过的那套试卷与考期
+        const keepModule = state.recentModuleId || 'paper_2026_all';
+        const keepDate = state.recentSimDate || '1021';
+        state.selectedSimDate = keepDate;
+        state.activeModuleId = keepModule;
+        state.moduleCursors[getModuleCursorKey(keepModule)] = 0;
+
+        saveState();
+        syncOrderModeUI();
+        updateAllModuleProgresses();
+        renderApp();
+        showToast('🧹 已清空所有做题记录！已保留在最近练习试卷，从第 1 题开始');
+    }
+
+    // --- 分卷进度清理与独立管理弹窗渲染 (选项卡紧凑布局 + 彻底防长出屏幕) ---
+    function openManageResetsModal() {
+        const modal = document.getElementById('modal-manage-resets');
+        if (!modal) return;
+
+        // 1. 当前试卷模块 (置顶紧凑卡片)
+        const curMod = state.activeModuleId;
+        const curAnsMap = getCurrentAnswersMap();
+        const curQs = getActiveQuestions();
+        const curTotal = curQs.length || 1;
+        const curDone = Object.keys(curAnsMap).length;
+        const curPct = Math.round((curDone / curTotal) * 100);
+
+        let curTitle = '历年题库';
+        if (curMod === 'paper_2026_all') {
+            const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
+            curTitle = `${d.title} (全卷210题)`;
+        } else if (curMod.startsWith('paper_2026_')) {
+            const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
+            curTitle = `${d.name}精炼专项`;
+        } else if (curMod.startsWith('paper_')) {
+            const info = getPaperTitleInfo(curMod, '');
+            curTitle = info.title;
+        } else if (curMod === 'full_all') {
+            curTitle = '全部题目全刷 (1000题)';
+        } else if (curMod === 'full_choice') {
+            curTitle = '单选题专练 (800题)';
+        } else if (curMod === 'full_judge') {
+            curTitle = '判断题专练 (200题)';
+        }
+
+        const titleEl = document.getElementById('manage-cur-paper-title');
+        const statEl = document.getElementById('manage-cur-paper-stat');
+        const pctEl = document.getElementById('manage-cur-paper-pct');
+        if (titleEl) titleEl.textContent = curTitle;
+        if (statEl) statEl.textContent = `已刷 ${curDone} / ${curTotal} 题`;
+        if (pctEl) pctEl.textContent = `${curPct}%`;
+
+        // 2. 2026 考前特训卷 (1021, 1022, 1023)
+        const list2026 = document.getElementById('manage-list-2026');
+        if (list2026) {
+            list2026.innerHTML = ['1021', '1022', '1023'].map(dateKey => {
+                const cfg = SIM_DATES[dateKey];
+                const ans = state.moduleAnswers[`paper_2026_all_${dateKey}`] || {};
+                const done = Object.keys(ans).length;
+                const pct = Math.round((done / 210) * 100);
+                const isCur = (state.activeModuleId === 'paper_2026_all' && state.selectedSimDate === dateKey);
+
+                return `
+                    <div class="p-2.5 rounded-xl border border-gray-100 bg-white hover:bg-gray-50 flex items-center justify-between gap-2 shadow-2xs transition">
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center gap-1.5 mb-1">
+                                <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">${cfg.name}</span>
+                                <span class="font-bold text-gray-800 text-xs truncate">${cfg.title}</span>
+                                ${isCur ? '<span class="text-[9px] bg-blue-100 text-blue-700 px-1 py-0.2 rounded font-black">当前</span>' : ''}
+                            </div>
+                            <div class="flex items-center gap-2 text-[10px] text-gray-400">
+                                <span>进度：${done} / 210 题 (${pct}%)</span>
+                                <div class="w-16 bg-gray-100 rounded-full h-1.5 overflow-hidden">
+                                    <div class="bg-amber-500 h-1.5 rounded-full" style="width: ${pct}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-manage-reset-single px-2.5 py-1.5 rounded-lg text-xs font-bold text-red-600 bg-red-50 hover:bg-red-100 transition whitespace-nowrap cursor-pointer flex items-center gap-1" data-mod="paper_2026_all" data-date="${dateKey}">
+                            <span>🧹</span>
+                            <span>清空重做</span>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 3. 历年真题分卷 (2024, 卷一, 卷二, 卷三, 卷四)
+        const listPapers = document.getElementById('manage-list-papers');
+        if (listPapers) {
+            const fivePapers = rawPapers.filter(p => !p.id.startsWith('paper_2026'));
+            listPapers.innerHTML = fivePapers.map(p => {
+                const ans = state.moduleAnswers[p.id] || {};
+                const done = Object.keys(ans).length;
+                const pct = Math.round((done / 200) * 100);
+                const info = getPaperTitleInfo(p.id, p.name);
+                const isCur = (state.activeModuleId === p.id);
+
+                return `
+                    <div class="p-2.5 rounded-xl border border-gray-100 bg-white hover:bg-gray-50 flex items-center justify-between gap-2 shadow-2xs transition">
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center gap-1.5 mb-1">
+                                <span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${info.color}">${info.badge}</span>
+                                <span class="font-bold text-gray-800 text-xs truncate">${info.title}</span>
+                                ${isCur ? '<span class="text-[9px] bg-blue-100 text-blue-700 px-1 py-0.2 rounded font-black">当前</span>' : ''}
+                            </div>
+                            <div class="flex items-center gap-2 text-[10px] text-gray-400">
+                                <span>进度：${done} / 200 题 (${pct}%)</span>
+                                <div class="w-16 bg-gray-100 rounded-full h-1.5 overflow-hidden">
+                                    <div class="bg-blue-600 h-1.5 rounded-full" style="width: ${pct}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-manage-reset-single px-2.5 py-1.5 rounded-lg text-xs font-bold text-red-600 bg-red-50 hover:bg-red-100 transition whitespace-nowrap cursor-pointer flex items-center gap-1" data-mod="${p.id}">
+                            <span>🧹</span>
+                            <span>清空重做</span>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 4. 1000 题全量复习模块
+        const listFull = document.getElementById('manage-list-full');
+        if (listFull) {
+            const fullItems = [
+                { id: 'full_all', title: '全部题目 (1000题)', total: 1000, badge: '全量题库', color: 'bg-blue-50 text-blue-700' },
+                { id: 'full_choice', title: '单选题专练 (800题)', total: 800, badge: '单选题型', color: 'bg-indigo-50 text-indigo-700' },
+                { id: 'full_judge', title: '判断题专练 (200题)', total: 200, badge: '判断题型', color: 'bg-cyan-50 text-cyan-700' }
+            ];
+            listFull.innerHTML = fullItems.map(item => {
+                const ans = state.moduleAnswers[item.id] || {};
+                const done = Object.keys(ans).length;
+                const pct = Math.round((done / item.total) * 100);
+                const isCur = (state.activeModuleId === item.id);
+
+                return `
+                    <div class="p-2.5 rounded-xl border border-gray-100 bg-white hover:bg-gray-50 flex items-center justify-between gap-2 shadow-2xs transition">
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center gap-1.5 mb-1">
+                                <span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${item.color}">${item.badge}</span>
+                                <span class="font-bold text-gray-800 text-xs truncate">${item.title}</span>
+                                ${isCur ? '<span class="text-[9px] bg-blue-100 text-blue-700 px-1 py-0.2 rounded font-black">当前</span>' : ''}
+                            </div>
+                            <div class="flex items-center gap-2 text-[10px] text-gray-400">
+                                <span>进度：${done} / ${item.total} 题 (${pct}%)</span>
+                                <div class="w-16 bg-gray-100 rounded-full h-1.5 overflow-hidden">
+                                    <div class="bg-indigo-500 h-1.5 rounded-full" style="width: ${pct}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-manage-reset-single px-2.5 py-1.5 rounded-lg text-xs font-bold text-red-600 bg-red-50 hover:bg-red-100 transition whitespace-nowrap cursor-pointer flex items-center gap-1" data-mod="${item.id}">
+                            <span>🧹</span>
+                            <span>清空重做</span>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 绑定单独清空事件
+        modal.querySelectorAll('.btn-manage-reset-single').forEach(btn => {
+            btn.onclick = () => {
+                const mod = btn.getAttribute('data-mod');
+                const dateKey = btn.getAttribute('data-date');
+                let name = '本试卷';
+                if (mod === 'paper_2026_all') {
+                    const d = SIM_DATES[dateKey || '1021'];
+                    name = `${d.name}考前特训卷`;
+                } else if (mod.startsWith('paper_')) {
+                    const info = getPaperTitleInfo(mod, '');
+                    name = info.title;
+                } else if (mod === 'full_all') name = '历年1000题全量题库';
+                else if (mod === 'full_choice') name = '单选题专练(800题)';
+                else if (mod === 'full_judge') name = '判断题专练(200题)';
+
+                if (confirm(`确认清空【${name}】的独立做题进度吗？其他试卷不受任何影响。`)) {
+                    resetSingleModule(mod, dateKey, state.orderMode);
+                    openManageResetsModal(); // 刷新弹窗内部显示
+                }
+            };
+        });
+
+        const scrollBody = modal.querySelector('.app-modal-body');
+        if (scrollBody) scrollBody.scrollTop = 0;
+        modal.classList.remove('hidden');
+    }
+
+    function closeManageResetsModal() {
+        const modal = document.getElementById('modal-manage-resets');
+        if (modal) modal.classList.add('hidden');
+    }
+
+    // --- 试卷快速切换与考期选择弹窗 (点击顶栏试卷名称即刻呼出) ---
+    function openPaperSelectorModal() {
+        const modal = document.getElementById('modal-paper-selector');
+        if (!modal) return;
+
+        // 1. 2026 考前精简特训卷 (1021, 1022, 1023)
+        const list2026 = document.getElementById('paper-selector-list-2026');
+        if (list2026) {
+            list2026.innerHTML = ['1021', '1022', '1023'].map(dateKey => {
+                const cfg = SIM_DATES[dateKey];
+                const ans = state.moduleAnswers[`paper_2026_all_${dateKey}`] || {};
+                const done = Object.keys(ans).length;
+                const pct = Math.round((done / 210) * 100);
+                const isCur = (state.activeModuleId === 'paper_2026_all' && state.selectedSimDate === dateKey);
+
+                return `
+                    <div class="paper-select-card p-3 rounded-2xl border ${isCur ? 'border-amber-400 bg-amber-50/70 shadow-sm' : 'border-gray-200/80 bg-white hover:bg-gray-50/90'} flex items-center justify-between gap-3 transition cursor-pointer group" data-action="date" data-val="${dateKey}">
+                        <div class="flex items-center gap-3 min-w-0 flex-1">
+                            <div class="w-10 h-10 rounded-xl ${isCur ? 'bg-amber-500 text-white shadow-xs' : 'bg-amber-100 text-amber-800'} flex-shrink-0 flex items-center justify-center text-sm font-black">
+                                ${dateKey.substring(2)}
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <div class="flex items-center gap-1.5 flex-wrap">
+                                    <span class="font-black text-gray-900 text-xs sm:text-sm group-hover:text-amber-900">${cfg.title}</span>
+                                    ${isCur ? '<span class="text-[10px] bg-amber-500 text-white px-1.5 py-0.2 rounded font-black">当前练习</span>' : ''}
+                                </div>
+                                <div class="flex items-center gap-2 text-[11px] text-gray-400 mt-0.5">
+                                    <span>精简 210 题 · 已刷 ${done}/210 (${pct}%)</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden mt-1.5 max-w-[180px]">
+                                    <div class="bg-amber-500 h-1.5 rounded-full" style="width: ${pct}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-bold ${isCur ? 'bg-amber-500 text-white shadow-xs' : 'bg-gray-100 text-gray-600 group-hover:bg-amber-500 group-hover:text-white'} transition whitespace-nowrap">
+                                ${isCur ? '正在刷 ➔' : '切换 ➔'}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 2. 历年真题分卷 (5套卷)
+        const listPapers = document.getElementById('paper-selector-list-papers');
+        if (listPapers) {
+            const fivePapers = rawPapers.filter(p => !p.id.startsWith('paper_2026'));
+            listPapers.innerHTML = fivePapers.map(p => {
+                const ans = state.moduleAnswers[p.id] || {};
+                const done = Object.keys(ans).length;
+                const pct = Math.round((done / 200) * 100);
+                const info = getPaperTitleInfo(p.id, p.name);
+                const isCur = (state.activeModuleId === p.id);
+
+                return `
+                    <div class="paper-select-card p-3 rounded-2xl border ${isCur ? 'border-blue-400 bg-blue-50/70 shadow-sm' : 'border-gray-200/80 bg-white hover:bg-gray-50/90'} flex items-center justify-between gap-3 transition cursor-pointer group" data-action="paper" data-val="${p.id}">
+                        <div class="flex items-center gap-3 min-w-0 flex-1">
+                            <div class="w-10 h-10 rounded-xl ${isCur ? 'bg-blue-600 text-white shadow-xs' : 'bg-blue-100 text-blue-800'} flex-shrink-0 flex items-center justify-center text-xs font-black">
+                                ${info.badge.replace('模考', '').replace('真题', '')}
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <div class="flex items-center gap-1.5 flex-wrap">
+                                    <span class="font-black text-gray-900 text-xs sm:text-sm group-hover:text-blue-900">${info.title}</span>
+                                    ${isCur ? '<span class="text-[10px] bg-blue-600 text-white px-1.5 py-0.2 rounded font-black">当前练习</span>' : ''}
+                                </div>
+                                <div class="flex items-center gap-2 text-[11px] text-gray-400 mt-0.5">
+                                    <span>原卷 200 题 · 已刷 ${done}/200 (${pct}%)</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden mt-1.5 max-w-[180px]">
+                                    <div class="bg-blue-600 h-1.5 rounded-full" style="width: ${pct}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-bold ${isCur ? 'bg-blue-600 text-white shadow-xs' : 'bg-gray-100 text-gray-600 group-hover:bg-blue-600 group-hover:text-white'} transition whitespace-nowrap">
+                                ${isCur ? '正在刷 ➔' : '切换 ➔'}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 3. 1000 题全量题库 (3大模块)
+        const listFull = document.getElementById('paper-selector-list-full');
+        if (listFull) {
+            const fullItems = [
+                { id: 'full_all', title: '全部题目通刷 (1000题)', total: 1000, sub: '全量题库 · 单选800/判断200', tag: '全量' },
+                { id: 'full_choice', title: '单选题专项 (800题)', total: 800, sub: '题型专项 · 地毯式攻坚', tag: '单选' },
+                { id: 'full_judge', title: '判断题专项 (200题)', total: 200, sub: '题型专项 · 地毯式攻坚', tag: '判断' }
+            ];
+            listFull.innerHTML = fullItems.map(item => {
+                const ans = state.moduleAnswers[item.id] || {};
+                const done = Object.keys(ans).length;
+                const pct = Math.round((done / item.total) * 100);
+                const isCur = (state.activeModuleId === item.id);
+
+                return `
+                    <div class="paper-select-card p-3 rounded-2xl border ${isCur ? 'border-indigo-400 bg-indigo-50/70 shadow-sm' : 'border-gray-200/80 bg-white hover:bg-gray-50/90'} flex items-center justify-between gap-3 transition cursor-pointer group" data-action="full" data-val="${item.id}">
+                        <div class="flex items-center gap-3 min-w-0 flex-1">
+                            <div class="w-10 h-10 rounded-xl ${isCur ? 'bg-indigo-600 text-white shadow-xs' : 'bg-indigo-100 text-indigo-800'} flex-shrink-0 flex items-center justify-center text-xs font-black">
+                                ${item.tag}
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <div class="flex items-center gap-1.5 flex-wrap">
+                                    <span class="font-black text-gray-900 text-xs sm:text-sm group-hover:text-indigo-900">${item.title}</span>
+                                    ${isCur ? '<span class="text-[10px] bg-indigo-600 text-white px-1.5 py-0.2 rounded font-black">当前练习</span>' : ''}
+                                </div>
+                                <div class="flex items-center gap-2 text-[11px] text-gray-400 mt-0.5">
+                                    <span>${item.sub} · 已刷 ${done}/${item.total} (${pct}%)</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden mt-1.5 max-w-[180px]">
+                                    <div class="bg-indigo-600 h-1.5 rounded-full" style="width: ${pct}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <span class="px-3 py-1.5 rounded-xl text-xs font-bold ${isCur ? 'bg-indigo-600 text-white shadow-xs' : 'bg-gray-100 text-gray-600 group-hover:bg-indigo-600 group-hover:text-white'} transition whitespace-nowrap">
+                                ${isCur ? '正在刷 ➔' : '切换 ➔'}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 统一卡片点击事件
+        modal.querySelectorAll('.paper-select-card').forEach(card => {
+            card.onclick = () => {
+                const action = card.getAttribute('data-action');
+                const val = card.getAttribute('data-val');
+                if (action === 'date') {
+                    setSimDate(val);
+                    switchModule('paper_2026_all');
+                } else if (action === 'paper' || action === 'full') {
+                    switchModule(val);
+                }
+                closePaperSelectorModal();
+                closeMobileSidebar();
+            };
+        });
+
+        const scrollBody = modal.querySelector('.app-modal-body');
+        if (scrollBody) scrollBody.scrollTop = 0;
+        modal.classList.remove('hidden');
+    }
+
+    function closePaperSelectorModal() {
+        const modal = document.getElementById('modal-paper-selector');
+        if (modal) modal.classList.add('hidden');
+    }
+
     // --- 全局事件绑定 ---
     function bindEvents() {
         // 1. 全部题库 3 个独立专练
@@ -7094,6 +8636,75 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             btnMobileRecite.onclick = () => setReciteMode();
         }
 
+        // 7.1 刷题顺序切换 (原卷顺序 ⇄ 题型内乱序)
+        const btnHeaderOrder = document.getElementById('btn-header-order-toggle');
+        if (btnHeaderOrder) {
+            btnHeaderOrder.onclick = () => toggleOrderMode();
+        }
+        const btnMobileOrder = document.getElementById('btn-mobile-order');
+        if (btnMobileOrder) {
+            btnMobileOrder.onclick = () => toggleOrderMode();
+        }
+
+        // 7.1.1 顶栏试卷名称标签点击呼出换卷弹窗 (全端通用)
+        const btnMobilePaper = document.getElementById('btn-mobile-paper-selector');
+        if (btnMobilePaper) {
+            btnMobilePaper.onclick = () => openPaperSelectorModal();
+        }
+
+        // 7.1.1.1 试卷选择弹窗关闭按键与外层遮罩点击
+        const btnClosePaperSelector = document.getElementById('btn-close-paper-selector');
+        if (btnClosePaperSelector) btnClosePaperSelector.onclick = closePaperSelectorModal;
+
+        const btnClosePaperSelectorFooter = document.getElementById('btn-close-paper-selector-footer');
+        if (btnClosePaperSelectorFooter) btnClosePaperSelectorFooter.onclick = closePaperSelectorModal;
+
+        const modalPaperSelector = document.getElementById('modal-paper-selector');
+        if (modalPaperSelector) {
+            modalPaperSelector.onclick = (e) => {
+                if (e.target.id === 'modal-paper-selector') closePaperSelectorModal();
+            };
+        }
+
+        // 7.1.2 顺序切换确认弹窗事件绑定
+        const btnCloseSwitchOrder = document.getElementById('btn-close-switch-order');
+        if (btnCloseSwitchOrder) btnCloseSwitchOrder.onclick = closeSwitchOrderModal;
+
+        const btnCancelSwitchOrder = document.getElementById('btn-switch-order-cancel');
+        if (btnCancelSwitchOrder) btnCancelSwitchOrder.onclick = closeSwitchOrderModal;
+
+        const btnSwitchRestart = document.getElementById('btn-switch-order-restart');
+        if (btnSwitchRestart) btnSwitchRestart.onclick = executeSwitchOrderRestart;
+
+        const btnSwitchKeep = document.getElementById('btn-switch-order-keep');
+        if (btnSwitchKeep) btnSwitchKeep.onclick = executeSwitchOrderKeep;
+
+        const modalSwitchOrder = document.getElementById('modal-switch-order');
+        if (modalSwitchOrder) {
+            modalSwitchOrder.onclick = (e) => {
+                if (e.target.id === 'modal-switch-order') closeSwitchOrderModal();
+            };
+        }
+
+        // 7.2 顶栏快捷重做本卷按钮
+        const btnHeaderReset = document.getElementById('btn-header-reset-current');
+        if (btnHeaderReset) {
+            btnHeaderReset.onclick = () => {
+                let name = '本试卷';
+                if (state.activeModuleId === 'paper_2026_all') {
+                    const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
+                    name = `${d.name}特训卷`;
+                } else if (state.activeModuleId.startsWith('paper_')) {
+                    name = getPaperTitleInfo(state.activeModuleId, '').title;
+                } else if (state.activeModuleId === 'full_all') {
+                    name = '历年 1000 题全量题库';
+                }
+                if (confirm(`确认清空【${name}】的独立做题进度，重新开始刷题吗？`)) {
+                    resetSingleModule(state.activeModuleId, state.selectedSimDate, state.orderMode);
+                }
+            };
+        }
+
         // 8. 备份导出与本地恢复导入
         const btnExport = document.getElementById('btn-export-backup');
         if (btnExport) btnExport.onclick = exportBackup;
@@ -7183,16 +8794,18 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             };
         }
 
-        // 9. 重置当前专练进度
+        // 9. 重置当前专练进度 (侧边栏底部按钮)
         const btnResetCurrent = document.getElementById('btn-reset-current');
         if (btnResetCurrent) {
             btnResetCurrent.onclick = () => {
-                let moduleName = '当前专练';
+                let moduleName = '当前试卷';
                 if (state.activeModuleId === 'full_all') moduleName = '全部题目全刷 (1000题)';
                 else if (state.activeModuleId === 'full_choice') moduleName = '单选题专练 (800题)';
                 else if (state.activeModuleId === 'full_judge') moduleName = '判断题专练 (200题)';
-                else if (state.activeModuleId === 'paper_2026_all') moduleName = '2026精简卷全刷 (210题)';
-                else if (state.activeModuleId === 'paper_2026_choice') moduleName = '2026单选专项 (150题)';
+                else if (state.activeModuleId === 'paper_2026_all') {
+                    const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
+                    moduleName = `${d.name}特训卷 (210题)`;
+                } else if (state.activeModuleId === 'paper_2026_choice') moduleName = '2026单选专项 (150题)';
                 else if (state.activeModuleId === 'paper_2026_multiple') moduleName = '2026多选专项 (20题)';
                 else if (state.activeModuleId === 'paper_2026_judge') moduleName = '2026判断专项 (40题)';
                 else if (state.activeModuleId.startsWith('paper_')) {
@@ -7200,46 +8813,116 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
                     moduleName = info.title;
                 }
 
-                if (confirm(`确认清空【${moduleName}】的独立做题进度吗？其他专练与错题本不受影响。`)) {
-                    const curAnswerKey = getModuleAnswerKey(state.activeModuleId);
-                    const curCursorKey = getModuleCursorKey(state.activeModuleId);
-                    state.moduleAnswers[curAnswerKey] = {};
-                    state.moduleCursors[curCursorKey] = 0;
-                    state.multiDraft.clear();
-                    saveState();
-                    renderApp();
+                if (confirm(`确认清空【${moduleName}】的独立做题进度吗？其他试卷与错题本不受影响。`)) {
+                    resetSingleModule(state.activeModuleId, state.selectedSimDate, state.orderMode);
                 }
             };
         }
 
-        // 10. 清空所有数据
+        // 9.1 打开分卷独立管理与清理弹窗
+        const btnOpenManageResets = document.getElementById('btn-open-manage-resets');
+        if (btnOpenManageResets) {
+            btnOpenManageResets.onclick = () => {
+                openManageResetsModal();
+                closeMobileSidebar();
+            };
+        }
+
+        const btnCloseManageResets = document.getElementById('btn-close-manage-resets');
+        if (btnCloseManageResets) btnCloseManageResets.onclick = closeManageResetsModal;
+
+        const btnCloseManageResetsFooter = document.getElementById('btn-close-manage-resets-footer');
+        if (btnCloseManageResetsFooter) btnCloseManageResetsFooter.onclick = closeManageResetsModal;
+
+        const modalManageResets = document.getElementById('modal-manage-resets');
+        if (modalManageResets) {
+            modalManageResets.onclick = (e) => {
+                if (e.target.id === 'modal-manage-resets') closeManageResetsModal();
+            };
+        }
+
+        const btnCurResetSeq = document.getElementById('btn-action-reset-current-seq');
+        if (btnCurResetSeq) {
+            btnCurResetSeq.onclick = () => {
+                resetSingleModule(state.activeModuleId, state.selectedSimDate, 'seq');
+                closeManageResetsModal();
+            };
+        }
+
+        const btnCurResetShuffle = document.getElementById('btn-action-reset-current-shuffle');
+        if (btnCurResetShuffle) {
+            btnCurResetShuffle.onclick = () => {
+                resetSingleModule(state.activeModuleId, state.selectedSimDate, 'shuffle');
+                closeManageResetsModal();
+            };
+        }
+
+        const btnClearKeepRecent = document.getElementById('btn-action-clear-all-keep-recent');
+        if (btnClearKeepRecent) {
+            btnClearKeepRecent.onclick = () => {
+                if (confirm('确认清空所有试卷进度与错题记录吗？系统将自动停留在您当前练习的试卷并归零从第1题重新开始。')) {
+                    clearAllProgressKeepRecent();
+                    closeManageResetsModal();
+                }
+            };
+        }
+
+        // 9.1.1 分卷管理弹窗选项卡 (Tabs) 切换
+        document.querySelectorAll('.tab-manage-btn').forEach(tab => {
+            tab.onclick = () => {
+                const targetId = tab.getAttribute('data-target');
+                document.querySelectorAll('.tab-manage-btn').forEach(b => {
+                    b.className = 'tab-manage-btn flex-1 py-1.5 rounded-lg text-center transition cursor-pointer text-gray-600 hover:text-gray-900';
+                });
+                tab.className = 'tab-manage-btn flex-1 py-1.5 rounded-lg text-center transition cursor-pointer bg-white text-blue-700 shadow-2xs';
+
+                document.querySelectorAll('.manage-tab-panel').forEach(p => {
+                    if (p.id === targetId) {
+                        p.classList.remove('hidden');
+                    } else {
+                        p.classList.add('hidden');
+                    }
+                });
+            };
+        });
+
+        // 9.2 通关庆祝弹窗交互
+        const btnCloseComplete = document.getElementById('btn-close-complete-modal');
+        if (btnCloseComplete) btnCloseComplete.onclick = closeModuleCompleteModal;
+
+        const btnCompleteStay = document.getElementById('btn-complete-stay');
+        if (btnCompleteStay) btnCompleteStay.onclick = closeModuleCompleteModal;
+
+        const modalComplete = document.getElementById('modal-module-complete');
+        if (modalComplete) {
+            modalComplete.onclick = (e) => {
+                if (e.target.id === 'modal-module-complete') closeModuleCompleteModal();
+            };
+        }
+
+        const btnRestartShuffle = document.getElementById('btn-complete-restart-shuffle');
+        if (btnRestartShuffle) {
+            btnRestartShuffle.onclick = () => {
+                closeModuleCompleteModal();
+                resetSingleModule(state.activeModuleId, state.selectedSimDate, 'shuffle');
+            };
+        }
+
+        const btnRestartSeq = document.getElementById('btn-complete-restart-seq');
+        if (btnRestartSeq) {
+            btnRestartSeq.onclick = () => {
+                closeModuleCompleteModal();
+                resetSingleModule(state.activeModuleId, state.selectedSimDate, 'seq');
+            };
+        }
+
+        // 10. 清空所有数据 (核心需求：清理后自动停留在最近刷过的那一套试卷，而不是固定跳到1000题)
         const btnClearAll = document.getElementById('btn-clear-all-data');
         if (btnClearAll) {
             btnClearAll.onclick = () => {
-                if (confirm('警告：此操作将清空所有模块的做题记录、题号进度、错题本与收藏夹！确认执行吗？')) {
-                    localStorage.clear();
-                    state.moduleCursors = {
-                        'full_all': 0, 'full_choice': 0, 'full_judge': 0,
-                        'paper_2024': 0, 'paper_1': 0, 'paper_2': 0, 'paper_3': 0, 'paper_4': 0,
-                        'paper_2026_all_1021': 0, 'paper_2026_choice_1021': 0, 'paper_2026_multiple_1021': 0, 'paper_2026_judge_1021': 0, 'paper_2026_exam_1021': 0,
-                        'paper_2026_all_1022': 0, 'paper_2026_choice_1022': 0, 'paper_2026_multiple_1022': 0, 'paper_2026_judge_1022': 0, 'paper_2026_exam_1022': 0,
-                        'paper_2026_all_1023': 0, 'paper_2026_choice_1023': 0, 'paper_2026_multiple_1023': 0, 'paper_2026_judge_1023': 0, 'paper_2026_exam_1023': 0,
-                        'wrong': 0, 'favorite': 0
-                    };
-                    state.moduleAnswers = {
-                        'full_all': {}, 'full_choice': {}, 'full_judge': {},
-                        'paper_2024': {}, 'paper_1': {}, 'paper_2': {}, 'paper_3': {}, 'paper_4': {},
-                        'paper_2026_all_1021': {}, 'paper_2026_choice_1021': {}, 'paper_2026_multiple_1021': {}, 'paper_2026_judge_1021': {},
-                        'paper_2026_all_1022': {}, 'paper_2026_choice_1022': {}, 'paper_2026_multiple_1022': {}, 'paper_2026_judge_1022': {},
-                        'paper_2026_all_1023': {}, 'paper_2026_choice_1023': {}, 'paper_2026_multiple_1023': {}, 'paper_2026_judge_1023': {}
-                    };
-                    state.wrongQuestions.clear();
-                    state.favoriteQuestions.clear();
-                    state.multiDraft.clear();
-                    state.selectedSimDate = '1021';
-                    state.activeModuleId = 'full_all';
-                    saveState();
-                    renderApp();
+                if (confirm('警告：此操作将清空所有模块的做题记录与错题本！\n系统将自动保留在您最近练习的试卷并归零从第1题重新开始。确认执行吗？')) {
+                    clearAllProgressKeepRecent();
+                    closeMobileSidebar();
                 }
             };
         }
@@ -7323,13 +9006,32 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
 
         // 15. 键盘快捷键 (← / → 切题，1/2/3/4/5 或 A/B/C/D/E 答题，多选按 Enter 确认)
         window.addEventListener('keydown', (e) => {
-            const sm = document.getElementById('search-modal');
-            const lm = document.getElementById('lightbox-modal');
-            if (sm && !sm.classList.contains('hidden')) return;
-            if (lm && !lm.classList.contains('hidden')) {
-                if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const lm = document.getElementById('lightbox-modal');
+                if (lm && !lm.classList.contains('hidden')) {
+                    closeLightbox();
+                    return;
+                }
+                closePaperSelectorModal();
+                closeSwitchOrderModal();
+                closeManageResetsModal();
+                closeModuleCompleteModal();
+                closeFeatureAnnouncementModal();
+                closeSyncModal();
+                closeGridModal();
+                closeSearchModal();
+                const welcomeModal = document.getElementById('modal-welcome-date');
+                if (welcomeModal) welcomeModal.classList.add('hidden');
+                const resultModal = document.getElementById('result-modal');
+                if (resultModal) resultModal.classList.add('hidden');
+                const syncConfirm = document.getElementById('sync-confirm-modal');
+                if (syncConfirm) syncConfirm.classList.add('hidden');
+                closeMobileSidebar();
                 return;
             }
+
+            const sm = document.getElementById('search-modal');
+            if (sm && !sm.classList.contains('hidden')) return;
 
             const total = getActiveQuestions().length;
             const curIdx = getCurrentIndex();
@@ -7376,10 +9078,13 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
     initIcons();
     bindEvents();
     syncReciteModeUI();
+    syncOrderModeUI();
     applyTheme(state.theme);
     applyFontSize(state.fontSize);
     renderApp();
     initWelcomeDateModal();
+    initFeatureAnnouncementModal();
+    checkFeatureAnnouncementModal();
     checkUrlSyncHash();
     window.addEventListener('hashchange', checkUrlSyncHash);
 

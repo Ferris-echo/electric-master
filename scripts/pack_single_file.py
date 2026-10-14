@@ -84,10 +84,10 @@ def pack():
         js = f.read()
 
     # 5. Assemble into single HTML
-    # Replace <link rel="stylesheet" href="tailwind_compiled.css"> or app.css
+    # Replace all stylesheet links with a single comprehensive inlined <style> block
     html = re.sub(
-        r'<link\s+rel=["\']stylesheet["\']\s+href=["\'](?:tailwind_compiled|app)\.css["\']\s*>',
-        lambda m: f'<style>\n{css}\n</style>',
+        r'(?:\s*<link\s+rel=["\']stylesheet["\']\s+href=["\'][^"\']+\.css["\']\s*>)+',
+        lambda m: f'\n    <style>\n{css}\n    </style>',
         html
     )
     

@@ -427,10 +427,6 @@ body[data-theme="dark"] #text-current-qnum {
 body[data-theme="dark"] #text-total-qnum {
     color: #f1f5f9 !important;
 }
-body[data-theme="dark"] #badge-recite-status {
-    background-color: #3a2e19 !important;
-    color: #fde047 !important;
-}
 body[data-theme="dark"] #exam-timer-box {
     background-color: #3b1118 !important;
     border-color: #991b1b !important;
@@ -890,3 +886,233 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all
 #details-papers-list summary {
     list-style: none;
 }
+
+/* 顺序 / 乱序 切换按钮样式 */
+.order-btn-seq {
+    background-color: #f8fafc;
+    color: #334155;
+    border-color: #e2e8f0;
+}
+.order-btn-shuffle {
+    background-color: #7c3aed !important;
+    color: #ffffff !important;
+    border-color: #6d28d9 !important;
+    box-shadow: 0 1px 3px 0 rgba(124, 58, 237, 0.3) !important;
+}
+
+/* 通关庆祝、模式切换与分卷管理弹窗 主题适配 */
+body[data-theme="dark"] #modal-module-complete > div,
+body[data-theme="dark"] #modal-switch-order > div,
+body[data-theme="dark"] #modal-manage-resets > div {
+    background-color: #0f172a !important;
+    border-color: #334155 !important;
+    color: #f1f5f9 !important;
+}
+body[data-theme="dark"] #modal-module-complete .text-gray-900,
+body[data-theme="dark"] #modal-switch-order .text-gray-900,
+body[data-theme="dark"] #modal-manage-resets .text-gray-900,
+body[data-theme="dark"] #modal-manage-resets .text-gray-800,
+body[data-theme="dark"] #modal-manage-resets .text-gray-700 {
+    color: #f8fafc !important;
+}
+body[data-theme="dark"] #modal-module-complete .text-gray-500,
+body[data-theme="dark"] #modal-switch-order .text-gray-500,
+body[data-theme="dark"] #modal-manage-resets .text-gray-500 {
+    color: #94a3b8 !important;
+}
+body[data-theme="dark"] #modal-manage-resets .bg-gradient-to-r {
+    background: linear-gradient(to right, rgba(30, 58, 138, 0.25), rgba(49, 46, 129, 0.25)) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+body[data-theme="dark"] #modal-manage-resets .bg-white,
+body[data-theme="dark"] #modal-switch-order .bg-white,
+body[data-theme="dark"] #modal-module-complete .bg-white {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+body[data-theme="dark"] #modal-manage-resets .bg-gray-100 {
+    background-color: #1e293b !important;
+}
+body[data-theme="dark"] #modal-module-complete .bg-blue-50 {
+    background-color: rgba(30, 58, 138, 0.25) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+body[data-theme="dark"] #modal-module-complete .bg-green-50 {
+    background-color: rgba(6, 78, 59, 0.25) !important;
+    border-color: rgba(16, 185, 129, 0.3) !important;
+}
+body[data-theme="dark"] #modal-module-complete .bg-amber-50 {
+    background-color: rgba(120, 53, 15, 0.25) !important;
+    border-color: rgba(245, 158, 11, 0.3) !important;
+}
+body[data-theme="dark"] #modal-module-complete .bg-purple-50,
+body[data-theme="dark"] #modal-switch-order .bg-purple-50,
+body[data-theme="dark"] #modal-feature-announcement .bg-purple-50 {
+    background-color: rgba(88, 28, 135, 0.25) !important;
+    border-color: rgba(147, 51, 234, 0.3) !important;
+}
+
+/* 护眼模式暖黄纸质 */
+body[data-theme="eye-care"] #modal-module-complete > div,
+body[data-theme="eye-care"] #modal-switch-order > div,
+body[data-theme="eye-care"] #modal-paper-selector > div,
+body[data-theme="eye-care"] #modal-feature-announcement > div,
+body[data-theme="eye-care"] #modal-manage-resets > div {
+    background-color: #fffefb !important;
+    border-color: #e5ded0 !important;
+}
+
+/* =========================================================================
+   全局顶级弹窗图层与防穿透、防截断自适应引擎 (Zero Penetration, Safe Scroll)
+   ========================================================================= */
+
+.app-modal-layer {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    z-index: 9999 !important; /* 强制最高层级，绝对置顶于移动端顶栏(z-30)与侧边栏(z-20)之上 */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1rem !important;
+    background-color: rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    box-sizing: border-box !important;
+}
+
+/* 核心防线：hidden 状态下必须彻底隐藏，避免 display: flex !important 覆盖 hidden */
+.app-modal-layer.hidden {
+    display: none !important;
+}
+
+/* 核心弹窗容器：margin: auto 彻底防御 Flex 居中顶部内容滚不上去的致命截断 Bug */
+.app-modal-dialog {
+    margin: auto !important;
+    width: 100% !important;
+    max-width: min(520px, calc(100vw - 2rem)) !important;
+    max-height: min(88vh, 88dvh) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    border-radius: 1.5rem !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35) !important;
+    box-sizing: border-box !important;
+}
+
+/* 弹窗头部与底部固定，列表主体独立优雅滚动 */
+.app-modal-header,
+.app-modal-footer {
+    flex-shrink: 0 !important;
+}
+.app-modal-body {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+}
+
+/* 桌面宽屏做题区视口精准居中 (在 ≥ 1024px 且侧边栏展开时对齐右侧主区域，超载时平滑受控) */
+@media (min-width: 1024px) {
+    .modal-center-main {
+        padding-left: clamp(21rem, 24vw, 24.5rem) !important; /* 动态自适应侧边栏宽度 */
+    }
+    .modal-center-main .app-modal-dialog {
+        max-width: min(520px, calc(100vw - clamp(21rem, 24vw, 24.5rem) - 3rem)) !important;
+    }
+}
+
+/* 移动端与平板 (< 1024px)：完全全屏物理居中，左右 1rem 安全间距 */
+@media (max-width: 1023px) {
+    .modal-center-main {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+/* 极矮屏幕/横屏手机适配 (高度 <= 640px) */
+@media (max-height: 640px) {
+    .app-modal-layer {
+        padding: 0.5rem !important;
+    }
+    .app-modal-dialog {
+        max-height: 94dvh !important;
+        border-radius: 1rem !important;
+    }
+}
+
+/* 刷题模式选择弹窗内选项卡片与图标间距美化 (彻底解决 gap-3.5 缺失导致贴脸问题) */
+#modal-switch-order .switch-order-btn {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 1rem !important; /* 强制 16px 留白 */
+    text-align: left !important;
+    padding: 1rem !important;
+}
+#modal-switch-order .switch-order-btn * {
+    text-align: left !important;
+}
+#modal-switch-order .switch-order-icon {
+    flex-shrink: 0 !important;
+    width: 2.75rem !important;
+    height: 2.75rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 0.875rem !important;
+    font-size: 1.25rem !important;
+    margin-right: 0.25rem !important;
+}
+
+/* 顶栏背题与顺序按键横向单行防折行强制加固 */
+#btn-header-recite-toggle,
+#btn-header-order-toggle {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+}
+#btn-header-recite-toggle span,
+#btn-header-order-toggle span {
+    white-space: nowrap !important;
+    display: inline-block !important;
+}
+#btn-mobile-paper-selector {
+    white-space: nowrap !important;
+    min-width: 0 !important;
+}
+#btn-open-grid-modal {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+}
+
+/* 试卷切换弹窗暗色与护眼主题适配 */
+body[data-theme="dark"] #modal-paper-selector > div,
+body[data-theme="dark"] .app-modal-dialog {
+    background-color: #0f172a !important;
+    border-color: #334155 !important;
+    color: #f1f5f9 !important;
+}
+body[data-theme="dark"] #modal-paper-selector .text-gray-900,
+body[data-theme="dark"] #modal-paper-selector .text-gray-800 {
+    color: #f8fafc !important;
+}
+body[data-theme="dark"] #modal-paper-selector .text-gray-500 {
+    color: #94a3b8 !important;
+}
+body[data-theme="dark"] #modal-paper-selector .bg-white {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+body[data-theme="dark"] #modal-paper-selector .bg-gray-50 {
+    background-color: #334155 !important;
+    color: #cbd5e1 !important;
+}
+
+
