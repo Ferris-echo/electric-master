@@ -168,6 +168,7 @@
         // 全局错题集与收藏集
         wrongQuestions: new Set(),
         favoriteQuestions: new Set(),
+        wrongSessionList: null, // 错题本当前轮次练习题目列表缓存，防止刷题中途因答对移出导致列表动态坍缩与跳题
 
         // 多选题当前暂存勾选集合
         multiDraft: new Set(),
@@ -288,6 +289,9 @@
             if (activeMod && (state.moduleCursors[activeMod] !== undefined || activeMod.startsWith('paper_'))) {
                 state.activeModuleId = activeMod;
                 state.recentModuleId = activeMod;
+            }
+            if (state.activeModuleId === 'wrong') {
+                state.wrongSessionList = allQuestionsPool.filter(q => state.wrongQuestions.has(q.id));
             }
         } catch(e) {
             console.error('Storage load error:', e);
@@ -411,6 +415,9 @@
         } else if (moduleId.startsWith('paper_')) {
             return all1000Questions.filter(q => q.paperId === moduleId);
         } else if (moduleId === 'wrong') {
+            if (state.wrongSessionList && state.wrongSessionList.length > 0) {
+                return state.wrongSessionList;
+            }
             return allQuestionsPool.filter(q => state.wrongQuestions.has(q.id));
         } else if (moduleId === 'favorite') {
             return allQuestionsPool.filter(q => state.favoriteQuestions.has(q.id));
@@ -963,8 +970,18 @@
             stopExamTimer();
         }
 
+        if (state.activeModuleId === 'wrong' && newModuleId !== 'wrong') {
+            state.wrongSessionList = null;
+        }
+
         state.activeModuleId = newModuleId;
         state.multiDraft.clear();
+
+        if (newModuleId === 'wrong') {
+            state.wrongSessionList = allQuestionsPool.filter(q => state.wrongQuestions.has(q.id));
+            state.moduleCursors['wrong'] = 0;
+            state.moduleAnswers['wrong'] = {};
+        }
 
         // 记忆最近刷过的常规练习试卷
         if (newModuleId !== 'exam_random' && newModuleId !== 'quick_quiz' && newModuleId !== 'paper_2026_exam' && newModuleId !== 'wrong' && newModuleId !== 'favorite') {
@@ -1491,9 +1508,9 @@
         if (state.reciteMode || isFeedback || isPeeked) {
             const isBannerCorrect = isCorrect || state.reciteMode || isPeeked;
             const bannerBg = (isPeeked && !hasAnswered) ? 'bg-amber-50 border-amber-200 text-amber-900' : (isBannerCorrect ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800');
-            let bannerTitle = (isPeeked && !hasAnswered) ? '本题标准答案速查' : (isBannerCorrect ? (state.reciteMode ? '考点标准答案' : '回答正确！') : '回答错误！');
+            let bannerTitle = (isPeeked && !hasAnswered) ? '本题标准答案速查' : (isBannerCorrect ? (state.reciteMode ? '考点标准答案' : (state.activeModuleId === 'wrong' ? '回答正确！🎉 成功攻克已移出错题本' : '回答正确！')) : '回答错误！');
             if (isMultiple && isFeedback && !state.reciteMode) {
-                bannerTitle = isCorrect ? '多选题回答完全正确！(+1.0分)' : '多选题回答不完整或错误！(不得分)';
+                bannerTitle = isCorrect ? (state.activeModuleId === 'wrong' ? '多选题回答完全正确！🎉 成功攻克已移出错题本' : '多选题回答完全正确！(+1.0分)') : '多选题回答不完整或错误！(不得分)';
             }
             const bannerIcon = (isPeeked && !hasAnswered) ? '<span>💡</span>' : (isBannerCorrect ? getIcon('CheckCircle', 'w-5 h-5 text-green-600') : getIcon('XCircle', 'w-5 h-5 text-red-600'));
 
@@ -1606,17 +1623,31 @@
                             </button>
                         ` : (
                             !isExamMode ? (
-                                (total > 0 && Object.keys(answersMap).length >= total) ? `
-                                    <button id="btn-show-celebration" class="q-bounce-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white shadow-md shadow-amber-200 animate-q-pulse cursor-pointer">
-                                        <span>🎉</span>
-                                        <span>查看通关成绩</span>
-                                    </button>
-                                ` : `
-                                    <button id="btn-open-grid-from-end" class="q-bounce-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1 transition bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 cursor-pointer" title="点击打开题号面板检查未答题目">
-                                        <span>🏁</span>
-                                        <span>已到末题 (查漏补缺)</span>
-                                    </button>
-                                `
+                                state.activeModuleId === 'wrong' ? (
+                                    state.wrongQuestions.size === 0 ? `
+                                        <button id="btn-wrong-all-cleared" class="q-bounce-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition bg-emerald-600 hover:bg-emerald-700 text-white shadow-md shadow-emerald-200 cursor-pointer">
+                                            <span>🎉</span>
+                                            <span>错题已全部攻克！返回题库</span>
+                                        </button>
+                                    ` : `
+                                        <button id="btn-restart-wrong-round" class="q-bounce-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white shadow-md shadow-orange-200 cursor-pointer">
+                                            <span>🔄</span>
+                                            <span>再练剩余 ${state.wrongQuestions.size} 道错题</span>
+                                        </button>
+                                    `
+                                ) : (
+                                    (total > 0 && Object.keys(answersMap).length >= total) ? `
+                                        <button id="btn-show-celebration" class="q-bounce-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white shadow-md shadow-amber-200 animate-q-pulse cursor-pointer">
+                                            <span>🎉</span>
+                                            <span>查看通关成绩</span>
+                                        </button>
+                                    ` : `
+                                        <button id="btn-open-grid-from-end" class="q-bounce-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1 transition bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 cursor-pointer" title="点击打开题号面板检查未答题目">
+                                            <span>🏁</span>
+                                            <span>已到末题 (查漏补缺)</span>
+                                        </button>
+                                    `
+                                )
                             ) : ''
                         )}
                     </div>
@@ -1712,14 +1743,45 @@
         if (btnRemoveWrong) {
             btnRemoveWrong.onclick = () => {
                 state.wrongQuestions.delete(q.id);
+                if (state.wrongSessionList) {
+                    state.wrongSessionList = state.wrongSessionList.filter(item => item.id !== q.id);
+                }
                 saveState();
                 updateAllModuleProgresses();
                 showToast('已移出错题本');
                 if (state.activeModuleId === 'wrong') {
+                    const total = getActiveQuestions().length;
+                    const cur = getCurrentIndex();
+                    if (cur >= total) {
+                        setCurrentIndex(Math.max(0, total - 1));
+                    }
                     renderApp();
                 } else {
                     renderQuestionCard();
                 }
+            };
+        }
+
+        // 错题本末题交互：再练一轮或攻克完成返回
+        const btnRestartWrong = document.getElementById('btn-restart-wrong-round');
+        if (btnRestartWrong) {
+            btnRestartWrong.onclick = () => {
+                if (state.wrongQuestions.size === 0) {
+                    showToast('🎉 太棒了！错题已全部清空！');
+                    switchModule('full_all');
+                    return;
+                }
+                state.wrongSessionList = allQuestionsPool.filter(item => state.wrongQuestions.has(item.id));
+                state.moduleCursors['wrong'] = 0;
+                state.moduleAnswers['wrong'] = {};
+                renderApp();
+            };
+        }
+
+        const btnWrongCleared = document.getElementById('btn-wrong-all-cleared');
+        if (btnWrongCleared) {
+            btnWrongCleared.onclick = () => {
+                switchModule('full_all');
             };
         }
 
@@ -3013,6 +3075,7 @@
         state.multiDraft.clear();
         state.quickPeekMap = {};
         state.moduleShuffleMaps = {};
+        state.wrongSessionList = null;
 
         // 记忆留存：停留在用户最近刷过的那套试卷与考期
         const keepModule = state.recentModuleId || 'paper_2026_all';
