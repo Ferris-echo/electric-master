@@ -1266,6 +1266,12 @@
         renderQuestionCard();
     }
 
+    // 题干格式化：将空括号 ( ) 或 （ ） 优雅转换为带宽敞填空槽与底线的标准大括号
+    function formatQuestionContent(text) {
+        if (!text || typeof text !== 'string') return '';
+        return text.replace(/[（(]\s*[）)]/g, '（<span class="q-blank-bracket">&nbsp;</span>）');
+    }
+
     // --- 核心题目卡片渲染 ---
     function renderQuestionCard() {
         const container = document.getElementById('question-scroll-area');
@@ -1559,7 +1565,7 @@
 
                     <!-- 题干正文 -->
                     <h2 class="q-title-text text-lg md:text-xl font-bold text-gray-800 leading-relaxed mb-4">
-                        <span class="text-blue-600 font-black mr-1">${curIdx + 1}.</span> ${q.content}
+                        <span class="text-blue-600 font-black mr-1">${curIdx + 1}.</span> ${formatQuestionContent(q.content)}
                     </h2>
 
                     <!-- 附带电路图 -->
@@ -1991,7 +1997,8 @@
         }
 
         list.innerHTML = hits.slice(0, 60).map(q => {
-            const highlighted = q.content.split(cleanKw).join(`<mark class="bg-amber-200 text-amber-900 px-0.5 rounded font-bold">${cleanKw}</mark>`);
+            const formattedContent = formatQuestionContent(q.content);
+            const highlighted = formattedContent.split(cleanKw).join(`<mark class="bg-amber-200 text-amber-900 px-0.5 rounded font-bold">${cleanKw}</mark>`);
             const typeText = q.type === 'multiple' ? '多选' : (q.type === 'judge' ? '判断' : '单选');
             const is2026 = (q.paperId && q.paperId.startsWith('paper_2026'));
             const badgeClass = is2026 ? 'bg-amber-100 text-amber-900' : 'bg-blue-50 text-blue-700';

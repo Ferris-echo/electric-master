@@ -4066,4 +4066,45 @@ body[data-theme="dark"] #modal-paper-selector .bg-gray-50 {
     color: #cbd5e1 !important;
 }
 
+/* 题干填空括号加宽与留白下划线美化 */
+.q-blank-bracket {
+    display: inline-block;
+    min-width: 2.75rem;
+    height: 1.2em;
+    vertical-align: -0.12em;
+    margin: 0 0.2rem;
+    border-bottom: 2px solid rgba(59, 130, 246, 0.45);
+    transition: all 0.2s ease;
+}
+@media (min-width: 640px) {
+    .q-blank-bracket {
+        min-width: 3.5rem;
+        margin: 0 0.25rem;
+    }
+}
+body[data-theme="dark"] .q-blank-bracket {
+    border-bottom-color: rgba(147, 197, 253, 0.45);
+}
+body[data-theme="eye-care"] .q-blank-bracket {
+    border-bottom-color: rgba(120, 113, 108, 0.5);
+}
+
+/* 首屏极速加载提示暗色与护眼主题适配 */
+body[data-theme="dark"] #initial-loading-card .text-gray-800 {
+    color: #f1f5f9 !important;
+}
+body[data-theme="dark"] #initial-loading-card .text-gray-400 {
+    color: #94a3b8 !important;
+}
+body[data-theme="dark"] #initial-loading-card .border-blue-100 {
+    border-color: #1e293b !important;
+}
+body[data-theme="eye-care"] #initial-loading-card .text-gray-800 {
+    color: #292524 !important;
+}
+body[data-theme="eye-care"] #initial-loading-card .text-gray-400 {
+    color: #78716c !important;
+}
+
+
 

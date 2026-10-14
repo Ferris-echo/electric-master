@@ -370,9 +370,25 @@
                 </div>
             </div>
 
-            <!-- Question Scroll Area -->
+            <!-- Question Scroll Area (默认静态呈现高质感加载态，JS 初始化完毕后立即无缝呈现题目) -->
             <div id="question-scroll-area" class="flex-1 overflow-y-auto p-4 md:p-8 custom-scrollbar">
-                <!-- Dynamically populated question card -->
+                <div id="initial-loading-card" class="max-w-4xl mx-auto h-[60vh] flex flex-col items-center justify-center text-center p-8 select-none">
+                    <div class="relative w-16 h-16 mb-4 flex items-center justify-center">
+                        <div class="w-14 h-14 rounded-full border-4 border-blue-100 border-t-blue-600 animate-spin"></div>
+                        <div class="absolute text-xl">⚡</div>
+                    </div>
+                    <div class="text-base sm:text-lg font-black text-gray-800 tracking-wide mb-1.5 flex items-center gap-1.5 justify-center">
+                        <span>题库正在极速加载中</span>
+                        <span class="inline-flex gap-0.5">
+                            <span class="animate-bounce" style="animation-delay: 0ms">.</span>
+                            <span class="animate-bounce" style="animation-delay: 150ms">.</span>
+                            <span class="animate-bounce" style="animation-delay: 300ms">.</span>
+                        </span>
+                    </div>
+                    <p class="text-xs text-gray-400 max-w-xs leading-relaxed">
+                        正在载入 1630 道精选理论真题与高清电气图库...
+                    </p>
+                </div>
             </div>
         </main>
     </div>

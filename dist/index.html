@@ -4077,6 +4077,47 @@ body[data-theme="dark"] #modal-paper-selector .bg-gray-50 {
     color: #cbd5e1 !important;
 }
 
+/* 题干填空括号加宽与留白下划线美化 */
+.q-blank-bracket {
+    display: inline-block;
+    min-width: 2.75rem;
+    height: 1.2em;
+    vertical-align: -0.12em;
+    margin: 0 0.2rem;
+    border-bottom: 2px solid rgba(59, 130, 246, 0.45);
+    transition: all 0.2s ease;
+}
+@media (min-width: 640px) {
+    .q-blank-bracket {
+        min-width: 3.5rem;
+        margin: 0 0.25rem;
+    }
+}
+body[data-theme="dark"] .q-blank-bracket {
+    border-bottom-color: rgba(147, 197, 253, 0.45);
+}
+body[data-theme="eye-care"] .q-blank-bracket {
+    border-bottom-color: rgba(120, 113, 108, 0.5);
+}
+
+/* 首屏极速加载提示暗色与护眼主题适配 */
+body[data-theme="dark"] #initial-loading-card .text-gray-800 {
+    color: #f1f5f9 !important;
+}
+body[data-theme="dark"] #initial-loading-card .text-gray-400 {
+    color: #94a3b8 !important;
+}
+body[data-theme="dark"] #initial-loading-card .border-blue-100 {
+    border-color: #1e293b !important;
+}
+body[data-theme="eye-care"] #initial-loading-card .text-gray-800 {
+    color: #292524 !important;
+}
+body[data-theme="eye-care"] #initial-loading-card .text-gray-400 {
+    color: #78716c !important;
+}
+
+
 
 
     </style>
@@ -4440,9 +4481,25 @@ body[data-theme="dark"] #modal-paper-selector .bg-gray-50 {
                 </div>
             </div>
 
-            <!-- Question Scroll Area -->
+            <!-- Question Scroll Area (默认静态呈现高质感加载态，JS 初始化完毕后立即无缝呈现题目) -->
             <div id="question-scroll-area" class="flex-1 overflow-y-auto p-4 md:p-8 custom-scrollbar">
-                <!-- Dynamically populated question card -->
+                <div id="initial-loading-card" class="max-w-4xl mx-auto h-[60vh] flex flex-col items-center justify-center text-center p-8 select-none">
+                    <div class="relative w-16 h-16 mb-4 flex items-center justify-center">
+                        <div class="w-14 h-14 rounded-full border-4 border-blue-100 border-t-blue-600 animate-spin"></div>
+                        <div class="absolute text-xl">⚡</div>
+                    </div>
+                    <div class="text-base sm:text-lg font-black text-gray-800 tracking-wide mb-1.5 flex items-center gap-1.5 justify-center">
+                        <span>题库正在极速加载中</span>
+                        <span class="inline-flex gap-0.5">
+                            <span class="animate-bounce" style="animation-delay: 0ms">.</span>
+                            <span class="animate-bounce" style="animation-delay: 150ms">.</span>
+                            <span class="animate-bounce" style="animation-delay: 300ms">.</span>
+                        </span>
+                    </div>
+                    <p class="text-xs text-gray-400 max-w-xs leading-relaxed">
+                        正在载入 1630 道精选理论真题与高清电气图库...
+                    </p>
+                </div>
             </div>
         </main>
     </div>
@@ -6470,6 +6527,12 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         renderQuestionCard();
     }
 
+    // 题干格式化：将空括号 ( ) 或 （ ） 优雅转换为带宽敞填空槽与底线的标准大括号
+    function formatQuestionContent(text) {
+        if (!text || typeof text !== 'string') return '';
+        return text.replace(/[（(]\s*[）)]/g, '（<span class="q-blank-bracket">&nbsp;</span>）');
+    }
+
     // --- 核心题目卡片渲染 ---
     function renderQuestionCard() {
         const container = document.getElementById('question-scroll-area');
@@ -6763,7 +6826,7 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
 
                     <!-- 题干正文 -->
                     <h2 class="q-title-text text-lg md:text-xl font-bold text-gray-800 leading-relaxed mb-4">
-                        <span class="text-blue-600 font-black mr-1">${curIdx + 1}.</span> ${q.content}
+                        <span class="text-blue-600 font-black mr-1">${curIdx + 1}.</span> ${formatQuestionContent(q.content)}
                     </h2>
 
                     <!-- 附带电路图 -->
@@ -7195,7 +7258,8 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         }
 
         list.innerHTML = hits.slice(0, 60).map(q => {
-            const highlighted = q.content.split(cleanKw).join(`<mark class="bg-amber-200 text-amber-900 px-0.5 rounded font-bold">${cleanKw}</mark>`);
+            const formattedContent = formatQuestionContent(q.content);
+            const highlighted = formattedContent.split(cleanKw).join(`<mark class="bg-amber-200 text-amber-900 px-0.5 rounded font-bold">${cleanKw}</mark>`);
             const typeText = q.type === 'multiple' ? '多选' : (q.type === 'judge' ? '判断' : '单选');
             const is2026 = (q.paperId && q.paperId.startsWith('paper_2026'));
             const badgeClass = is2026 ? 'bg-amber-100 text-amber-900' : 'bg-blue-50 text-blue-700';
