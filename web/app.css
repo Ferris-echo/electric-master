@@ -1189,5 +1189,47 @@ body[data-theme="eye-care"] #initial-loading-card .text-gray-400 {
     color: #78716c !important;
 }
 
+/* 通关庆祝弹窗 3 个选项卡片强制首部对齐与排版加固 */
+.complete-option-btn {
+    text-align: left !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+}
+
+.complete-option-btn * {
+    text-align: left;
+}
+
+.complete-option-btn > div > span:first-child {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    line-height: 1 !important;
+}
+
+.complete-option-btn > span:last-child {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+body[data-theme="dark"] #modal-module-complete .bg-orange-50\/80 {
+    background-color: rgba(154, 52, 18, 0.25) !important;
+    border-color: rgba(249, 115, 22, 0.3) !important;
+}
+body[data-theme="dark"] #modal-module-complete .bg-blue-50\/70 {
+    background-color: rgba(30, 58, 138, 0.25) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+body[data-theme="dark"] #modal-module-complete .bg-purple-50\/80 {
+    background-color: rgba(88, 28, 135, 0.25) !important;
+    border-color: rgba(147, 51, 234, 0.3) !important;
+}
+
+
 
 
