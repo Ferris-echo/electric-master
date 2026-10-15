@@ -891,50 +891,56 @@
             </div>
 
             <!-- 重新刷题选择选项 -->
-            <div class="space-y-2.5 text-left mb-4">
+            <div class="space-y-3 text-left mb-4">
                 <!-- 选项 1: 乱序刷题 -->
-                <button id="btn-complete-restart-shuffle" class="complete-option-btn q-bounce-btn w-full p-3.5 rounded-2xl border-2 border-purple-500 bg-purple-50/80 hover:bg-purple-100/90 transition flex items-center justify-between gap-3 group cursor-pointer text-left">
-                    <div class="flex items-center gap-3.5 flex-1 min-w-0 text-left">
-                        <span class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center text-lg font-black shadow-sm flex-shrink-0">🔀</span>
-                        <div class="flex-1 min-w-0 text-left">
-                            <div class="font-black text-gray-900 dark:text-white text-sm group-hover:text-purple-900 dark:group-hover:text-purple-300 flex items-center gap-1.5 text-left">
+                <button id="btn-complete-restart-shuffle" class="complete-option-btn q-bounce-btn w-full transition group cursor-pointer text-left">
+                    <div class="complete-opt-left">
+                        <span class="complete-opt-icon">🔀</span>
+                        <div class="complete-opt-content">
+                            <div class="font-black text-gray-900 dark:text-white text-sm group-hover:text-purple-900 dark:group-hover:text-purple-300 flex items-center gap-2 text-left flex-wrap">
                                 <span class="whitespace-nowrap">乱序重新刷题</span>
-                                <span class="text-[10px] bg-purple-200 text-purple-900 px-1.5 py-0.5 rounded font-bold whitespace-nowrap flex-shrink-0">推荐·破除死记</span>
+                                <span class="complete-opt-badge text-[10px] px-1.5 py-0.5 rounded font-bold whitespace-nowrap">推荐·破除死记</span>
                             </div>
-                            <div class="text-xs text-gray-500 dark:text-slate-400 mt-1 leading-snug text-left truncate sm:whitespace-normal">保留题型先后顺序，打乱题序强效巩固</div>
+                            <div class="text-xs text-gray-500 dark:text-slate-400 mt-1 leading-snug text-left">
+                                保留单选→多选→判断题型顺序，打乱题序强效巩固
+                            </div>
                         </div>
                     </div>
-                    <span class="text-xs font-bold text-purple-700 bg-white dark:bg-purple-950/60 px-3 py-1.5 rounded-xl border border-purple-200 dark:border-purple-800/60 group-hover:bg-purple-600 group-hover:text-white transition whitespace-nowrap flex-shrink-0 shadow-2xs">开始 ➔</span>
+                    <span class="complete-opt-action text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-2xs">开始 ➔</span>
                 </button>
 
                 <!-- 选项 2: 顺序刷题 -->
-                <button id="btn-complete-restart-seq" class="complete-option-btn q-bounce-btn w-full p-3.5 rounded-2xl border border-blue-200 bg-blue-50/70 hover:bg-blue-100/80 transition flex items-center justify-between gap-3 group cursor-pointer text-left">
-                    <div class="flex items-center gap-3.5 flex-1 min-w-0 text-left">
-                        <span class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg font-black shadow-sm flex-shrink-0">📋</span>
-                        <div class="flex-1 min-w-0 text-left">
-                            <div class="font-black text-gray-900 dark:text-white text-sm group-hover:text-blue-900 dark:group-hover:text-blue-300 flex items-center gap-1.5 text-left">
+                <button id="btn-complete-restart-seq" class="complete-option-btn q-bounce-btn w-full transition group cursor-pointer text-left">
+                    <div class="complete-opt-left">
+                        <span class="complete-opt-icon">📋</span>
+                        <div class="complete-opt-content">
+                            <div class="font-black text-gray-900 dark:text-white text-sm group-hover:text-blue-900 dark:group-hover:text-blue-300 flex items-center gap-2 text-left flex-wrap">
                                 <span class="whitespace-nowrap">顺序重新刷题</span>
-                                <span class="text-[10px] bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200 px-1.5 py-0.5 rounded font-bold whitespace-nowrap flex-shrink-0">官方原序</span>
+                                <span class="complete-opt-badge text-[10px] px-1.5 py-0.5 rounded font-bold whitespace-nowrap">官方原序</span>
                             </div>
-                            <div class="text-xs text-gray-500 dark:text-slate-400 mt-1 leading-snug text-left truncate sm:whitespace-normal">按原卷题号顺序从第 1 题清空重刷</div>
+                            <div class="text-xs text-gray-500 dark:text-slate-400 mt-1 leading-snug text-left">
+                                按官方原卷 1~210 序号顺序清空从头再刷
+                            </div>
                         </div>
                     </div>
-                    <span class="text-xs font-bold text-blue-700 bg-white dark:bg-blue-950/60 px-3 py-1.5 rounded-xl border border-blue-200 dark:border-blue-800/60 group-hover:bg-blue-600 group-hover:text-white transition whitespace-nowrap flex-shrink-0 shadow-2xs">开始 ➔</span>
+                    <span class="complete-opt-action text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-2xs">开始 ➔</span>
                 </button>
 
                 <!-- 选项 3: 错题复习 (有错题时展示) -->
-                <button id="btn-complete-review-wrong" class="complete-option-btn q-bounce-btn w-full p-3.5 rounded-2xl border border-orange-200 bg-orange-50/80 hover:bg-orange-100/90 transition flex items-center justify-between gap-3 group cursor-pointer text-left hidden">
-                    <div class="flex items-center gap-3.5 flex-1 min-w-0 text-left">
-                        <span class="w-10 h-10 rounded-xl bg-orange-500 text-white flex items-center justify-center text-lg font-black shadow-sm flex-shrink-0">📖</span>
-                        <div class="flex-1 min-w-0 text-left">
-                            <div class="font-black text-gray-900 dark:text-white text-sm group-hover:text-orange-900 dark:group-hover:text-orange-300 flex items-center gap-1.5 text-left">
+                <button id="btn-complete-review-wrong" class="complete-option-btn q-bounce-btn w-full transition group cursor-pointer text-left hidden">
+                    <div class="complete-opt-left">
+                        <span class="complete-opt-icon">📖</span>
+                        <div class="complete-opt-content">
+                            <div class="font-black text-gray-900 dark:text-white text-sm group-hover:text-orange-900 dark:group-hover:text-orange-300 flex items-center gap-2 text-left flex-wrap">
                                 <span class="whitespace-nowrap">回顾本卷错题</span>
-                                <span class="text-[10px] bg-orange-200 text-orange-900 dark:bg-orange-900/60 dark:text-orange-200 px-1.5 py-0.5 rounded font-bold whitespace-nowrap flex-shrink-0">重点突破</span>
+                                <span class="complete-opt-badge text-[10px] px-1.5 py-0.5 rounded font-bold whitespace-nowrap">重点突破</span>
                             </div>
-                            <div class="text-xs text-gray-500 dark:text-slate-400 mt-1 leading-snug text-left truncate sm:whitespace-normal" id="complete-wrong-hint">共有 0 道错题待强化攻克</div>
+                            <div class="text-xs text-gray-600 dark:text-slate-300 mt-1 leading-snug text-left" id="complete-wrong-hint">
+                                共有 0 道错题待强化攻克
+                            </div>
                         </div>
                     </div>
-                    <span class="text-xs font-bold text-orange-700 bg-white dark:bg-orange-950/60 px-3 py-1.5 rounded-xl border border-orange-200 dark:border-orange-800/60 group-hover:bg-orange-500 group-hover:text-white transition whitespace-nowrap flex-shrink-0 shadow-2xs">去复习 ➔</span>
+                    <span class="complete-opt-action text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-2xs">去复习 ➔</span>
                 </button>
             </div>
 

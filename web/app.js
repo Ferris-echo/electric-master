@@ -1637,9 +1637,9 @@
                                     `
                                 ) : (
                                     (total > 0 && Object.keys(answersMap).length >= total) ? `
-                                        <button id="btn-show-celebration" class="q-bounce-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white shadow-md shadow-amber-200 animate-q-pulse cursor-pointer">
+                                        <button id="btn-show-celebration" class="q-bounce-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition animate-q-pulse cursor-pointer">
                                             <span>🎉</span>
-                                            <span>查看通关成绩</span>
+                                            <span>查看通关报告</span>
                                         </button>
                                     ` : `
                                         <button id="btn-open-grid-from-end" class="q-bounce-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1 transition bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 cursor-pointer" title="点击打开题号面板检查未答题目">
