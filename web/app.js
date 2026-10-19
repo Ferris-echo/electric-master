@@ -1689,14 +1689,6 @@
                             </button>
                             ` : ''}
 
-                            <!-- 🧹 一键清空错题本按钮 (仅在错题本模块且有错题时展示) -->
-                            ${(!isExamOngoing && state.activeModuleId === 'wrong' && state.wrongQuestions.size > 0) ? `
-                            <button id="btn-card-clear-wrong" class="q-bounce-btn flex items-center gap-1 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition border cursor-pointer shadow-sm whitespace-nowrap" title="清空错题本全部记录">
-                                <span>🧹</span>
-                                <span>清空错题本</span>
-                            </button>
-                            ` : ''}
-
                             <!-- 💡 看答案速查按钮 -->
                             ${!isExamOngoing ? `
                             <button id="btn-quick-peek-answer" class="q-bounce-btn flex items-center gap-1 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition border cursor-pointer whitespace-nowrap ${isPeeked ? 'bg-amber-100 text-amber-900 border-amber-300 shadow-sm' : 'bg-gray-50 text-gray-600 hover:bg-amber-50 hover:text-amber-800 border-gray-200'}" title="快速展开/收起本题答案">
@@ -1890,14 +1882,6 @@
         if (btnCardRemoveWrong) {
             btnCardRemoveWrong.onclick = () => {
                 removeSingleWrongQuestion(q.id);
-            };
-        }
-
-        // 清空错题本 (卡片顶栏按键)
-        const btnCardClearWrong = document.getElementById('btn-card-clear-wrong');
-        if (btnCardClearWrong) {
-            btnCardClearWrong.onclick = () => {
-                clearAllWrongQuestions();
             };
         }
 

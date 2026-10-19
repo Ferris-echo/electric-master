@@ -3302,6 +3302,40 @@ body[data-theme="dark"] [data-mode="quick-quiz"] {
     color: #fdba74 !important;
     border: 1px solid #1e293b !important;
 }
+
+/* 2026精简全真模考选项暗黑模式深度适配 (彻底告别底色发黑、文字发暗与高亮白框贴脸) */
+body[data-theme="dark"] [data-module-id="paper_2026_exam"] {
+    background: #171c2c !important;
+    border-color: #2e3852 !important;
+    color: #e2e8f0 !important;
+}
+body[data-theme="dark"] [data-module-id="paper_2026_exam"]:hover {
+    background: #1e263d !important;
+    border-color: #ea580c !important;
+}
+body[data-theme="dark"] [data-module-id="paper_2026_exam"].active {
+    background: linear-gradient(135deg, #2a1610, #3d1c12) !important;
+    border-color: #ea580c !important;
+    box-shadow: 0 0 0 1px rgba(234, 88, 12, 0.4) !important;
+}
+body[data-theme="dark"] [data-module-id="paper_2026_exam"] #title-sim-exam-text {
+    color: #fed7aa !important;
+}
+body[data-theme="dark"] [data-module-id="paper_2026_exam"] .text-orange-600\/80,
+body[data-theme="dark"] [data-module-id="paper_2026_exam"] .text-orange-600 {
+    color: #94a3b8 !important;
+}
+body[data-theme="dark"] [data-module-id="paper_2026_exam"] span.bg-orange-100 {
+    background-color: #2e1a12 !important;
+    color: #fb923c !important;
+    border: 1px solid #7c2d12 !important;
+}
+body[data-theme="dark"] [data-module-id="paper_2026_exam"] span.bg-orange-100.text-orange-600 {
+    background-color: #2e1a12 !important;
+    color: #f97316 !important;
+}
+
+/* 错题回顾本暗黑模式适配 (常规与选中激活态，杜绝刺眼乳白/亮黄反差底色) */
 body[data-theme="dark"] #btn-nav-wrong {
     color: #cbd5e1 !important;
 }
@@ -3309,12 +3343,37 @@ body[data-theme="dark"] #btn-nav-wrong:hover {
     background-color: #271914 !important;
     color: #fb923c !important;
 }
+body[data-theme="dark"] #btn-nav-wrong.bg-orange-100 {
+    background: linear-gradient(135deg, #2a1610, #381c14) !important;
+    border: 1px solid #7c2d12 !important;
+    color: #fdba74 !important;
+    box-shadow: 0 0 0 1px rgba(234, 88, 12, 0.25) !important;
+}
+body[data-theme="dark"] #btn-nav-wrong.bg-orange-100 .font-bold,
+body[data-theme="dark"] #btn-nav-wrong.bg-orange-100 #sidebar-wrong-count {
+    color: #fed7aa !important;
+}
+body[data-theme="dark"] #btn-nav-wrong.bg-orange-100 .nav-icon {
+    color: #fb923c !important;
+}
+
+/* 重点收藏夹暗黑模式适配 */
 body[data-theme="dark"] #btn-nav-fav {
     color: #cbd5e1 !important;
 }
 body[data-theme="dark"] #btn-nav-fav:hover {
     background-color: #262112 !important;
     color: #facc15 !important;
+}
+body[data-theme="dark"] #btn-nav-fav.bg-yellow-100 {
+    background: linear-gradient(135deg, #2a220e, #3a2e12) !important;
+    border: 1px solid #713f12 !important;
+    color: #fde047 !important;
+    box-shadow: 0 0 0 1px rgba(234, 179, 8, 0.25) !important;
+}
+body[data-theme="dark"] #btn-nav-fav.bg-yellow-100 .font-bold,
+body[data-theme="dark"] #btn-nav-fav.bg-yellow-100 #sidebar-fav-count {
+    color: #fef08a !important;
 }
 body[data-theme="dark"] aside#sidebar .bg-gray-50 {
     background-color: #131d31 !important;
@@ -4425,6 +4484,34 @@ body[data-theme="eye-care"] #btn-drawer-clear-wrong:hover {
     background-color: #f6d8d8 !important;
     border-color: #deb0b0 !important;
     color: #9f1239 !important;
+}
+
+/* 护眼模式下的精简模考与错题本/收藏夹选中态适配 */
+body[data-theme="eye-care"] [data-module-id="paper_2026_exam"] {
+    background-color: #fbf3e6 !important;
+    border-color: #fed7aa !important;
+}
+body[data-theme="eye-care"] [data-module-id="paper_2026_exam"] #title-sim-exam-text {
+    color: #9a3412 !important;
+}
+body[data-theme="eye-care"] #btn-nav-wrong.bg-orange-100 {
+    background-color: #fbeee0 !important;
+    border: 1px solid #fed7aa !important;
+    color: #c2410c !important;
+}
+body[data-theme="eye-care"] #btn-nav-wrong.bg-orange-100 .font-bold {
+    color: #9a3412 !important;
+}
+body[data-theme="eye-care"] #btn-nav-wrong.bg-orange-100 #sidebar-wrong-count {
+    color: #ea580c !important;
+}
+body[data-theme="eye-care"] #btn-nav-fav.bg-yellow-100 {
+    background-color: #fbf5df !important;
+    border: 1px solid #fef08a !important;
+    color: #854d0e !important;
+}
+body[data-theme="eye-care"] #btn-nav-fav.bg-yellow-100 .font-bold {
+    color: #854d0e !important;
 }
 
 
@@ -7284,14 +7371,6 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
                             </button>
                             ` : ''}
 
-                            <!-- 🧹 一键清空错题本按钮 (仅在错题本模块且有错题时展示) -->
-                            ${(!isExamOngoing && state.activeModuleId === 'wrong' && state.wrongQuestions.size > 0) ? `
-                            <button id="btn-card-clear-wrong" class="q-bounce-btn flex items-center gap-1 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition border cursor-pointer shadow-sm whitespace-nowrap" title="清空错题本全部记录">
-                                <span>🧹</span>
-                                <span>清空错题本</span>
-                            </button>
-                            ` : ''}
-
                             <!-- 💡 看答案速查按钮 -->
                             ${!isExamOngoing ? `
                             <button id="btn-quick-peek-answer" class="q-bounce-btn flex items-center gap-1 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition border cursor-pointer whitespace-nowrap ${isPeeked ? 'bg-amber-100 text-amber-900 border-amber-300 shadow-sm' : 'bg-gray-50 text-gray-600 hover:bg-amber-50 hover:text-amber-800 border-gray-200'}" title="快速展开/收起本题答案">
@@ -7485,14 +7564,6 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         if (btnCardRemoveWrong) {
             btnCardRemoveWrong.onclick = () => {
                 removeSingleWrongQuestion(q.id);
-            };
-        }
-
-        // 清空错题本 (卡片顶栏按键)
-        const btnCardClearWrong = document.getElementById('btn-card-clear-wrong');
-        if (btnCardClearWrong) {
-            btnCardClearWrong.onclick = () => {
-                clearAllWrongQuestions();
             };
         }
 
