@@ -1437,6 +1437,67 @@ body[data-theme="dark"] #btn-quick-peek-answer.bg-amber-100 {
     color: #fef08a !important;
 }
 
+/* 错题卡片顶栏清空错题本按钮 */
+#btn-card-clear-wrong {
+    background-color: #fff7ed;
+    border-color: #fed7aa;
+    color: #ea580c;
+}
+#btn-card-clear-wrong:hover {
+    background-color: #ffedd5;
+    border-color: #fdba74;
+    color: #c2410c;
+}
+body[data-theme="dark"] #btn-card-clear-wrong {
+    background-color: #2c1a0e !important;
+    border-color: #7c2d12 !important;
+    color: #fb923c !important;
+}
+body[data-theme="dark"] #btn-card-clear-wrong:hover {
+    background-color: #431407 !important;
+    border-color: #9a3412 !important;
+    color: #fdba74 !important;
+}
+body[data-theme="eye-care"] #btn-card-clear-wrong {
+    background-color: #faefe4 !important;
+    border-color: #ebd2ba !important;
+    color: #c2410c !important;
+}
+body[data-theme="eye-care"] #btn-card-clear-wrong:hover {
+    background-color: #f5e4d3 !important;
+    border-color: #e4c2a3 !important;
+    color: #9a3412 !important;
+}
+
+/* 侧边栏与抽屉清空错题按钮主题适配 */
+body[data-theme="dark"] #btn-sidebar-clear-wrong {
+    color: #f87171 !important;
+}
+body[data-theme="dark"] #btn-sidebar-clear-wrong:hover {
+    background-color: #271419 !important;
+    color: #fda4af !important;
+}
+body[data-theme="dark"] #btn-drawer-clear-wrong {
+    background-color: #271419 !important;
+    border-color: #881337 !important;
+    color: #fb7185 !important;
+}
+body[data-theme="dark"] #btn-drawer-clear-wrong:hover {
+    background-color: #3f121d !important;
+    border-color: #9f1239 !important;
+    color: #fda4af !important;
+}
+body[data-theme="eye-care"] #btn-drawer-clear-wrong {
+    background-color: #faecec !important;
+    border-color: #eac5c5 !important;
+    color: #be123c !important;
+}
+body[data-theme="eye-care"] #btn-drawer-clear-wrong:hover {
+    background-color: #f6d8d8 !important;
+    border-color: #deb0b0 !important;
+    color: #9f1239 !important;
+}
+
 
 
 

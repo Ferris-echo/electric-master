@@ -4366,6 +4366,67 @@ body[data-theme="dark"] #btn-quick-peek-answer.bg-amber-100 {
     color: #fef08a !important;
 }
 
+/* 错题卡片顶栏清空错题本按钮 */
+#btn-card-clear-wrong {
+    background-color: #fff7ed;
+    border-color: #fed7aa;
+    color: #ea580c;
+}
+#btn-card-clear-wrong:hover {
+    background-color: #ffedd5;
+    border-color: #fdba74;
+    color: #c2410c;
+}
+body[data-theme="dark"] #btn-card-clear-wrong {
+    background-color: #2c1a0e !important;
+    border-color: #7c2d12 !important;
+    color: #fb923c !important;
+}
+body[data-theme="dark"] #btn-card-clear-wrong:hover {
+    background-color: #431407 !important;
+    border-color: #9a3412 !important;
+    color: #fdba74 !important;
+}
+body[data-theme="eye-care"] #btn-card-clear-wrong {
+    background-color: #faefe4 !important;
+    border-color: #ebd2ba !important;
+    color: #c2410c !important;
+}
+body[data-theme="eye-care"] #btn-card-clear-wrong:hover {
+    background-color: #f5e4d3 !important;
+    border-color: #e4c2a3 !important;
+    color: #9a3412 !important;
+}
+
+/* 侧边栏与抽屉清空错题按钮主题适配 */
+body[data-theme="dark"] #btn-sidebar-clear-wrong {
+    color: #f87171 !important;
+}
+body[data-theme="dark"] #btn-sidebar-clear-wrong:hover {
+    background-color: #271419 !important;
+    color: #fda4af !important;
+}
+body[data-theme="dark"] #btn-drawer-clear-wrong {
+    background-color: #271419 !important;
+    border-color: #881337 !important;
+    color: #fb7185 !important;
+}
+body[data-theme="dark"] #btn-drawer-clear-wrong:hover {
+    background-color: #3f121d !important;
+    border-color: #9f1239 !important;
+    color: #fda4af !important;
+}
+body[data-theme="eye-care"] #btn-drawer-clear-wrong {
+    background-color: #faecec !important;
+    border-color: #eac5c5 !important;
+    color: #be123c !important;
+}
+body[data-theme="eye-care"] #btn-drawer-clear-wrong:hover {
+    background-color: #f6d8d8 !important;
+    border-color: #deb0b0 !important;
+    color: #9f1239 !important;
+}
+
 
 
 
@@ -4599,13 +4660,18 @@ body[data-theme="dark"] #btn-quick-peek-answer.bg-amber-100 {
 
                 <!-- SECTION 4: 错题本与收藏夹 -->
                 <div class="pt-2 border-t border-gray-100 space-y-1.5">
-                    <button id="btn-nav-wrong" class="w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-2.5 text-sm transition-all text-gray-700 hover:bg-orange-50 hover:text-orange-700">
-                        <span class="nav-icon text-orange-500"><span id="icon-alert-circle"></span></span>
-                        <div class="flex-1">
-                            <div class="font-bold">错题回顾本</div>
-                            <div id="sidebar-wrong-count" class="text-[11px] text-gray-400">0 道待复习</div>
-                        </div>
-                    </button>
+                    <div class="flex items-center gap-1">
+                        <button id="btn-nav-wrong" class="flex-1 text-left px-3 py-2.5 rounded-xl flex items-center gap-2.5 text-sm transition-all text-gray-700 hover:bg-orange-50 hover:text-orange-700">
+                            <span class="nav-icon text-orange-500"><span id="icon-alert-circle"></span></span>
+                            <div class="flex-1 min-w-0">
+                                <div class="font-bold truncate">错题回顾本</div>
+                                <div id="sidebar-wrong-count" class="text-[11px] text-gray-400">0 道待复习</div>
+                            </div>
+                        </button>
+                        <button id="btn-sidebar-clear-wrong" class="px-2.5 py-2 mr-1 rounded-xl text-gray-400 hover:text-red-600 hover:bg-red-50 transition text-xs font-bold flex-shrink-0 cursor-pointer hidden whitespace-nowrap" title="清空全部错题记录">
+                            🧹 清空
+                        </button>
+                    </div>
                     <button id="btn-nav-fav" class="w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-2.5 text-sm transition-all text-gray-700 hover:bg-yellow-50 hover:text-yellow-700">
                         <span class="nav-icon text-yellow-500"><span id="icon-star"></span></span>
                         <div class="flex-1">
@@ -4786,6 +4852,9 @@ body[data-theme="dark"] #btn-quick-peek-answer.bg-amber-100 {
             <div id="grid-buttons-container" class="p-4 flex-1 overflow-y-auto custom-scrollbar">
                 <!-- Grid buttons dynamically inserted here -->
             </div>
+
+            <!-- 抽屉附加操作栏 (错题本一键清空等) -->
+            <div id="drawer-extra-actions" class="px-4 py-2.5 bg-gray-50 border-t border-gray-100 hidden"></div>
 
             <div class="p-4 border-t bg-gray-50 text-xs text-gray-500 flex justify-between px-6">
                 <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-green-500"></span> 正确</span>
@@ -6433,6 +6502,15 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         const elWrong = document.getElementById('sidebar-wrong-count');
         if (elWrong) elWrong.textContent = `${state.wrongQuestions.size} 道待复习`;
 
+        const btnSidebarClear = document.getElementById('btn-sidebar-clear-wrong');
+        if (btnSidebarClear) {
+            if (state.wrongQuestions.size > 0) {
+                btnSidebarClear.classList.remove('hidden');
+            } else {
+                btnSidebarClear.classList.add('hidden');
+            }
+        }
+
         const elFav = document.getElementById('sidebar-fav-count');
         if (elFav) elFav.textContent = `${state.favoriteQuestions.size} 道重点题`;
     }
@@ -6806,6 +6884,17 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             pBar.style.width = `${pPct}%`;
         }
 
+        const btnHeaderReset = document.getElementById('btn-header-reset-current');
+        if (btnHeaderReset) {
+            if (state.activeModuleId === 'wrong') {
+                btnHeaderReset.innerHTML = `<span>🧹</span><span class="whitespace-nowrap">清空错题</span>`;
+                btnHeaderReset.title = "清空错题本全部记录";
+            } else {
+                btnHeaderReset.innerHTML = `<span>🔄</span><span class="whitespace-nowrap">重做本卷</span>`;
+                btnHeaderReset.title = "清空本套试卷记录，重新开始刷题";
+            }
+        }
+
         renderQuestionCard();
     }
 
@@ -6859,6 +6948,40 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             saveState();
             updateAllModuleProgresses();
             showToast('🗑️ 已从错题本移出该题记录');
+            renderQuestionCard();
+        }
+    }
+
+    // --- 错题本一键清空全部记录核心逻辑 ---
+    function clearAllWrongQuestions() {
+        const count = state.wrongQuestions.size;
+        if (count === 0) {
+            showToast('ℹ️ 错题本当前没有任何错题记录，无需清空');
+            return;
+        }
+
+        const confirmed = confirm(`⚠️ 确认清空错题本中的全部 ${count} 道错题记录吗？\n\n清空后错题记录将被移除，您可以在刷题练习中随时重新收录。`);
+        if (!confirmed) return;
+
+        // 1. 清空全局错题库
+        state.wrongQuestions.clear();
+
+        // 2. 重置错题本专练轮次与游标
+        state.wrongSessionList = [];
+        if (state.moduleAnswers['wrong']) {
+            state.moduleAnswers['wrong'] = {};
+        }
+        state.moduleCursors['wrong'] = 0;
+
+        saveState();
+        updateAllModuleProgresses();
+        closeGridModal();
+
+        showToast(`🧹 已清空错题本全部 ${count} 道错题记录！`);
+
+        if (state.activeModuleId === 'wrong') {
+            renderApp();
+        } else {
             renderQuestionCard();
         }
     }
@@ -7161,6 +7284,14 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
                             </button>
                             ` : ''}
 
+                            <!-- 🧹 一键清空错题本按钮 (仅在错题本模块且有错题时展示) -->
+                            ${(!isExamOngoing && state.activeModuleId === 'wrong' && state.wrongQuestions.size > 0) ? `
+                            <button id="btn-card-clear-wrong" class="q-bounce-btn flex items-center gap-1 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition border cursor-pointer shadow-sm whitespace-nowrap" title="清空错题本全部记录">
+                                <span>🧹</span>
+                                <span>清空错题本</span>
+                            </button>
+                            ` : ''}
+
                             <!-- 💡 看答案速查按钮 -->
                             ${!isExamOngoing ? `
                             <button id="btn-quick-peek-answer" class="q-bounce-btn flex items-center gap-1 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition border cursor-pointer whitespace-nowrap ${isPeeked ? 'bg-amber-100 text-amber-900 border-amber-300 shadow-sm' : 'bg-gray-50 text-gray-600 hover:bg-amber-50 hover:text-amber-800 border-gray-200'}" title="快速展开/收起本题答案">
@@ -7227,10 +7358,16 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
                                             <span>错题已全部攻克！返回题库</span>
                                         </button>
                                     ` : `
-                                        <button id="btn-restart-wrong-round" class="q-bounce-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white shadow-md shadow-orange-200 cursor-pointer">
-                                            <span>🔄</span>
-                                            <span>再练剩余 ${state.wrongQuestions.size} 道错题</span>
-                                        </button>
+                                        <div class="flex items-center gap-2">
+                                            <button id="btn-restart-wrong-clear" class="q-bounce-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1 transition bg-red-50 text-red-600 hover:bg-red-100 border border-red-200 cursor-pointer" title="清空错题本全部记录">
+                                                <span>🧹</span>
+                                                <span>清空错题本</span>
+                                            </button>
+                                            <button id="btn-restart-wrong-round" class="q-bounce-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white shadow-md shadow-orange-200 cursor-pointer">
+                                                <span>🔄</span>
+                                                <span>再练剩余 ${state.wrongQuestions.size} 道错题</span>
+                                            </button>
+                                        </div>
                                     `
                                 ) : (
                                     (total > 0 && Object.keys(answersMap).length >= total) ? `
@@ -7348,6 +7485,22 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         if (btnCardRemoveWrong) {
             btnCardRemoveWrong.onclick = () => {
                 removeSingleWrongQuestion(q.id);
+            };
+        }
+
+        // 清空错题本 (卡片顶栏按键)
+        const btnCardClearWrong = document.getElementById('btn-card-clear-wrong');
+        if (btnCardClearWrong) {
+            btnCardClearWrong.onclick = () => {
+                clearAllWrongQuestions();
+            };
+        }
+
+        // 错题本末题清空
+        const btnRestartWrongClear = document.getElementById('btn-restart-wrong-clear');
+        if (btnRestartWrongClear) {
+            btnRestartWrongClear.onclick = () => {
+                clearAllWrongQuestions();
             };
         }
 
@@ -7558,6 +7711,27 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
                 btn.className = "grid-filter-btn px-3 py-1 rounded-full transition active:scale-95 bg-gray-200 text-gray-700 hover:bg-gray-300";
             }
         });
+
+        // 错题回顾本专属抽屉快捷操作：一键清空错题记录
+        const extraActions = document.getElementById('drawer-extra-actions');
+        if (extraActions) {
+            if (state.activeModuleId === 'wrong' && state.wrongQuestions.size > 0) {
+                extraActions.classList.remove('hidden');
+                extraActions.innerHTML = `
+                    <button id="btn-drawer-clear-wrong" class="q-bounce-btn w-full py-2.5 px-4 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-bold text-xs flex items-center justify-center gap-1.5 shadow-xs transition cursor-pointer">
+                        <span>🧹</span>
+                        <span>清空错题本全部记录 (共 ${state.wrongQuestions.size} 道)</span>
+                    </button>
+                `;
+                const btnDrawerClear = document.getElementById('btn-drawer-clear-wrong');
+                if (btnDrawerClear) {
+                    btnDrawerClear.onclick = () => clearAllWrongQuestions();
+                }
+            } else {
+                extraActions.classList.add('hidden');
+                extraActions.innerHTML = '';
+            }
+        }
 
         if (filteredItems.length === 0) {
             container.innerHTML = `
@@ -9193,6 +9367,10 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         const btnHeaderReset = document.getElementById('btn-header-reset-current');
         if (btnHeaderReset) {
             btnHeaderReset.onclick = () => {
+                if (state.activeModuleId === 'wrong') {
+                    clearAllWrongQuestions();
+                    return;
+                }
                 let name = '本试卷';
                 if (state.activeModuleId === 'paper_2026_all') {
                     const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
@@ -9205,6 +9383,15 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
                 if (confirm(`确认清空【${name}】的独立做题进度，重新开始刷题吗？`)) {
                     resetSingleModule(state.activeModuleId, state.selectedSimDate, state.orderMode);
                 }
+            };
+        }
+
+        // 7.3 侧边栏错题本一键清空按钮
+        const btnSidebarClear = document.getElementById('btn-sidebar-clear-wrong');
+        if (btnSidebarClear) {
+            btnSidebarClear.onclick = (e) => {
+                e.stopPropagation();
+                clearAllWrongQuestions();
             };
         }
 

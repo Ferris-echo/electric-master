@@ -907,6 +907,15 @@
         const elWrong = document.getElementById('sidebar-wrong-count');
         if (elWrong) elWrong.textContent = `${state.wrongQuestions.size} 道待复习`;
 
+        const btnSidebarClear = document.getElementById('btn-sidebar-clear-wrong');
+        if (btnSidebarClear) {
+            if (state.wrongQuestions.size > 0) {
+                btnSidebarClear.classList.remove('hidden');
+            } else {
+                btnSidebarClear.classList.add('hidden');
+            }
+        }
+
         const elFav = document.getElementById('sidebar-fav-count');
         if (elFav) elFav.textContent = `${state.favoriteQuestions.size} 道重点题`;
     }
@@ -1280,6 +1289,17 @@
             pBar.style.width = `${pPct}%`;
         }
 
+        const btnHeaderReset = document.getElementById('btn-header-reset-current');
+        if (btnHeaderReset) {
+            if (state.activeModuleId === 'wrong') {
+                btnHeaderReset.innerHTML = `<span>🧹</span><span class="whitespace-nowrap">清空错题</span>`;
+                btnHeaderReset.title = "清空错题本全部记录";
+            } else {
+                btnHeaderReset.innerHTML = `<span>🔄</span><span class="whitespace-nowrap">重做本卷</span>`;
+                btnHeaderReset.title = "清空本套试卷记录，重新开始刷题";
+            }
+        }
+
         renderQuestionCard();
     }
 
@@ -1333,6 +1353,40 @@
             saveState();
             updateAllModuleProgresses();
             showToast('🗑️ 已从错题本移出该题记录');
+            renderQuestionCard();
+        }
+    }
+
+    // --- 错题本一键清空全部记录核心逻辑 ---
+    function clearAllWrongQuestions() {
+        const count = state.wrongQuestions.size;
+        if (count === 0) {
+            showToast('ℹ️ 错题本当前没有任何错题记录，无需清空');
+            return;
+        }
+
+        const confirmed = confirm(`⚠️ 确认清空错题本中的全部 ${count} 道错题记录吗？\n\n清空后错题记录将被移除，您可以在刷题练习中随时重新收录。`);
+        if (!confirmed) return;
+
+        // 1. 清空全局错题库
+        state.wrongQuestions.clear();
+
+        // 2. 重置错题本专练轮次与游标
+        state.wrongSessionList = [];
+        if (state.moduleAnswers['wrong']) {
+            state.moduleAnswers['wrong'] = {};
+        }
+        state.moduleCursors['wrong'] = 0;
+
+        saveState();
+        updateAllModuleProgresses();
+        closeGridModal();
+
+        showToast(`🧹 已清空错题本全部 ${count} 道错题记录！`);
+
+        if (state.activeModuleId === 'wrong') {
+            renderApp();
+        } else {
             renderQuestionCard();
         }
     }
@@ -1635,6 +1689,14 @@
                             </button>
                             ` : ''}
 
+                            <!-- 🧹 一键清空错题本按钮 (仅在错题本模块且有错题时展示) -->
+                            ${(!isExamOngoing && state.activeModuleId === 'wrong' && state.wrongQuestions.size > 0) ? `
+                            <button id="btn-card-clear-wrong" class="q-bounce-btn flex items-center gap-1 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition border cursor-pointer shadow-sm whitespace-nowrap" title="清空错题本全部记录">
+                                <span>🧹</span>
+                                <span>清空错题本</span>
+                            </button>
+                            ` : ''}
+
                             <!-- 💡 看答案速查按钮 -->
                             ${!isExamOngoing ? `
                             <button id="btn-quick-peek-answer" class="q-bounce-btn flex items-center gap-1 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition border cursor-pointer whitespace-nowrap ${isPeeked ? 'bg-amber-100 text-amber-900 border-amber-300 shadow-sm' : 'bg-gray-50 text-gray-600 hover:bg-amber-50 hover:text-amber-800 border-gray-200'}" title="快速展开/收起本题答案">
@@ -1701,10 +1763,16 @@
                                             <span>错题已全部攻克！返回题库</span>
                                         </button>
                                     ` : `
-                                        <button id="btn-restart-wrong-round" class="q-bounce-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white shadow-md shadow-orange-200 cursor-pointer">
-                                            <span>🔄</span>
-                                            <span>再练剩余 ${state.wrongQuestions.size} 道错题</span>
-                                        </button>
+                                        <div class="flex items-center gap-2">
+                                            <button id="btn-restart-wrong-clear" class="q-bounce-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1 transition bg-red-50 text-red-600 hover:bg-red-100 border border-red-200 cursor-pointer" title="清空错题本全部记录">
+                                                <span>🧹</span>
+                                                <span>清空错题本</span>
+                                            </button>
+                                            <button id="btn-restart-wrong-round" class="q-bounce-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white shadow-md shadow-orange-200 cursor-pointer">
+                                                <span>🔄</span>
+                                                <span>再练剩余 ${state.wrongQuestions.size} 道错题</span>
+                                            </button>
+                                        </div>
                                     `
                                 ) : (
                                     (total > 0 && Object.keys(answersMap).length >= total) ? `
@@ -1822,6 +1890,22 @@
         if (btnCardRemoveWrong) {
             btnCardRemoveWrong.onclick = () => {
                 removeSingleWrongQuestion(q.id);
+            };
+        }
+
+        // 清空错题本 (卡片顶栏按键)
+        const btnCardClearWrong = document.getElementById('btn-card-clear-wrong');
+        if (btnCardClearWrong) {
+            btnCardClearWrong.onclick = () => {
+                clearAllWrongQuestions();
+            };
+        }
+
+        // 错题本末题清空
+        const btnRestartWrongClear = document.getElementById('btn-restart-wrong-clear');
+        if (btnRestartWrongClear) {
+            btnRestartWrongClear.onclick = () => {
+                clearAllWrongQuestions();
             };
         }
 
@@ -2032,6 +2116,27 @@
                 btn.className = "grid-filter-btn px-3 py-1 rounded-full transition active:scale-95 bg-gray-200 text-gray-700 hover:bg-gray-300";
             }
         });
+
+        // 错题回顾本专属抽屉快捷操作：一键清空错题记录
+        const extraActions = document.getElementById('drawer-extra-actions');
+        if (extraActions) {
+            if (state.activeModuleId === 'wrong' && state.wrongQuestions.size > 0) {
+                extraActions.classList.remove('hidden');
+                extraActions.innerHTML = `
+                    <button id="btn-drawer-clear-wrong" class="q-bounce-btn w-full py-2.5 px-4 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-bold text-xs flex items-center justify-center gap-1.5 shadow-xs transition cursor-pointer">
+                        <span>🧹</span>
+                        <span>清空错题本全部记录 (共 ${state.wrongQuestions.size} 道)</span>
+                    </button>
+                `;
+                const btnDrawerClear = document.getElementById('btn-drawer-clear-wrong');
+                if (btnDrawerClear) {
+                    btnDrawerClear.onclick = () => clearAllWrongQuestions();
+                }
+            } else {
+                extraActions.classList.add('hidden');
+                extraActions.innerHTML = '';
+            }
+        }
 
         if (filteredItems.length === 0) {
             container.innerHTML = `
@@ -3667,6 +3772,10 @@
         const btnHeaderReset = document.getElementById('btn-header-reset-current');
         if (btnHeaderReset) {
             btnHeaderReset.onclick = () => {
+                if (state.activeModuleId === 'wrong') {
+                    clearAllWrongQuestions();
+                    return;
+                }
                 let name = '本试卷';
                 if (state.activeModuleId === 'paper_2026_all') {
                     const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
@@ -3679,6 +3788,15 @@
                 if (confirm(`确认清空【${name}】的独立做题进度，重新开始刷题吗？`)) {
                     resetSingleModule(state.activeModuleId, state.selectedSimDate, state.orderMode);
                 }
+            };
+        }
+
+        // 7.3 侧边栏错题本一键清空按钮
+        const btnSidebarClear = document.getElementById('btn-sidebar-clear-wrong');
+        if (btnSidebarClear) {
+            btnSidebarClear.onclick = (e) => {
+                e.stopPropagation();
+                clearAllWrongQuestions();
             };
         }
 
