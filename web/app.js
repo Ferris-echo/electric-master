@@ -415,7 +415,7 @@
         } else if (moduleId.startsWith('paper_')) {
             return all1000Questions.filter(q => q.paperId === moduleId);
         } else if (moduleId === 'wrong') {
-            if (state.wrongSessionList && state.wrongSessionList.length > 0) {
+            if (Array.isArray(state.wrongSessionList)) {
                 return state.wrongSessionList;
             }
             return allQuestionsPool.filter(q => state.wrongQuestions.has(q.id));
@@ -1289,6 +1289,54 @@
         return text.replace(/[（(]\s*[）)]/g, '（<span class="q-blank-bracket">&nbsp;</span>）');
     }
 
+    // --- 错题本单独删除单题记录核心逻辑 ---
+    function removeSingleWrongQuestion(questionId) {
+        if (!state.wrongQuestions.has(questionId) && state.activeModuleId !== 'wrong') {
+            return;
+        }
+
+        // 1. 从全局错题库集合中彻底剔除
+        state.wrongQuestions.delete(questionId);
+
+        // 2. 若当前正在“错题回顾本”模块中练习，同步维护当前轮次题目列表与缓存游标
+        if (state.activeModuleId === 'wrong') {
+            if (state.wrongSessionList) {
+                state.wrongSessionList = state.wrongSessionList.filter(item => item.id !== questionId);
+            }
+            if (state.moduleAnswers['wrong']) {
+                delete state.moduleAnswers['wrong'][questionId];
+            }
+
+            saveState();
+            updateAllModuleProgresses();
+
+            const remainingList = getActiveQuestions();
+            const total = remainingList.length;
+
+            if (total === 0) {
+                showToast('🎉 太棒了！错题已全部清空！');
+                renderApp();
+                return;
+            }
+
+            // 安全调整题号游标：若删除的是最后一题，游标前移；否则留在原索引（自然展示下一道错题）
+            let curIdx = getCurrentIndex();
+            if (curIdx >= total) {
+                curIdx = Math.max(0, total - 1);
+                setCurrentIndex(curIdx);
+            }
+
+            showToast('🗑️ 已从错题本移出该题记录');
+            renderApp();
+        } else {
+            // 在常规试卷练习中移出之前收录的错题
+            saveState();
+            updateAllModuleProgresses();
+            showToast('🗑️ 已从错题本移出该题记录');
+            renderQuestionCard();
+        }
+    }
+
     // --- 核心题目卡片渲染 ---
     function renderQuestionCard() {
         const container = document.getElementById('question-scroll-area');
@@ -1299,12 +1347,27 @@
         const curIdx = getCurrentIndex();
 
         if (total === 0) {
+            const isWrongMod = (state.activeModuleId === 'wrong');
+            const isFavMod = (state.activeModuleId === 'favorite');
+            let emptyIcon = getIcon('Award', 'w-16 h-16 text-yellow-500');
+            let emptyTitle = '当前分类暂无题目';
+            let emptyDesc = '太棒了！所有题目均已掌握或列表为空。';
+            if (isWrongMod) {
+                emptyIcon = '<span class="text-5xl">🎉</span>';
+                emptyTitle = '错题本已全部清空！';
+                emptyDesc = '太棒了！您当前没有任何错题记录，所有考点均已稳妥攻克。';
+            } else if (isFavMod) {
+                emptyIcon = '<span class="text-5xl">⭐</span>';
+                emptyTitle = '重点收藏夹为空';
+                emptyDesc = '刷题时点击右上角【收藏本题】即可快速归集重点。';
+            }
+
             container.innerHTML = `
                 <div class="h-full flex flex-col items-center justify-center text-gray-500 text-center p-8 animate-q-card">
-                    <div class="mb-4">${getIcon('Award', 'w-16 h-16 text-yellow-500')}</div>
-                    <p class="text-xl font-bold text-gray-800">当前分类暂无题目</p>
-                    <p class="text-sm mt-1 text-gray-400">太棒了！所有题目均已掌握或列表为空。</p>
-                    <button id="btn-empty-back-full" class="q-bounce-btn mt-5 px-6 py-2.5 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 font-bold text-sm">
+                    <div class="mb-4 flex justify-center">${emptyIcon}</div>
+                    <p class="text-xl font-bold text-gray-800 dark:text-white">${emptyTitle}</p>
+                    <p class="text-sm mt-1 text-gray-400 dark:text-gray-400">${emptyDesc}</p>
+                    <button id="btn-empty-back-full" class="q-bounce-btn mt-5 px-6 py-2.5 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 font-bold text-sm cursor-pointer">
                         返回全部题库刷题
                     </button>
                 </div>
@@ -1553,8 +1616,8 @@
                 
                 <!-- 卡片顶栏 -->
                 <div class="p-6 md:p-8">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center gap-2">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                        <div class="flex items-center gap-2 flex-wrap">
                             <span class="px-2.5 py-1 rounded-md text-xs font-black ${q.type === 'multiple' ? 'bg-purple-100 text-purple-900' : (q.type === 'judge' ? 'bg-cyan-100 text-cyan-800' : 'bg-blue-100 text-blue-800')}">
                                 ${q.type === 'multiple' ? '多选题 (1.0分)' : (q.type === 'judge' ? '判断题 (0.5分)' : '单选题 (0.5分)')}
                             </span>
@@ -1563,17 +1626,25 @@
                             </span>
                         </div>
 
-                        <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                            <!-- 🗑️ 移出错题本按钮 (单题独立删除错题记录) -->
+                            ${(!isExamOngoing && (state.activeModuleId === 'wrong' || state.wrongQuestions.has(q.id))) ? `
+                            <button id="btn-card-remove-wrong" class="q-bounce-btn flex items-center gap-1 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition border cursor-pointer shadow-sm whitespace-nowrap" title="从错题本移出并清除该题记录">
+                                ${getIcon('Trash', 'w-3.5 h-3.5')}
+                                <span>移出错题</span>
+                            </button>
+                            ` : ''}
+
                             <!-- 💡 看答案速查按钮 -->
                             ${!isExamOngoing ? `
-                            <button id="btn-quick-peek-answer" class="q-bounce-btn flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full transition border cursor-pointer ${isPeeked ? 'bg-amber-100 text-amber-900 border-amber-300 shadow-sm' : 'bg-gray-50 text-gray-600 hover:bg-amber-50 hover:text-amber-800 border-gray-200'}" title="快速展开/收起本题答案">
+                            <button id="btn-quick-peek-answer" class="q-bounce-btn flex items-center gap-1 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition border cursor-pointer whitespace-nowrap ${isPeeked ? 'bg-amber-100 text-amber-900 border-amber-300 shadow-sm' : 'bg-gray-50 text-gray-600 hover:bg-amber-50 hover:text-amber-800 border-gray-200'}" title="快速展开/收起本题答案">
                                 <span>💡</span>
                                 <span>${isPeeked ? '收起答案' : '看答案'}</span>
                             </button>
                             ` : ''}
 
                             <!-- 收藏本题按钮 (Q 弹星星) -->
-                            <button id="btn-toggle-favorite" class="q-bounce-btn flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full transition cursor-pointer ${isFav ? 'bg-amber-50 text-amber-700 border border-amber-200 animate-q-star' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}">
+                            <button id="btn-toggle-favorite" class="q-bounce-btn flex items-center gap-1.5 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition cursor-pointer whitespace-nowrap ${isFav ? 'bg-amber-50 text-amber-700 border border-amber-200 animate-q-star' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}">
                                 ${isFav ? getIcon('StarFilled', 'w-4 h-4') : getIcon('Star', 'w-4 h-4')}
                                 <span>${isFav ? '已收藏' : '收藏本题'}</span>
                             </button>
@@ -1738,27 +1809,19 @@
             };
         }
 
-        // 从错题本移出
+        // 从错题本移出 (反馈横幅按键)
         const btnRemoveWrong = document.getElementById('btn-remove-from-wrong');
         if (btnRemoveWrong) {
             btnRemoveWrong.onclick = () => {
-                state.wrongQuestions.delete(q.id);
-                if (state.wrongSessionList) {
-                    state.wrongSessionList = state.wrongSessionList.filter(item => item.id !== q.id);
-                }
-                saveState();
-                updateAllModuleProgresses();
-                showToast('已移出错题本');
-                if (state.activeModuleId === 'wrong') {
-                    const total = getActiveQuestions().length;
-                    const cur = getCurrentIndex();
-                    if (cur >= total) {
-                        setCurrentIndex(Math.max(0, total - 1));
-                    }
-                    renderApp();
-                } else {
-                    renderQuestionCard();
-                }
+                removeSingleWrongQuestion(q.id);
+            };
+        }
+
+        // 移出错题本 (卡片顶栏常驻按键)
+        const btnCardRemoveWrong = document.getElementById('btn-card-remove-wrong');
+        if (btnCardRemoveWrong) {
+            btnCardRemoveWrong.onclick = () => {
+                removeSingleWrongQuestion(q.id);
             };
         }
 

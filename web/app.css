@@ -1389,6 +1389,54 @@ body[data-theme="eye-care"] #btn-complete-review-wrong {
     border-color: #fdba74 !important;
 }
 
+/* 错题卡片顶栏移出错题按钮 */
+#btn-card-remove-wrong {
+    background-color: #fff1f2;
+    border-color: #fecdd3;
+    color: #e11d48;
+}
+#btn-card-remove-wrong:hover {
+    background-color: #ffe4e6;
+    border-color: #fda4af;
+    color: #be123c;
+}
+body[data-theme="dark"] #btn-card-remove-wrong {
+    background-color: #271419 !important;
+    border-color: #881337 !important;
+    color: #fb7185 !important;
+}
+body[data-theme="dark"] #btn-card-remove-wrong:hover {
+    background-color: #3f121d !important;
+    border-color: #9f1239 !important;
+    color: #fda4af !important;
+}
+body[data-theme="eye-care"] #btn-card-remove-wrong {
+    background-color: #faecec !important;
+    border-color: #eac5c5 !important;
+    color: #be123c !important;
+}
+body[data-theme="eye-care"] #btn-card-remove-wrong:hover {
+    background-color: #f6d8d8 !important;
+    border-color: #deb0b0 !important;
+    color: #9f1239 !important;
+}
+
+/* 看答案速查按钮暗黑适配 */
+body[data-theme="dark"] #btn-quick-peek-answer.bg-gray-50 {
+    background-color: #131c31 !important;
+    border-color: #1e293b !important;
+    color: #94a3b8 !important;
+}
+body[data-theme="dark"] #btn-quick-peek-answer.bg-gray-50:hover {
+    background-color: #1e293b !important;
+    color: #e2e8f0 !important;
+}
+body[data-theme="dark"] #btn-quick-peek-answer.bg-amber-100 {
+    background-color: #382405 !important;
+    border-color: #854d0e !important;
+    color: #fef08a !important;
+}
+
 
 
 
