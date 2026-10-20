@@ -1021,18 +1021,24 @@
     }
 
     function start2026Exam() {
-        state.examState.activeQuestions = [...getSim2026Questions()];
-        state.examState.totalSeconds = 7200; // 120分钟 (2小时)
-        state.examState.secondsLeft = 7200;
-        state.examState.answers = {};
-        state.examState.isSubmitted = false;
-        state.activeModuleId = 'paper_2026_exam';
-        state.moduleCursors['paper_2026_exam'] = 0;
-        state.moduleCursors[`paper_2026_exam_${state.selectedSimDate || '1021'}`] = 0;
-        state.multiDraft.clear();
+        try {
+            const qs = getSim2026Questions();
+            state.examState.activeQuestions = [...qs];
+            state.examState.totalSeconds = 7200; // 120分钟 (2小时)
+            state.examState.secondsLeft = 7200;
+            state.examState.answers = {};
+            state.examState.isSubmitted = false;
+            state.activeModuleId = 'paper_2026_exam';
+            state.moduleCursors['paper_2026_exam'] = 0;
+            state.moduleCursors[`paper_2026_exam_${state.selectedSimDate || '1021'}`] = 0;
+            state.multiDraft.clear();
 
-        startExamTimer();
-        renderApp();
+            startExamTimer();
+            renderApp();
+            showToast(`✅ 已进入【${SIM_DATES[state.selectedSimDate || '1021'].name}精简全真模考】，共 ${qs.length} 题！`);
+        } catch (err) {
+            alert('进入模考发生异常: ' + err.message);
+        }
     }
 
     function startRandomExam(isQuick = false) {
@@ -1413,6 +1419,16 @@
         const curIdx = getCurrentIndex();
 
         if (total === 0) {
+            // 如果处于模考中但题目为0，再次紧急重拉当前考期题目
+            if (state.activeModuleId === 'paper_2026_exam') {
+                const emergencyQs = getSim2026Questions();
+                if (emergencyQs && emergencyQs.length > 0) {
+                    state.examState.activeQuestions = [...emergencyQs];
+                    renderQuestionCard();
+                    return;
+                }
+            }
+
             const isWrongMod = (state.activeModuleId === 'wrong');
             const isFavMod = (state.activeModuleId === 'favorite');
             let emptyIcon = getIcon('Award', 'w-16 h-16 text-yellow-500');
