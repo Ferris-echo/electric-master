@@ -427,7 +427,12 @@
             return allQuestionsPool.filter(q => state.wrongQuestions.has(q.id));
         } else if (moduleId === 'favorite') {
             return allQuestionsPool.filter(q => state.favoriteQuestions.has(q.id));
-        } else if (moduleId === 'exam_random' || moduleId === 'quick_quiz' || moduleId === 'paper_2026_exam') {
+        } else if (moduleId === 'exam_random' || moduleId === 'quick_quiz') {
+            return state.examState.activeQuestions;
+        } else if (moduleId === 'paper_2026_exam') {
+            if (!state.examState.activeQuestions || state.examState.activeQuestions.length === 0) {
+                state.examState.activeQuestions = [...getSim2026Questions()];
+            }
             return state.examState.activeQuestions;
         }
         return all1000Questions;
@@ -1023,6 +1028,7 @@
         state.examState.isSubmitted = false;
         state.activeModuleId = 'paper_2026_exam';
         state.moduleCursors['paper_2026_exam'] = 0;
+        state.moduleCursors[`paper_2026_exam_${state.selectedSimDate || '1021'}`] = 0;
         state.multiDraft.clear();
 
         startExamTimer();
