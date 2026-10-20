@@ -1010,7 +1010,7 @@
     }
 
     function start2026Exam() {
-        state.examState.activeQuestions = [...sim2026Questions];
+        state.examState.activeQuestions = [...getSim2026Questions()];
         state.examState.totalSeconds = 7200; // 120分钟 (2小时)
         state.examState.secondsLeft = 7200;
         state.examState.answers = {};
