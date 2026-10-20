@@ -401,7 +401,14 @@
 
     // --- 获取指定模块原始顺序题目列表 ---
     function getRawModuleQuestions(moduleId) {
-        if (moduleId === 'full_all') {
+        if (moduleId === 'paper_2026_exam') {
+            if (!state.examState.activeQuestions || state.examState.activeQuestions.length === 0) {
+                state.examState.activeQuestions = [...getSim2026Questions()];
+            }
+            return state.examState.activeQuestions;
+        } else if (moduleId === 'exam_random' || moduleId === 'quick_quiz') {
+            return state.examState.activeQuestions;
+        } else if (moduleId === 'full_all') {
             return all1000Questions;
         } else if (moduleId === 'full_choice') {
             return all1000Questions.filter(q => q.type === 'choice');
@@ -427,13 +434,6 @@
             return allQuestionsPool.filter(q => state.wrongQuestions.has(q.id));
         } else if (moduleId === 'favorite') {
             return allQuestionsPool.filter(q => state.favoriteQuestions.has(q.id));
-        } else if (moduleId === 'exam_random' || moduleId === 'quick_quiz') {
-            return state.examState.activeQuestions;
-        } else if (moduleId === 'paper_2026_exam') {
-            if (!state.examState.activeQuestions || state.examState.activeQuestions.length === 0) {
-                state.examState.activeQuestions = [...getSim2026Questions()];
-            }
-            return state.examState.activeQuestions;
         }
         return all1000Questions;
     }
@@ -1419,16 +1419,6 @@
         const curIdx = getCurrentIndex();
 
         if (total === 0) {
-            // 如果处于模考中但题目为0，再次紧急重拉当前考期题目
-            if (state.activeModuleId === 'paper_2026_exam') {
-                const emergencyQs = getSim2026Questions();
-                if (emergencyQs && emergencyQs.length > 0) {
-                    state.examState.activeQuestions = [...emergencyQs];
-                    renderQuestionCard();
-                    return;
-                }
-            }
-
             const isWrongMod = (state.activeModuleId === 'wrong');
             const isFavMod = (state.activeModuleId === 'favorite');
             let emptyIcon = getIcon('Award', 'w-16 h-16 text-yellow-500');

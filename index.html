@@ -4530,7 +4530,7 @@ body[data-theme="eye-care"] #btn-nav-fav.bg-yellow-100 .font-bold {
         <div class="md:hidden bg-blue-700 text-white px-4 py-2.5 flex justify-between items-center shadow-md z-30 sticky top-0">
             <h1 class="font-black text-base flex items-center gap-1.5">
                 <span id="icon-lightning-mobile"></span> 高级电工刷题
-                <span class="text-[9px] bg-blue-900/60 text-blue-200 px-1.5 py-0.5 rounded-full font-mono font-normal">v4.4</span>
+                <span class="text-[9px] bg-emerald-600 text-white px-1.5 py-0.5 rounded-full font-mono font-bold">v4.5</span>
             </h1>
             <div class="flex items-center gap-2">
                 <button id="btn-mobile-search" class="px-2.5 py-1.5 bg-blue-800/70 hover:bg-blue-800 rounded-xl text-white font-bold text-xs flex items-center gap-1 transition shadow-xs cursor-pointer" title="全库搜题">
@@ -4551,7 +4551,7 @@ body[data-theme="eye-care"] #btn-nav-fav.bg-yellow-100 .font-bold {
                 <div>
                     <h1 class="text-xl font-black tracking-wide flex items-center gap-2">
                         <span id="icon-lightning"></span> 电工刷题宝典
-                        <span class="text-[10px] bg-blue-900/60 text-blue-200 px-2 py-0.5 rounded-full font-mono font-normal">v4.4</span>
+                        <span class="text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full font-mono font-bold">v4.5</span>
                     </h1>
                     <p class="text-blue-100 text-xs mt-1 font-medium">国家职业资格 · 高级维修电工题库</p>
                 </div>
@@ -6088,7 +6088,14 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
 
     // --- 获取指定模块原始顺序题目列表 ---
     function getRawModuleQuestions(moduleId) {
-        if (moduleId === 'full_all') {
+        if (moduleId === 'paper_2026_exam') {
+            if (!state.examState.activeQuestions || state.examState.activeQuestions.length === 0) {
+                state.examState.activeQuestions = [...getSim2026Questions()];
+            }
+            return state.examState.activeQuestions;
+        } else if (moduleId === 'exam_random' || moduleId === 'quick_quiz') {
+            return state.examState.activeQuestions;
+        } else if (moduleId === 'full_all') {
             return all1000Questions;
         } else if (moduleId === 'full_choice') {
             return all1000Questions.filter(q => q.type === 'choice');
@@ -6114,13 +6121,6 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             return allQuestionsPool.filter(q => state.wrongQuestions.has(q.id));
         } else if (moduleId === 'favorite') {
             return allQuestionsPool.filter(q => state.favoriteQuestions.has(q.id));
-        } else if (moduleId === 'exam_random' || moduleId === 'quick_quiz') {
-            return state.examState.activeQuestions;
-        } else if (moduleId === 'paper_2026_exam') {
-            if (!state.examState.activeQuestions || state.examState.activeQuestions.length === 0) {
-                state.examState.activeQuestions = [...getSim2026Questions()];
-            }
-            return state.examState.activeQuestions;
         }
         return all1000Questions;
     }
@@ -7106,16 +7106,6 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         const curIdx = getCurrentIndex();
 
         if (total === 0) {
-            // 如果处于模考中但题目为0，再次紧急重拉当前考期题目
-            if (state.activeModuleId === 'paper_2026_exam') {
-                const emergencyQs = getSim2026Questions();
-                if (emergencyQs && emergencyQs.length > 0) {
-                    state.examState.activeQuestions = [...emergencyQs];
-                    renderQuestionCard();
-                    return;
-                }
-            }
-
             const isWrongMod = (state.activeModuleId === 'wrong');
             const isFavMod = (state.activeModuleId === 'favorite');
             let emptyIcon = getIcon('Award', 'w-16 h-16 text-yellow-500');
