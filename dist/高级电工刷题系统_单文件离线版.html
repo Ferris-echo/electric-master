@@ -5968,7 +5968,9 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             if (fs) state.fontSize = fs;
 
             const activeMod = localStorage.getItem(STORAGE_KEY_ACTIVE_MODULE);
-            if (activeMod && (state.moduleCursors[activeMod] !== undefined || activeMod.startsWith('paper_'))) {
+            // 考试/快测模式需要运行时数据，刷新后无法恢复，重置到安全模块避免"暂无题目"
+            const isExamMode = (activeMod === 'exam_random' || activeMod === 'quick_quiz' || activeMod === 'paper_2026_exam');
+            if (activeMod && !isExamMode && (state.moduleCursors[activeMod] !== undefined || activeMod.startsWith('paper_'))) {
                 state.activeModuleId = activeMod;
                 state.recentModuleId = activeMod;
             }
@@ -5990,7 +5992,11 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
             localStorage.setItem(STORAGE_KEY_AUTOADV, JSON.stringify(state.autoAdvance));
             localStorage.setItem(STORAGE_KEY_THEME, state.theme);
             localStorage.setItem(STORAGE_KEY_FONTSIZE, state.fontSize);
-            localStorage.setItem(STORAGE_KEY_ACTIVE_MODULE, state.activeModuleId);
+            // 考试/快测模式不持久化 activeModuleId，刷新后应恢复到常规模块
+            const activeModToSave = (state.activeModuleId === 'exam_random' || state.activeModuleId === 'quick_quiz' || state.activeModuleId === 'paper_2026_exam')
+                ? (state.recentModuleId || 'paper_2026_all')
+                : state.activeModuleId;
+            localStorage.setItem(STORAGE_KEY_ACTIVE_MODULE, activeModToSave);
             localStorage.setItem(STORAGE_KEY_ORDER_MODE, state.orderMode || 'seq');
             localStorage.setItem(STORAGE_KEY_SHUFFLE_MAPS, JSON.stringify(state.moduleShuffleMaps || {}));
             localStorage.setItem(STORAGE_KEY_RECENT_MODULE, state.recentModuleId || 'paper_2026_all');
