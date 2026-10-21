@@ -22554,7 +22554,7 @@ window.EXAM_PAPERS = [
         "index": 16,
         "type": "choice",
         "score": 0.5,
-        "content": "请问以下程序的输出结果是什么？\n```java\npublic class ArrayList {\n    public static void main(String[] args) {\n        float f1[], f2[];\n        f1 = new float[10];\n        f2 = f1;\n        System.out.println(\"f2[0]=\" + f2[0]);\n    }\n}\n```",
+        "content": "```java\npublic class ArrayList {\n    public static void main(String[] args) {\n        float f1[], f2[];\n        f1 = new float[10];\n        f2 = f1;\n        System.out.println(\"f2[0]=\" + f2[0]);\n    }\n}\n```\n请问以上程序的输出结果是什么？",
         "options": [
           "空指向异常",
           "未初始化异常",
@@ -22932,7 +22932,7 @@ window.EXAM_PAPERS = [
         "index": 43,
         "type": "choice",
         "score": 0.5,
-        "content": "定义变量：`String s = \"hello\";` 以下语句中，（ ）是不合法的。",
+        "content": "定义变量：String s = \"hello\"; 以下语句中，（ ）是不合法的。",
         "options": [
           "s += \"World\";",
           "s = s + 100；",
@@ -23142,7 +23142,7 @@ window.EXAM_PAPERS = [
         "index": 58,
         "type": "choice",
         "score": 0.5,
-        "content": "关于以下程序段，正确的说法是( )。\n```java\n1. String s1 = \"a\" + \"b\";\n2. String s2 = new String(s1);\n3. if (s1 == s2)\n4.     System.out.println(\"= = is succeeded\");\n5. if (s1.equals(s2))\n6.     System.out.println(\".equals() is succeeded\");\n```",
+        "content": "关于以下程序段，正确的说法是( )。\n```java\n1. String s1 = \"a\" + \"b\";\n2. String s2 = new String(s1);\n3. if (s1 == s2)\n4.     System.out.println(\"== is succeeded\");\n5. if (s1.equals(s2))\n6.     System.out.println(\".equals() is succeeded\");\n```",
         "options": [
           "行4与行6都将执行",
           "行4执行，行6不执行",
@@ -23730,7 +23730,7 @@ window.EXAM_PAPERS = [
         "index": 100,
         "type": "choice",
         "score": 0.5,
-        "content": "假设students表中有主键scode列，score表中有外键sid列，sid列引用scode列来实施引用完整性约束，此时如果使用t-sql语句： update students set scode=‘001201’ where scode=‘01201’ 来更新students表的scode列，可能的运行结果是（ ）",
+        "content": "假设 students 表中有主键 scode 列，score 表中有外键 sid 列，sid 列引用 scode 列来实施引用完整性约束，此时如果使用 T-SQL 语句：\n```sql\nUPDATE students SET scode = '001201' WHERE scode = '01201';\n```\n来更新 students 表的 scode 列，可能的运行结果是（ ）。",
         "options": [
           "肯定会产生更新失败",
           "可能会更新students表中两行数据",
@@ -24178,7 +24178,7 @@ window.EXAM_PAPERS = [
         "index": 132,
         "type": "choice",
         "score": 0.5,
-        "content": "以上程序的执行结果是？\n```java\npublic class Test {\n    public static int f(int n) {\n        if (n == 1)\n            return 1;\n        else\n            return f(n - 1) + 1;\n    }\n    public static void main(String[] args) {\n        int i, j = 0;\n        for (i = 1; i <= 3; i++)\n            j += f(i);\n        System.out.println(j);\n    }\n}\n```",
+        "content": "```java\npublic class Test {\n    public static int f(int n) {\n        if (n == 1)\n            return 1;\n        else\n            return f(n - 1) + 1;\n    }\n\n    public static void main(String[] args) {\n        int i, j = 0;\n        for (i = 1; i <= 3; i++)\n            j += f(i);\n        System.out.println(j);\n    }\n}\n```\n以上程序的执行结果是？",
         "options": [
           "1",
           "3",
@@ -24304,7 +24304,7 @@ window.EXAM_PAPERS = [
         "index": 141,
         "type": "choice",
         "score": 0.5,
-        "content": "假设employees表中empid列为主键，并且为自动增长的标识列，同时还有empgrade列和empsalary列和empsalarygrade列，所有列的数据类型都是整数，目前还没有数据，则执行插入语句： insert employees(empid,empgrade,empsalarygrade) values(1,2,3) 运行结果是（）",
+        "content": "假设 employees 表中 empid 列为主键，并且为自动增长的标识列，同时还有 empgrade 列和 empsalary 列和 empsalarygrade 列，所有列的数据类型都是整数，目前还没有数据，则执行插入语句：\n```sql\nINSERT INTO employees (empid, empgrade, empsalarygrade) VALUES (1, 2, 3);\n```\n运行结果是（ ）。",
         "options": [
           "插入数据成功，empid列的数据为1",
           "插入数据成功，empid列的数据为2",
@@ -24430,7 +24430,7 @@ window.EXAM_PAPERS = [
         "index": 150,
         "type": "choice",
         "score": 0.5,
-        "content": "以上程序的输出结果是？\n```java\npublic class Test {\n    public static void fun(int a, int b, int c) {\n        c = a + b;\n    }\n    public static void main(String[] args) {\n        int c = 0;\n        fun(2, 3, c);\n        System.out.println(c);\n    }\n}\n```",
+        "content": "```java\npublic class Test {\n    public static void fun(int a, int b, int c) {\n        c = a + b;\n    }\n\n    public static void main(String[] args) {\n        int c = 0;\n        fun(2, 3, c);\n        System.out.println(c);\n    }\n}\n```\n以上程序的输出结果是？",
         "options": [
           "5",
           "2",
@@ -25120,7 +25120,7 @@ window.EXAM_PAPERS = [
         "index": 204,
         "type": "judge",
         "score": 0.5,
-        "content": "下列数组定义语句是对的：`int a[10];`",
+        "content": "下列数组定义语句是对的：int a[10];",
         "options": [
           "正确",
           "错误"

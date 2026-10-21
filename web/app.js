@@ -1341,6 +1341,13 @@
     function highlightCode(code, lang = 'java') {
         let escaped = escapeHtml(code);
 
+        // 如果是 XML / HTML 配置代码
+        if (lang === 'xml' || lang === 'html') {
+            escaped = escaped.replace(/(&lt;\/?[a-zA-Z0-9_\-]+)/g, '<span class="code-kw">$1</span>');
+            escaped = escaped.replace(/(&gt;)/g, '<span class="code-kw">$1</span>');
+            return escaped;
+        }
+
         // 1. 抽取并保护注释：/* ... */ 或 // ...
         const comments = [];
         escaped = escaped.replace(/(\/\*[\s\S]*?\*\/|\/\/[^\n]*)/g, (m) => {
@@ -1356,7 +1363,7 @@
         });
 
         // 3. 关键字语法高亮 (Java / SQL / JS / C)
-        const kwRegex = /\b(public|private|protected|class|interface|extends|implements|static|final|void|int|float|double|boolean|char|byte|short|long|new|return|if|else|for|while|do|switch|case|break|continue|default|try|catch|finally|throw|throws|import|package|true|false|null|SELECT|FROM|WHERE|ORDER\s+BY|GROUP\s+BY|INSERT|UPDATE|DELETE|DROP|ALTER|TRUNCATE|function|var|let|const|abstract|native|transient|volatile)\b/g;
+        const kwRegex = /\b(public|private|protected|class|interface|extends|implements|static|final|void|int|float|double|boolean|char|byte|short|long|new|return|if|else|for|while|do|switch|case|break|continue|default|try|catch|finally|throw|throws|import|package|true|false|null|SELECT|FROM|WHERE|ORDER\s+BY|GROUP\s+BY|INSERT|INTO|VALUES|SET|UPDATE|DELETE|DROP|ALTER|TRUNCATE|function|var|let|const|abstract|native|transient|volatile)\b/gi;
         escaped = escaped.replace(kwRegex, '<span class="code-kw">$1</span>');
 
         // 4. 数字高亮 (包括十六进制、浮点、长整型)
@@ -1425,52 +1432,43 @@
         }
     };
 
-    function isCodeSnippet(text) {
-        if (!text || text.length > 90) return false;
-        const chineseCount = (text.match(/[\u4e00-\u9fa5]/g) || []).length;
-        if (chineseCount > 4) return false;
-        
-        // 常见程序代码特征
-        if (/^[@\.\#]?[a-zA-Z_\$][a-zA-Z0-9_\$]*\(.*\)$/.test(text.trim())) return true;
-        if (text.includes(';') && (text.includes('=') || text.includes(':') || text.includes('delete') || text.includes('select') || text.includes('color'))) return true;
-        if (text.includes('{') && text.includes('}')) return true;
-        if (/^(long|int|float|double|char|boolean|String|var|let|const)\s+\w+/.test(text.trim())) return true;
-        if (/^(SELECT|DELETE|UPDATE|INSERT|DROP|ALTER|TRUNCATE|select|delete|update|insert)\b/i.test(text.trim())) return true;
-        if (/^[a-zA-Z_]\w*\[\d+\]\s*=/.test(text.trim())) return true;
-        if (/^[a-zA-Z_]\w*\s*(\+=|-=|\*=|\/=|=)/.test(text.trim())) return true;
-        if (/^<[a-zA-Z0-9_\-]+(\s+[^>]+)?>$/.test(text.trim())) return true;
-        if (/^([a-zA-Z\-]+):/.test(text.trim())) return true;
+    // 判断题目是否属于 10月28日 计算机程序设计员考卷
+    function is1028Question(q) {
+        if (q) {
+            if (q.paperId === 'paper_2026_1028') return true;
+            if (q.id && String(q.id).startsWith('2026_1028_')) return true;
+        }
+        if (state.activeModuleId === 'paper_2026_1028') return true;
+        if (state.activeModuleId === 'sim' && state.selectedSimDate === '1028') return true;
+        if (state.sessionQuestions && state.currentQuestionIndex >= 0) {
+            const curQ = state.sessionQuestions[state.currentQuestionIndex];
+            if (curQ && (curQ.paperId === 'paper_2026_1028' || (curQ.id && String(curQ.id).startsWith('2026_1028_')))) {
+                return true;
+            }
+        }
         return false;
     }
 
-    function formatOptionContent(text) {
+    // 题干格式化：仅对 10月28日 计算机考卷启用代码卡片渲染；其他所有考卷一律保持标准文本展示
+    function formatQuestionContent(text, questionObj) {
         if (!text || typeof text !== 'string') return '';
-        if (isCodeSnippet(text)) {
-            return `<code class="q-inline-code">${escapeHtml(text)}</code>`;
+
+        // 1. 基础填空槽格式化
+        const baseFormatted = text.replace(/[（(]\s*[）)]/g, '（<span class="q-blank-bracket">&nbsp;</span>）');
+
+        // 2. 严格限定：非 10月28日 试卷绝不进行任何代码卡片解析
+        if (!is1028Question(questionObj)) {
+            return baseFormatted;
         }
-        return text;
-    }
 
-    // 题干格式化：将空括号 ( ) 转换为标准填空槽，并将 Markdown 代码块解析为 IDE 代码卡片
-    function formatQuestionContent(text) {
-        if (!text || typeof text !== 'string') return '';
-
-        // 1. 填空槽格式化
-        let formatted = text.replace(/[（(]\s*[）)]/g, '（<span class="q-blank-bracket">&nbsp;</span>）');
-
-        // 2. 提取并保护 Markdown 代码块 ```lang ... ```
+        // 3. 仅对 10月28日 试卷解析 Markdown 代码块 ```lang ... ```
         const codeBlocks = [];
-        formatted = formatted.replace(/```([a-zA-Z0-9_\-\+]*)\r?\n([\s\S]*?)```/g, (match, lang, code) => {
+        let formatted = baseFormatted.replace(/```([a-zA-Z0-9_\-\+]*)\r?\n([\s\S]*?)```/g, (match, lang, code) => {
             codeBlocks.push(renderCodeBlockHtml(code.trim(), lang || 'java'));
             return `___CODE_BLOCK_${codeBlocks.length - 1}___`;
         });
 
-        // 3. 解析内联反引号代码 `code`
-        formatted = formatted.replace(/`([^`\n]+)`/g, (match, code) => {
-            return `<code class="q-inline-code">${escapeHtml(code)}</code>`;
-        });
-
-        // 4. 将题干换行符转换为 <br/>
+        // 4. 题干换行符转换为 <br/>
         formatted = formatted.replace(/\r?\n/g, '<br/>');
 
         // 5. 还原代码块
@@ -1754,7 +1752,7 @@
                 <button class="option-btn ${btnClass}" data-key="${key}">
                     <span class="flex items-center relative z-10 flex-1">
                         <span class="${badgeClass}">${key}</span>
-                        <span class="q-option-text text-base md:text-lg text-gray-800 leading-relaxed font-normal">${formatOptionContent(displayText)}</span>
+                        <span class="q-option-text text-base md:text-lg text-gray-800 leading-relaxed font-normal">${displayText}</span>
                     </span>
                     ${iconHtml}
                 </button>
@@ -1879,7 +1877,7 @@
 
                     <!-- 题干正文 -->
                     <div class="q-title-text text-lg md:text-xl font-bold text-gray-800 leading-relaxed mb-4">
-                        <span class="text-blue-600 font-black mr-1">${curIdx + 1}.</span> ${formatQuestionContent(q.content)}
+                        <span class="text-blue-600 font-black mr-1">${curIdx + 1}.</span> ${formatQuestionContent(q.content, q)}
                     </div>
 
                     <!-- 附带电路图 -->
@@ -2383,7 +2381,7 @@
         }
 
         list.innerHTML = hits.slice(0, 60).map(q => {
-            const formattedContent = formatQuestionContent(q.content);
+            const formattedContent = formatQuestionContent(q.content, q);
             const highlighted = formattedContent.split(cleanKw).join(`<mark class="bg-amber-200 text-amber-900 px-0.5 rounded font-bold">${cleanKw}</mark>`);
             const typeText = q.type === 'multiple' ? '多选' : (q.type === 'judge' ? '判断' : '单选');
             const is2026 = (q.paperId && q.paperId.startsWith('paper_2026'));
