@@ -22334,5 +22334,2872 @@ window.EXAM_PAPERS = [
         "images": []
       }
     ]
+  },
+  {
+    "id": "paper_2026_1028",
+    "name": "2026年10月28日模拟卷(精简版)",
+    "total": 210,
+    "questions": [
+      {
+        "index": 1,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列说法中正确的是（  ）",
+        "options": [
+          "sql中局部变量可以不声明就使用",
+          "sql中全局变量必须先声明再使用",
+          "sql中所有变量都必须先声明后使用",
+          "sql中只有局部变量先声明后使用，全局变量是由系统提供的，用户不能自己建立"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 2,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列选项，不是HandlerInterceptor接口中的方法的是（ ）",
+        "options": [
+          "preHandle()",
+          "postHandle()",
+          "afterCompletion()",
+          "handler()"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 3,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在 Java 中，以下哪个关键字用于在方法中声明异常？",
+        "options": [
+          "throws",
+          "throw",
+          "try",
+          "catch"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 4,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列选项中，哪个是Spring MVC的后端控制器（）",
+        "options": [
+          "HandlerMapping",
+          "HandlerAdapter",
+          "DispatcherServlet",
+          "handler"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 5,
+        "type": "choice",
+        "score": 0.5,
+        "content": "假设正在设计一个数据库应用程序，在设计过程中，数据库进行了重新规划，对原来的数据库做了调整。其中对一个很重要的表进行了简化，选择原表中的若干列组成了一个新的表结构。由于原表中已经存在了大量数据，为了把原表中的数据移动到新表中，以下（ ）方法是最好的。",
+        "options": [
+          "重新在新的数据库表中录入数据",
+          "使用数据转换服务的输出功能把原来的数据保存为文本文件，再把文本文件复制到新的数据库中",
+          "使用一个“insert into [新的表名] select [旧的表名]”的插入语句进行数据添加",
+          "使用union语句一次插入多个数据行"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 6,
+        "type": "choice",
+        "score": 0.5,
+        "content": "过滤器的配置需要在哪个文件中注册？",
+        "options": [
+          "web.xml",
+          "注解",
+          "web.xml或注解",
+          "以上都不对"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 7,
+        "type": "choice",
+        "score": 0.5,
+        "content": "（ ）将一个十六进制值赋值给一个long型变量。",
+        "options": [
+          "long number = 345L;",
+          "long number = 0345;",
+          "long number = 0345L;",
+          "long number = 0x345L;"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 8,
+        "type": "choice",
+        "score": 0.5,
+        "content": "HTML5中，用于指定页面加载后是否自动获取焦点的input属性是（ ）。",
+        "options": [
+          "form属性",
+          "autofocus属性",
+          "multiple属性",
+          "autocomplete属性"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 9,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在uni-app云开发中，db.collection().where()方法用于什么？",
+        "options": [
+          "创建数据库集合",
+          "查询数据库数据",
+          "更新数据库数据",
+          "删除数据库数据"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 10,
+        "type": "choice",
+        "score": 0.5,
+        "content": "数据库系统中，用于描述数据逻辑结构的是？",
+        "options": [
+          "存储模式",
+          "内模式",
+          "外模式",
+          "模式"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 11,
+        "type": "choice",
+        "score": 0.5,
+        "content": "类( )用于实现TCP通信的客户端程序。",
+        "options": [
+          "ServerSocket",
+          "Server",
+          "Client",
+          "Socket"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 12,
+        "type": "choice",
+        "score": 0.5,
+        "content": "JavaScript中变量提升针对哪个关键字？",
+        "options": [
+          "let",
+          "const",
+          "var",
+          "所有关键字都有"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 13,
+        "type": "choice",
+        "score": 0.5,
+        "content": "用于统计表中记录总数的SQL聚合函数是？",
+        "options": [
+          "SUM()",
+          "AVG()",
+          "COUNT()",
+          "MAX()"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 14,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下哪个是JavaScript的原始数据类型？",
+        "options": [
+          "Array",
+          "Number",
+          "Object",
+          "Function"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 15,
+        "type": "choice",
+        "score": 0.5,
+        "content": "ArrayList底层是基于什么实现的？",
+        "options": [
+          "链表",
+          "数组",
+          "哈希表",
+          "红黑树"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 16,
+        "type": "choice",
+        "score": 0.5,
+        "content": "public class ArrayList{  public static void main(String[] args){  float f1[],f2[];  f1=new float[10];  f2=f1;  System.out.println(\"f2[0]=\"+f2[0]);  }  }  请问以上程序的输出结果是什么?",
+        "options": [
+          "空指向异常",
+          "未初始化异常",
+          "f2[0] = 0.0",
+          "f2[0] =NULL"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 17,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下面选项中，用于在web.xml中配置监听器的元素是( )。",
+        "options": [
+          "<listener-url>",
+          "<url-listener>",
+          "<listener>",
+          "<listener-name>"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 18,
+        "type": "choice",
+        "score": 0.5,
+        "content": "DateFormat类可以实现字符串和日期类型之间的格式转换，其中将日期类型转换为指定的字符串格式的方法名是",
+        "options": [
+          "DateFormat",
+          "Format",
+          "PFormat",
+          "Formated"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 19,
+        "type": "choice",
+        "score": 0.5,
+        "content": "使用标签指定式选择器,让段落应用class名为test的类,下列写法正确的是(&nbsp;)",
+        "options": [
+          ".p&nbsp;.test{color:red;}",
+          "p#test{color:red;}",
+          "p.test{color:red;}",
+          ".p,test{color:red;}"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 20,
+        "type": "choice",
+        "score": 0.5,
+        "content": "Java 中的字符串比较使用什么方法？",
+        "options": [
+          "==",
+          "equals()",
+          "compareTo()",
+          "以上都不是"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 21,
+        "type": "choice",
+        "score": 0.5,
+        "content": "图像分辨率是指( )",
+        "options": [
+          "屏幕上能够显示的像素数目",
+          "用厘米表示的图像的实际尺寸大小",
+          "图像所包含的颜色数",
+          "用像素表示的数字化图像的实际大小"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 22,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在 Java 中，以下哪个关键字用于定义类？",
+        "options": [
+          "class",
+          "function",
+          "struct",
+          "object"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 23,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下关于 File 类说法错误的是：",
+        "options": [
+          "一个 File 对象代表了操作系统中的一个文件或者文件夹",
+          "可以使用 File 对象创建和删除一个文件",
+          "可以使用 File 对象创建和删除一个文件夹",
+          "只能使用 File 对象操作二进制文件。"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 24,
+        "type": "choice",
+        "score": 0.5,
+        "content": "测试驱动开发中，先编写（）",
+        "options": [
+          "测试用例",
+          "实现代码",
+          "设计文档",
+          "用户手册"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 25,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在异常处理中，如释放资源、关闭文件、关闭数据库等由（    ）来完成。",
+        "options": [
+          "try子句",
+          "catch子句",
+          "finally子句",
+          "throw子句"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 26,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列关于开启二级缓存的说法正确的是（）",
+        "options": [
+          "开启当前Mapper的namespace下的二级缓存，需要在MyBatis的核心配置mybatis-config.xml文件中通过<settings>元素开启二级缓存的全局配置",
+          "使用二级缓存前，可以通过MyBatis映射文件中的<cache>元素来完成",
+          "开启当前Mapper的namespace下的二级缓存，可以通过MyBatis映射文件中的<cache>元素来完成",
+          "以上说法都正确"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 27,
+        "type": "choice",
+        "score": 0.5,
+        "content": "HTML语言注释的格式为( )",
+        "options": [
+          "<!--这是一行注释-->",
+          "//--这是一行注释",
+          "/*这是一行注释*/",
+          "#这是一行注释"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 28,
+        "type": "choice",
+        "score": 0.5,
+        "content": "完成路径选择功能是在OSI模型的( )",
+        "options": [
+          "物理层",
+          "数据链路层",
+          "网络层",
+          "运输层"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 29,
+        "type": "choice",
+        "score": 0.5,
+        "content": "电子邮件地址的一般格式为( )",
+        "options": [
+          "IP地址@域名",
+          "用户名@域名",
+          "用户名",
+          "用户名@IP地址"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 30,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列关于HTML的说法不正确的是( )。",
+        "options": [
+          "HTML语言大小写不敏感",
+          "HTML文件必须<html>开头，</html>结尾",
+          "<head></head>之间的内容是用 来设置一些网页相关属性和信息的，不可以省略",
+          "<body></body>之间的内容为浏览器中网页上显示的内容"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 31,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列关于修饰符混用的说法，错误的是( )。",
+        "options": [
+          "abstract不能与final并列修饰同一个类",
+          "abstract类中不可以有private的成员",
+          "abstract方法必须在abstract类中",
+          "static方法中能处理非static的属性"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 32,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下关于方法声明的说法中错误的是：",
+        "options": [
+          "方法名必须是全小写",
+          "方法可以具有参数，也可以不具有参数",
+          "方法返回值可以是类类型",
+          "方法中可以包含多个return语句"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 33,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在传统JDBC编程中，SQL变动需要改变Java代码，违反了开闭原则。下面哪个方法可以解决这个问题？（）",
+        "options": [
+          "MyBatis将SQL语句配置在MyBatis的映射文件中，实现了与Java代码的分离",
+          "MyBatis自动将Java对象映射至SQL语句，通过Statement中的parameterType定义输入参数的类型",
+          "MyBatis自动将SQL执行结果映射至Java对象，通过Statement中的resultType定义输出结果的类型",
+          "以上说法都不正确"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 34,
+        "type": "choice",
+        "score": 0.5,
+        "content": "Promise共有几种状态？",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "1"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 35,
+        "type": "choice",
+        "score": 0.5,
+        "content": "IP地址分为公网地址和私网地址，以下地址中属于私网地址的是",
+        "options": [
+          "10.216.33.124",
+          "127.0.0.1",
+          "172.34.21.15",
+          "192.32.146.23"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 36,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列哪个css属性可以更改样式表的字体颜色? ( )",
+        "options": [
+          "text-color=",
+          "fgcolor:",
+          "text-color:",
+          "color:"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 37,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在Java中，哪个关键字用于声明一个变量为常量？",
+        "options": [
+          "const",
+          "static",
+          "final",
+          "readonly"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 38,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列关于表格标签的说法正确的是( )",
+        "options": [
+          "<table> 标签的 bordercolor 属性的值默认为白色",
+          "当设置的属性有重叠时，表元的属性总是跟它离得最近的设置相同",
+          "<td colspan=\"2\"> 合并单元格 </td> 表示纵向合并单元格",
+          "<table> 标签的 cellpadding 属性表示表元边框与表格边框之间的宽度"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 39,
+        "type": "choice",
+        "score": 0.5,
+        "content": "可以在以下（ ）标记之间插入Java程序片。",
+        "options": [
+          "</ 和 %>",
+          "<% 和 />",
+          "<% 和 %>",
+          "<% 和 !>"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 40,
+        "type": "choice",
+        "score": 0.5,
+        "content": "JSP文件被Tomcat编译后生成的文件类型是？",
+        "options": [
+          "普通Java类",
+          "Servlet",
+          "Filter",
+          "HTML文件"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 41,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在 Java 中，以下哪个关键字用于定义抽象类？",
+        "options": [
+          "final",
+          "private",
+          "abstract",
+          "protected"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 42,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下面哪一个是有效的IP地址？",
+        "options": [
+          "202.280.130.45",
+          "130.192.290.45",
+          "192.192.190.45",
+          "280.192.33.45"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 43,
+        "type": "choice",
+        "score": 0.5,
+        "content": "定义变量： String s = \"hello\"; 以下语句中，（ ）是不合法的。",
+        "options": [
+          "s += \"World\";",
+          "s = s + 100；",
+          "s = s -100;",
+          "s = s + \"nice to meet you\";"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 44,
+        "type": "choice",
+        "score": 0.5,
+        "content": "Android操作系统是由哪家公司开发的？",
+        "options": [
+          "Google",
+          "Apple",
+          "Microsoft",
+          "Amazon"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 45,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下面关于FileInputStream 类型说法正确的是：",
+        "options": [
+          "创建FileInputStream 对象是为了读取内存中的数据",
+          "创建FileInputStream 对象时，如果硬盘上对应的文件不存在，则抛出一个异常",
+          "利用FileInputStream 对象可以创建文件",
+          "FileInputStream 对象读取文件时，只能读取文本文件。"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 46,
+        "type": "choice",
+        "score": 0.5,
+        "content": "若网络形状是由站点和连接站点的链路组成的一个闭合环，则称这种拓扑结构为（）",
+        "options": [
+          "星型拓扑",
+          "总线拓扑",
+          "环形拓扑",
+          "树形拓扑"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 47,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列代码的输出结果是： public class Main{  public static void main(String[] args){  int a=1,b=1;  if((--a>0)&&(++b<0))  a++;  System.out.println(b);  } }",
+        "options": [
+          "0",
+          "2",
+          "1",
+          "编译出错"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 48,
+        "type": "choice",
+        "score": 0.5,
+        "content": "查询所有学生信息的SQL语句正确的是？",
+        "options": [
+          "SELECT * student FROM stu;",
+          "SELECT stu FROM student;",
+          "GET ALL FROM student;",
+          "SELECT * FROM student;"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 49,
+        "type": "choice",
+        "score": 0.5,
+        "content": "用于执行带参数的SQL语句的对象是( )",
+        "options": [
+          "ResultSet",
+          "Driver",
+          "Statement",
+          "PreparedStatement"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 50,
+        "type": "choice",
+        "score": 0.5,
+        "content": "已知类的继承关系如下： class Employee;  class Manager extends Employee;  class Director extends Employee;   则以下语句能通过编译的是( )。",
+        "options": [
+          "Manager m=new Director();",
+          "Director d=new Manager();",
+          "Director d=new Employee();",
+          "Employee e=new Manager();"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 51,
+        "type": "choice",
+        "score": 0.5,
+        "content": "数字签名技术的使用，确保了信息的（）",
+        "options": [
+          "保密性",
+          "可控性",
+          "可用性",
+          "不可否认性"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 52,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列标识符（ ）是不合法的。",
+        "options": [
+          "_underscore",
+          "5Intel",
+          "Intel5",
+          "$value$"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 53,
+        "type": "choice",
+        "score": 0.5,
+        "content": "给已有表添加字段的关键字是？",
+        "options": [
+          "ALTER TABLE … ADD",
+          "MODIFY TABLE … ADD",
+          "CHANGE TABLE … ADD",
+          "UPDATE TABLE … ADD"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 54,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列（）语句可以用来从while语句块中退出",
+        "options": [
+          "close",
+          "break",
+          "exit",
+          "以上都是"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 55,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在微型计算机中,最核心、最关键的部件是（）",
+        "options": [
+          "主板",
+          "CPU",
+          "内存",
+          "显卡"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 56,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列关于MyBatis映射文件中加载关联关系对象的方式说法正确的是（）",
+        "options": [
+          "嵌套结果是指通过执行另外一条SQL映射语句来返回预期的复杂类型",
+          "嵌套结果是使用嵌套结果映射来处理重复的联合结果的子集",
+          "嵌套查询是使用嵌套结果映射来处理重复的联合结果的子集",
+          "以上说法都正确"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 57,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下哪个是 Java 中的多态性的体现？",
+        "options": [
+          "方法重载",
+          "方法覆盖",
+          "抽象方法",
+          "以上都是"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 58,
+        "type": "choice",
+        "score": 0.5,
+        "content": "关于以下程序段，正确的说法是( )。 1． String s1=“a”+“b”; 2． String s2=new String(s1); 3． if(s1==s2) 4． System.out.println(“= = is succeeded”); 5． if (s1.equals(s2)) 6． System.out.println(“.equals() is succeeded”);",
+        "options": [
+          "行4与行6都将执行",
+          "行4执行，行6不执行",
+          "行6执行，行4不执行",
+          "行4、行6都不执行"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 59,
+        "type": "choice",
+        "score": 0.5,
+        "content": "事务提交的命令是？",
+        "options": [
+          "ROLLBACK",
+          "BACK",
+          "close",
+          "COMMIT"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 60,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列关于表格标签的说法正确的是（ ）",
+        "options": [
+          "<table>标签的bordercolor属性的默认值为白色",
+          "<td colspan=\"2\"></td>表示纵向合并单元格",
+          "当设置的属性有重叠时，单元格的属性总是跟它离得最近的设置相同",
+          "<table>标签的cellpadding属性表示单元格边框与表格边框之间的宽度"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 61,
+        "type": "choice",
+        "score": 0.5,
+        "content": "按id降序排序的语法正确的是？",
+        "options": [
+          "ORDER BY id ASC",
+          "SORT BY id DESC",
+          "ORDER BY id DESC",
+          "GROUP BY id DESC"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 62,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在某办公室内铺设一个小型局域网,总共有4台PC机需要通过一台集线器连接起来。采用的线缆类型为5类双绞线。则任意两台PC机的间隔距离不要超过()",
+        "options": [
+          "50M",
+          "200M",
+          "300M",
+          "1000M"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 63,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下删除stu表成绩小于60的记录，可是实现的代码是（）",
+        "options": [
+          "delete stu where score<60;",
+          "delete from stu where score<60;",
+          "delete stu",
+          "truncate stu where score<60;"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 64,
+        "type": "choice",
+        "score": 0.5,
+        "content": "对象的特性在类中表示为变量,成为类的（ ）",
+        "options": [
+          "对象",
+          "属性",
+          "方法",
+          "数据类型"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 65,
+        "type": "choice",
+        "score": 0.5,
+        "content": "不属于白盒测试的技术是（）",
+        "options": [
+          "路径覆盖",
+          "判定覆盖",
+          "边界值分析法",
+          "条件覆盖"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 66,
+        "type": "choice",
+        "score": 0.5,
+        "content": "每段文字都需要首行缩进两个字的距离，该设置什么属性（ ）",
+        "options": [
+          "text-transform",
+          "text-align",
+          "text-indent",
+          "text-decoration"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 67,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下有关<properties>元素说法错误的是（）",
+        "options": [
+          "<properties>是一个配置属性的元素，该元素的作用是读取外部文件的配置信息",
+          "使用<property... />元素配置数据库驱动、连接数据库的URL、连接数据库的用户名和连接数据库的密码等数据库连接参数",
+          "<properties>元素可以通过db.properties文件实现静态参数配置",
+          "以上说法都正确"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 68,
+        "type": "choice",
+        "score": 0.5,
+        "content": "（ ）不是Java的保留字或关键字。",
+        "options": [
+          "default",
+          "NULL",
+          "throws",
+          "long"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 69,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列（）可用于创建一个新表，并用存在的表的数据填充新表。",
+        "options": [
+          "select into",
+          "union",
+          "子查询",
+          "表连接"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 70,
+        "type": "choice",
+        "score": 0.5,
+        "content": "设employees表有三列empid、empgrade、empsalarygrade，并且列值都是整数类型的数据，则以下（）语句能正确执行。",
+        "options": [
+          "select empid from employees order by empid where empid=empgrade",
+          "select empid from employees where empid=empgrade=empsalarygrade",
+          "select empid from employees order by empgrade+empsalarygrade",
+          "select empid,empgrade from employees where mpgrade+empsalarygrade"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 71,
+        "type": "choice",
+        "score": 0.5,
+        "content": "微机的销售广告中，\"17 3.0G/16G/2T\"中的2T是表示（）",
+        "options": [
+          "硬盘容量",
+          "内存容量",
+          "CPU的时钟主频为2THz",
+          "CPU的运算速度为2TIPS"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 72,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列程序的运行结果是（ ）。 int a[] = { 1, 2, 3, 4, 5, 6 }; for( int i=a.length-1; i>=0; i=i-2 ){  System.out.println( a[i] + \" \"); }",
+        "options": [
+          "6 5 4 3 2 1",
+          "6 4 2",
+          "6 5 4",
+          "5 3 1"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 73,
+        "type": "choice",
+        "score": 0.5,
+        "content": "HTML5新增的语义化标签是？",
+        "options": [
+          "<div>",
+          "<span>",
+          "<table>",
+          "<article>"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 74,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下关于抽象类说法正确的是？",
+        "options": [
+          "抽象类不能实例化",
+          "抽象类不能有抽象方法",
+          "抽象类可以实例化",
+          "抽象类没有构造方法"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 75,
+        "type": "choice",
+        "score": 0.5,
+        "content": "如果希望遍历Set中的全部元素，可以使用哪种方式？",
+        "options": [
+          "普通for循环",
+          "普通while循环",
+          "Iterator",
+          "ListIterator"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 76,
+        "type": "choice",
+        "score": 0.5,
+        "content": "块级元素说法正确的是（）",
+        "options": [
+          "块级元素和其他元素在一行显示",
+          "块级元素对宽和高生效，边距生效",
+          "块级元素对宽和高生效，边距不生效",
+          "块级元素对宽，高，边距都不生效"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 77,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在计算机网络中，所有的计算机均连接到一条公共的通信传输线路上，这种连接结构被称为()",
+        "options": [
+          "总线",
+          "星型",
+          "网型",
+          "树型"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 78,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在微信小程序中，用于页面跳转的API是？",
+        "options": [
+          "wx.navigateTo",
+          "wx.redirectTo",
+          "wx.switchTab",
+          "以上都是"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 79,
+        "type": "choice",
+        "score": 0.5,
+        "content": "表course中的列courseid是标识列，属于自动增长数据类型，标识种子是2，标识增量是3，首先插入三行数据，然后再删除一行数据，再向表中增加数据行的时候，标识列的值将是（ ）",
+        "options": [
+          "5",
+          "8",
+          "11",
+          "2"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 80,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下面语句中，哪种语句用来创建视图（   ）",
+        "options": [
+          "create view",
+          "create table",
+          "alter view",
+          "drop view"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 81,
+        "type": "choice",
+        "score": 0.5,
+        "content": "Servlet生命周期中，只执行一次的方法是？",
+        "options": [
+          "init()",
+          "service()",
+          "doGet()",
+          "destroy()"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 82,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下关于break和continue语句，叙述正确的是（ ）。",
+        "options": [
+          "break和continue语句都可以出现在switch语句中",
+          "在循环语句和switch语句之外，允许出现break和continue语句",
+          "执行循环语句中的break和continue语句都将终止循环",
+          "break和continue语句都可以出现在循环语句的循环体中"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 83,
+        "type": "choice",
+        "score": 0.5,
+        "content": "实现背景平铺效果,对应的CSS为( )。",
+        "options": [
+          "div{background-image:url(images/bg.gif);}",
+          "div{background-image:url(images/bg.gif) repeat-x;}",
+          "div{background-image:url(images/bg.gif) repeat-y;}",
+          "div{background-image:url(images/bg.gif) no-repeat;}"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 84,
+        "type": "choice",
+        "score": 0.5,
+        "content": "用于删除表中满足条件的记录的SQL语句是？",
+        "options": [
+          "DROP",
+          "TRUNCATE",
+          "DELETE",
+          "REMOVE"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 85,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列选项中,用于改变盒子模型外边距的是(&nbsp;)。",
+        "options": [
+          "margin",
+          "padding",
+          "type",
+          "border"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 86,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列信息安全控制方法，不合理的是()",
+        "options": [
+          "设置网络防火墙",
+          "限制对计算机的物理接触",
+          "用户权限设置",
+          "数据加密"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 87,
+        "type": "choice",
+        "score": 0.5,
+        "content": "DriverManager类的getConnection(String url,String user,String password)方法中，参数url的格式为jdbc:<子协议>:<子名称>，下列url中，（ ）是不正确的。",
+        "options": [
+          "“jdbc:mysql://localhost:3306/数据库名”",
+          "“jdbc:odbc:数据源”",
+          "“jdbc:oracle:thin@host:端口号:数据库名”",
+          "“jdbc:sqlserver://172.0.0.1:1443;DatabaseName=数据库名”"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 88,
+        "type": "choice",
+        "score": 0.5,
+        "content": "uniapp中的uni.getSystemInfo方法用于获取什么信息？",
+        "options": [
+          "当前用户信息",
+          "网络连接信息",
+          "系统配置信息",
+          "应用版本信息"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 89,
+        "type": "choice",
+        "score": 0.5,
+        "content": "HttpServlet定义在( )之中。",
+        "options": [
+          "javax.servlet",
+          "java.http",
+          "javax.servlet.http",
+          "javax.http"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 90,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在ER图中，用长方形和椭圆分别表示（ ）",
+        "options": [
+          "联系、属性",
+          "属性、实体",
+          "实体、属性",
+          "属性、联系"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 91,
+        "type": "choice",
+        "score": 0.5,
+        "content": "边界值分析法通常选择（）作为测试数据",
+        "options": [
+          "边界值",
+          "中间值",
+          "随机值",
+          "所有值"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 92,
+        "type": "choice",
+        "score": 0.5,
+        "content": "Java中定义类的关键字是 （ ）。",
+        "options": [
+          "public",
+          "class",
+          "static",
+          "void"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 93,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在 Java 中，以下哪个关键字用于导入类或包？",
+        "options": [
+          "include",
+          "use",
+          "load",
+          "import"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 94,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在uni-app中调用云函数，通常使用哪个API？",
+        "options": [
+          "uniCloud.callFunction",
+          "uni.callCloudFunction",
+          "cloud.callFunction",
+          "wx.cloud.callFunction"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 95,
+        "type": "choice",
+        "score": 0.5,
+        "content": "main方法是Java应用程序执行的入口点，关于main方法的方法头，( )是合法的。",
+        "options": [
+          "public static void main( )",
+          "public static void main(String args[])",
+          "public static int main(String[] arg)",
+          "public void main(String arg[])"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 96,
+        "type": "choice",
+        "score": 0.5,
+        "content": "用于从多个表中查询数据的连接类型是？",
+        "options": [
+          "EXCEPT",
+          "UNION",
+          "INTERSECT",
+          "JOIN"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 97,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下面（ ）是不合法的标识符。",
+        "options": [
+          "$persons;",
+          "TwoUsers;",
+          "*point;",
+          "_endline;"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 98,
+        "type": "choice",
+        "score": 0.5,
+        "content": "负载测试是（）",
+        "options": [
+          "超出负载",
+          "预期负载下测试",
+          "无负载",
+          "最大负载"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 99,
+        "type": "choice",
+        "score": 0.5,
+        "content": "为了更方便的控制网页中各种各样的字体,CSS提供了字体样式属性。下面选项中,设置字号大小书写正确的是(&nbsp;)。",
+        "options": [
+          "{&nbsp;font-size:&nbsp;24px;&nbsp;}",
+          "{&nbsp;font:&nbsp;24px;&nbsp;}",
+          "{&nbsp;fontSize:&nbsp;24px;&nbsp;}",
+          "{&nbsp;size:&nbsp;24px;&nbsp;}"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 100,
+        "type": "choice",
+        "score": 0.5,
+        "content": "假设students表中有主键scode列，score表中有外键sid列，sid列引用scode列来实施引用完整性约束，此时如果使用t-sql语句： update students set scode=‘001201’ where scode=‘01201’ 来更新students表的scode列，可能的运行结果是（ ）",
+        "options": [
+          "肯定会产生更新失败",
+          "可能会更新students表中两行数据",
+          "可能会更新score表中的一行数据",
+          "可能会更新students表中的一行数据"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 101,
+        "type": "choice",
+        "score": 0.5,
+        "content": "用于去除重复数据的关键字是( )",
+        "options": [
+          "IS NULL",
+          "LIKE",
+          "BETWEEN AND",
+          "DISTINCT"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 102,
+        "type": "choice",
+        "score": 0.5,
+        "content": "假设sales表用于存储销售信息，sname列为销售人员姓名，smoney列为销售额。现在需要查询最大一笔销售额是多少，则正确的查询语句是（ ）",
+        "options": [
+          "select max(smoney) from sales where max(smoney)>0",
+          "select sname,max(smoney) from sales where count(sname)>0",
+          "select sname,max(smoney) from sales group by sname,smoney",
+          "select max(smoney) from sales"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 103,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列选项中,不可用于定义背景颜色的是( )。",
+        "options": [
+          "background-color:red;",
+          "background-color:#f00;",
+          "background-color:rgb(255,0,0);",
+          "color:#"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 104,
+        "type": "choice",
+        "score": 0.5,
+        "content": "软件测试中，缺陷的“生命周期”不包含哪个阶段（）",
+        "options": [
+          "发现",
+          "修复",
+          "忽略",
+          "关闭"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 105,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下由 for 语句构成的循环执行的次数是( )。  for(int i = 0; true ; i++)   sum += i;",
+        "options": [
+          "编译出错",
+          "无限次",
+          "一次也不执行",
+          "1次"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 106,
+        "type": "choice",
+        "score": 0.5,
+        "content": "一个小组正在开发一个大型的银行存款系统，系统中包含上百万行客户的信息，现在正在调试sql语句，以进行查询的优化。可是，他们每次执行查询时，都返回好几百万行数据，显示查询结果非常费事。此时，比较好的解决方法是（）",
+        "options": [
+          "删除这些数据，只保留几行",
+          "删除这些数据，只保留几行 把这些数据转换到文本文件中，再在文本文件中执行查找",
+          "在查询语句中使用top子句限制返回行",
+          "在查询语句中使用order by子句进行排序"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 107,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下有关MyBatis映射文件中<insert>元素说法正确的是（）",
+        "options": [
+          "<insert>元素用于映射插入语句，在执行完元素中定义的SQL语句后，没有返回结果",
+          "<insert>元素的属性与<select>元素的属性相同",
+          "keyColumn属性用于设置第几列是主键，当主键列不是表中的第一列时需要设置",
+          "useGeneratedKeys（仅对insert有用）此属性会使MyBatis使用JDBC的getGeneratedKeys()方法来获取由数据库内部生产的主键"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 108,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列属性中，不属于@Results注解的是（）",
+        "options": [
+          "column",
+          "property",
+          "size",
+          "one"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 109,
+        "type": "choice",
+        "score": 0.5,
+        "content": "IP地址由一组　　的二进制数字组成。",
+        "options": [
+          "8位",
+          "16位",
+          "32位",
+          "64位"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 110,
+        "type": "choice",
+        "score": 0.5,
+        "content": "关于flex说法正确的是（ ）",
+        "options": [
+          "flex 属性用于指定弹性子元素如何分配空间",
+          "flex:1应该写在弹性元素上",
+          "设置flex:1无意义",
+          "flex是指设置固定定位"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 111,
+        "type": "choice",
+        "score": 0.5,
+        "content": "如果是整个应用程序共享的数据，则适合放在( )中成为属性。",
+        "options": [
+          "ServletConfig",
+          "ServletContext",
+          "ServletRequest",
+          "Session"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 112,
+        "type": "choice",
+        "score": 0.5,
+        "content": "数据库事务的隔离级别中，可能导致“幻读”的是？",
+        "options": [
+          "READ UNCOMMITTED",
+          "READ COMMITTED",
+          "REPEATABLE READ",
+          "SERIALIZABLE"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 113,
+        "type": "choice",
+        "score": 0.5,
+        "content": "JavaScript中哪个方法可以将字符串转为整数？",
+        "options": [
+          "parseInt()",
+          "parseFloat()",
+          "toString()",
+          "String()"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 114,
+        "type": "choice",
+        "score": 0.5,
+        "content": "左外连接（LEFT JOIN）返回的结果是？",
+        "options": [
+          "右表所有记录",
+          "两表匹配记录",
+          "左表所有记录",
+          "两表全部记录"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 115,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下（）不是密码技术在保障信息安全中可以达到的目的",
+        "options": [
+          "实现数据保密性",
+          "防止数据被更改",
+          "验证发送者身份",
+          "防止病毒入侵"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 116,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在web.xml中预先对Servlet进行初始化设置的代码如下： <init-param> <param-name>myWord</param–nane> <param-value>hello</param-value> </init-param> 则以下获取初始化参数的语句中正确的是( )。",
+        "options": [
+          "StringmyWord=getInit(\"myWorld\");",
+          "StringmyWord=getInit(\"myWord\");",
+          "StringmyWord=getInitParameter(\"hello\");",
+          "StringmyWord=getInitParameter(\"myWord\");"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 117,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在CSS中,用于控制背景图像沿垂直方向平铺的是( )。",
+        "options": [
+          "background-repeat:repeat;",
+          "background-repeat:no-repeat;",
+          "backbround-repeat:repeat-x;",
+          "backbround-repeat:repeat-y;"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 118,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下（ ）能够得到今天属于哪个月份",
+        "options": [
+          "select datediff(mm,getdate())",
+          "select datepart(month,getdate())",
+          "select datepart(n,getdate())",
+          "select datename(dw,getdate())"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 119,
+        "type": "choice",
+        "score": 0.5,
+        "content": "uniapp支持的开发语言是什么？",
+        "options": [
+          "Java",
+          "Swift",
+          "Vue.js",
+          "Kotlin"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 120,
+        "type": "choice",
+        "score": 0.5,
+        "content": "缺陷严重程度由（）决定",
+        "options": [
+          "测试人员",
+          "开发人员",
+          "缺陷影响范围",
+          "项目经理"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 121,
+        "type": "choice",
+        "score": 0.5,
+        "content": "现在students表中已经存储了数据，nation列的数据存储了学生的民族信息，默认值应该为“汉族”。可是在设计表的时候这个默认值没有设置，现在已经输入了大量的数据。对于少数民族的学生，民族的信息已经输入；对于“汉族”的学生，数据都为空值。此时，要解决这个问题比较好的办法是（）",
+        "options": [
+          "在表中为该列填加not null约束",
+          "使用“update students set nation='汉族' where nation is null”进行数据更新",
+          "使用“update students set default='汉族'”进行数据更新",
+          "手动输入所有的“汉族”信息"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 122,
+        "type": "choice",
+        "score": 0.5,
+        "content": "JSON.parse()方法的作用是什么？",
+        "options": [
+          "将JSON字符串转为JavaScript对象",
+          "将JavaScript对象转为JSON字符串",
+          "解析XML为对象",
+          "格式化JSON数据"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 123,
+        "type": "choice",
+        "score": 0.5,
+        "content": "计算机的系统总线是计算机各部件间传递信息的公共通道，它分为（）",
+        "options": [
+          "数据总线和控制总线",
+          "地址总线和数据总线",
+          "数据总线、控制总线和地址总线",
+          "地址总线和控制总线"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 124,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下代码，可以补充到注释位置的代码不可以是： 11. public interface Status { 12. /* 这里可以填什么 */ int MY_VALUE = 10; 13. }",
+        "options": [
+          "final",
+          "static",
+          "private",
+          "public"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 125,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列哪一子句是异常处理的出口？",
+        "options": [
+          "try{…}子句",
+          "catch{…}子句",
+          "finally{…}子句",
+          "以上说法都不对"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 126,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在数据表employee中根据id删除员工信息，下列@Delete注解的写法正确的是（）",
+        "options": [
+          "@Delete(\"delete from employee where id = ?\")",
+          "@Delete(\"delete from employee\")",
+          "@Delete(\"delete from employee where id = #{id}\")",
+          "以上说法都不正确"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 127,
+        "type": "choice",
+        "score": 0.5,
+        "content": "下列关于<dispatcher>元素值FORWARD的作用，描述正确的是( )。",
+        "options": [
+          "表示用户直接访问页面时，Filter将调用",
+          "目标资源通过RequestDispatcher的include()方法访问时，Filter将被调用",
+          "目标资源是通过声明式异常处理机制调用时，Filter将被调用",
+          "目标资源通过RequestDispatcher的forward()方法访问时，Filter将被调用"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 128,
+        "type": "choice",
+        "score": 0.5,
+        "content": "（ ）修饰符允许对类成员的访问不依赖于该类的任何对象。",
+        "options": [
+          "abstract",
+          "return",
+          "public",
+          "static"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 129,
+        "type": "choice",
+        "score": 0.5,
+        "content": "语句覆盖要求（）",
+        "options": [
+          "每个语句至少执行一次",
+          "每个分支执行一次",
+          "每条路径执行一次",
+          "每个条件执行一次"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 130,
+        "type": "choice",
+        "score": 0.5,
+        "content": "有以下代码 public class Check{ public static void main(String args[]) throws Exception{ FileOutputStream fout = new FileOutputStream(“test.dat”); DataOutputStream dout = new DataOutputStream(fout); dout.writeInt(1); dout.writeDouble(0.01); dout.close(); } } 问：这个程序总共往文件中写入了多少字节？",
+        "options": [
+          "2",
+          "8",
+          "12",
+          "16"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 131,
+        "type": "choice",
+        "score": 0.5,
+        "content": "uniapp中的uni.hideLoading方法用于什么？",
+        "options": [
+          "显示加载提示框",
+          "隐藏加载提示框",
+          "显示弹窗",
+          "隐藏弹窗"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 132,
+        "type": "choice",
+        "score": 0.5,
+        "content": "public class Test {  public static int f(int n) {  if (n == 1)  return 1;  else  return f(n - 1) + 1;  }  public static void main(String[] args) {  int i, j = 0;  for (i = 1; i <= 3; i++)  j += f(i);  System.out.println(j);  } } 以上程序的执行结果是？",
+        "options": [
+          "1",
+          "3",
+          "6",
+          "0"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 133,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在uniapp中，如何监听页面的生命周期函数？",
+        "options": [
+          "在main.js中定义",
+          "在页面的.vue文件中定义",
+          "在App.vue中定义",
+          "在app.json中定义"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 134,
+        "type": "choice",
+        "score": 0.5,
+        "content": "回归测试的目的是（）",
+        "options": [
+          "发现新功能错误",
+          "确认修改未引入新错误",
+          "测试所有功能",
+          "验证性能"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 135,
+        "type": "choice",
+        "score": 0.5,
+        "content": "β测试在（）环境下进行",
+        "options": [
+          "开发方内部",
+          "用户实际环境",
+          "实验室",
+          "模拟环境"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 136,
+        "type": "choice",
+        "score": 0.5,
+        "content": "数据独立性中的“物理独立性”是指？",
+        "options": [
+          "应用程序与逻辑结构无关",
+          "应用程序与物理存储无关",
+          "逻辑结构与物理存储无关",
+          "外模式与概念模式无关"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 137,
+        "type": "choice",
+        "score": 0.5,
+        "content": "MVC模式中M代表什么？",
+        "options": [
+          "页面视图",
+          "控制器",
+          "模型工厂",
+          "业务模型"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 138,
+        "type": "choice",
+        "score": 0.5,
+        "content": "用于创建索引的SQL命令是？",
+        "options": [
+          "CREATE KEY",
+          "ADD INDEX",
+          "CREATE INDEX",
+          "MAKE INDEX"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 139,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下哪个是 Java 中的条件运算符？",
+        "options": [
+          "if-else",
+          "switch",
+          "?:",
+          "case"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 140,
+        "type": "choice",
+        "score": 0.5,
+        "content": "在uni-app云开发中，云函数的执行结果如何返回给客户端？",
+        "options": [
+          "使用return语句",
+          "使用console.log输出",
+          "通过回调函数",
+          "通过HTTP响应"
+        ],
+        "answer": "A",
+        "images": []
+      },
+      {
+        "index": 141,
+        "type": "choice",
+        "score": 0.5,
+        "content": "假设employees表中empid列为主键，并且为自动增长的标识列，同时还有empgrade列和empsalary列和empsalarygrade列，所有列的数据类型都是整数，目前还没有数据，则执行插入语句： insert employees(empid,empgrade,empsalarygrade) values(1,2,3) 运行结果是（）",
+        "options": [
+          "插入数据成功，empid列的数据为1",
+          "插入数据成功，empid列的数据为2",
+          "插入数据成功，empgrade列的数据为3",
+          "插入数据失败"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 142,
+        "type": "choice",
+        "score": 0.5,
+        "content": "MySQL中，以下哪个函数用于返回字符串的长度（按字节计算）？",
+        "options": [
+          "CHAR_LENGTH()",
+          "LEN()",
+          "LENGTH()",
+          "STRLEN()"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 143,
+        "type": "choice",
+        "score": 0.5,
+        "content": "Request对象用于页面跳转的方法是( )",
+        "options": [
+          "addHeader",
+          "getOutStream",
+          "sendRedirect",
+          "forward"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 144,
+        "type": "choice",
+        "score": 0.5,
+        "content": "用于删除表结构及其全部数据的命令是？",
+        "options": [
+          "DELETE TABLE",
+          "DROP TABLE",
+          "TRUNCATE TABLE",
+          "REMOVE TABLE"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 145,
+        "type": "choice",
+        "score": 0.5,
+        "content": "关系模式中，用于唯一标识元组的属性或属性组是？",
+        "options": [
+          "外键",
+          "候选键",
+          "主键",
+          "超键"
+        ],
+        "answer": "C",
+        "images": []
+      },
+      {
+        "index": 146,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下（）是增强现实的缩写",
+        "options": [
+          "VR",
+          "AR",
+          "TR",
+          "MR"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 147,
+        "type": "choice",
+        "score": 0.5,
+        "content": "uni-app云开发中，用于存储数据的云服务是？",
+        "options": [
+          "云对象",
+          "云函数",
+          "云数据库",
+          "云存储"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 148,
+        "type": "choice",
+        "score": 0.5,
+        "content": "IP数据报报头不包含哪部分",
+        "options": [
+          "版本",
+          "目的地址",
+          "可选字段",
+          "数据部分"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 149,
+        "type": "choice",
+        "score": 0.5,
+        "content": "以下IP地址中，属于C类地址的是（）。",
+        "options": [
+          "3.3.57.0",
+          "193.168.5.3",
+          "131.107.2.89",
+          "190.1.1.4"
+        ],
+        "answer": "B",
+        "images": []
+      },
+      {
+        "index": 150,
+        "type": "choice",
+        "score": 0.5,
+        "content": "public class Test {  public static void fun(int a, int b, int c) {  c = a + b;  }  public static void main(String[] args) {  int c=0;  fun(2, 3, c);  System.out.println(c);  } } 以上程序的输出结果是？",
+        "options": [
+          "5",
+          "2",
+          "3",
+          "0"
+        ],
+        "answer": "D",
+        "images": []
+      },
+      {
+        "index": 151,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下可以阻止默认事件行为的是（ ）",
+        "options": [
+          "event.preventDefault()",
+          "return false",
+          "event.stopDefault()",
+          "event.stopPropagation()"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 152,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下哪些对象是JSP默认创建、可以直接在脚本中使用的内置对象（ ）",
+        "options": [
+          "request",
+          "session",
+          "out",
+          "HttpServlet"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 153,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下关于Java异常处理描述正确的是（ ）",
+        "options": [
+          "分为受检异常和非受检异常",
+          "try块中放可能出现异常的代码",
+          "catch块用来捕获处理异常",
+          "finally块一定会执行，除非关闭虚拟机"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 154,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下关于final关键字描述正确的是（ ）",
+        "options": [
+          "final修饰的类不能被继承",
+          "final修饰的方法不能被重写",
+          "final修饰的变量值不能被修改",
+          "final修饰的变量必须初始化"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 155,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下属于JavaScript异步编程方式的是（ ）",
+        "options": [
+          "回调函数",
+          "Promise",
+          "async/await",
+          "同步循环"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 156,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下属于JSP动作标签的是（ ）",
+        "options": [
+          "jsp:include",
+          "jsp:forward",
+          "jsp:useBean",
+          "jsp:import"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 157,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下关于索引描述正确的是（ ）",
+        "options": [
+          "可以加快查询速度",
+          "主键默认会创建索引",
+          "分为普通索引和唯一索引",
+          "索引越多查询性能越好"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 158,
+        "type": "multiple",
+        "score": 1,
+        "content": "EL表达式的功能特点包含（ ）",
+        "options": [
+          "简化JSP代码编写",
+          "便捷获取域对象中的数据",
+          "支持常见运算符运算",
+          "可以直接操作数据库"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 159,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下关于ServletContext说法正确的是（ ）",
+        "options": [
+          "一个Web应用只有一个ServletContext实例",
+          "所有用户共享同一个ServletContext",
+          "可以用来实现多用户间的数据共享",
+          "每个Servlet都拥有独立的ServletContext"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 160,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下关于浅拷贝和深拷贝描述正确的是（ ）",
+        "options": [
+          "浅拷贝只拷贝对象引用",
+          "深拷贝拷贝对象的所有层级内容",
+          "JSON.parse(JSON.stringify())可以实现简单深拷贝",
+          "赋值就是浅拷贝"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 161,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下哪些操作会导致索引失效（ ）",
+        "options": [
+          "对索引列使用函数",
+          "索引列使用模糊查询’%xxx’",
+          "索引列发生隐式类型转换",
+          "索引列查询区分度高"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 162,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下可以用来作为查询条件的关键字是（ ）",
+        "options": [
+          "WHERE",
+          "HAVING",
+          "AND",
+          "ORDER BY"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 163,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下属于HTML块级元素的是（ ）",
+        "options": [
+          "div",
+          "p",
+          "h1",
+          "span"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 164,
+        "type": "multiple",
+        "score": 1,
+        "content": "在Java Web中实现会话跟踪的技术有（ ）",
+        "options": [
+          "Cookie",
+          "Session",
+          "URL重写",
+          "ServletContext"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 165,
+        "type": "multiple",
+        "score": 1,
+        "content": "Java Web实现文件上传功能需要满足的条件是（ ）",
+        "options": [
+          "form表单提交方式为POST",
+          "form表单enctype属性为multipart/form-data",
+          "存在文件类型的输入框",
+          "必须使用AJAX提交表单"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 166,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下属于HTML表单元素的是（ ）",
+        "options": [
+          "input",
+          "select",
+          "textarea",
+          "form"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 167,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下关于线程安全描述正确的是（ ）",
+        "options": [
+          "多线程访问共享资源可能出现线程安全问题",
+          "synchronized可以保证线程安全",
+          "Lock接口也可以实现同步",
+          "不可变对象一定是线程安全的"
+        ],
+        "answer": "ABCD",
+        "images": []
+      },
+      {
+        "index": 168,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下属于MySQL存储引擎的是（ ）",
+        "options": [
+          "InnoDB",
+          "MyISAM",
+          "Memory",
+          "Redis"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 169,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下关于视图描述正确的是（ ）",
+        "options": [
+          "视图是虚拟表",
+          "视图可以简化查询操作",
+          "视图可以保护敏感数据",
+          "视图会占用额外存储数据空间"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 170,
+        "type": "multiple",
+        "score": 1,
+        "content": "以下属于DOM操作方法的是（ ）",
+        "options": [
+          "getElementById()",
+          "querySelector()",
+          "appendChild()",
+          "setTimeout()"
+        ],
+        "answer": "ABC",
+        "images": []
+      },
+      {
+        "index": 171,
+        "type": "judge",
+        "score": 0.5,
+        "content": "对等网上的打印机可被网络上的任一节点使用，如同使用本地打印机一样方便。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 172,
+        "type": "judge",
+        "score": 0.5,
+        "content": "Java语言三种基本程序结构是：顺序结构、选择结构和循环结构。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 173,
+        "type": "judge",
+        "score": 0.5,
+        "content": "uniapp发布到不同平台时，需要针对每个平台进行特定的配置和调试。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 174,
+        "type": "judge",
+        "score": 0.5,
+        "content": "一个客户机可以向许多不同的服务器请求，一个服务器只能向一个客户机提供服务。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 175,
+        "type": "judge",
+        "score": 0.5,
+        "content": "100Base-T使用同轴电缆作为传输介质。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 176,
+        "type": "judge",
+        "score": 0.5,
+        "content": "缺陷的严重程度和优先级是相同的概念。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 177,
+        "type": "judge",
+        "score": 0.5,
+        "content": "性能测试属于非功能测试。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 178,
+        "type": "judge",
+        "score": 0.5,
+        "content": "Linux 是一个开源的操作系统，其源码可以免费获得。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 179,
+        "type": "judge",
+        "score": 0.5,
+        "content": "transition-delay属性规定过渡效果花费的时间。（ ）",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 180,
+        "type": "judge",
+        "score": 0.5,
+        "content": "按照覆盖的地理范围，计算机网络可以分为局域网、城域网和广域网。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 181,
+        "type": "judge",
+        "score": 0.5,
+        "content": "uniapp只支持编译到微信小程序平台。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 182,
+        "type": "judge",
+        "score": 0.5,
+        "content": "微信小程序发布前需要进行真机调试和提交审核。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 183,
+        "type": "judge",
+        "score": 0.5,
+        "content": "安全测试只检查登录功能。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 184,
+        "type": "judge",
+        "score": 0.5,
+        "content": "LAN和WAN的主要区别是通信距离和传输速率。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 185,
+        "type": "judge",
+        "score": 0.5,
+        "content": "后代选择器用来选择元素或元素组的后代,其写法就是把外层标记写在前面,内层标记写在后面,中间用空格分隔。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 186,
+        "type": "judge",
+        "score": 0.5,
+        "content": "datalist元素用于定义输入框的选项列表，列表通过datalist内的option元素进行创建。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 187,
+        "type": "judge",
+        "score": 0.5,
+        "content": "网络通信可以不遵循任何协议。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 188,
+        "type": "judge",
+        "score": 0.5,
+        "content": "星形、总线形、环形和树形是按照网络跨度分类。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 189,
+        "type": "judge",
+        "score": 0.5,
+        "content": "HashMap是java.util.Map接口的子类。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 190,
+        "type": "judge",
+        "score": 0.5,
+        "content": "交换机可多个级联。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 191,
+        "type": "judge",
+        "score": 0.5,
+        "content": "β测试由实际用户执行。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 192,
+        "type": "judge",
+        "score": 0.5,
+        "content": "FileInputStream 从方向上来分，属于输入流。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 193,
+        "type": "judge",
+        "score": 0.5,
+        "content": "目前Java语言的版权属于Sun公司。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 194,
+        "type": "judge",
+        "score": 0.5,
+        "content": "方法在Java中必须属于某个类，不存在脱离类独立存在的方法。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 195,
+        "type": "judge",
+        "score": 0.5,
+        "content": "Collection接口是Java中所有单列集合的根接口。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 196,
+        "type": "judge",
+        "score": 0.5,
+        "content": "word-spacing属性用于定义英文单词之间的间距,对中文字符无效。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 197,
+        "type": "judge",
+        "score": 0.5,
+        "content": "域名的书写方法是：顶级域名放在最左面，分配给该主机的名字放在最右面，各级名字之间用“.”隔开。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 198,
+        "type": "judge",
+        "score": 0.5,
+        "content": "异常处理本质上是向后跳转，从正常代码中跳转到专门处理异常的代码中，这样可以让程序结构更清晰。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 199,
+        "type": "judge",
+        "score": 0.5,
+        "content": "IP地址作用在OSI参考模型的数据链路层。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 200,
+        "type": "judge",
+        "score": 0.5,
+        "content": "在Java中，类必须显式定义构造函数。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 201,
+        "type": "judge",
+        "score": 0.5,
+        "content": "智能手机不能成为局域网中的客户机。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 202,
+        "type": "judge",
+        "score": 0.5,
+        "content": "Intent是Android中用于在不同组件之间传递消息的对象。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 203,
+        "type": "judge",
+        "score": 0.5,
+        "content": "Java中单行注释使用三个斜线（///）开头。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 204,
+        "type": "judge",
+        "score": 0.5,
+        "content": "下列数组定义语句是对的：int a[10];",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 205,
+        "type": "judge",
+        "score": 0.5,
+        "content": "数据加密是指把明文通过某种算法变成密文，数据解密则是指把密文恢复为明文。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 206,
+        "type": "judge",
+        "score": 0.5,
+        "content": "标签指定式选择器又称并集选择器,由两个选择器构成。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 207,
+        "type": "judge",
+        "score": 0.5,
+        "content": "局域网的安全措施首选防火墙技术。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 208,
+        "type": "judge",
+        "score": 0.5,
+        "content": "uni-app云开发中的云函数可以访问客户端的本地存储。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      },
+      {
+        "index": 209,
+        "type": "judge",
+        "score": 0.5,
+        "content": "块元素和块元素可以相互嵌套。（ ）",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "√",
+        "images": []
+      },
+      {
+        "index": 210,
+        "type": "judge",
+        "score": 0.5,
+        "content": "uni-app不支持使用原生模块进行开发。",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "answer": "×",
+        "images": []
+      }
+    ]
   }
 ];

@@ -922,6 +922,10 @@ body[data-theme="dark"] #modal-welcome-date .welcome-date-btn[data-date="1023"] 
     background-color: rgba(16, 185, 129, 0.08) !important;
     border-color: rgba(16, 185, 129, 0.35) !important;
 }
+body[data-theme="dark"] #modal-welcome-date .welcome-date-btn[data-date="1028"] {
+    background-color: rgba(168, 85, 247, 0.08) !important;
+    border-color: rgba(168, 85, 247, 0.35) !important;
+}
 body[data-theme="dark"] #modal-welcome-date .welcome-date-btn[data-date="all"] {
     background-color: rgba(30, 41, 59, 0.6) !important;
     border-color: #334155 !important;
@@ -943,6 +947,10 @@ body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="102
 body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="1023"] {
     background-color: #edfcf4 !important;
     border-color: #c5f1db !important;
+}
+body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="1028"] {
+    background-color: #faf5ff !important;
+    border-color: #e9d5ff !important;
 }
 body[data-theme="eye-care"] #modal-welcome-date .welcome-date-btn[data-date="all"] {
     background-color: #f5efe1 !important;
@@ -1584,6 +1592,24 @@ body[data-theme="eye-care"] #btn-nav-fav.bg-yellow-100 {
 body[data-theme="eye-care"] #btn-nav-fav.bg-yellow-100 .font-bold {
     color: #854d0e !important;
 }
+
+/* 10月28日专卷与四栏布局辅助样式 */
+.grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+.bg-purple-50\/70 {
+    background-color: rgba(250, 245, 255, 0.7) !important;
+}
+.hover\:bg-purple-100\/80:hover {
+    background-color: rgba(243, 232, 255, 0.8) !important;
+}
+.hover\:border-purple-400:hover {
+    border-color: #c084fc !important;
+}
+.group:hover .group-hover\:bg-purple-700 {
+    background-color: #7e22ce !important;
+}
+
 
 
 

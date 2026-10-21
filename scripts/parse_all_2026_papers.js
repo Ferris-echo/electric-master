@@ -23,6 +23,12 @@ const PAPERS_CONFIG = [
     id: 'paper_2026_1023',
     name: '2026年10月23日模拟卷(精简版)',
     date: '1023'
+  },
+  {
+    file: '2026_10_28_sim_paper.txt',
+    id: 'paper_2026_1028',
+    name: '2026年10月28日模拟卷(精简版)',
+    date: '1028'
   }
 ];
 

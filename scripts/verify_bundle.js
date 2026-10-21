@@ -3,26 +3,34 @@ const fs = require('fs');
 const html = fs.readFileSync('index.html', 'utf-8');
 
 // 1. Verify EXAM_PAPERS inlined
-const match = html.match(/window\.EXAM_PAPERS\s*=\s*(\[[\s\S]*?\]);/);
-if (!match) {
+const startMarker = 'window.EXAM_PAPERS = ';
+const startIdx = html.indexOf(startMarker);
+if (startIdx === -1) {
     console.error('FAIL: window.EXAM_PAPERS not found');
     process.exit(1);
 }
-const papers = JSON.parse(match[1]);
+const jsonStart = startIdx + startMarker.length;
+let endIdx = html.indexOf(';\r\n', jsonStart);
+if (endIdx === -1) endIdx = html.indexOf(';\n', jsonStart);
+if (endIdx === -1) {
+    console.error('FAIL: window.EXAM_PAPERS terminator not found');
+    process.exit(1);
+}
+const papers = JSON.parse(html.substring(jsonStart, endIdx));
 console.log('Total papers in bundle:', papers.length);
 let totalQ = 0;
 papers.forEach(p => {
     console.log(`- [${p.id}] ${p.name}: ${p.questions.length} questions`);
     totalQ += p.questions.length;
 });
-if (totalQ !== 1630) {
-    console.error('FAIL: expected 1630 questions, got', totalQ);
+if (totalQ !== 1840) {
+    console.error('FAIL: expected 1840 questions, got', totalQ);
     process.exit(1);
 }
-console.log('PASS: Exact 1630 questions verified across 8 papers!');
+console.log('PASS: Exact 1840 questions verified across 9 papers!');
 
-// 2. Check 2026 3-day papers isolation & question types
-const simDateIds = ['paper_2026_1021', 'paper_2026_1022', 'paper_2026_1023'];
+// 2. Check 2026 mock papers isolation & question types
+const simDateIds = ['paper_2026_1021', 'paper_2026_1022', 'paper_2026_1023', 'paper_2026_1028'];
 for (const pid of simDateIds) {
     const p = papers.find(item => item.id === pid);
     if (!p) {
@@ -44,7 +52,7 @@ for (const pid of simDateIds) {
         process.exit(1);
     }
 }
-console.log('PASS: All 3 2026 mock exam papers have exact 150 single + 20 multi + 40 judge questions!');
+console.log('PASS: All 4 2026 mock exam papers have exact 150 single + 20 multi + 40 judge questions!');
 
 // 3. Verify HTML components
 const requiredElements = [
@@ -52,6 +60,7 @@ const requiredElements = [
     'data-sim-date="1021"',
     'data-sim-date="1022"',
     'data-sim-date="1023"',
+    'data-sim-date="1028"',
     'id="btn-reselect-sim-date"',
     'id="btn-header-recite-toggle"',
     'id="btn-header-order-toggle"',
@@ -81,5 +90,5 @@ if (!html.includes('btn-quick-peek-answer')) {
 console.log('PASS: btn-quick-peek-answer button integrated in bundle!');
 
 console.log('==================================================');
-console.log('🎉 ALL 1630-QUESTION BUNDLE VERIFICATION CHECKS PASSED!');
+console.log('🎉 ALL 1840-QUESTION BUNDLE VERIFICATION CHECKS PASSED!');
 console.log('==================================================');

@@ -64,20 +64,22 @@
         }, 2200);
     }
 
-    // --- 题库解析与扁平化 (1000 题完整收录 + 2026年 10月21/22/23日 三天考前精简特训卷各 210 题，全库总计 1630 题) ---
+    // --- 题库解析与扁平化 (1000 题完整收录 + 2026年 10月21/22/23/28日 四天考前精简特训卷各 210 题，全库总计 1840 题) ---
     const rawPapers = window.EXAM_PAPERS || [];
     const all1000Questions = [];
     const sim2026QuestionsByDate = {
         '1021': [],
         '1022': [],
-        '1023': []
+        '1023': [],
+        '1028': []
     };
     const allQuestionsPool = [];
 
     const SIM_DATES = {
         '1021': { id: 'paper_2026_1021', date: '1021', name: '10月21日', title: '2026年10月21日模拟卷(精简版)', total: 210 },
         '1022': { id: 'paper_2026_1022', date: '1022', name: '10月22日', title: '2026年10月22日模拟卷(精简版)', total: 210 },
-        '1023': { id: 'paper_2026_1023', date: '1023', name: '10月23日', title: '2026年10月23日模拟卷(精简版)', total: 210 }
+        '1023': { id: 'paper_2026_1023', date: '1023', name: '10月23日', title: '2026年10月23日模拟卷(精简版)', total: 210 },
+        '1028': { id: 'paper_2026_1028', date: '1028', name: '10月28日', title: '2026年10月28日模拟卷(精简版)', total: 210 }
     };
 
     rawPapers.forEach((paper) => {
@@ -97,6 +99,8 @@
                 sim2026QuestionsByDate['1022'].push(item);
             } else if (paper.id === 'paper_2026_1023') {
                 sim2026QuestionsByDate['1023'].push(item);
+            } else if (paper.id === 'paper_2026_1028') {
+                sim2026QuestionsByDate['1028'].push(item);
             } else {
                 all1000Questions.push(item);
             }
@@ -126,7 +130,7 @@
     // --- 状态定义 (各模块完全独立进度架构) ---
     const state = {
         activeModuleId: 'full_all',
-        selectedSimDate: '1021', // '1021' | '1022' | '1023'
+        selectedSimDate: '1021', // '1021' | '1022' | '1023' | '1028'
         recentModuleId: 'paper_2026_all', // 记录最近练习过的试卷模块
         recentSimDate: '1021',           // 记录最近练习的考期
         orderMode: 'seq',                // 'seq' (正常顺序) | 'shuffle' (题型内乱序)
@@ -146,6 +150,7 @@
             'paper_2026_all_1021': 0, 'paper_2026_choice_1021': 0, 'paper_2026_multiple_1021': 0, 'paper_2026_judge_1021': 0, 'paper_2026_exam_1021': 0,
             'paper_2026_all_1022': 0, 'paper_2026_choice_1022': 0, 'paper_2026_multiple_1022': 0, 'paper_2026_judge_1022': 0, 'paper_2026_exam_1022': 0,
             'paper_2026_all_1023': 0, 'paper_2026_choice_1023': 0, 'paper_2026_multiple_1023': 0, 'paper_2026_judge_1023': 0, 'paper_2026_exam_1023': 0,
+            'paper_2026_all_1028': 0, 'paper_2026_choice_1028': 0, 'paper_2026_multiple_1028': 0, 'paper_2026_judge_1028': 0, 'paper_2026_exam_1028': 0,
             'wrong': 0,
             'favorite': 0
         },
@@ -162,7 +167,8 @@
             'paper_4': {},
             'paper_2026_all_1021': {}, 'paper_2026_choice_1021': {}, 'paper_2026_multiple_1021': {}, 'paper_2026_judge_1021': {},
             'paper_2026_all_1022': {}, 'paper_2026_choice_1022': {}, 'paper_2026_multiple_1022': {}, 'paper_2026_judge_1022': {},
-            'paper_2026_all_1023': {}, 'paper_2026_choice_1023': {}, 'paper_2026_multiple_1023': {}, 'paper_2026_judge_1023': {}
+            'paper_2026_all_1023': {}, 'paper_2026_choice_1023': {}, 'paper_2026_multiple_1023': {}, 'paper_2026_judge_1023': {},
+            'paper_2026_all_1028': {}, 'paper_2026_choice_1028': {}, 'paper_2026_multiple_1028': {}, 'paper_2026_judge_1028': {}
         },
 
         // 全局错题集与收藏集
@@ -220,7 +226,7 @@
 
             // 读取已选考期
             const simDate = localStorage.getItem('electrician_sim_date_v4');
-            if (simDate && ['1021', '1022', '1023'].includes(simDate)) {
+            if (simDate && Object.keys(SIM_DATES).includes(simDate)) {
                 state.selectedSimDate = simDate;
                 state.recentSimDate = simDate;
             } else {
@@ -229,7 +235,7 @@
             }
 
             const recDate = localStorage.getItem(STORAGE_KEY_RECENT_SIM_DATE);
-            if (recDate && ['1021', '1022', '1023'].includes(recDate)) {
+            if (recDate && Object.keys(SIM_DATES).includes(recDate)) {
                 state.recentSimDate = recDate;
             }
 
@@ -764,7 +770,8 @@
 
     function getPaperTitleInfo(paperId, rawName) {
         if (paperId && (paperId.startsWith('paper_2026') || paperId === 'paper_2026_all')) {
-            const datePart = paperId.includes('1022') ? '1022' : (paperId.includes('1023') ? '1023' : (state.selectedSimDate || '1021'));
+            const m = paperId.match(/10\d\d/);
+            const datePart = (m && SIM_DATES[m[0]]) ? m[0] : (state.selectedSimDate || '1021');
             const dateCfg = SIM_DATES[datePart] || SIM_DATES['1021'];
             return {
                 badge: `${dateCfg.name}精简卷`,
@@ -2215,7 +2222,7 @@
 
         const cleanKw = kw.trim();
         if (!cleanKw) {
-            list.innerHTML = `<div class="text-center text-gray-400 py-10 text-sm">输入关键词或点击上方热门考点搜索全量题库 (1630题)</div>`;
+            list.innerHTML = `<div class="text-center text-gray-400 py-10 text-sm">输入关键词或点击上方热门考点搜索全量题库 (1840题)</div>`;
             return;
         }
 
@@ -2254,7 +2261,8 @@
                 const qId = item.getAttribute('data-qid');
                 closeSearchModal();
                 if (paperId && paperId.startsWith('paper_2026')) {
-                    const datePart = paperId.includes('1022') ? '1022' : (paperId.includes('1023') ? '1023' : '1021');
+                    const m = paperId.match(/10\d\d/);
+                    const datePart = (m && SIM_DATES[m[0]]) ? m[0] : (state.selectedSimDate || '1021');
                     setSimDate(datePart);
                     state.activeModuleId = 'paper_2026_all';
                     const listForDate = getSim2026Questions(datePart);
@@ -3299,10 +3307,10 @@
         if (statEl) statEl.textContent = `已刷 ${curDone} / ${curTotal} 题`;
         if (pctEl) pctEl.textContent = `${curPct}%`;
 
-        // 2. 2026 考前特训卷 (1021, 1022, 1023)
+        // 2. 2026 考前特训卷 (1021, 1022, 1023, 1028)
         const list2026 = document.getElementById('manage-list-2026');
         if (list2026) {
-            list2026.innerHTML = ['1021', '1022', '1023'].map(dateKey => {
+            list2026.innerHTML = Object.keys(SIM_DATES).map(dateKey => {
                 const cfg = SIM_DATES[dateKey];
                 const ans = state.moduleAnswers[`paper_2026_all_${dateKey}`] || {};
                 const done = Object.keys(ans).length;
@@ -3444,10 +3452,10 @@
         const modal = document.getElementById('modal-paper-selector');
         if (!modal) return;
 
-        // 1. 2026 考前精简特训卷 (1021, 1022, 1023)
+        // 1. 2026 考前精简特训卷 (1021, 1022, 1023, 1028)
         const list2026 = document.getElementById('paper-selector-list-2026');
         if (list2026) {
-            list2026.innerHTML = ['1021', '1022', '1023'].map(dateKey => {
+            list2026.innerHTML = Object.keys(SIM_DATES).map(dateKey => {
                 const cfg = SIM_DATES[dateKey];
                 const ans = state.moduleAnswers[`paper_2026_all_${dateKey}`] || {};
                 const done = Object.keys(ans).length;

@@ -22,7 +22,7 @@
         <div class="md:hidden bg-blue-700 text-white px-4 py-2.5 flex justify-between items-center shadow-md z-30 sticky top-0">
             <h1 class="font-black text-base flex items-center gap-1.5">
                 <span id="icon-lightning-mobile"></span> 高级电工刷题
-                <span class="text-[9px] bg-emerald-600 text-white px-1.5 py-0.5 rounded-full font-mono font-bold">v4.5</span>
+                <span class="text-[9px] bg-emerald-600 text-white px-1.5 py-0.5 rounded-full font-mono font-bold">v4.6</span>
             </h1>
             <div class="flex items-center gap-2">
                 <button id="btn-mobile-search" class="px-2.5 py-1.5 bg-blue-800/70 hover:bg-blue-800 rounded-xl text-white font-bold text-xs flex items-center gap-1 transition shadow-xs cursor-pointer" title="全库搜题">
@@ -43,7 +43,7 @@
                 <div>
                     <h1 class="text-xl font-black tracking-wide flex items-center gap-2">
                         <span id="icon-lightning"></span> 电工刷题宝典
-                        <span class="text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full font-mono font-bold">v4.5</span>
+                        <span class="text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full font-mono font-bold">v4.6</span>
                     </h1>
                     <p class="text-blue-100 text-xs mt-1 font-medium">国家职业资格 · 高级维修电工题库</p>
                 </div>
@@ -85,7 +85,7 @@
                     </div>
 
                     <!-- 考前冲刺日期分段选择器 (Segmented Date Tabs) -->
-                    <div class="grid grid-cols-3 gap-1 bg-gray-100 p-1 rounded-xl mb-2">
+                    <div class="grid grid-cols-4 gap-1 bg-gray-100 p-1 rounded-xl mb-2">
                         <button class="sim-date-tab-btn py-1 px-1 rounded-lg text-xs font-bold text-center flex flex-col items-center justify-center transition" data-sim-date="1021">
                             <span>10月21日</span>
                             <span class="text-[9px] font-normal opacity-80" id="tab-sub-1021">210题</span>
@@ -97,6 +97,10 @@
                         <button class="sim-date-tab-btn py-1 px-1 rounded-lg text-xs font-bold text-center flex flex-col items-center justify-center transition" data-sim-date="1023">
                             <span>10月23日</span>
                             <span class="text-[9px] font-normal opacity-80" id="tab-sub-1023">210题</span>
+                        </button>
+                        <button class="sim-date-tab-btn py-1 px-1 rounded-lg text-xs font-bold text-center flex flex-col items-center justify-center transition" data-sim-date="1028">
+                            <span>10月28日</span>
+                            <span class="text-[9px] font-normal opacity-80" id="tab-sub-1028">210题</span>
                         </button>
                     </div>
 
@@ -397,7 +401,7 @@
                         </span>
                     </div>
                     <p class="text-xs text-gray-400 max-w-xs leading-relaxed">
-                        正在载入 1630 道精选理论真题与高清电气图库...
+                        正在载入 1840 道精选理论真题与高清电气图库...
                     </p>
                 </div>
             </div>
@@ -735,7 +739,7 @@
             <div class="mb-1.5"><span class="text-xs font-black text-amber-800 bg-amber-100 border border-amber-300 px-2.5 py-0.5 rounded-full inline-flex items-center gap-1"><span>⚡</span> 考前专项精简特训卷全新上线</span></div>
             <h3 class="text-lg sm:text-xl font-black text-gray-900 mb-1">请选择您的考试日期</h3>
             <p class="text-xs text-gray-500 mb-4 leading-relaxed">
-                系统收录了考前三天精简考卷，点击直接开始针对性特训：
+                系统收录了考前多期精简考卷，点击直接开始针对性特训：
             </p>
 
             <div class="space-y-2.5 text-left mb-4">
@@ -785,6 +789,23 @@
                         </div>
                     </div>
                     <div class="flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 group-hover:bg-emerald-700 text-white shadow-sm flex items-center gap-1 transition whitespace-nowrap">
+                        <span>进入</span>
+                        <span class="text-[10px]">➔</span>
+                    </div>
+                </button>
+
+                <!-- 10月28日 -->
+                <button class="welcome-date-btn w-full p-3 sm:p-3.5 rounded-2xl border-2 border-purple-200 bg-purple-50/70 hover:bg-purple-100/80 hover:border-purple-400 transition flex items-center justify-between gap-2 group q-bounce-btn cursor-pointer" data-date="1028">
+                    <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+                        <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex-shrink-0 flex items-center justify-center text-base font-black shadow-sm">
+                            28
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <div class="font-black text-sm text-gray-900 truncate">10月28日考生特训卷</div>
+                            <div class="text-[11px] text-gray-500 mt-0.5 truncate">精简 210 题 · 单选150/多选20/判断40</div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold bg-purple-600 group-hover:bg-purple-700 text-white shadow-sm flex items-center gap-1 transition whitespace-nowrap">
                         <span>进入</span>
                         <span class="text-[10px]">➔</span>
                     </div>
@@ -1125,7 +1146,7 @@
             <!-- 选项卡 Tabs (3大模块分类，减少垂直长屏堆叠) -->
             <div class="flex items-center bg-gray-100 p-1 rounded-xl gap-1 text-xs font-bold mb-2 flex-shrink-0">
                 <button id="tab-manage-2026" class="tab-manage-btn flex-1 py-1.5 rounded-lg text-center transition cursor-pointer bg-white text-blue-700 shadow-sm" data-target="manage-panel-2026">
-                    🔥 2026特训 (3套)
+                    🔥 2026特训 (4套)
                 </button>
                 <button id="tab-manage-papers" class="tab-manage-btn flex-1 py-1.5 rounded-lg text-center transition cursor-pointer text-gray-600 hover:text-gray-900" data-target="manage-panel-papers">
                     📑 历年真题 (5套)
