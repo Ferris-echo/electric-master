@@ -7447,6 +7447,24 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
         }
     };
 
+    // 安全 HTML 转义：转义除 <img> 标签（如数学物理公式图）以外的所有 HTML 实体，防止标签被浏览器吞噬或破坏布局
+    function safeEscapeHtmlPreservingImages(str) {
+        if (!str || typeof str !== 'string') return '';
+        const images = [];
+        let text = str.replace(/<img\b[^>]*>/gi, (m) => {
+            images.push(m);
+            return `___IMG_PLACEHOLDER_${images.length - 1}___`;
+        });
+
+        text = escapeHtml(text);
+
+        text = text.replace(/___IMG_PLACEHOLDER_(\d+)___/g, (m, idx) => {
+            return images[parseInt(idx, 10)];
+        });
+
+        return text;
+    }
+
     // 判断题目是否属于 10月28日 计算机程序设计员考卷
     function is1028Question(q) {
         if (q) {
@@ -7468,28 +7486,44 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
     function formatQuestionContent(text, questionObj) {
         if (!text || typeof text !== 'string') return '';
 
-        // 1. 基础填空槽格式化
-        const baseFormatted = text.replace(/[（(]\s*[）)]/g, '（<span class="q-blank-bracket">&nbsp;</span>）');
+        // 1. 抽取并保护已有 <img> 标签（如物理公式图）
+        const images = [];
+        let workingText = text.replace(/<img\b[^>]*>/gi, (m) => {
+            images.push(m);
+            return `___IMG_PLACEHOLDER_${images.length - 1}___`;
+        });
 
-        // 2. 严格限定：非 10月28日 试卷绝不进行任何代码卡片解析
-        if (!is1028Question(questionObj)) {
-            return baseFormatted;
+        // 2. 如果是 10.28 考卷，抽取并保护 Markdown 代码块
+        const codeBlocks = [];
+        if (is1028Question(questionObj)) {
+            workingText = workingText.replace(/```([a-zA-Z0-9_\-\+]*)\r?\n([\s\S]*?)```/g, (match, lang, code) => {
+                codeBlocks.push(renderCodeBlockHtml(code.trim(), lang || 'java'));
+                return `___CODE_BLOCK_${codeBlocks.length - 1}___`;
+            });
         }
 
-        // 3. 仅对 10月28日 试卷解析 Markdown 代码块 ```lang ... ```
-        const codeBlocks = [];
-        let formatted = baseFormatted.replace(/```([a-zA-Z0-9_\-\+]*)\r?\n([\s\S]*?)```/g, (match, lang, code) => {
-            codeBlocks.push(renderCodeBlockHtml(code.trim(), lang || 'java'));
-            return `___CODE_BLOCK_${codeBlocks.length - 1}___`;
-        });
+        // 3. 对题干普通文本进行 HTML 实体转义（确保 <properties>、<insert>、<dispatcher> 等标签正常显示而不被吞掉）
+        let formatted = escapeHtml(workingText);
 
-        // 4. 题干换行符转换为 <br/>
+        // 4. 将转义后的空括号 ( ) 转换为标准填空槽
+        formatted = formatted.replace(/[（(]\s*[）)]/g, '（<span class="q-blank-bracket">&nbsp;</span>）');
+
+        // 5. 题干换行符转换为 <br/>
         formatted = formatted.replace(/\r?\n/g, '<br/>');
 
-        // 5. 还原代码块
-        formatted = formatted.replace(/___CODE_BLOCK_(\d+)___/g, (m, idx) => {
-            return codeBlocks[parseInt(idx, 10)];
-        });
+        // 6. 还原代码块
+        if (codeBlocks.length > 0) {
+            formatted = formatted.replace(/___CODE_BLOCK_(\d+)___/g, (m, idx) => {
+                return codeBlocks[parseInt(idx, 10)];
+            });
+        }
+
+        // 7. 还原公式图片
+        if (images.length > 0) {
+            formatted = formatted.replace(/___IMG_PLACEHOLDER_(\d+)___/g, (m, idx) => {
+                return images[parseInt(idx, 10)];
+            });
+        }
 
         return formatted;
     }
@@ -7767,7 +7801,7 @@ window.EXAM_PAPERS = [{"id": "paper_1", "name": "维修电工高级理论知识�
                 <button class="option-btn ${btnClass}" data-key="${key}">
                     <span class="flex items-center relative z-10 flex-1">
                         <span class="${badgeClass}">${key}</span>
-                        <span class="q-option-text text-base md:text-lg text-gray-800 leading-relaxed font-normal">${displayText}</span>
+                        <span class="q-option-text text-base md:text-lg text-gray-800 leading-relaxed font-normal">${safeEscapeHtmlPreservingImages(displayText)}</span>
                     </span>
                     ${iconHtml}
                 </button>
