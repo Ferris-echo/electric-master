@@ -1328,10 +1328,157 @@
         renderQuestionCard();
     }
 
-    // 题干格式化：将空括号 ( ) 或 （ ） 优雅转换为带宽敞填空槽与底线的标准大括号
+    // --- 计算机程序代码块与高亮格式化核心引擎 ---
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    function highlightCode(code, lang = 'java') {
+        let escaped = escapeHtml(code);
+
+        // 1. 抽取并保护注释：/* ... */ 或 // ...
+        const comments = [];
+        escaped = escaped.replace(/(\/\*[\s\S]*?\*\/|\/\/[^\n]*)/g, (m) => {
+            comments.push(m);
+            return `___COMMENT_${comments.length - 1}___`;
+        });
+
+        // 2. 抽取并保护字符串字面量："..." 或 '...' 或 “...”
+        const strings = [];
+        escaped = escaped.replace(/(&quot;[\s\S]*?&quot;|'[^'\n]*'|“[^”\n]*”)/g, (m) => {
+            strings.push(m);
+            return `___STRING_${strings.length - 1}___`;
+        });
+
+        // 3. 关键字语法高亮 (Java / SQL / JS / C)
+        const kwRegex = /\b(public|private|protected|class|interface|extends|implements|static|final|void|int|float|double|boolean|char|byte|short|long|new|return|if|else|for|while|do|switch|case|break|continue|default|try|catch|finally|throw|throws|import|package|true|false|null|SELECT|FROM|WHERE|ORDER\s+BY|GROUP\s+BY|INSERT|UPDATE|DELETE|DROP|ALTER|TRUNCATE|function|var|let|const|abstract|native|transient|volatile)\b/g;
+        escaped = escaped.replace(kwRegex, '<span class="code-kw">$1</span>');
+
+        // 4. 数字高亮 (包括十六进制、浮点、长整型)
+        escaped = escaped.replace(/\b(0x[0-9a-fA-F]+|\d+(?:\.\d+)?[fFdDlL]?)\b/g, '<span class="code-num">$1</span>');
+
+        // 5. 类名与类型高亮 (大写驼峰命名)
+        escaped = escaped.replace(/\b([A-Z][a-zA-Z0-9_]*)\b/g, '<span class="code-type">$1</span>');
+
+        // 6. 函数与方法调用高亮 (括号前标识符)
+        escaped = escaped.replace(/\b([a-z_][a-zA-Z0-9_]*)\s*(?=\()/g, '<span class="code-fn">$1</span>');
+
+        // 7. 还原字符串并加上高亮
+        escaped = escaped.replace(/___STRING_(\d+)___/g, (m, idx) => {
+            return `<span class="code-str">${strings[idx]}</span>`;
+        });
+
+        // 8. 还原注释并加上高亮
+        escaped = escaped.replace(/___COMMENT_(\d+)___/g, (m, idx) => {
+            return `<span class="code-comment">${comments[idx]}</span>`;
+        });
+
+        return escaped;
+    }
+
+    function renderCodeBlockHtml(codeText, lang = 'java') {
+        const langLabel = (lang || 'code').toUpperCase();
+        const highlighted = highlightCode(codeText, lang);
+        return `
+            <div class="code-card-wrapper my-3.5 rounded-2xl overflow-hidden shadow-sm border border-slate-700/60 bg-slate-900 text-left font-normal select-text">
+                <div class="code-card-header px-4 py-2 bg-slate-800/90 border-b border-slate-700/60 flex items-center justify-between text-xs text-slate-400">
+                    <div class="flex items-center gap-2">
+                        <div class="code-card-dots flex items-center gap-1.5 mr-1">
+                            <span class="code-card-dot-red"></span>
+                            <span class="code-card-dot-yellow"></span>
+                            <span class="code-card-dot-green"></span>
+                        </div>
+                        <span class="font-mono text-[11px] font-bold tracking-wider text-slate-300">${langLabel}</span>
+                    </div>
+                    <button type="button" class="btn-copy-code px-2 py-0.5 rounded text-[11px] font-medium bg-slate-700/80 hover:bg-slate-600 text-slate-300 transition flex items-center gap-1 cursor-pointer" onclick="copyCodeSnippet(this)">
+                        <span>📋</span> <span>复制</span>
+                    </button>
+                </div>
+                <div class="code-card-body p-3.5 sm:p-4 overflow-x-auto custom-scrollbar">
+                    <pre class="m-0 p-0 font-mono text-xs sm:text-sm leading-relaxed whitespace-pre text-slate-200"><code>${highlighted}</code></pre>
+                </div>
+            </div>
+        `;
+    }
+
+    window.copyCodeSnippet = function(btn) {
+        try {
+            const card = btn.closest('.code-card-wrapper');
+            if (!card) return;
+            const codeEl = card.querySelector('code');
+            if (!codeEl) return;
+            const text = codeEl.innerText || codeEl.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<span>✅ 已复制</span>';
+                setTimeout(() => { btn.innerHTML = orig; }, 1800);
+            }).catch(() => {
+                showToast('长按代码即可选择并复制');
+            });
+        } catch(e) {
+            showToast('长按代码即可选择并复制');
+        }
+    };
+
+    function isCodeSnippet(text) {
+        if (!text || text.length > 90) return false;
+        const chineseCount = (text.match(/[\u4e00-\u9fa5]/g) || []).length;
+        if (chineseCount > 4) return false;
+        
+        // 常见程序代码特征
+        if (/^[@\.\#]?[a-zA-Z_\$][a-zA-Z0-9_\$]*\(.*\)$/.test(text.trim())) return true;
+        if (text.includes(';') && (text.includes('=') || text.includes(':') || text.includes('delete') || text.includes('select') || text.includes('color'))) return true;
+        if (text.includes('{') && text.includes('}')) return true;
+        if (/^(long|int|float|double|char|boolean|String|var|let|const)\s+\w+/.test(text.trim())) return true;
+        if (/^(SELECT|DELETE|UPDATE|INSERT|DROP|ALTER|TRUNCATE|select|delete|update|insert)\b/i.test(text.trim())) return true;
+        if (/^[a-zA-Z_]\w*\[\d+\]\s*=/.test(text.trim())) return true;
+        if (/^[a-zA-Z_]\w*\s*(\+=|-=|\*=|\/=|=)/.test(text.trim())) return true;
+        if (/^<[a-zA-Z0-9_\-]+(\s+[^>]+)?>$/.test(text.trim())) return true;
+        if (/^([a-zA-Z\-]+):/.test(text.trim())) return true;
+        return false;
+    }
+
+    function formatOptionContent(text) {
+        if (!text || typeof text !== 'string') return '';
+        if (isCodeSnippet(text)) {
+            return `<code class="q-inline-code">${escapeHtml(text)}</code>`;
+        }
+        return text;
+    }
+
+    // 题干格式化：将空括号 ( ) 转换为标准填空槽，并将 Markdown 代码块解析为 IDE 代码卡片
     function formatQuestionContent(text) {
         if (!text || typeof text !== 'string') return '';
-        return text.replace(/[（(]\s*[）)]/g, '（<span class="q-blank-bracket">&nbsp;</span>）');
+
+        // 1. 填空槽格式化
+        let formatted = text.replace(/[（(]\s*[）)]/g, '（<span class="q-blank-bracket">&nbsp;</span>）');
+
+        // 2. 提取并保护 Markdown 代码块 ```lang ... ```
+        const codeBlocks = [];
+        formatted = formatted.replace(/```([a-zA-Z0-9_\-\+]*)\r?\n([\s\S]*?)```/g, (match, lang, code) => {
+            codeBlocks.push(renderCodeBlockHtml(code.trim(), lang || 'java'));
+            return `___CODE_BLOCK_${codeBlocks.length - 1}___`;
+        });
+
+        // 3. 解析内联反引号代码 `code`
+        formatted = formatted.replace(/`([^`\n]+)`/g, (match, code) => {
+            return `<code class="q-inline-code">${escapeHtml(code)}</code>`;
+        });
+
+        // 4. 将题干换行符转换为 <br/>
+        formatted = formatted.replace(/\r?\n/g, '<br/>');
+
+        // 5. 还原代码块
+        formatted = formatted.replace(/___CODE_BLOCK_(\d+)___/g, (m, idx) => {
+            return codeBlocks[parseInt(idx, 10)];
+        });
+
+        return formatted;
     }
 
     // --- 错题本单独删除单题记录核心逻辑 ---
@@ -1607,7 +1754,7 @@
                 <button class="option-btn ${btnClass}" data-key="${key}">
                     <span class="flex items-center relative z-10 flex-1">
                         <span class="${badgeClass}">${key}</span>
-                        <span class="q-option-text text-base md:text-lg text-gray-800 leading-relaxed font-normal">${displayText}</span>
+                        <span class="q-option-text text-base md:text-lg text-gray-800 leading-relaxed font-normal">${formatOptionContent(displayText)}</span>
                     </span>
                     ${iconHtml}
                 </button>
@@ -1731,9 +1878,9 @@
                     </div>
 
                     <!-- 题干正文 -->
-                    <h2 class="q-title-text text-lg md:text-xl font-bold text-gray-800 leading-relaxed mb-4">
+                    <div class="q-title-text text-lg md:text-xl font-bold text-gray-800 leading-relaxed mb-4">
                         <span class="text-blue-600 font-black mr-1">${curIdx + 1}.</span> ${formatQuestionContent(q.content)}
-                    </h2>
+                    </div>
 
                     <!-- 附带电路图 -->
                     ${circuitImgHtml}

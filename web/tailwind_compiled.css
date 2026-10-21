@@ -4525,3 +4525,148 @@ body[data-theme="eye-care"] #btn-nav-fav.bg-yellow-100 .font-bold {
 .group:hover .group-hover\:bg-purple-700 {
     background-color: #7e22ce !important;
 }
+
+/* ==========================================================================
+   计算机程序设计员 · 代码块 (Code Card) & 内联代码 (Inline Code) 专属极客样式
+   ========================================================================== */
+.code-card-wrapper {
+    margin: 0.875rem 0;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid #334155;
+    background-color: #0f172a;
+    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.25);
+    text-align: left;
+    font-weight: normal;
+    user-select: text;
+}
+.code-card-header {
+    padding: 0.45rem 0.875rem;
+    background-color: #1e293b;
+    border-bottom: 1px solid #334155;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.code-card-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+.code-card-dot-red {
+    width: 0.625rem; height: 0.625rem; border-radius: 9999px; background-color: #f43f5e; display: inline-block;
+}
+.code-card-dot-yellow {
+    width: 0.625rem; height: 0.625rem; border-radius: 9999px; background-color: #f59e0b; display: inline-block;
+}
+.code-card-dot-green {
+    width: 0.625rem; height: 0.625rem; border-radius: 9999px; background-color: #10b981; display: inline-block;
+}
+.code-card-body {
+    padding: 0.875rem 1rem;
+    overflow-x: auto;
+    background-color: #0b1120;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+@media (min-width: 640px) {
+    .code-card-body {
+        font-size: 0.875rem;
+        padding: 1rem 1.25rem;
+    }
+}
+.code-kw {
+    color: #c084fc !important; /* 紫色关键字 */
+    font-weight: 700;
+}
+.code-type {
+    color: #38bdf8 !important; /* 天蓝类型/类名 */
+    font-weight: 600;
+}
+.code-fn {
+    color: #60a5fa !important; /* 亮蓝函数名 */
+}
+.code-str {
+    color: #4ade80 !important; /* 翠绿字符串 */
+}
+.code-num {
+    color: #fbbf24 !important; /* 亮琥珀数字 */
+}
+.code-comment {
+    color: #94a3b8 !important; /* 灰白斜体注释 */
+    font-style: italic;
+}
+
+/* 选项与题干内联代码标签 */
+.q-inline-code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+    font-size: 0.85em;
+    padding: 0.15rem 0.45rem;
+    margin: 0 0.2rem;
+    border-radius: 0.375rem;
+    background-color: #f1f5f9;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+    font-weight: 600;
+    word-break: break-all;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* 暗黑模式适配 */
+body[data-theme="dark"] .code-card-wrapper {
+    border-color: #334155;
+    background-color: #090d16;
+}
+body[data-theme="dark"] .code-card-header {
+    background-color: #111827;
+    border-color: #1f2937;
+}
+body[data-theme="dark"] .code-card-body {
+    background-color: #030712;
+    color: #f1f5f9;
+}
+body[data-theme="dark"] .q-inline-code {
+    background-color: #1e293b !important;
+    color: #38bdf8 !important;
+    border-color: #334155 !important;
+}
+
+/* 护眼模式暖棕温和纸质代码卡片 */
+body[data-theme="eye-care"] .code-card-wrapper {
+    background-color: #27231e !important;
+    border-color: #443e35 !important;
+}
+body[data-theme="eye-care"] .code-card-header {
+    background-color: #332d26 !important;
+    border-color: #443e35 !important;
+}
+body[data-theme="eye-care"] .code-card-body {
+    background-color: #1d1915 !important;
+    color: #ecd9b7 !important;
+}
+body[data-theme="eye-care"] .code-kw {
+    color: #d8b4fe !important;
+}
+body[data-theme="eye-care"] .code-type {
+    color: #7dd3fc !important;
+}
+body[data-theme="eye-care"] .code-str {
+    color: #86efac !important;
+}
+body[data-theme="eye-care"] .code-num {
+    color: #fcd34d !important;
+}
+body[data-theme="eye-care"] .q-inline-code {
+    background-color: #f5eedf !important;
+    color: #78350f !important;
+    border-color: #e5dcc7 !important;
+}
+
+
+
+
+
+
