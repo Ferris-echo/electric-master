@@ -23,11 +23,11 @@ papers.forEach(p => {
     console.log(`- [${p.id}] ${p.name}: ${p.questions.length} questions`);
     totalQ += p.questions.length;
 });
-if (totalQ !== 1840) {
-    console.error('FAIL: expected 1840 questions, got', totalQ);
+if (totalQ !== 2016) {
+    console.error('FAIL: expected 2016 questions, got', totalQ);
     process.exit(1);
 }
-console.log('PASS: Exact 1840 questions verified across 9 papers!');
+console.log('PASS: Exact 2016 questions verified across 10 papers!');
 
 // 2. Check 2026 mock papers isolation & question types
 const simDateIds = ['paper_2026_1021', 'paper_2026_1022', 'paper_2026_1023', 'paper_2026_1028'];
@@ -54,6 +54,21 @@ for (const pid of simDateIds) {
 }
 console.log('PASS: All 4 2026 mock exam papers have exact 150 single + 20 multi + 40 judge questions!');
 
+const pKpy = papers.find(item => item.id === 'paper_2026_kpy');
+if (!pKpy) {
+    console.error('FAIL: paper_2026_kpy not found in database');
+    process.exit(1);
+}
+const kpyChoices = pKpy.questions.filter(q => q.type === 'choice');
+const kpyMultiples = pKpy.questions.filter(q => q.type === 'multiple');
+const kpyJudges = pKpy.questions.filter(q => q.type === 'judge');
+console.log(`paper_2026_kpy breakdown: choice=${kpyChoices.length}, multiple=${kpyMultiples.length}, judge=${kpyJudges.length}`);
+if (kpyChoices.length !== 131 || kpyMultiples.length !== 45 || kpyJudges.length !== 0) {
+    console.error('FAIL: incorrect question counts in paper_2026_kpy');
+    process.exit(1);
+}
+console.log('PASS: paper_2026_kpy verified with exact 131 single + 45 multi questions!');
+
 // 3. Verify HTML components
 const requiredElements = [
     'id="modal-welcome-date"',
@@ -61,6 +76,7 @@ const requiredElements = [
     'data-sim-date="1022"',
     'data-sim-date="1023"',
     'data-sim-date="1028"',
+    'data-sim-date="kpy"',
     'id="btn-reselect-sim-date"',
     'id="btn-header-recite-toggle"',
     'id="btn-header-order-toggle"',

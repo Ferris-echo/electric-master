@@ -75,7 +75,7 @@
                     <div class="text-xs font-black text-gray-400 uppercase tracking-wider mb-2 px-2 flex items-center justify-between">
                         <span class="flex items-center gap-1.5 font-bold text-gray-800">
                             <span>🔥 2026考前精简卷</span>
-                            <span class="text-[10px] text-gray-400 font-normal">(210题)</span>
+                            <span id="title-sim-section-count" class="text-[10px] text-gray-400 font-normal">(210题)</span>
                         </span>
                         <button id="btn-reselect-sim-date" class="text-[10px] bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded-full font-bold transition flex items-center gap-1 cursor-pointer" title="切换您的考期">
                             <span>📅 更改考期</span>
@@ -83,7 +83,7 @@
                     </div>
 
                     <!-- 考前冲刺日期分段选择器 (Segmented Date Tabs) -->
-                    <div class="grid grid-cols-4 gap-1 bg-gray-100 p-1 rounded-xl mb-2">
+                    <div class="grid grid-cols-3 gap-1 bg-gray-100 p-1 rounded-xl mb-2">
                         <button class="sim-date-tab-btn py-1 px-1 rounded-lg text-xs font-bold text-center flex flex-col items-center justify-center transition" data-sim-date="1021">
                             <span>10月21日</span>
                             <span class="text-[9px] font-normal opacity-80" id="tab-sub-1021">210题</span>
@@ -100,6 +100,10 @@
                             <span>10月28日</span>
                             <span class="text-[9px] font-normal opacity-80" id="tab-sub-1028">210题</span>
                         </button>
+                        <button class="sim-date-tab-btn py-1 px-1 rounded-lg text-xs font-bold text-center flex flex-col items-center justify-center transition" data-sim-date="kpy">
+                            <span>考评员</span>
+                            <span class="text-[9px] font-normal opacity-80" id="tab-sub-kpy">176题</span>
+                        </button>
                     </div>
 
                     <div class="space-y-1.5">
@@ -108,7 +112,7 @@
                             <div class="flex-1 min-w-0">
                                 <div class="font-bold flex items-center justify-between">
                                     <span id="title-sim-all-text">精炼全卷全刷</span>
-                                    <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-bold ml-1">210题</span>
+                                    <span id="title-sim-all-badge" class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-bold ml-1">210题</span>
                                 </div>
                                 <div class="flex items-center justify-between text-[11px] text-gray-400 mt-0.5">
                                     <span id="prog-text-paper-2026-all">已刷 0 / 210 题</span>
@@ -119,15 +123,15 @@
                         </button>
                         
                         <div class="grid grid-cols-3 gap-1.5">
-                            <button class="nav-item-btn py-2 px-1 rounded-xl text-center text-xs transition-all border border-gray-100 hover:bg-slate-50 bg-white" data-module-id="paper_2026_choice" title="150道单选题">
+                            <button class="nav-item-btn py-2 px-1 rounded-xl text-center text-xs transition-all border border-gray-100 hover:bg-slate-50 bg-white" data-module-id="paper_2026_choice" title="单选题专项">
                                 <div class="font-bold text-gray-800 text-[11px]">单选专项</div>
                                 <div class="text-[10px] text-gray-400 mt-0.5" id="prog-pct-paper-2026-choice">0/150</div>
                             </button>
-                            <button class="nav-item-btn py-2 px-1 rounded-xl text-center text-xs transition-all border border-gray-100 hover:bg-slate-50 bg-white" data-module-id="paper_2026_multiple" title="20道多选题">
+                            <button class="nav-item-btn py-2 px-1 rounded-xl text-center text-xs transition-all border border-gray-100 hover:bg-slate-50 bg-white" data-module-id="paper_2026_multiple" title="多选题专项">
                                 <div class="font-bold text-purple-700 text-[11px]">多选专项</div>
                                 <div class="text-[10px] text-purple-500 font-bold mt-0.5" id="prog-pct-paper-2026-multiple">0/20</div>
                             </button>
-                            <button class="nav-item-btn py-2 px-1 rounded-xl text-center text-xs transition-all border border-gray-100 hover:bg-slate-50 bg-white" data-module-id="paper_2026_judge" title="40道判断题">
+                            <button id="btn-paper-2026-judge" class="nav-item-btn py-2 px-1 rounded-xl text-center text-xs transition-all border border-gray-100 hover:bg-slate-50 bg-white" data-module-id="paper_2026_judge" title="判断题专项">
                                 <div class="font-bold text-gray-800 text-[11px]">判断专项</div>
                                 <div class="text-[10px] text-gray-400 mt-0.5" id="prog-pct-paper-2026-judge">0/40</div>
                             </button>
@@ -142,7 +146,7 @@
                                     <span id="title-sim-exam-text" class="text-orange-950 font-bold">2026精简全真模考</span>
                                     <span class="text-[10px] bg-orange-100 text-orange-800 px-2 py-0.5 rounded-full font-bold">限时120分</span>
                                 </div>
-                                <div class="text-[10px] text-orange-600/80 font-normal mt-0.5 truncate">
+                                <div id="title-sim-exam-sub" class="text-[10px] text-orange-600/80 font-normal mt-0.5 truncate">
                                     全卷 210 题 · 自动折算 100 分制
                                 </div>
                             </div>
@@ -399,7 +403,7 @@
                         </span>
                     </div>
                     <p class="text-xs text-gray-400 max-w-xs leading-relaxed">
-                        正在载入 1840 道精选理论真题与高清电气图库...
+                        正在载入 2016 道精选理论真题与高清电气图库...
                     </p>
                 </div>
             </div>
@@ -809,6 +813,23 @@
                     </div>
                 </button>
 
+                <!-- 考评员 -->
+                <button class="welcome-date-btn w-full p-3 sm:p-3.5 rounded-2xl border-2 border-red-200 bg-red-50 hover:bg-red-100 transition flex items-center justify-between gap-2 group q-bounce-btn cursor-pointer" data-date="kpy">
+                    <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+                        <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex-shrink-0 flex items-center justify-center text-base font-black shadow-sm">
+                            考
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <div class="font-black text-sm text-gray-900 truncate">考评员理论模拟卷</div>
+                            <div class="text-[11px] text-gray-500 mt-0.5 truncate">共 176 题 · 单选131/多选45</div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold bg-red-600 text-white shadow-sm flex items-center gap-1 transition whitespace-nowrap">
+                        <span>进入</span>
+                        <span class="text-[10px]">➔</span>
+                    </div>
+                </button>
+
                 <!-- 历年全题库 -->
                 <button class="welcome-date-btn w-full p-3 sm:p-3.5 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-slate-100 hover:border-slate-300 transition flex items-center justify-between gap-2 group q-bounce-btn cursor-pointer" data-date="all">
                     <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
@@ -1006,7 +1027,7 @@
                         <span class="flex items-center gap-1.5">
                             <span class="text-amber-500">🔥</span> 2026 考前精简特训卷
                         </span>
-                        <span class="text-[10px] text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded-full font-bold">考前必做·各210题</span>
+                        <span class="text-[10px] text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded-full font-bold">考前必做·分期特训</span>
                     </div>
                     <div class="space-y-1.5" id="paper-selector-list-2026">
                         <!-- 动态渲染：1021, 1022, 1023 -->

@@ -64,23 +64,34 @@
         }, 2200);
     }
 
-    // --- 题库解析与扁平化 (1000 题完整收录 + 2026年 10月21/22/23/28日 四天考前精简特训卷各 210 题，全库总计 1840 题) ---
+    // --- 题库解析与扁平化 (1000 题完整收录 + 2026年 10月21/22/23/28日 + 考评员理论模拟卷，全库总计 2016 题) ---
     const rawPapers = window.EXAM_PAPERS || [];
     const all1000Questions = [];
     const sim2026QuestionsByDate = {
         '1021': [],
         '1022': [],
         '1023': [],
-        '1028': []
+        '1028': [],
+        'kpy': []
     };
     const allQuestionsPool = [];
 
     const SIM_DATES = {
-        '1021': { id: 'paper_2026_1021', date: '1021', name: '10月21日', title: '2026年10月21日模拟卷(精简版)', total: 210 },
-        '1022': { id: 'paper_2026_1022', date: '1022', name: '10月22日', title: '2026年10月22日模拟卷(精简版)', total: 210 },
-        '1023': { id: 'paper_2026_1023', date: '1023', name: '10月23日', title: '2026年10月23日模拟卷(精简版)', total: 210 },
-        '1028': { id: 'paper_2026_1028', date: '1028', name: '10月28日', title: '2026年10月28日模拟卷(精简版)', total: 210 }
+        '1021': { id: 'paper_2026_1021', date: '1021', name: '10月21日', title: '2026年10月21日模拟卷(精简版)', total: 210, choiceTotal: 150, multipleTotal: 20, judgeTotal: 40, shortTag: '21' },
+        '1022': { id: 'paper_2026_1022', date: '1022', name: '10月22日', title: '2026年10月22日模拟卷(精简版)', total: 210, choiceTotal: 150, multipleTotal: 20, judgeTotal: 40, shortTag: '22' },
+        '1023': { id: 'paper_2026_1023', date: '1023', name: '10月23日', title: '2026年10月23日模拟卷(精简版)', total: 210, choiceTotal: 150, multipleTotal: 20, judgeTotal: 40, shortTag: '23' },
+        '1028': { id: 'paper_2026_1028', date: '1028', name: '10月28日', title: '2026年10月28日模拟卷(精简版)', total: 210, choiceTotal: 150, multipleTotal: 20, judgeTotal: 40, shortTag: '28' },
+        'kpy':  { id: 'paper_2026_kpy',  date: 'kpy',  name: '考评员',   title: '考评员理论模拟卷',           total: 176, choiceTotal: 131, multipleTotal: 45, judgeTotal: 0,  shortTag: '考' }
     };
+
+    function extractSimDateKey(paperId) {
+        if (!paperId) return null;
+        const suffix = paperId.replace('paper_2026_', '');
+        if (SIM_DATES[suffix]) return suffix;
+        const m = paperId.match(/10\d\d/);
+        if (m && SIM_DATES[m[0]]) return m[0];
+        return null;
+    }
 
     rawPapers.forEach((paper) => {
         paper.questions.forEach((q) => {
@@ -101,6 +112,8 @@
                 sim2026QuestionsByDate['1023'].push(item);
             } else if (paper.id === 'paper_2026_1028') {
                 sim2026QuestionsByDate['1028'].push(item);
+            } else if (paper.id === 'paper_2026_kpy') {
+                sim2026QuestionsByDate['kpy'].push(item);
             } else {
                 all1000Questions.push(item);
             }
@@ -130,7 +143,7 @@
     // --- 状态定义 (各模块完全独立进度架构) ---
     const state = {
         activeModuleId: 'full_all',
-        selectedSimDate: '1021', // '1021' | '1022' | '1023' | '1028'
+        selectedSimDate: '1021', // '1021' | '1022' | '1023' | '1028' | 'kpy'
         recentModuleId: 'paper_2026_all', // 记录最近练习过的试卷模块
         recentSimDate: '1021',           // 记录最近练习的考期
         orderMode: 'seq',                // 'seq' (正常顺序) | 'shuffle' (题型内乱序)
@@ -151,6 +164,7 @@
             'paper_2026_all_1022': 0, 'paper_2026_choice_1022': 0, 'paper_2026_multiple_1022': 0, 'paper_2026_judge_1022': 0, 'paper_2026_exam_1022': 0,
             'paper_2026_all_1023': 0, 'paper_2026_choice_1023': 0, 'paper_2026_multiple_1023': 0, 'paper_2026_judge_1023': 0, 'paper_2026_exam_1023': 0,
             'paper_2026_all_1028': 0, 'paper_2026_choice_1028': 0, 'paper_2026_multiple_1028': 0, 'paper_2026_judge_1028': 0, 'paper_2026_exam_1028': 0,
+            'paper_2026_all_kpy': 0,  'paper_2026_choice_kpy': 0,  'paper_2026_multiple_kpy': 0,  'paper_2026_judge_kpy': 0,  'paper_2026_exam_kpy': 0,
             'wrong': 0,
             'favorite': 0
         },
@@ -168,7 +182,8 @@
             'paper_2026_all_1021': {}, 'paper_2026_choice_1021': {}, 'paper_2026_multiple_1021': {}, 'paper_2026_judge_1021': {},
             'paper_2026_all_1022': {}, 'paper_2026_choice_1022': {}, 'paper_2026_multiple_1022': {}, 'paper_2026_judge_1022': {},
             'paper_2026_all_1023': {}, 'paper_2026_choice_1023': {}, 'paper_2026_multiple_1023': {}, 'paper_2026_judge_1023': {},
-            'paper_2026_all_1028': {}, 'paper_2026_choice_1028': {}, 'paper_2026_multiple_1028': {}, 'paper_2026_judge_1028': {}
+            'paper_2026_all_1028': {}, 'paper_2026_choice_1028': {}, 'paper_2026_multiple_1028': {}, 'paper_2026_judge_1028': {},
+            'paper_2026_all_kpy': {},  'paper_2026_choice_kpy': {},  'paper_2026_multiple_kpy': {},  'paper_2026_judge_kpy': {}
         },
 
         // 全局错题集与收藏集
@@ -428,9 +443,8 @@
             return getSim2026Questions().filter(q => q.type === 'multiple');
         } else if (moduleId === 'paper_2026_judge') {
             return getSim2026Questions().filter(q => q.type === 'judge');
-        } else if (moduleId.startsWith('paper_2026_10')) {
-            const dateKey = moduleId.replace('paper_2026_', '');
-            return getSim2026Questions(dateKey);
+        } else if (moduleId.startsWith('paper_2026_') && extractSimDateKey(moduleId)) {
+            return getSim2026Questions(extractSimDateKey(moduleId));
         } else if (moduleId.startsWith('paper_')) {
             return all1000Questions.filter(q => q.paperId === moduleId);
         } else if (moduleId === 'wrong') {
@@ -570,7 +584,8 @@
         if (targetMode === 'shuffle') {
             showToast('🔀 已开启真随机乱序刷题 (保留单选→多选→判断题型顺序)');
         } else {
-            showToast('📋 已切换为顺序刷题 (按官方原卷 1~210 序号排列)');
+            const totalCnt = getActiveQuestions().length || 210;
+            showToast(`📋 已切换为顺序刷题 (按官方原卷 1~${totalCnt} 序号排列)`);
         }
     }
 
@@ -600,11 +615,12 @@
             if (opt2Badge) opt2Badge.textContent = '无缝衔接';
             if (opt2Desc) opt2Desc.textContent = `保留已做的 ${doneCount} 道题及答题对错，仅将后续未做的题目真随机打乱，直接无缝继续刷题！`;
         } else {
+            const totalCnt = getActiveQuestions().length || 210;
             if (iconEl) iconEl.textContent = '📋';
             if (titleEl) titleEl.textContent = '切换为顺序刷题';
             if (opt1Title) opt1Title.textContent = '清空记录，从头顺序 (推荐)';
-            if (opt1Badge) opt1Badge.textContent = '原卷 1~210 序号';
-            if (opt1Desc) opt1Desc.textContent = '清空当前卷答题历史，恢复官方原卷 1~210 序号排列，从第 1 题全新开始。';
+            if (opt1Badge) opt1Badge.textContent = `原卷 1~${totalCnt} 序号`;
+            if (opt1Desc) opt1Desc.textContent = `清空当前卷答题历史，恢复官方原卷 1~${totalCnt} 序号排列，从第 1 题全新开始。`;
             if (opt2Title) opt2Title.textContent = '保留已做记录，后续未做题恢复原卷顺序';
             if (opt2Badge) opt2Badge.textContent = '顺次排列';
             if (opt2Desc) opt2Desc.textContent = `保留已做的 ${doneCount} 道题及答题对错，后续未做的题目按官方原题序号排列，直接无缝继续刷题！`;
@@ -770,13 +786,12 @@
 
     function getPaperTitleInfo(paperId, rawName) {
         if (paperId && (paperId.startsWith('paper_2026') || paperId === 'paper_2026_all')) {
-            const m = paperId.match(/10\d\d/);
-            const datePart = (m && SIM_DATES[m[0]]) ? m[0] : (state.selectedSimDate || '1021');
+            const datePart = extractSimDateKey(paperId) || (state.selectedSimDate || '1021');
             const dateCfg = SIM_DATES[datePart] || SIM_DATES['1021'];
             return {
-                badge: `${dateCfg.name}精简卷`,
+                badge: `${dateCfg.name}卷`,
                 title: dateCfg.title,
-                sub: `${dateCfg.title} (精炼210题)`,
+                sub: `${dateCfg.title} (共${dateCfg.total}题)`,
                 color: 'text-amber-800 bg-amber-50'
             };
         }
@@ -876,18 +891,20 @@
         });
 
         // 2026 精简题库进度更新
+        const curDate = state.selectedSimDate || '1021';
+        const dateCfg = SIM_DATES[curDate] || SIM_DATES['1021'];
         const p2026Modules = [
-            { id: 'paper_2026_all', textId: 'prog-text-paper-2026-all', pctId: 'prog-pct-paper-2026-all', barId: 'prog-bar-paper-2026-all', total: 210 },
-            { id: 'paper_2026_choice', pctId: 'prog-pct-paper-2026-choice', total: 150 },
-            { id: 'paper_2026_multiple', pctId: 'prog-pct-paper-2026-multiple', total: 20 },
-            { id: 'paper_2026_judge', pctId: 'prog-pct-paper-2026-judge', total: 40 }
+            { id: 'paper_2026_all', textId: 'prog-text-paper-2026-all', pctId: 'prog-pct-paper-2026-all', barId: 'prog-bar-paper-2026-all', total: dateCfg.total },
+            { id: 'paper_2026_choice', pctId: 'prog-pct-paper-2026-choice', total: dateCfg.choiceTotal },
+            { id: 'paper_2026_multiple', pctId: 'prog-pct-paper-2026-multiple', total: dateCfg.multipleTotal },
+            { id: 'paper_2026_judge', pctId: 'prog-pct-paper-2026-judge', total: dateCfg.judgeTotal }
         ];
 
         p2026Modules.forEach(m => {
             const answerKey = getModuleAnswerKey(m.id);
             const answers = state.moduleAnswers[answerKey] || {};
             const doneCount = Object.keys(answers).length;
-            const pct = Math.round((doneCount / m.total) * 100);
+            const pct = m.total > 0 ? Math.round((doneCount / m.total) * 100) : 0;
 
             if (m.textId) {
                 const elText = document.getElementById(m.textId);
@@ -897,6 +914,7 @@
                 const elPct = document.getElementById(m.pctId);
                 if (elPct) {
                     if (m.id === 'paper_2026_all') elPct.textContent = `${pct}%`;
+                    else if (m.total === 0) elPct.textContent = '暂无';
                     else elPct.textContent = `${doneCount}/${m.total}`;
                 }
             }
@@ -906,8 +924,18 @@
             }
         });
 
+        const btnJudge2026 = document.getElementById('btn-paper-2026-judge');
+        if (btnJudge2026) {
+            if (dateCfg.judgeTotal === 0) {
+                btnJudge2026.classList.add('opacity-50');
+                btnJudge2026.title = '当前考卷暂无判断题';
+            } else {
+                btnJudge2026.classList.remove('opacity-50');
+                btnJudge2026.title = `${dateCfg.judgeTotal}道判断题`;
+            }
+        }
+
         // 渲染考前冲刺日期药丸高亮
-        const curDate = state.selectedSimDate || '1021';
         document.querySelectorAll('.sim-date-tab-btn').forEach(btn => {
             const btnDate = btn.getAttribute('data-sim-date');
             if (btnDate === curDate) {
@@ -916,11 +944,16 @@
                 btn.className = "sim-date-tab-btn sim-date-tab-inactive py-1 px-1 rounded-lg text-xs font-bold text-center flex flex-col items-center justify-center transition cursor-pointer";
             }
         });
-        const dateCfg = SIM_DATES[curDate] || SIM_DATES['1021'];
+        const secCount = document.getElementById('title-sim-section-count');
+        if (secCount) secCount.textContent = `(${dateCfg.total}题)`;
         const allText = document.getElementById('title-sim-all-text');
         if (allText) allText.textContent = `${dateCfg.name}特训全刷`;
+        const allBadge = document.getElementById('title-sim-all-badge');
+        if (allBadge) allBadge.textContent = `${dateCfg.total}题`;
         const examText = document.getElementById('title-sim-exam-text');
-        if (examText) examText.textContent = `${dateCfg.name}精简模考`;
+        if (examText) examText.textContent = `${dateCfg.name}全真模考`;
+        const examSub = document.getElementById('title-sim-exam-sub');
+        if (examSub) examSub.textContent = `全卷 ${dateCfg.total} 题 · 自动折算 100 分制`;
 
         const elWrong = document.getElementById('sidebar-wrong-count');
         if (elWrong) elWrong.textContent = `${state.wrongQuestions.size} 道待复习`;
@@ -999,6 +1032,14 @@
 
         if (state.activeModuleId === 'wrong' && newModuleId !== 'wrong') {
             state.wrongSessionList = null;
+        }
+
+        if (newModuleId === 'paper_2026_judge') {
+            const curCfg = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
+            if (curCfg.judgeTotal === 0) {
+                showToast(`💡 【${curCfg.name}】考卷暂无判断题，已为您切换至整卷全刷`);
+                newModuleId = 'paper_2026_all';
+            }
         }
 
         state.activeModuleId = newModuleId;
@@ -1167,7 +1208,8 @@
         if (state.activeModuleId === 'quick_quiz') {
             examTitle = '碎片快速自测 (50题)';
         } else if (state.activeModuleId === 'paper_2026_exam') {
-            examTitle = '2026考前精简全真模考 (210题)';
+            const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
+            examTitle = `${d.title}全真模考 (${qs.length}题)`;
         }
 
         document.getElementById('result-exam-title').textContent = examTitle;
@@ -2401,7 +2443,7 @@
 
         const cleanKw = kw.trim();
         if (!cleanKw) {
-            list.innerHTML = `<div class="text-center text-gray-400 py-10 text-sm">输入关键词或点击上方热门考点搜索全量题库 (1840题)</div>`;
+            list.innerHTML = `<div class="text-center text-gray-400 py-10 text-sm">输入关键词或点击上方热门考点搜索全量题库 (${allQuestionsPool.length}题)</div>`;
             return;
         }
 
@@ -2440,8 +2482,7 @@
                 const qId = item.getAttribute('data-qid');
                 closeSearchModal();
                 if (paperId && paperId.startsWith('paper_2026')) {
-                    const m = paperId.match(/10\d\d/);
-                    const datePart = (m && SIM_DATES[m[0]]) ? m[0] : (state.selectedSimDate || '1021');
+                    const datePart = extractSimDateKey(paperId) || (state.selectedSimDate || '1021');
                     setSimDate(datePart);
                     state.activeModuleId = 'paper_2026_all';
                     const listForDate = getSim2026Questions(datePart);
@@ -2707,6 +2748,10 @@
         state.recentSimDate = dateKey;
         localStorage.setItem('electrician_sim_date_v4', dateKey);
         localStorage.setItem(STORAGE_KEY_RECENT_SIM_DATE, dateKey);
+
+        if (state.activeModuleId === 'paper_2026_judge' && SIM_DATES[dateKey].judgeTotal === 0) {
+            state.activeModuleId = 'paper_2026_all';
+        }
 
         // 如果当前在 2026 模块，重新渲染题目
         if (state.activeModuleId && state.activeModuleId.startsWith('paper_2026_')) {
@@ -3326,7 +3371,7 @@
         let modTitle = '当前试卷';
         if (state.activeModuleId === 'paper_2026_all') {
             const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
-            modTitle = `${d.name}考生专属卷 (精炼210题)`;
+            modTitle = `${d.title} (共${d.total}题)`;
         } else if (state.activeModuleId.startsWith('paper_2026_')) {
             const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
             modTitle = `${d.name}专项卷`;
@@ -3464,7 +3509,7 @@
         let curTitle = '历年题库';
         if (curMod === 'paper_2026_all') {
             const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
-            curTitle = `${d.title} (全卷210题)`;
+            curTitle = `${d.title} (全卷${d.total}题)`;
         } else if (curMod.startsWith('paper_2026_')) {
             const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
             curTitle = `${d.name}精炼专项`;
@@ -3486,14 +3531,14 @@
         if (statEl) statEl.textContent = `已刷 ${curDone} / ${curTotal} 题`;
         if (pctEl) pctEl.textContent = `${curPct}%`;
 
-        // 2. 2026 考前特训卷 (1021, 1022, 1023, 1028)
+        // 2. 2026 考前特训卷 (1021, 1022, 1023, 1028, kpy)
         const list2026 = document.getElementById('manage-list-2026');
         if (list2026) {
             list2026.innerHTML = Object.keys(SIM_DATES).map(dateKey => {
                 const cfg = SIM_DATES[dateKey];
                 const ans = state.moduleAnswers[`paper_2026_all_${dateKey}`] || {};
                 const done = Object.keys(ans).length;
-                const pct = Math.round((done / 210) * 100);
+                const pct = cfg.total > 0 ? Math.round((done / cfg.total) * 100) : 0;
                 const isCur = (state.activeModuleId === 'paper_2026_all' && state.selectedSimDate === dateKey);
 
                 return `
@@ -3505,7 +3550,7 @@
                                 ${isCur ? '<span class="text-[9px] bg-blue-100 text-blue-700 px-1 py-0.2 rounded font-black">当前</span>' : ''}
                             </div>
                             <div class="flex items-center gap-2 text-[10px] text-gray-400">
-                                <span>进度：${done} / 210 题 (${pct}%)</span>
+                                <span>进度：${done} / ${cfg.total} 题 (${pct}%)</span>
                                 <div class="w-16 bg-gray-100 rounded-full h-1.5 overflow-hidden">
                                     <div class="bg-amber-500 h-1.5 rounded-full" style="width: ${pct}%"></div>
                                 </div>
@@ -3631,21 +3676,21 @@
         const modal = document.getElementById('modal-paper-selector');
         if (!modal) return;
 
-        // 1. 2026 考前精简特训卷 (1021, 1022, 1023, 1028)
+        // 1. 2026 考前精简特训卷 (1021, 1022, 1023, 1028, kpy)
         const list2026 = document.getElementById('paper-selector-list-2026');
         if (list2026) {
             list2026.innerHTML = Object.keys(SIM_DATES).map(dateKey => {
                 const cfg = SIM_DATES[dateKey];
                 const ans = state.moduleAnswers[`paper_2026_all_${dateKey}`] || {};
                 const done = Object.keys(ans).length;
-                const pct = Math.round((done / 210) * 100);
+                const pct = cfg.total > 0 ? Math.round((done / cfg.total) * 100) : 0;
                 const isCur = (state.activeModuleId === 'paper_2026_all' && state.selectedSimDate === dateKey);
 
                 return `
                     <div class="paper-select-card p-3 rounded-2xl border ${isCur ? 'border-amber-400 bg-amber-50/70 shadow-sm' : 'border-gray-200/80 bg-white hover:bg-gray-50/90'} flex items-center justify-between gap-3 transition cursor-pointer group" data-action="date" data-val="${dateKey}">
                         <div class="flex items-center gap-3 min-w-0 flex-1">
                             <div class="w-10 h-10 rounded-xl ${isCur ? 'bg-amber-500 text-white shadow-xs' : 'bg-amber-100 text-amber-800'} flex-shrink-0 flex items-center justify-center text-sm font-black">
-                                ${dateKey.substring(2)}
+                                ${cfg.shortTag || dateKey.substring(2)}
                             </div>
                             <div class="min-w-0 flex-1">
                                 <div class="flex items-center gap-1.5 flex-wrap">
@@ -3653,7 +3698,7 @@
                                     ${isCur ? '<span class="text-[10px] bg-amber-500 text-white px-1.5 py-0.2 rounded font-black">当前练习</span>' : ''}
                                 </div>
                                 <div class="flex items-center gap-2 text-[11px] text-gray-400 mt-0.5">
-                                    <span>精简 210 题 · 已刷 ${done}/210 (${pct}%)</span>
+                                    <span>共 ${cfg.total} 题 · 已刷 ${done}/${cfg.total} (${pct}%)</span>
                                 </div>
                                 <div class="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden mt-1.5 max-w-[180px]">
                                     <div class="bg-amber-500 h-1.5 rounded-full" style="width: ${pct}%"></div>
@@ -3812,7 +3857,9 @@
                 const modId = btn.getAttribute('data-module-id');
                 if (modId === 'paper_2026_exam') {
                     const dateCfg = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
-                    if (confirm(`即将进入【${dateCfg.name}精简全真模考】：共 210 题（150道单选、20道多选、40道判断），限时 120 分钟，交卷后折算 100 分制，准备好了吗？`)) {
+                    const breakdownParts = [`${dateCfg.choiceTotal}道单选`, `${dateCfg.multipleTotal}道多选`];
+                    if (dateCfg.judgeTotal > 0) breakdownParts.push(`${dateCfg.judgeTotal}道判断`);
+                    if (confirm(`即将进入【${dateCfg.name}全真模考】：共 ${dateCfg.total} 题（${breakdownParts.join('、')}），限时 120 分钟，交卷后折算 100 分制，准备好了吗？`)) {
                         start2026Exam();
                         closeMobileSidebar();
                     }
@@ -4083,15 +4130,15 @@
         if (btnResetCurrent) {
             btnResetCurrent.onclick = () => {
                 let moduleName = '当前试卷';
+                const dCfg = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
                 if (state.activeModuleId === 'full_all') moduleName = '全部题目全刷 (1000题)';
                 else if (state.activeModuleId === 'full_choice') moduleName = '单选题专练 (800题)';
                 else if (state.activeModuleId === 'full_judge') moduleName = '判断题专练 (200题)';
                 else if (state.activeModuleId === 'paper_2026_all') {
-                    const d = SIM_DATES[state.selectedSimDate || '1021'] || SIM_DATES['1021'];
-                    moduleName = `${d.name}特训卷 (210题)`;
-                } else if (state.activeModuleId === 'paper_2026_choice') moduleName = '2026单选专项 (150题)';
-                else if (state.activeModuleId === 'paper_2026_multiple') moduleName = '2026多选专项 (20题)';
-                else if (state.activeModuleId === 'paper_2026_judge') moduleName = '2026判断专项 (40题)';
+                    moduleName = `${dCfg.title} (${dCfg.total}题)`;
+                } else if (state.activeModuleId === 'paper_2026_choice') moduleName = `${dCfg.name}单选专项 (${dCfg.choiceTotal}题)`;
+                else if (state.activeModuleId === 'paper_2026_multiple') moduleName = `${dCfg.name}多选专项 (${dCfg.multipleTotal}题)`;
+                else if (state.activeModuleId === 'paper_2026_judge') moduleName = `${dCfg.name}判断专项 (${dCfg.judgeTotal}题)`;
                 else if (state.activeModuleId.startsWith('paper_')) {
                     const info = getPaperTitleInfo(state.activeModuleId, '');
                     moduleName = info.title;
